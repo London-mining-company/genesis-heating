@@ -3,9 +3,6 @@
     "buildCommand": "npm run build",
     "outputDirectory": "dist",
     "framework": "vite",
-    "regions": [
-        "iad1"
-    ],
     "headers": [
         {
             "source": "/(.*)",
@@ -56,10 +53,5 @@
             "source": "/api/:path*",
             "destination": "/api/:path*"
         }
-    ],
-    "functions": {
-        "api/**/*.ts": {
-            "maxDuration": 10
-        }
-    }
+    ]
 }
