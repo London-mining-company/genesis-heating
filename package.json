@@ -15,7 +15,7 @@
     "db:seed": "tsx src/server/db/seed.ts"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "dependencies": {
     "preact": "^10.19.3"
