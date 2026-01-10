@@ -70,8 +70,7 @@ const Header = () => {
         <header className="header" role="banner">
             <div className="container header-inner">
                 <a href="/" className="logo" aria-label="Genesis Heating Solutions Home">
-                    <img src="/genesis-logo.jpg" alt="Genesis Logo" style={{ height: '32px', objectFit: 'contain' }} />
-                    <span style={{ fontWeight: 700, letterSpacing: '-0.02em' }}>Genesis</span>
+                    <img src="/genesis-logo.jpg" alt="Genesis Heating Solutions" className="genesis-pulse" style={{ height: '48px', objectFit: 'contain' }} />
                 </a>
                 <button onClick={scrollToForm} className="btn btn-primary nav-cta">
                     Join Waitlist
