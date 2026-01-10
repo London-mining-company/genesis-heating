@@ -15,25 +15,25 @@
 // ============================================
 
 export interface EmailConfig {
-    provider: 'resend' | 'sendgrid' | 'ses' | 'postmark'
-    apiKey: string
-    fromEmail: string
-    fromName: string
-    replyTo?: string
+  provider: 'resend' | 'sendgrid' | 'ses' | 'postmark'
+  apiKey: string
+  fromEmail: string
+  fromName: string
+  replyTo?: string
 }
 
 export interface EmailOptions {
-    to: string
-    subject: string
-    html: string
-    text?: string
-    tags?: string[]
+  to: string
+  subject: string
+  html: string
+  text?: string
+  tags?: string[]
 }
 
 export interface EmailResult {
-    success: boolean
-    messageId?: string
-    error?: string
+  success: boolean
+  messageId?: string
+  error?: string
 }
 
 // ============================================
@@ -41,12 +41,12 @@ export interface EmailResult {
 // ============================================
 
 export const emailTemplates = {
-    /**
-     * Verification email template
-     */
-    verification: (name: string, verifyUrl: string): { subject: string; html: string; text: string } => ({
-        subject: 'Verify your Superheat waitlist spot',
-        html: `
+  /**
+   * Verification email template
+   */
+  verification: (name: string, verifyUrl: string): { subject: string; html: string; text: string } => ({
+    subject: 'Verify your Genesis waitlist spot',
+    html: `
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +63,7 @@ export const emailTemplates = {
           <!-- Header -->
           <tr>
             <td align="center" style="padding:40px 40px 20px;">
-              <img src="https://superheat.ca/logo.png" alt="Superheat" width="150" style="display:block;">
+              <img src="https://genesisheating.ca/genesis-logo.jpg" alt="Genesis Heating" width="150" style="display:block;">
             </td>
           </tr>
           
@@ -72,7 +72,7 @@ export const emailTemplates = {
             <td style="padding:20px 40px;">
               <h1 style="color:#f7931a;font-size:24px;margin:0 0 20px;">Welcome${name ? `, ${name}` : ''}! 🔥</h1>
               <p style="color:#e8e8f0;font-size:16px;line-height:1.6;margin:0 0 20px;">
-                Thank you for joining the Superheat waitlist! You're one step closer to zero-cost heating.
+                Thank you for joining the Genesis waitlist! You're one step closer to zero-cost heating.
               </p>
               <p style="color:#9898b0;font-size:16px;line-height:1.6;margin:0 0 30px;">
                 Please verify your email to confirm your spot and receive updates about our Spring 2026 launch.
@@ -102,9 +102,9 @@ export const emailTemplates = {
           <tr>
             <td style="padding:30px 40px;background-color:#16162a;border-top:1px solid #2a2a4a;">
               <p style="color:#6868a0;font-size:12px;line-height:1.6;margin:0;text-align:center;">
-                © ${new Date().getFullYear()} Superheat Technologies Inc.<br>
+                © ${new Date().getFullYear()} Genesis Heating Solutions.<br>
                 London, Ontario, Canada<br><br>
-                <a href="https://superheat.ca/unsubscribe" style="color:#9898b0;">Unsubscribe</a>
+                <a href="https://genesisheating.ca/unsubscribe" style="color:#9898b0;">Unsubscribe</a>
               </p>
             </td>
           </tr>
@@ -116,10 +116,10 @@ export const emailTemplates = {
 </body>
 </html>
     `.trim(),
-        text: `
+    text: `
 Welcome${name ? `, ${name}` : ''}!
 
-Thank you for joining the Superheat waitlist! You're one step closer to zero-cost heating.
+Thank you for joining the Genesis waitlist! You're one step closer to zero-cost heating.
 
 Please verify your email to confirm your spot:
 ${verifyUrl}
@@ -127,17 +127,17 @@ ${verifyUrl}
 This link expires in 48 hours.
 
 ---
-Superheat Technologies Inc.
+Genesis Heating Solutions
 London, Ontario, Canada
     `.trim(),
-    }),
+  }),
 
-    /**
-     * Welcome email (after verification)
-     */
-    welcome: (name: string, position: number): { subject: string; html: string; text: string } => ({
-        subject: `You're #${position} on the Superheat waitlist!`,
-        html: `
+  /**
+   * Welcome email (after verification)
+   */
+  welcome: (name: string, position: number): { subject: string; html: string; text: string } => ({
+    subject: `You're #${position} on the Genesis waitlist!`,
+    html: `
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +167,7 @@ London, Ontario, Canada
               </ul>
               <p style="color:#9898b0;font-size:14px;margin:30px 0 0;">
                 We'll be in touch soon with more details. In the meantime, 
-                <a href="https://superheat.ca?ref=email" style="color:#f7931a;">share Superheat</a> 
+                <a href="https://genesisheating.ca?ref=email" style="color:#f7931a;">share Genesis</a> 
                 with friends to move up the list!
               </p>
             </td>
@@ -175,7 +175,7 @@ London, Ontario, Canada
           <tr>
             <td style="padding:20px 40px;background-color:#16162a;border-top:1px solid #2a2a4a;">
               <p style="color:#6868a0;font-size:12px;margin:0;text-align:center;">
-                © ${new Date().getFullYear()} Superheat Technologies Inc. | London, Ontario
+                © ${new Date().getFullYear()} Genesis Heating Solutions. | London, Ontario
               </p>
             </td>
           </tr>
@@ -186,10 +186,10 @@ London, Ontario, Canada
 </body>
 </html>
     `.trim(),
-        text: `
+    text: `
 You're In! 🎉
 
-${name ? `${name}, you're` : "You're"} #${position} on the Superheat waitlist!
+${name ? `${name}, you're` : "You're"} #${position} on the Genesis waitlist!
 
 We're working hard to bring zero-cost heating to London, Ontario in Spring 2026.
 
@@ -201,9 +201,9 @@ As an early supporter, you'll get:
 We'll be in touch soon!
 
 ---
-Superheat Technologies Inc.
+Genesis Heating Solutions
     `.trim(),
-    }),
+  }),
 }
 
 // ============================================
@@ -211,66 +211,66 @@ Superheat Technologies Inc.
 // ============================================
 
 async function sendWithResend(config: EmailConfig, options: EmailOptions): Promise<EmailResult> {
-    try {
-        const response = await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${config.apiKey}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                from: `${config.fromName} <${config.fromEmail}>`,
-                to: [options.to],
-                subject: options.subject,
-                html: options.html,
-                text: options.text,
-                reply_to: config.replyTo,
-                tags: options.tags?.map(name => ({ name })),
-            }),
-        })
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${config.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `${config.fromName} <${config.fromEmail}>`,
+        to: [options.to],
+        subject: options.subject,
+        html: options.html,
+        text: options.text,
+        reply_to: config.replyTo,
+        tags: options.tags?.map(name => ({ name })),
+      }),
+    })
 
-        if (!response.ok) {
-            const error = await response.json()
-            return { success: false, error: error.message || 'Failed to send email' }
-        }
-
-        const data = await response.json()
-        return { success: true, messageId: data.id }
-    } catch (error) {
-        return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
+    if (!response.ok) {
+      const error = await response.json()
+      return { success: false, error: error.message || 'Failed to send email' }
     }
+
+    const data = await response.json()
+    return { success: true, messageId: data.id }
+  } catch (error) {
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
+  }
 }
 
 async function sendWithSendGrid(config: EmailConfig, options: EmailOptions): Promise<EmailResult> {
-    try {
-        const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${config.apiKey}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                personalizations: [{ to: [{ email: options.to }] }],
-                from: { email: config.fromEmail, name: config.fromName },
-                reply_to: config.replyTo ? { email: config.replyTo } : undefined,
-                subject: options.subject,
-                content: [
-                    { type: 'text/plain', value: options.text || '' },
-                    { type: 'text/html', value: options.html },
-                ],
-            }),
-        })
+  try {
+    const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${config.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        personalizations: [{ to: [{ email: options.to }] }],
+        from: { email: config.fromEmail, name: config.fromName },
+        reply_to: config.replyTo ? { email: config.replyTo } : undefined,
+        subject: options.subject,
+        content: [
+          { type: 'text/plain', value: options.text || '' },
+          { type: 'text/html', value: options.html },
+        ],
+      }),
+    })
 
-        if (!response.ok) {
-            const error = await response.text()
-            return { success: false, error: error || 'Failed to send email' }
-        }
-
-        const messageId = response.headers.get('x-message-id')
-        return { success: true, messageId: messageId || undefined }
-    } catch (error) {
-        return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
+    if (!response.ok) {
+      const error = await response.text()
+      return { success: false, error: error || 'Failed to send email' }
     }
+
+    const messageId = response.headers.get('x-message-id')
+    return { success: true, messageId: messageId || undefined }
+  } catch (error) {
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
+  }
 }
 
 // ============================================
@@ -278,14 +278,14 @@ async function sendWithSendGrid(config: EmailConfig, options: EmailOptions): Pro
 // ============================================
 
 export async function sendEmail(config: EmailConfig, options: EmailOptions): Promise<EmailResult> {
-    switch (config.provider) {
-        case 'resend':
-            return sendWithResend(config, options)
-        case 'sendgrid':
-            return sendWithSendGrid(config, options)
-        default:
-            return { success: false, error: `Provider ${config.provider} not implemented` }
-    }
+  switch (config.provider) {
+    case 'resend':
+      return sendWithResend(config, options)
+    case 'sendgrid':
+      return sendWithSendGrid(config, options)
+    default:
+      return { success: false, error: `Provider ${config.provider} not implemented` }
+  }
 }
 
 // ============================================
@@ -293,37 +293,37 @@ export async function sendEmail(config: EmailConfig, options: EmailOptions): Pro
 // ============================================
 
 export async function sendVerificationEmail(
-    config: EmailConfig,
-    email: string,
-    name: string,
-    verificationToken: string,
-    baseUrl: string
+  config: EmailConfig,
+  email: string,
+  name: string,
+  verificationToken: string,
+  baseUrl: string
 ): Promise<EmailResult> {
-    const verifyUrl = `${baseUrl}/api/verify?token=${verificationToken}`
-    const template = emailTemplates.verification(name, verifyUrl)
+  const verifyUrl = `${baseUrl}/api/verify?token=${verificationToken}`
+  const template = emailTemplates.verification(name, verifyUrl)
 
-    return sendEmail(config, {
-        to: email,
-        subject: template.subject,
-        html: template.html,
-        text: template.text,
-        tags: ['verification', 'waitlist'],
-    })
+  return sendEmail(config, {
+    to: email,
+    subject: template.subject,
+    html: template.html,
+    text: template.text,
+    tags: ['verification', 'waitlist'],
+  })
 }
 
 export async function sendWelcomeEmail(
-    config: EmailConfig,
-    email: string,
-    name: string,
-    position: number
+  config: EmailConfig,
+  email: string,
+  name: string,
+  position: number
 ): Promise<EmailResult> {
-    const template = emailTemplates.welcome(name, position)
+  const template = emailTemplates.welcome(name, position)
 
-    return sendEmail(config, {
-        to: email,
-        subject: template.subject,
-        html: template.html,
-        text: template.text,
-        tags: ['welcome', 'waitlist'],
-    })
+  return sendEmail(config, {
+    to: email,
+    subject: template.subject,
+    html: template.html,
+    text: template.text,
+    tags: ['welcome', 'waitlist'],
+  })
 }

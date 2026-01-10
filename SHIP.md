@@ -1,6 +1,6 @@
-# 🚀 Ready to Ship: Superheat Landing Page
+# 🚀 Ready to Ship: Genesis Heating Landing Page
 
-**Product:** Superheat Marketing Landing Page (Steve Jobs Edition)
+**Product:** Genesis Heating Solutions (Steve Jobs Edition)
 **Status:** Gold Master
 **Date:** January 10, 2026
 

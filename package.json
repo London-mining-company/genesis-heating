@@ -1,8 +1,8 @@
 {
-  "name": "superheat-landing",
+  "name": "genesis-heating",
   "private": true,
   "version": "1.0.0",
-  "description": "Superheat - Revolutionary heating solution for London, Ontario",
+  "description": "Genesis Heating Solutions - The Heater That Pays You Back",
   "type": "module",
   "scripts": {
     "dev": "vite",

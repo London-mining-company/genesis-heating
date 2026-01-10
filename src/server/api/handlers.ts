@@ -58,13 +58,13 @@ export async function handleWaitlistSignup(
 ): Promise<{ response: ApiResponse<{ id: string; position: number }>; status: number }> {
     // Initialize service
     const waitlistService = getWaitlistService({
-        baseUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://superheat.ca',
+        baseUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://genesisheating.ca',
         enableSecurityChecks: process.env.NODE_ENV === 'production',
         email: process.env.RESEND_API_KEY ? {
             provider: 'resend',
             apiKey: process.env.RESEND_API_KEY,
-            fromEmail: 'hello@superheat.ca',
-            fromName: 'Superheat',
+            fromEmail: 'hello@genesisheating.ca',
+            fromName: 'Genesis Heating',
         } : undefined,
         integrations: {
             slack: process.env.SLACK_WEBHOOK_URL ? { webhookUrl: process.env.SLACK_WEBHOOK_URL } : undefined,

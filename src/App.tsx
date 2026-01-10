@@ -26,21 +26,7 @@ interface FormErrors {
 // Form timing is tracked via hidden fields for bot detection
 
 
-// ============================================
-// ICONS (Inline SVG for minimal bundle)
-// ============================================
-const FlameIcon = () => (
-    <svg viewBox="0 0 32 32" className="logo-icon" aria-hidden="true">
-        <defs>
-            <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" stopColor="#f7931a" />
-                <stop offset="100%" stopColor="#ff6b35" />
-            </linearGradient>
-        </defs>
-        <circle cx="16" cy="16" r="14" fill="#1a1a2e" />
-        <path d="M16 6 L20 14 L24 12 L20 20 L24 19 L16 28 L17 21 L13 22 L16 15 L12 16 Z" fill="url(#flameGrad)" />
-    </svg>
-)
+
 
 // ============================================
 // TRACKING UTILITIES
@@ -83,9 +69,9 @@ const Header = () => {
     return (
         <header className="header" role="banner">
             <div className="container header-inner">
-                <a href="/" className="logo" aria-label="Superheat Home">
-                    <FlameIcon />
-                    <span>Superheat</span>
+                <a href="/" className="logo" aria-label="Genesis Heating Solutions Home">
+                    <img src="/genesis-logo.jpg" alt="Genesis Logo" style={{ height: '32px', objectFit: 'contain' }} />
+                    <span style={{ fontWeight: 700, letterSpacing: '-0.02em' }}>Genesis</span>
                 </a>
                 <button onClick={scrollToForm} className="btn btn-primary nav-cta">
                     Join Waitlist
@@ -117,7 +103,7 @@ const Hero = () => {
                 </h1>
 
                 <p className="hero-subtitle">
-                    It calculates. It heats. It saves. Superheat turns high-performance computing
+                    It calculates. It heats. It saves. Genesis turns high-performance computing
                     into free hot water for your home.
                 </p>
 
@@ -157,7 +143,7 @@ const HowItWorks = () => {
         {
             number: 1,
             title: 'We Install',
-            description: 'Our certified pros replace your old tank with a Superheat unit in one day. White-glove service, zero mess.',
+            description: 'Our certified pros replace your old tank with a Genesis unit in one day. White-glove service, zero mess.',
         },
         {
             number: 2,
@@ -203,7 +189,7 @@ const Benefits = () => {
         {
             icon: '💰',
             title: 'The Heater That Pays You',
-            description: 'Why burn money? Superheat turns electricity into Bitcoin mining rewards, offsetting your costs 100%.',
+            description: 'Why burn money? Genesis turns electricity into Bitcoin mining rewards, offsetting your costs 100%.',
         },
         {
             icon: '🤫',
@@ -226,7 +212,7 @@ const Benefits = () => {
         <section className="section" aria-labelledby="benefits-heading">
             <div className="container">
                 <header className="section-header">
-                    <h2 id="benefits-heading">Why Choose Superheat?</h2>
+                    <h2 id="benefits-heading">Why Choose Genesis?</h2>
                     <p>
                         Join hundreds of London homeowners who are already on the path to energy independence.
                     </p>
@@ -264,7 +250,7 @@ const SavingsCalculator = () => {
             <div className="container">
                 <header className="section-header">
                     <h2 id="calc-heading">Calculate Your Savings</h2>
-                    <p>See how much you could save by switching to Superheat.</p>
+                    <p>See how much you could save by switching to Genesis.</p>
                 </header>
 
                 <div className="calculator-card">
@@ -295,7 +281,7 @@ const SavingsCalculator = () => {
                     </div>
 
                     <p style={{ fontSize: 'var(--f-size-sm)', color: 'var(--c-text-muted)', textAlign: 'center' }}>
-                        *Savings based on average Superheat performance. Your results may vary based on usage patterns.
+                        *Savings based on average Genesis performance. Your results may vary based on usage patterns.
                     </p>
                 </div>
             </div>
@@ -430,7 +416,7 @@ const WaitlistForm = () => {
                             <div className="success-icon">✓</div>
                             <h3>You're on the list!</h3>
                             <p>
-                                We'll email you when Superheat launches in Spring 2026.
+                                We'll email you when Genesis launches in Spring 2026.
                                 Keep an eye on your inbox for exclusive early-bird offers.
                             </p>
                         </div>
@@ -551,7 +537,7 @@ const WaitlistForm = () => {
                             onChange={handleChange}
                         />
                         <label htmlFor="marketingConsent" className="checkbox-label">
-                            Send me updates about Superheat, including launch news and exclusive offers.
+                            Send me updates about Genesis, including launch news and exclusive offers.
                         </label>
                     </div>
 
@@ -603,7 +589,7 @@ const FAQ = () => {
 
     const faqs = [
         {
-            question: 'How does Superheat generate enough heat to be free?',
+            question: 'How does Genesis generate enough heat to be free?',
             answer: 'Our advanced heating units operate continuously, producing consistent heat as a byproduct of their operation. This heat is captured and used for your water and home heating. The value generated offsets your energy costs entirely—and often produces a surplus.',
         },
         {
@@ -676,8 +662,8 @@ const Footer = () => {
         <footer className="footer" role="contentinfo">
             <div className="container footer-content">
                 <div className="footer-logo">
-                    <FlameIcon />
-                    <span>Superheat</span>
+                    <img src="/genesis-logo.jpg" alt="Genesis Logo" style={{ height: '32px', filter: 'grayscale(1)', opacity: 0.8 }} />
+                    <span>Genesis Heating</span>
                 </div>
 
                 <nav className="footer-links" aria-label="Footer navigation">
@@ -687,7 +673,7 @@ const Footer = () => {
                 </nav>
 
                 <p className="footer-copyright">
-                    © {currentYear} Superheat Technologies Inc. London, Ontario, Canada
+                    © {currentYear} Genesis Heating Solutions. London, Ontario, Canada
                 </p>
             </div>
         </footer>
