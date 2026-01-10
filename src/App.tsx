@@ -70,7 +70,7 @@ const Header = () => {
         <header className="header" role="banner">
             <div className="container header-inner">
                 <a href="/" className="logo" aria-label="Genesis Heating Solutions Home">
-                    <img src="/genesis-logo.png" alt="Genesis Heating Solutions" className="genesis-pulse" style={{ height: '64px', width: 'auto' }} />
+                    <img src="/genesis-logo-final.png" alt="Genesis Heating Solutions" className="genesis-pulse logo-img" style={{ mixBlendMode: 'screen' }} />
                 </a>
                 <button onClick={scrollToForm} className="btn btn-primary nav-cta">
                     Join Waitlist
@@ -661,7 +661,7 @@ const Footer = () => {
         <footer className="footer" role="contentinfo">
             <div className="container footer-content">
                 <div className="footer-logo">
-                    <img src="/genesis-logo.png" alt="Genesis Logo" style={{ height: '48px', opacity: 0.9 }} />
+                    <img src="/genesis-logo-final.png" alt="Genesis Logo" style={{ height: '64px', opacity: 0.9, mixBlendMode: 'screen' }} />
                 </div>
 
                 <nav className="footer-links" aria-label="Footer navigation">

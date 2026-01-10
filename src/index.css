@@ -197,10 +197,11 @@ h4 {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: var(--s-4) 0;
-  background: rgba(13, 13, 20, 0.8);
+  padding: var(--s-2) 0;
+  background: rgba(13, 13, 20, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--c-border);
+  transition: padding var(--t-normal);
 }
 
 .header-inner {
@@ -209,18 +210,14 @@ h4 {
   justify-content: space-between;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-  font-size: var(--f-size-xl);
-  font-weight: 700;
-  color: var(--c-text);
+.logo-img {
+  height: 60px !important;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
+@media (min-width: 768px) {
+  .logo-img {
+    height: 90px !important;
+  }
 }
 
 .nav-cta {
