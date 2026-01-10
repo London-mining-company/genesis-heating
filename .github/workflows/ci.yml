@@ -1,0 +1,60 @@
+name: Superheat CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate & Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint Check
+        run: npm run lint
+        continue-on-error: true # Don't block purely on lint for now
+
+      - name: Type Check
+        run: npx tsc --noEmit
+
+      - name: Security Audit
+        run: npm audit --audit-level=high
+
+      - name: Build Test
+        run: npm run build
+
+  bundle-size:
+    name: Check Bundle Size
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      
+      # Simple check to ensure we stay lightweight
+      - name: Check Main Bundle Size
+        run: |
+          SIZE=$(gzip -c dist/assets/index*.js | wc -c)
+          echo "Gzipped Bundle Size: $SIZE bytes"
+          if [ $SIZE -gt 14336 ]; then
+            echo "❌ Bundle size ($SIZE bytes) exceeds 14KB limit!"
+            exit 1
+          fi
+          echo "✅ Bundle size is within limits."

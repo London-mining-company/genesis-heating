@@ -1,0 +1,31 @@
+{
+  "name": "superheat-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Superheat - Revolutionary heating solution for London, Ontario",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "analyze": "vite build --mode analyze && npx source-map-explorer dist/assets/*.js",
+    "lint": "eslint . --ext ts,tsx",
+    "test": "vitest",
+    "db:migrate": "tsx src/server/db/migrate.ts",
+    "db:seed": "tsx src/server/db/seed.ts"
+  },
+  "dependencies": {
+    "preact": "^10.19.3"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.8.2",
+    "@types/node": "^20.10.6",
+    "@vercel/node": "^5.5.16",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "terser": "^5.26.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-compression": "^0.5.1",
+    "vitest": "^1.1.0"
+  }
+}
