@@ -668,7 +668,7 @@ const Footer = () => {
                 <nav className="footer-links" aria-label="Footer navigation">
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/terms">Terms of Service</a>
-                    <a href="mailto:hello@superheat.ca">Contact</a>
+                    <a href="mailto:hello@Genesis Heating.ca">Contact</a>
                 </nav>
 
                 <p className="footer-copyright">

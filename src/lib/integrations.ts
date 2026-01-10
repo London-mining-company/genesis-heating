@@ -7,7 +7,7 @@
  * - Notifications: Slack, Discord, Email
  * - Social: Twitter, LinkedIn auto-share
  * 
- * @author Superheat Engineering
+ * @author Genesis Heating Engineering
  */
 
 // ============================================

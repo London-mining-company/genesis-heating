@@ -1,4 +1,4 @@
-# Superheat Landing Page
+# Genesis Heating Landing Page
 
 > Revolutionary zero-cost heating technology for London, Ontario. Join the waitlist for Spring 2026.
 
@@ -10,9 +10,9 @@ This is a performance-optimized landing page designed to be **under 14KB gzipped
 
 | Layer | Technology | Purpose |
 |-------|------------|---------|
-| **Frontend** | React 18 + TypeScript + Vite | Ultra-lightweight SPA |
+| **Frontend** | Preact + TypeScript + Vite | Ultra-lightweight SPA |
 | **Styling** | Vanilla CSS (Custom Properties) | No framework overhead |
-| **Backend** | Vercel Edge Functions | Low-latency serverless API |
+| **Backend** | Vercel Edge/Serverless (Node 24) | Low-latency API |
 | **Database** | Supabase (PostgreSQL) | Managed, scalable, RLS-enabled |
 | **Analytics** | Custom (Privacy-First) | GDPR/PIPEDA compliant tracking |
 
@@ -30,7 +30,7 @@ This is a performance-optimized landing page designed to be **under 14KB gzipped
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 24+
 - npm or pnpm
 - Supabase account (for database)
 

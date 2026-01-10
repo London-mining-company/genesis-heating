@@ -7,7 +7,7 @@
  * - Write unit tests
  * - Swap out implementations
  * 
- * @author Superheat Engineering
+ * @author Genesis Heating Engineering
  */
 
 import { getSupabaseClient, WaitlistSubscriber } from '../db/client'

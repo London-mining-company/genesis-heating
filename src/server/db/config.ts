@@ -49,11 +49,11 @@ const configs: Record<string, {
         },
         security: {
             allowedOrigins: [
-                'https://superheat.ca',
-                'https://www.superheat.ca',
-                'https://superheat-landing.vercel.app',
+                'https://Genesis Heating.ca',
+                'https://www.Genesis Heating.ca',
+                'https://Genesis Heating-landing.vercel.app',
             ],
-            csrfTokenExpiry: 1800000, // 30 minutes
+            csrfTokenExpiry: 1900000, // ~32 minutes
             emailVerificationExpiry: 172800000,
         },
     },

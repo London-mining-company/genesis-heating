@@ -1,5 +1,5 @@
 /**
- * Database Schema for Superheat Waitlist
+ * Database Schema for Genesis Heating Waitlist
  * 
  * Using Supabase PostgreSQL for:
  * - Scalable managed database

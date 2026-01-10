@@ -9,7 +9,7 @@
  * - Enhanced rate limiting with progressive delays
  * - Bot detection heuristics
  * 
- * @author Superheat Engineering
+ * @author Genesis Heating Engineering
  */
 
 // ============================================

@@ -12,7 +12,7 @@
  *   - Mixpanel
  *   - Custom webhooks
  * 
- * @author Superheat Engineering
+ * @author Genesis Heating Engineering
  */
 
 // ============================================

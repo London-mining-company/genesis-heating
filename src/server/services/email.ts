@@ -7,7 +7,7 @@
  * - AWS SES
  * - Postmark
  * 
- * @author Superheat Engineering
+ * @author Genesis Heating Engineering
  */
 
 // ============================================
