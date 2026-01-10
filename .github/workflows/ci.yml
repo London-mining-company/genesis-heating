@@ -51,7 +51,7 @@ jobs:
       # Simple check to ensure we stay lightweight
       - name: Check Main Bundle Size
         run: |
-          SIZE=$(gzip -c dist/assets/index*.js | wc -c)
+          SIZE=$(gzip -c dist/a.js | wc -c)
           echo "Gzipped Bundle Size: $SIZE bytes"
           if [ $SIZE -gt 14336 ]; then
             echo "❌ Bundle size ($SIZE bytes) exceeds 14KB limit!"

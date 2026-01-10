@@ -14,6 +14,9 @@
     "db:migrate": "tsx src/server/db/migrate.ts",
     "db:seed": "tsx src/server/db/seed.ts"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "preact": "^10.19.3"
   },
