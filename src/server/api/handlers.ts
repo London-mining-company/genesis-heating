@@ -11,6 +11,7 @@ import {
     getClientIp,
 } from '../security/middleware';
 import { getWaitlistService } from '../services/waitlist';
+import { AirtableService } from '../services/airtable';
 
 // ============================================
 // TYPES
@@ -94,6 +95,17 @@ export async function handleWaitlistSignup(
             status
         };
     }
+
+    // Async sync to Airtable (non-blocking for the user response)
+    AirtableService.createLead({
+        email: request.email,
+        name: request.name || 'Anonymous',
+        postalCode: request.postalCode || 'N/A',
+        propertyType: request.propertyType || 'residential',
+        monthlyHeatingCost: request.monthlyHeatingCost || 0,
+        marketingConsent: !!request.marketingConsent,
+        source: request.utmSource || 'Organic'
+    }).catch(err => console.error('[Airtable] Background sync failed:', err));
 
     // Success response
     return {

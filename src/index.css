@@ -15,28 +15,27 @@
    CSS VARIABLES / DESIGN TOKENS
    ============================================ */
 :root {
-  /* Colors */
-  --c-bg: #0d0d14;
-  --c-bg-card: #1a1a2e;
-  --c-bg-card-hover: #252542;
-  --c-surface: #16162a;
-  --c-border: #2a2a4a;
-  --c-text: #e8e8f0;
-  --c-text-muted: #9898b0;
-  --c-text-dim: #6868a0;
+  /* Colors - Superheat Alignment */
+  --c-bg: #000000;
+  --c-bg-card: #0a0a0a;
+  --c-bg-card-hover: #121212;
+  --c-surface: #0a0a0a;
+  --c-border: #1a1a1a;
+  --c-text: #ffffff;
+  --c-text-muted: #a0a0a0;
+  --c-text-dim: #606060;
 
-  /* Brand colors - subtle Bitcoin orange */
-  --c-accent: #f7931a;
-  --c-accent-light: #ffb347;
-  --c-accent-dark: #c27513;
-  --c-coral: #ff6b35;
-  --c-success: #22c55e;
-  --c-error: #ef4444;
+  /* Brand colors */
+  --c-accent: #FF5500;
+  --c-accent-light: #FF7733;
+  --c-accent-dark: #CC4400;
+  --c-accent-glow: rgba(255, 85, 0, 0.4);
+  --c-glow-blue: rgba(0, 150, 255, 0.08);
 
   /* Gradients */
-  --g-hero: linear-gradient(135deg, #1a1a2e 0%, #16162a 50%, #0d0d14 100%);
-  --g-accent: linear-gradient(135deg, #f7931a 0%, #ff6b35 100%);
-  --g-glow: radial-gradient(ellipse at center, rgba(247, 147, 26, 0.15) 0%, transparent 70%);
+  --g-hero: linear-gradient(135deg, #0d0d14 0%, #16162a 100%);
+  --g-accent: linear-gradient(135deg, #FF5500 0%, #CC4400 100%);
+  --g-glow: radial-gradient(ellipse at center, rgba(255, 85, 0, 0.15) 0%, transparent 70%);
 
   /* Typography */
   --f-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -58,10 +57,8 @@
   --s-5: 1.25rem;
   --s-6: 1.5rem;
   --s-8: 2rem;
-  --s-10: 2.5rem;
   --s-12: 3rem;
   --s-16: 4rem;
-  --s-20: 5rem;
   --s-24: 6rem;
 
   /* Borders */
@@ -72,16 +69,15 @@
   --r-2xl: 1.5rem;
   --r-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 30px rgba(247, 147, 26, 0.3);
+  /* Shadows - Condensed */
+  --shadow-sm: 0 1px 2px #000;
+  --shadow-md: 0 4px 6px #000;
+  --shadow-lg: 0 10px 25px #000;
+  --shadow-glow: 0 0 30px rgba(255, 85, 0, 0.3);
 
   /* Transitions */
   --t-fast: 150ms ease;
   --t-base: 250ms ease;
-  --t-slow: 400ms ease;
 }
 
 /* ============================================
@@ -107,7 +103,11 @@ body {
   line-height: 1.6;
   color: var(--c-text);
   background: var(--c-bg);
+  background-image:
+    radial-gradient(circle at top right, var(--c-glow-blue), transparent 40%),
+    radial-gradient(circle at bottom left, var(--c-glow-blue), transparent 40%);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 img,
@@ -239,8 +239,45 @@ h4 {
   display: flex;
   align-items: center;
   padding: var(--s-24) 0 var(--s-16);
-  background: var(--g-hero);
+  background: #000;
+  /* Solid fallback */
   overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.video-background iframe {
+  width: 100vw;
+  height: 56.25vw;
+  /* 16:9 aspect ratio */
+  min-height: 100vh;
+  min-width: 177.77vh;
+  /* 16:9 offset */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  /* Subtle background presence */
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, var(--c-bg) 90%);
+  z-index: 1;
 }
 
 .hero::before {
@@ -554,36 +591,43 @@ h4 {
   background: var(--c-surface);
 }
 
-.calculator-card {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: var(--s-8);
-  background: var(--c-bg-card);
-  border-radius: var(--r-2xl);
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  margin-bottom: var(--s-8);
+}
+
+@media (min-width: 640px) {
+  .calculator-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.calc-stat-card {
+  padding: var(--s-6);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--c-border);
-}
-
-.calculator-result {
-  text-align: center;
-  padding: var(--s-8);
-  margin-bottom: var(--s-6);
-  background: rgba(247, 147, 26, 0.05);
   border-radius: var(--r-xl);
-  border: 1px solid rgba(247, 147, 26, 0.2);
+  text-align: center;
+  transition: border-color var(--t-fast);
 }
 
-.savings-amount {
-  font-size: var(--f-size-4xl);
+.calc-stat-card:hover {
+  border-color: var(--c-accent);
+}
+
+.calc-stat-value {
+  font-size: var(--f-size-2xl);
   font-weight: 700;
-  background: var(--g-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: var(--s-1);
 }
 
-.savings-label {
+.calc-stat-label {
+  font-size: var(--f-size-xs);
   color: var(--c-text-muted);
-  margin-top: var(--s-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .slider-container {
@@ -1005,4 +1049,75 @@ h4 {
 .genesis-pulse {
   animation: genesisPulse 3s ease-in-out infinite;
   will-change: transform;
+}
+
+/* ============================================
+   INFOGRAPHIC
+   ============================================ */
+.infographic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-6);
+  margin: var(--s-12) 0;
+}
+
+@media (min-width: 1024px) {
+  .infographic-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--s-4);
+  }
+}
+
+.info-card {
+  flex: 1;
+  max-width: 320px;
+  padding: var(--s-8);
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-2xl);
+  text-align: center;
+  position: relative;
+  transition: all var(--t-base);
+}
+
+.info-card.featured {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 30px rgba(255, 85, 0, 0.1);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.info-icon {
+  font-size: var(--f-size-3xl);
+  margin-bottom: var(--s-4);
+}
+
+.info-value {
+  font-size: var(--f-size-4xl);
+  font-weight: 800;
+  color: #fff;
+  margin: var(--s-2) 0;
+}
+
+.info-arrow {
+  font-size: var(--f-size-4xl);
+  color: var(--c-accent);
+  opacity: 0.5;
+  transform: rotate(90deg);
+}
+
+@media (min-width: 1024px) {
+  .info-arrow {
+    transform: rotate(0deg);
+  }
+}
+
+.info-footnote {
+  text-align: center;
+  font-size: var(--f-size-xs);
+  color: var(--c-text-dim);
+  max-width: 600px;
+  margin: 0 auto;
 }

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'preact/hooks'
+import { useState, useEffect } from 'preact/hooks'
 import { JSX } from 'preact'
 
 // ============================================
@@ -91,6 +91,18 @@ const Hero = () => {
 
     return (
         <section className="hero" aria-labelledby="hero-heading">
+            {/* Background Video Layer */}
+            <div className="video-background">
+                <iframe
+                    src="https://www.youtube.com/embed/T_r5TUR2cYk?autoplay=1&mute=1&loop=1&playlist=T_r5TUR2cYk&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0"
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="Background Video"
+                ></iframe>
+                <div className="video-overlay"></div>
+            </div>
+
             <div className="container hero-content">
                 <div className="hero-badge">
                     <span className="hero-badge-dot" aria-hidden="true"></span>
@@ -98,35 +110,35 @@ const Hero = () => {
                 </div>
 
                 <h1 id="hero-heading">
-                    The Furnace That <span className="text-gradient">Pays You.</span>
+                    This is what the future of <span className="text-gradient">home heating feels like.</span>
                 </h1>
 
                 <p className="hero-subtitle">
-                    It calculates. It heats. It saves. Genesis turns high-performance computing
-                    into free hot water for your home.
+                    Reclaim wasted energy. Turn it into lasting financial returns.<br />
+                    <span style={{ opacity: 0.8, fontSize: '0.9em' }}>The others just heat water. Genesis heats water and your wallet.</span>
                 </p>
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <button onClick={scrollToForm} className="btn btn-primary btn-lg">
-                        Get on the List
+                        The Heater That Pays You Back
                     </button>
                     <a href="#how-it-works" className="btn btn-secondary btn-lg">
-                        See the Magic
+                        See How it Works
                     </a>
                 </div>
 
                 <div className="hero-stats">
                     <div className="stat">
-                        <div className="stat-value">$2,400</div>
-                        <div className="stat-label">Avg. Annual Savings</div>
+                        <div className="stat-value">53%+</div>
+                        <div className="stat-label">Savings vs Traditional</div>
                     </div>
                     <div className="stat">
-                        <div className="stat-value">Zero</div>
-                        <div className="stat-label">Installation Cost*</div>
+                        <div className="stat-value">$1,000+</div>
+                        <div className="stat-label">Annual Revenue Per Device</div>
                     </div>
                     <div className="stat">
-                        <div className="stat-value">24/7</div>
-                        <div className="stat-label">Passive Income</div>
+                        <div className="stat-value">5.3t</div>
+                        <div className="stat-label">CO2 Reduced Per Year</div>
                     </div>
                 </div>
             </div>
@@ -137,150 +149,155 @@ const Hero = () => {
 // ============================================
 // HOW IT WORKS SECTION
 // ============================================
-const HowItWorks = () => {
-    const steps = [
-        {
-            number: 1,
-            title: 'We Install',
-            description: 'Our certified pros replace your old tank with a Genesis unit in one day. White-glove service, zero mess.',
-        },
-        {
-            number: 2,
-            title: 'It Computes',
-            description: 'The unit processes secure blockchain transactions. This generates massive amounts of heat—heat you used to pay for.',
-        },
-        {
-            number: 3,
-            title: 'You Profit',
-            description: 'The heat warms your water. The computing pays the bills. You get a hot shower and a $0 statement.',
-        },
-    ]
+// ============================================
+// DATA CONSTANTS (Hoisted for better minification)
+// ============================================
+const STEPS = [
+    { n: 1, t: 'Enterprise Compute', d: 'Genesis draws standard electricity to power enterprise-grade processors performing decentralized computing tasks.' },
+    { n: 2, t: 'Thermal Capture', d: 'The byproduct heat from high-performance computing is captured and injected directly into your water tank.' },
+    { n: 3, t: 'Value Return', d: 'The digital value generated by the processors effectively pays for the energy used—water heating that pays you back.' },
+]
 
-    return (
-        <section id="how-it-works" className="section how-it-works" aria-labelledby="hiw-heading">
-            <div className="container">
-                <header className="section-header">
-                    <h2 id="hiw-heading">Advanced Physics. Simple Savings.</h2>
-                    <p>
-                        We’ve combined a data center with a water heater. It's not magic, it's engineering.
-                    </p>
-                </header>
+const BENEFITS = [
+    { i: '⚡', t: 'Peak Efficiency', d: 'Save 53%+ on heating costs compared to standard electric water heaters.' },
+    { i: '📱', t: 'Smart Connectivity', d: 'Real-time performance monitoring and reward tracking from any device.' },
+    { i: '🔇', t: 'Silent Operation', d: 'Engineered for living spaces. Liquid-cooled and quieter than your refrigerator.' },
+    { i: '🍃', t: 'Sustainability', d: 'Offset up to 5.3 tonnes of CO2 annually by recycling compute energy.' },
+]
 
-                <div className="steps-grid">
-                    {steps.map((step) => (
-                        <article key={step.number} className="step-card">
-                            <div className="step-number" aria-hidden="true">{step.number}</div>
-                            <h3>{step.title}</h3>
-                            <p>{step.description}</p>
-                        </article>
-                    ))}
-                </div>
+const FAQS = [
+    { q: 'How does Genesis generate enough heat?', a: 'Byproduct heat from enterprise computing is captured for your home. Value generated offsets the appliance and utility costs.' },
+    { q: 'What are the upfront costs?', a: '$0 down with revenue sharing, or purchase/lease. Installed exactly like a high-end water heater.' },
+    { q: 'Is it for commercial properties?', a: 'Yes, often with even greater savings due to higher thermal demands.' },
+    { q: 'What if it breaks?', a: '10-year warranty. 24/7 remote monitoring and rapid dispatched service.' },
+    { q: 'What technology is this?', a: 'Silicon-based systems powered by the Superheat ecosystem. See Superheat H1 documentation.' },
+    { q: 'How does it work without "crypto"?', a: 'It\'s an electric furnace using chips to generate heat. The chips create value that pays the bills. Pure thermodynamics.' },
+]
+
+const CALC_STEPS = [1, 10, 50, 100]
+
+// ============================================
+// HOW IT WORKS SECTION
+// ============================================
+const HowItWorks = () => (
+    <section id="how-it-works" className="section how-it-works" aria-labelledby="hiw-heading">
+        <div className="container">
+            <header className="section-header">
+                <h2 id="hiw-heading">Advanced Physics. Simple Savings.</h2>
+                <p>We’ve combined a data center with a water heater. It's not magic, it's engineering.</p>
+            </header>
+            <div className="steps-grid">
+                {STEPS.map(s => (
+                    <article key={s.n} className="step-card">
+                        <div className="step-number" aria-hidden="true">{s.n}</div>
+                        <h3>{s.t}</h3>
+                        <p>{s.d}</p>
+                    </article>
+                ))}
             </div>
-        </section>
-    )
-}
+        </div>
+    </section>
+)
 
 // ============================================
 // BENEFITS SECTION
 // ============================================
-const Benefits = () => {
-    const benefits = [
-        {
-            icon: '💰',
-            title: 'The Heater That Pays You',
-            description: 'Why burn money? Genesis turns electricity into Bitcoin mining rewards, offsetting your costs 100%.',
-        },
-        {
-            icon: '🤫',
-            title: 'Whisper Quiet',
-            description: 'Engineered for silence. No roaring fans, just the quiet hum of innovation working in your basement.',
-        },
-        {
-            icon: '🛡️',
-            title: 'Industrial Grade',
-            description: 'Built with the same resilient tech used in Tier 4 data centers. Designed to last decades, not years.',
-        },
-        {
-            icon: '🤝',
-            title: '10-Year Warranty',
-            description: 'Complete coverage on parts and labor. Your investment is fully protected.',
-        },
-    ]
+const Benefits = () => (
+    <section className="section" aria-labelledby="benefits-heading">
+        <div className="container">
+            <header className="section-header">
+                <h2 id="benefits-heading">Why Choose Genesis?</h2>
+                <p>Join hundreds of London homeowners who are already on the path to energy independence.</p>
+            </header>
+            <div className="benefits-grid">
+                {BENEFITS.map(b => (
+                    <article key={b.t} className="benefit-card">
+                        <div className="benefit-icon" aria-hidden="true">{b.i}</div>
+                        <h4>{b.t}</h4>
+                        <p>{b.d}</p>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+)
 
-    return (
-        <section className="section" aria-labelledby="benefits-heading">
-            <div className="container">
-                <header className="section-header">
-                    <h2 id="benefits-heading">Why Choose Genesis?</h2>
-                    <p>
-                        Join hundreds of London homeowners who are already on the path to energy independence.
-                    </p>
-                </header>
-
-                <div className="benefits-grid">
-                    {benefits.map((benefit) => (
-                        <article key={benefit.title} className="benefit-card">
-                            <div className="benefit-icon" aria-hidden="true">{benefit.icon}</div>
-                            <h4>{benefit.title}</h4>
-                            <p>{benefit.description}</p>
-                        </article>
-                    ))}
+// ============================================
+// INFOGRAPHIC SECTION
+// ============================================
+const Infographic = () => (
+    <section className="section infographic-section" style={{ background: 'var(--c-bg)' }}>
+        <div className="container">
+            <header className="section-header">
+                <h2>The 2-Year Break-Even Path</h2>
+                <p>Designed for rapid return on investment and 53%+ energy savings.</p>
+            </header>
+            <div className="infographic-container">
+                <div className="info-card">
+                    <div className="info-icon">💎</div>
+                    <h4>Investment</h4>
+                    <div className="info-value">$2k</div>
+                    <p>One-time cost</p>
+                </div>
+                <div className="info-arrow">→</div>
+                <div className="info-card featured">
+                    <div className="info-icon">⚡</div>
+                    <h4>Earnings</h4>
+                    <div className="info-value">$1k+</div>
+                    <p>Annual revenue</p>
+                </div>
+                <div className="info-arrow">→</div>
+                <div className="info-card">
+                    <div className="info-icon">🏆</div>
+                    <h4>Break-Even</h4>
+                    <div className="info-value">~2 Yrs</div>
+                    <p>Pure profit after</p>
                 </div>
             </div>
-        </section>
-    )
-}
+            <div className="info-footnote">*Based on 80% recapture and network benchmarks.</div>
+        </div>
+    </section>
+)
 
 // ============================================
 // SAVINGS CALCULATOR
 // ============================================
 const SavingsCalculator = () => {
-    const [monthlyCost, setMonthlyCost] = useState(200)
-    const annualSavings = monthlyCost * 12
-
-    const handleChange = useCallback((e: JSX.TargetedEvent<HTMLInputElement>) => {
-        const target = e.currentTarget
-        setMonthlyCost(Number(target.value))
-        trackEvent('calculator_change', { monthlyCost: Number(target.value) })
-    }, [])
+    const [idx, setIdx] = useState(0)
+    const units = CALC_STEPS[idx]
 
     return (
-        <section className="section calculator-section" aria-labelledby="calc-heading">
+        <section className="section calculator-section">
             <div className="container">
                 <header className="section-header">
-                    <h2 id="calc-heading">Calculate Your Savings</h2>
-                    <p>See how much you could save by switching to Genesis.</p>
+                    <h2>Opportunity Calculator</h2>
+                    <p>Genesis Heating turns decentralized compute byproduct into tangible household wealth.</p>
                 </header>
-
                 <div className="calculator-card">
-                    <div className="calculator-result">
-                        <div className="savings-amount">${annualSavings.toLocaleString()}</div>
-                        <div className="savings-label">Estimated Annual Savings</div>
+                    <div className="calculator-grid">
+                        <div className="calc-stat-card">
+                            <div className="calc-stat-value text-gradient">53%+</div>
+                            <div className="calc-stat-label">Savings vs Traditional</div>
+                        </div>
+                        <div className="calc-stat-card">
+                            <div className="calc-stat-value">${(units * 1000).toLocaleString()}</div>
+                            <div className="calc-stat-label">Est. Yearly Earnings</div>
+                        </div>
+                        <div className="calc-stat-card">
+                            <div className="calc-stat-value">~2 Yrs</div>
+                            <div className="calc-stat-label">Est. Break-Even</div>
+                        </div>
                     </div>
-
-                    <div className="slider-container">
+                    <div className="slider-container" style={{ marginTop: '3rem' }}>
                         <div className="slider-label">
-                            <span>Current Monthly Heating Cost</span>
-                            <span style={{ fontWeight: 600, color: 'var(--c-accent)' }}>${monthlyCost}</span>
+                            <span>Number of Devices</span>
+                            <span style={{ fontWeight: 600, color: 'var(--c-accent)' }}>{units} {units === 1 ? 'Unit' : 'Units'}</span>
                         </div>
-                        <input
-                            type="range"
-                            className="slider"
-                            min="50"
-                            max="500"
-                            step="10"
-                            value={monthlyCost}
-                            onChange={handleChange}
-                            aria-label="Monthly heating cost"
-                        />
-                        <div className="slider-label text-muted">
-                            <span>$50/mo</span>
-                            <span>$500/mo</span>
-                        </div>
+                        <input type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
+                        <div className="slider-label text-muted"><span>1 Unit</span><span>10</span><span>50</span><span>100 Units</span></div>
                     </div>
-
-                    <p style={{ fontSize: 'var(--f-size-sm)', color: 'var(--c-text-muted)', textAlign: 'center' }}>
-                        *Savings based on average Genesis performance. Your results may vary based on usage patterns.
+                    <p style={{ fontSize: '12px', color: 'var(--c-text-muted)', textAlign: 'center', marginTop: '2rem' }}>
+                        *Earnings based on network difficulty. Investment of ${(units * 2000).toLocaleString()} applies for {units} {units === 1 ? 'unit' : 'units'}.
                     </p>
                 </div>
             </div>
@@ -374,9 +391,7 @@ const WaitlistForm = () => {
                 body: JSON.stringify({
                     ...formData,
                     sessionId: sessionStorage.getItem('sh_sid'),
-                    // Add UTM/timing data if available
-                    formLoadTime: Date.now(), // Simplified timing for now
-                    submitTime: Date.now()
+                    t: Date.now()
                 })
             })
 
@@ -584,64 +599,21 @@ const WaitlistForm = () => {
 // FAQ SECTION
 // ============================================
 const FAQ = () => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-    const faqs = [
-        {
-            question: 'How does Genesis generate enough heat to be free?',
-            answer: 'Our advanced heating units operate continuously, producing consistent heat as a byproduct of their operation. This heat is captured and used for your water and home heating. The value generated offsets your energy costs entirely—and often produces a surplus.',
-        },
-        {
-            question: 'What are the upfront costs?',
-            answer: 'We offer flexible options including $0 down with revenue sharing, or purchase/lease options. During our launch period, early adopters will receive exclusive pricing and priority installation. Our team will help you choose the best option for your situation.',
-        },
-        {
-            question: 'Is this available for commercial properties?',
-            answer: 'Absolutely! Commercial properties often see even greater savings due to higher hot water and heating demands. We offer custom solutions for businesses of all sizes, from small offices to large industrial facilities.',
-        },
-        {
-            question: 'What happens if something breaks?',
-            answer: 'Our 10-year warranty covers all parts and labor. We monitor your system 24/7 and often fix issues remotely before you even notice them. If on-site service is needed, our technicians are dispatched within 24 hours at no cost to you.',
-        },
-        {
-            question: 'Is this only available in London, Ontario?',
-            answer: 'We\'re launching in London and surrounding areas (including St. Thomas, Strathroy, and Woodstock) in Spring 2026. Join the waitlist and we\'ll notify you when we expand to your area.',
-        },
-        {
-            question: 'Do I need any technical knowledge?',
-            answer: 'Not at all. Our white-glove service means we handle everything—installation, configuration, monitoring, and maintenance. You just enjoy free hot water and a warm home.',
-        },
-    ]
-
-    const toggleFaq = (index: number) => {
-        const newIndex = openIndex === index ? null : index
-        setOpenIndex(newIndex)
-        if (newIndex !== null) {
-            trackEvent('faq_open', { question: faqs[index].question })
-        }
-    }
+    const [openIdx, setOpenIdx] = useState<number | null>(null)
 
     return (
-        <section className="section" aria-labelledby="faq-heading">
+        <section className="section">
             <div className="container">
-                <header className="section-header">
-                    <h2 id="faq-heading">Frequently Asked Questions</h2>
-                </header>
-
+                <header className="section-header"><h2>Frequently Asked Questions</h2></header>
                 <div className="faq-list">
-                    {faqs.map((faq, index) => (
-                        <div key={index} className={`faq-item ${openIndex === index ? 'open' : ''}`}>
-                            <button
-                                className="faq-question"
-                                onClick={() => toggleFaq(index)}
-                                aria-expanded={openIndex === index}
-                                aria-controls={`faq-answer-${index}`}
-                            >
-                                <span>{faq.question}</span>
-                                <span className="faq-icon" aria-hidden="true">+</span>
+                    {FAQS.map((f, i) => (
+                        <div key={i} className={`faq-item ${openIdx === i ? 'open' : ''}`}>
+                            <button className="faq-question" onClick={() => setOpenIdx(openIdx === i ? null : i)}>
+                                <span>{f.q}</span>
+                                <span className="faq-icon">+</span>
                             </button>
-                            <div id={`faq-answer-${index}`} className="faq-answer" role="region">
-                                <p className="faq-answer-content">{faq.answer}</p>
+                            <div className="faq-answer">
+                                <p className="faq-answer-content">{f.a}</p>
                             </div>
                         </div>
                     ))}
@@ -712,6 +684,7 @@ export default function App() {
             <main>
                 <Hero />
                 <HowItWorks />
+                <Infographic />
                 <Benefits />
                 <SavingsCalculator />
                 <WaitlistForm />
