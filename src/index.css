@@ -145,6 +145,12 @@ a:hover {
   padding: 0 var(--s-4);
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--s-3);
+  }
+}
+
 @media (min-width: 768px) {
   .container {
     padding: 0 var(--s-8);
@@ -418,6 +424,8 @@ h4 {
   border-radius: var(--r-lg);
   cursor: pointer;
   transition: all var(--t-base);
+  min-height: 48px;
+  /* Mobile touch target */
 }
 
 .btn-primary {
@@ -456,7 +464,7 @@ h4 {
    SECTIONS
    ============================================ */
 .section {
-  padding: var(--s-16) 0;
+  padding: var(--s-12) 0;
 }
 
 @media (min-width: 768px) {
@@ -667,12 +675,14 @@ h4 {
 
 .slider::-webkit-slider-thumb {
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  /* Enhanced mobile target */
+  height: 32px;
   background: var(--g-accent);
   border-radius: 50%;
   cursor: grab;
   box-shadow: var(--shadow-md);
+  border: 2px solid var(--c-bg);
 }
 
 .slider::-webkit-slider-thumb:active {

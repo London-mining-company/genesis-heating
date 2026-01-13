@@ -26,9 +26,9 @@ interface FormErrors {
 
 
 
-// ============================================
+
 // TRACKING UTILITIES
-// ============================================
+
 const trackEvent = (eventName: string, data?: Record<string, unknown>) => {
     const sessionId = sessionStorage.getItem('sh_sid')
     if (!sessionId) return
@@ -55,9 +55,9 @@ const trackFunnel = (stage: string) => {
     console.debug('[Funnel]', { sessionId, stage })
 }
 
-// ============================================
+
 // HEADER COMPONENT
-// ============================================
+
 const Header = () => (
     <header className="header" role="banner">
         <div className="container header-inner">
@@ -67,9 +67,9 @@ const Header = () => (
     </header>
 )
 
-// ============================================
+
 // HERO SECTION
-// ============================================
+
 const Hero = () => {
     const scrollToForm = () => {
         document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
@@ -132,12 +132,12 @@ const Hero = () => {
     )
 }
 
-// ============================================
+
 // HOW IT WORKS SECTION
-// ============================================
-// ============================================
+
+
 // DATA CONSTANTS (Hoisted for better minification)
-// ============================================
+
 const STEPS = [
     { n: 1, t: 'Enterprise Compute', d: 'Processors perform secure computing using standard electricity.' },
     { n: 2, t: 'Thermal Capture', d: 'Waste heat is captured and injected into your water tank.' },
@@ -152,17 +152,17 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'How does it generate heat?', a: 'Silicon processors generate heat as a byproduct of Bitcoin mining—captured and injected into your water supply.' },
-    { q: 'Why only Bitcoin?', a: 'Bitcoin is the most secure way to convert compute power into predictable financial returns and reliable heat.' },
-    { q: 'What are the upfront costs?', a: '$0 down with revenue sharing, or purchase/lease. Installed like a traditional high-end heater.' },
-    { q: 'Is it for homes or businesses?', a: 'Both. Systems are scalable for residential or commercial properties.' },
-    { q: 'What brand of heater is this?', a: 'Based on Superheat (superheat.xyz) tech for energy recycling.' },
-    { q: 'How is it silent?', a: 'Liquid-cooled systems eliminate fan noise, making them quieter than a standard refrigerator.' },
+    { q: 'Heat source?', a: 'Bitcoin mining byproduct. [Details](https://www.superheat.xyz/technology)' },
+    { q: 'Why BTC?', a: 'Secure & predictable returns plus heat. [Stats](https://mempool.space)' },
+    { q: 'Cost?', a: '$0 down revenue share or purchase. Standard install.' },
+    { q: 'Scale?', a: 'Scalable for home or business use.' },
+    { q: 'Brand?', a: 'Superheat tech. [Specs](https://www.superheat.xyz/h1)' },
+    { q: 'Silent?', a: 'Liquid-cooled, quieter than a fridge.' },
 ]
 
-// ============================================
+
 // HOW IT WORKS SECTION
-// ============================================
+
 const HowItWorks = () => (
     <section id="how-it-works" className="section how-it-works" aria-labelledby="hiw-heading">
         <div className="container">
@@ -183,9 +183,9 @@ const HowItWorks = () => (
     </section>
 )
 
-// ============================================
+
 // BENEFITS SECTION
-// ============================================
+
 const Benefits = () => (
     <section className="section" aria-labelledby="benefits-heading">
         <div className="container">
@@ -206,9 +206,9 @@ const Benefits = () => (
     </section>
 )
 
-// ============================================
+
 // INFOGRAPHIC SECTION
-// ============================================
+
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const Infographic = () => (
@@ -245,9 +245,9 @@ const Infographic = () => (
     </section>
 )
 
-// ============================================
+
 // SAVINGS CALCULATOR
-// ============================================
+
 const TIME_STEPS = [1, 3, 5, 10]
 const SavingsCalculator = () => {
     const [idx, setIdx] = useState(0)
@@ -293,9 +293,9 @@ const SavingsCalculator = () => {
     )
 }
 
-// ============================================
+
 // WAITLIST FORM
-// ============================================
+
 const WaitlistForm = () => {
     const [formData, setFormData] = useState<FormData>({
         email: '',
@@ -575,9 +575,9 @@ const WaitlistForm = () => {
     )
 }
 
-// ============================================
+
 // FAQ SECTION
-// ============================================
+
 const FAQ = () => {
     const [openIdx, setOpenIdx] = useState<number | null>(null)
 
@@ -593,7 +593,7 @@ const FAQ = () => {
                                 <span className="faq-icon">+</span>
                             </button>
                             <div className="faq-answer">
-                                <p className="faq-answer-content">{f.a}</p>
+                                <p className="faq-answer-content" dangerouslySetInnerHTML={{ __html: f.a.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-orange">$1</a>') }} />
                             </div>
                         </div>
                     ))}
