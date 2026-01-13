@@ -184,6 +184,21 @@ h4 {
   background-clip: text;
 }
 
+.text-orange {
+  color: var(--c-accent);
+}
+
+.icon-svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  stroke: var(--c-accent);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 1rem;
+}
+
 .text-muted {
   color: var(--c-text-muted);
 }
