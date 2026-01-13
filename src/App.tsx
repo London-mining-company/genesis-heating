@@ -47,13 +47,7 @@ const trackEvent = (eventName: string, data?: Record<string, unknown>) => {
     console.debug('[Analytics]', event)
 }
 
-const trackFunnel = (stage: string) => {
-    const sessionId = sessionStorage.getItem('sh_sid')
-    if (!sessionId) return
-
-    // In production, POST to /api/funnel
-    console.debug('[Funnel]', { sessionId, stage })
-}
+const trackFunnel = (_: string) => { }
 
 
 const Header = () => (
@@ -134,6 +128,8 @@ const Hero = () => {
 
 // DATA CONSTANTS (Hoisted for better minification)
 
+const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
+
 const STEPS = [
     { n: 1, t: 'Enterprise Compute', d: 'Processors compute using standard power.' },
     { n: 2, t: 'Thermal Capture', d: 'Captures heat for your tank, meeting Ontario standards.' },
@@ -141,14 +137,14 @@ const STEPS = [
 ]
 
 const BENEFITS = [
-    { i: '⚡', t: 'Peak Efficiency', d: '53% savings vs standard electric tanks.' },
-    { i: '📱', t: 'Smart Monitoring', d: 'Track performance from any device.' },
-    { i: '🔇', t: 'Silent Operation', d: 'Liquid-cooled and quieter than a fridge.' },
-    { i: '🍃', t: 'Sustainability', d: 'Recycle energy to offset 5.3t of CO2.' },
+    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Peak Efficiency', d: '53% savings vs electric tanks.' },
+    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Live Tracking', d: 'Performance tracking on all devices.' },
+    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Silent Design', d: 'Quiet as a fridge. Liquid-cooled.' },
+    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Sustainability', d: 'Offsets 5.3t of CO2 yearly.' },
 ]
 
 const FAQS = [
-    { q: 'How does a computer heat my water?', a: 'Processors get hot while working. We capture that heat for your tank instead of wasting it. [How it works](https://www.superheat.xyz/technology)' },
+    { q: 'How does a computer heat my water?', a: 'Processors get hot. We capture that heat instead of wasting it. [How it works](https://www.superheat.xyz/technology)' },
     { q: 'Will this actually lower my bills?', a: 'Yes. The system earns revenue that offsets its power usage, providing hot water for much less than a standard tank.' },
     { q: 'Why is Bitcoin involved?', a: 'It\'s the most reliable way to turn computing power into money to pay your bill. That simple. [View stats](https://mempool.space)' },
     { q: 'Is it loud or hot in my house?', a: 'No. It’s liquid-cooled and quieter than a fridge, and the unit stays cool to the touch.' },
@@ -192,7 +188,7 @@ const Benefits = () => (
             <div className="benefits-grid">
                 {BENEFITS.map(b => (
                     <article key={b.t} className="benefit-card">
-                        <div className="benefit-icon" aria-hidden="true">{b.i}</div>
+                        <div className="benefit-icon" aria-hidden="true"><Icon p={b.i} /></div>
                         <h4>{b.t}</h4>
                         <p>{b.d}</p>
                     </article>
@@ -204,8 +200,6 @@ const Benefits = () => (
 
 
 // INFOGRAPHIC SECTION
-
-const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const Infographic = () => (
     <section className="section infographic-section" style={{ background: 'var(--c-bg)' }}>
@@ -236,7 +230,7 @@ const Infographic = () => (
                     <p>Full break-even</p>
                 </div>
             </div>
-            <div className="info-footnote">*Based on Ontario electricity rates ($600/yr base) and 53% savings.</div>
+            <div className="info-footnote">*Ontario rates ($600/yr base) and 53% savings.</div>
         </div>
     </section>
 )
@@ -255,21 +249,21 @@ const SavingsCalculator = () => {
             <div className="container">
                 <header className="section-header">
                     <h2>Savings Trajectory</h2>
-                    <p>Projected financial impact for Ontario homes over the next decade.</p>
+                    <p>10-year financial impact for London homes.</p>
                 </header>
                 <div className="calculator-card">
                     <div className="calculator-grid">
                         <div className="calc-stat-card">
                             <div className="calc-stat-value text-orange">${totalBenefit.toLocaleString()}</div>
-                            <div className="calc-stat-label">Total Financial Benefit</div>
+                            <div className="calc-stat-label">Total Benefit</div>
                         </div>
                         <div className="calc-stat-card">
                             <div className="calc-stat-value">${(years * 318).toLocaleString()}</div>
-                            <div className="calc-stat-label">Direct Energy Savings</div>
+                            <div className="calc-stat-label">Energy Savings</div>
                         </div>
                         <div className="calc-stat-card">
                             <div className="calc-stat-value">{(years * 5.3).toFixed(1)}t</div>
-                            <div className="calc-stat-label">Est. CO2 Reduced</div>
+                            <div className="calc-stat-label">CO2 Saved</div>
                         </div>
                     </div>
                     <div className="slider-container" style={{ marginTop: '3rem' }}>
@@ -281,7 +275,7 @@ const SavingsCalculator = () => {
                         <div className="slider-label text-muted"><span>1 Year</span><span>3</span><span>5</span><span>10 Years</span></div>
                     </div>
                     <p style={{ fontSize: '11px', color: 'var(--c-text-muted)', textAlign: 'center', marginTop: '2rem' }}>
-                        *Projection based on $600/yr Ontario base electric cost, 53% efficiency offset, and $1,000/yr compute revenue.
+                        *Ontario rates ($600/yr base), 53% efficiency, and $1k compute revenue.
                     </p>
                 </div>
             </div>
@@ -350,7 +344,7 @@ const WaitlistForm = () => {
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors)
-            trackEvent('form_error', { errors: Object.keys(newErrors) })
+            trackEvent('er', { k: Object.keys(newErrors) })
             return
         }
 
