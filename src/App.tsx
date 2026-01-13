@@ -123,8 +123,8 @@ const Hero = () => {
                         <div className="stat-label">Annual Benefit</div>
                     </div>
                     <div className="stat">
-                        <div className="stat-value">Ontario</div>
-                        <div className="stat-label">Energy Benchmarks</div>
+                        <div className="stat-value">5.3 Tons</div>
+                        <div className="stat-label">Annual CO2 Offset</div>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@ const Hero = () => {
 
 const STEPS = [
     { n: 1, t: 'Enterprise Compute', d: 'Processors perform secure computing using standard electricity.' },
-    { n: 2, t: 'Thermal Capture', d: 'Waste heat is captured and injected into your water tank.' },
+    { n: 2, t: 'Thermal Capture', d: 'Waste heat is captured for your tank, maintaining all Ontario energy standards.' },
     { n: 3, t: 'Value Return', d: 'Computing value offsets your home energy costs directly.' },
 ]
 
