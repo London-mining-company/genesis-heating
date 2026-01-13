@@ -21,6 +21,7 @@ export interface WaitlistRequest {
     email: string;
     name?: string;
     phone?: string;
+    phoneNumber?: string;
     postalCode?: string;
     propertyType?: 'residential' | 'commercial' | 'industrial';
     currentHeating?: string;
@@ -100,6 +101,7 @@ export async function handleWaitlistSignup(
     AirtableService.createLead({
         email: request.email,
         name: request.name || 'Anonymous',
+        phoneNumber: request.phoneNumber || request.phone || 'N/A',
         postalCode: request.postalCode || 'N/A',
         propertyType: request.propertyType || 'residential',
         monthlyHeatingCost: request.monthlyHeatingCost || 0,

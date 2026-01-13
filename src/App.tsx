@@ -5,12 +5,12 @@ import { JSX } from 'preact'
 interface FormData {
     email: string
     name: string
+    phoneNumber: string
     postalCode: string
     propertyType: 'residential' | 'commercial' | ''
     monthlyHeatingCost: number
     privacyAccepted: boolean
     marketingConsent: boolean
-    // Honeypot field for bot detection (should stay empty)
     website: string
 }
 
@@ -61,7 +61,7 @@ const trackFunnel = (stage: string) => {
 const Header = () => (
     <header className="header" role="banner">
         <div className="container header-inner">
-            <a href="/" className="logo"><img src="/genesis-logo-final.png" alt="Genesis" className="logo-img" style={{ mixBlendMode: 'screen' }} /></a>
+            <a href="/" className="logo"><img src="/genesis-logo-final.png" alt="Genesis" className="logo-img" /></a>
             <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary nav-cta">Join</button>
         </div>
     </header>
@@ -300,12 +300,13 @@ const WaitlistForm = () => {
     const [formData, setFormData] = useState<FormData>({
         email: '',
         name: '',
+        phoneNumber: '',
         postalCode: '',
         propertyType: '',
         monthlyHeatingCost: 200,
         privacyAccepted: false,
         marketingConsent: false,
-        website: '', // Honeypot field
+        website: '',
     })
 
     const [errors, setErrors] = useState<FormErrors>({})
@@ -491,6 +492,22 @@ const WaitlistForm = () => {
                         </div>
 
                         <div className="form-group">
+                            <label htmlFor="phoneNumber" className="form-label">Phone (Optional)</label>
+                            <input
+                                type="tel"
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                className="form-input"
+                                placeholder="(519) 000-0000"
+                                value={formData.phoneNumber}
+                                onChange={handleChange}
+                                autoComplete="tel"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
                             <label htmlFor="postalCode" className="form-label">Postal Code</label>
                             <input
                                 type="text"
@@ -504,21 +521,21 @@ const WaitlistForm = () => {
                             />
                             {errors.postalCode && <p className="form-error">{errors.postalCode}</p>}
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label htmlFor="propertyType" className="form-label">Property Type</label>
-                        <select
-                            id="propertyType"
-                            name="propertyType"
-                            className="form-input"
-                            value={formData.propertyType}
-                            onChange={handleChange}
-                        >
-                            <option value="">Select property type</option>
-                            <option value="residential">Residential Home</option>
-                            <option value="commercial">Commercial Building</option>
-                        </select>
+                        <div className="form-group">
+                            <label htmlFor="propertyType" className="form-label">Property Type</label>
+                            <select
+                                id="propertyType"
+                                name="propertyType"
+                                className="form-input"
+                                value={formData.propertyType}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div className="checkbox-group">
@@ -613,7 +630,7 @@ const Footer = () => {
         <footer className="footer" role="contentinfo">
             <div className="container footer-content">
                 <div className="footer-logo">
-                    <img src="/genesis-logo-final.png" alt="Genesis Logo" style={{ height: '48px', mixBlendMode: 'screen' }} />
+                    <img src="/genesis-logo-final.png" alt="Genesis Logo" style={{ height: '64px' }} />
                 </div>
 
                 <div className="footer-social-rails" style={{ display: 'flex', gap: '1rem', margin: '1rem 0' }}>

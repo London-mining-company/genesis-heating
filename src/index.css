@@ -232,12 +232,14 @@ h4 {
 }
 
 .logo-img {
-  height: 60px !important;
+  height: 80px !important;
+  /* Expanded size */
 }
 
 @media (min-width: 768px) {
   .logo-img {
-    height: 90px !important;
+    height: 120px !important;
+    /* Expanded size */
   }
 }
 

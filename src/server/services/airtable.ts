@@ -8,6 +8,7 @@
 interface AirtableLead {
     email: string;
     name: string;
+    phoneNumber?: string;
     postalCode: string;
     propertyType: string;
     monthlyHeatingCost: number;
@@ -44,6 +45,7 @@ export class AirtableService {
                             fields: {
                                 'Email': lead.email,
                                 'Full Name': lead.name,
+                                'Phone Number': lead.phoneNumber || 'N/A',
                                 'Postal Code': lead.postalCode,
                                 'Property Type': lead.propertyType,
                                 'Monthly Heating Cost': lead.monthlyHeatingCost,
