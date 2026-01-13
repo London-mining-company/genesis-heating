@@ -56,24 +56,20 @@ const trackFunnel = (stage: string) => {
 }
 
 
-// HEADER COMPONENT
-
 const Header = () => (
     <header className="header" role="banner">
         <div className="container header-inner">
-            <a href="/" className="logo"><img src="/genesis-logo-final.png" alt="Genesis" className="logo-img" /></a>
+            <a href="/" className="logo"><img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" className="logo-img" /></a>
             <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary nav-cta">Join</button>
         </div>
     </header>
 )
 
 
-// HERO SECTION
-
 const Hero = () => {
     const scrollToForm = () => {
         document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
-        trackEvent('cta_click', { location: 'hero' })
+        trackEvent('c', { l: 'h' })
     }
 
     return (
@@ -81,7 +77,7 @@ const Hero = () => {
             {/* Background Video Layer */}
             <div className="video-background">
                 <iframe
-                    src="https://www.youtube.com/embed/T_r5TUR2cYk?autoplay=1&mute=1&loop=1&playlist=T_r5TUR2cYk&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0"
+                    src="https://www.youtube.com/embed/T_r5TUR2cYk?autoplay=1&mute=1&loop=1&playlist=T_r5TUR2cYk&controls=0&rel=0"
                     frameBorder="0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
@@ -139,25 +135,25 @@ const Hero = () => {
 // DATA CONSTANTS (Hoisted for better minification)
 
 const STEPS = [
-    { n: 1, t: 'Enterprise Compute', d: 'Processors perform secure computing using standard electricity.' },
-    { n: 2, t: 'Thermal Capture', d: 'Waste heat is captured for your tank, maintaining all Ontario energy standards.' },
-    { n: 3, t: 'Value Return', d: 'Computing value offsets your home energy costs directly.' },
+    { n: 1, t: 'Enterprise Compute', d: 'Processors compute using standard power.' },
+    { n: 2, t: 'Thermal Capture', d: 'Captures heat for your tank, meeting Ontario standards.' },
+    { n: 3, t: 'Value Return', d: 'Offsets your energy costs directly.' },
 ]
 
 const BENEFITS = [
-    { i: '⚡', t: 'Peak Efficiency', d: 'Save 53% on heating vs traditional electric systems.' },
-    { i: '📱', t: 'Smart Monitoring', d: 'Track rewards and performance from any device.' },
-    { i: '🔇', t: 'Silent Operation', d: 'Liquid-cooled and quieter than a standard refrigerator.' },
-    { i: '🍃', t: 'Sustainability', d: 'Recycle compute energy to offset 5.3t of CO2 yearly.' },
+    { i: '⚡', t: 'Peak Efficiency', d: '53% savings vs standard electric tanks.' },
+    { i: '📱', t: 'Smart Monitoring', d: 'Track performance from any device.' },
+    { i: '🔇', t: 'Silent Operation', d: 'Liquid-cooled and quieter than a fridge.' },
+    { i: '🍃', t: 'Sustainability', d: 'Recycle energy to offset 5.3t of CO2.' },
 ]
 
 const FAQS = [
-    { q: 'Heat source?', a: 'Bitcoin mining byproduct. [Details](https://www.superheat.xyz/technology)' },
-    { q: 'Why BTC?', a: 'Secure & predictable returns plus heat. [Stats](https://mempool.space)' },
-    { q: 'Cost?', a: '$0 down revenue share or purchase. Standard install.' },
-    { q: 'Scale?', a: 'Scalable for home or business use.' },
-    { q: 'Brand?', a: 'Superheat tech. [Specs](https://www.superheat.xyz/h1)' },
-    { q: 'Silent?', a: 'Liquid-cooled, quieter than a fridge.' },
+    { q: 'How does a computer heat my water?', a: 'Processors get hot while working. We capture that heat for your tank instead of wasting it. [How it works](https://www.superheat.xyz/technology)' },
+    { q: 'Will this actually lower my bills?', a: 'Yes. The system earns revenue that offsets its power usage, providing hot water for much less than a standard tank.' },
+    { q: 'Why is Bitcoin involved?', a: 'It\'s the most reliable way to turn computing power into money to pay your bill. That simple. [View stats](https://mempool.space)' },
+    { q: 'Is it loud or hot in my house?', a: 'No. It’s liquid-cooled and quieter than a fridge, and the unit stays cool to the touch.' },
+    { q: 'What are the upfront costs?', a: '$0-down sharing or purchase options. It’s professional HVAC using [Superheat tech](https://www.superheat.xyz/h1).' },
+    { q: 'Will it fit my current home?', a: 'If you use electric heating, yes. We\'ll do a local consult to ensure a smooth install.' },
 ]
 
 
@@ -314,7 +310,7 @@ const WaitlistForm = () => {
     const [isSuccess, setIsSuccess] = useState(false)
 
     useEffect(() => {
-        trackFunnel('form_view')
+        trackFunnel('0')
     }, [])
 
     const validateEmail = (email: string): boolean => {
@@ -359,7 +355,7 @@ const WaitlistForm = () => {
         }
 
         setIsSubmitting(true)
-        trackFunnel('form_submit')
+        trackFunnel('1')
 
         try {
             // Real API submission
@@ -371,8 +367,7 @@ const WaitlistForm = () => {
                 },
                 body: JSON.stringify({
                     ...formData,
-                    sessionId: sessionStorage.getItem('sh_sid'),
-                    t: Date.now()
+                    sid: sessionStorage.getItem('sh_sid')
                 })
             })
 
@@ -387,8 +382,8 @@ const WaitlistForm = () => {
             }
 
             setIsSuccess(true)
-            trackFunnel('form_success')
-            trackEvent('waitlist_signup', {
+            trackFunnel('2')
+            trackEvent('s', {
                 propertyType: formData.propertyType,
                 monthlyHeatingCost: formData.monthlyHeatingCost,
             })
@@ -427,8 +422,8 @@ const WaitlistForm = () => {
                 <header className="section-header">
                     <h2 id="waitlist-heading">Join the Waitlist</h2>
                     <p>
-                        Be among the first in London, Ontario to experience zero-cost heating.
-                        Early subscribers get priority installation and exclusive pricing.
+                        Join the London waitlist for zero-cost heating.
+                        Early signups get priority.
                     </p>
                 </header>
 
@@ -460,7 +455,7 @@ const WaitlistForm = () => {
                         </div>
                     )}
                     <div className="form-group">
-                        <label htmlFor="email" className="form-label">Email Address *</label>
+                        <label htmlFor="email" className="form-label">Email *</label>
                         <input
                             type="email"
                             id="email"
@@ -469,7 +464,7 @@ const WaitlistForm = () => {
                             placeholder="you@example.com"
                             value={formData.email}
                             onChange={handleChange}
-                            onFocus={() => trackFunnel('form_email_focus')}
+                            onFocus={() => trackFunnel('3')}
                             required
                             autoComplete="email"
                         />
@@ -548,7 +543,7 @@ const WaitlistForm = () => {
                             onChange={handleChange}
                         />
                         <label htmlFor="marketingConsent" className="checkbox-label">
-                            Send me updates about Genesis, including launch news and exclusive offers.
+                            Send me updates, launch news, and exclusive offers.
                         </label>
                     </div>
 
@@ -563,7 +558,7 @@ const WaitlistForm = () => {
                             required
                         />
                         <label htmlFor="privacyAccepted" className="checkbox-label">
-                            I agree to the <a href="/privacy">Privacy Policy</a> and understand my data will be processed in accordance with Canadian privacy laws (PIPEDA). *
+                            I agree to the <a href="/privacy">Privacy Policy</a> (PIPEDA compliant). *
                         </label>
                     </div>
                     {errors.privacyAccepted && <p className="form-error">{errors.privacyAccepted}</p>}
@@ -624,19 +619,18 @@ const FAQ = () => {
 // FOOTER
 // ============================================
 const Footer = () => {
-    const currentYear = new Date().getFullYear()
 
     return (
         <footer className="footer" role="contentinfo">
             <div className="container footer-content">
                 <div className="footer-logo">
-                    <img src="/genesis-logo-final.png" alt="Genesis Logo" style={{ height: '64px' }} />
+                    <img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" style={{ height: '64px' }} />
                 </div>
 
                 <div className="footer-social-rails" style={{ display: 'flex', gap: '1rem', margin: '1rem 0' }}>
-                    <a href="#" className="text-muted" title="X (Twitter)">Twitter</a>
-                    <a href="#" className="text-muted" title="Instagram">Instagram</a>
-                    <a href="#" className="text-muted" title="LinkedIn">LinkedIn</a>
+                    <a href="#" className="text-muted">X</a>
+                    <a href="#" className="text-muted">IG</a>
+                    <a href="#" className="text-muted">LI</a>
                 </div>
 
                 <nav className="footer-links">
@@ -646,7 +640,7 @@ const Footer = () => {
                 </nav>
 
                 <p className="footer-copyright">
-                    © {currentYear} Genesis Heating Solutions.
+                    © {new Date().getFullYear()} Genesis Heating Solutions.
                 </p>
             </div>
         </footer>
@@ -664,15 +658,11 @@ export default function App() {
         // Track scroll depth
         let maxScroll = 0
         const handleScroll = () => {
-            const scrollPercent = Math.round(
-                (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-            )
-
-            const thresholds = [25, 50, 75, 100]
-            for (const threshold of thresholds) {
-                if (scrollPercent >= threshold && maxScroll < threshold) {
-                    trackFunnel(`scroll_${threshold}`)
-                    maxScroll = threshold
+            const s = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100)
+            for (const t of [25, 50, 75, 100]) {
+                if (s >= t && maxScroll < t) {
+                    trackFunnel(`p${t}`)
+                    maxScroll = t
                 }
             }
         }
