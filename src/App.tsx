@@ -50,18 +50,27 @@ const trackEvent = (eventName: string, data?: Record<string, unknown>) => {
 const trackFunnel = (_: string) => { }
 
 
-const Header = () => (
-    <header className="header" role="banner">
-        <div className="container header-inner">
-            <a href="/" className="logo"><img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" className="logo-img" /></a>
-            <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary nav-cta">Join</button>
-        </div>
-    </header>
-)
+const Header = () => {
+    const [s, setS] = useState(false)
+    useEffect(() => {
+        const h = () => setS(window.scrollY > 20)
+        window.addEventListener('scroll', h)
+        return () => window.removeEventListener('scroll', h)
+    }, [])
+
+    return (
+        <header className={`header ${s ? 's' : ''}`} role="banner">
+            <div className="container header-inner">
+                <a href="/" className="logo"><img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" className="logo-img" /></a>
+                <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary nav-cta">Join</button>
+            </div>
+        </header>
+    )
+}
 
 
 const Hero = () => {
-    const scrollToForm = () => {
+    const s = () => {
         document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
         trackEvent('c', { l: 'h' })
     }
@@ -95,8 +104,8 @@ const Hero = () => {
                 </p>
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <button onClick={scrollToForm} className="btn btn-primary btn-lg">
-                        The Heater That Pays You Back
+                    <button onClick={s} className="btn btn-primary btn-lg">
+                        Start Saving Now
                     </button>
                     <a href="#how-it-works" className="btn btn-secondary btn-lg">
                         See How it Works
@@ -131,9 +140,9 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Enterprise Compute', d: 'Processors compute using standard power.' },
-    { n: 2, t: 'Thermal Capture', d: 'Captures heat for your tank, meeting Ontario standards.' },
-    { n: 3, t: 'Value Return', d: 'Offsets your energy costs directly.' },
+    { n: 1, t: 'Compute', d: 'Processors compute using standard power.' },
+    { n: 2, t: 'Thermal Capture', d: 'Captures heat for your tank, meeting standards.' },
+    { n: 3, t: 'Value Return', d: 'Offsets costs. Get paid in bitcoin or cash.' },
 ]
 
 const BENEFITS = [
@@ -205,8 +214,8 @@ const Infographic = () => (
     <section className="section infographic-section" style={{ background: 'var(--c-bg)' }}>
         <div className="container">
             <header className="section-header">
-                <h2>The 2-Year Break-Even Path</h2>
-                <p>Designed for rapid return on investment and 53% energy savings.</p>
+                <h2>The 2-Year Path</h2>
+                <p>Designed for rapid ROI and 53% energy savings.</p>
             </header>
             <div className="infographic-container">
                 <div className="info-card">
