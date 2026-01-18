@@ -27,10 +27,8 @@ interface FormErrors {
 
 
 
-// TRACKING UTILITIES
-
-const trackEvent = (_?: string, __?: any) => { }
-const trackFunnel = (_?: string) => { }
+// Utility
+const sTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
 
 const Header = () => {
@@ -44,7 +42,7 @@ const Header = () => {
     return (
         <header className={`header ${s ? 's' : ''}`} role="banner">
             <div className="container header-inner">
-                <a href="/" className="logo"><img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" className="logo-img" /></a>
+                <a href="/" className="logo"><img src="/genesis-logo-v4.jpg" alt="Genesis" className="logo-img" /></a>
                 <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary nav-cta">Join</button>
             </div>
         </header>
@@ -52,70 +50,31 @@ const Header = () => {
 }
 
 
-const Hero = () => {
-    const s = () => {
-        document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
-        trackEvent('c', { l: 'h' })
-    }
-
-    return (
-        <section className="hero" aria-labelledby="hero-heading">
-            <div className="video-background">
-                <iframe
-                    src="https://www.youtube.com/embed/T_r5TUR2cYk?autoplay=1&mute=1&loop=1&playlist=T_r5TUR2cYk&controls=0&rel=0"
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title="Background Video"
-                ></iframe>
-                <div className="video-overlay"></div>
+const Hero = () => (
+    <section className="hero" aria-labelledby="h-h">
+        <div className="video-background">
+            <iframe src="https://www.youtube.com/embed/T_r5TUR2cYk?autoplay=1&mute=1&loop=1&playlist=T_r5TUR2cYk&controls=0&rel=0" frameBorder="0" allow="autoplay; encrypted-media" aria-hidden="true"></iframe>
+            <div className="video-overlay"></div>
+        </div>
+        <div className="container hero-content">
+            <div className="hero-badge">
+                <span className="hero-badge-dot" aria-hidden="true"></span>
+                <span>2026 London, ON</span>
             </div>
-
-            <div className="container hero-content">
-                <div className="hero-badge">
-                    <span className="hero-badge-dot" aria-hidden="true"></span>
-                    <span>Exclusive 2026 Rollout - London, Ontario</span>
-                </div>
-
-                <h1 id="hero-heading">
-                    Stop paying for heat. <span className="text-orange">Start owning it.</span>
-                </h1>
-
-                <p className="hero-subtitle">
-                    Traditional heating is a monthly tax on your home. Genesis installs the Superheat H1 system—the world’s first heater that pays for itself through decentralized computing.
-                </p>
-
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <button onClick={s} className="btn btn-primary btn-lg shadow-glow">
-                        Secure Your 2026 Install
-                    </button>
-                    <a href="#how-it-works" className="btn btn-secondary btn-lg">
-                        The Technology Shift
-                    </a>
-                </div>
-
-                <p style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'var(--c-text-dim)' }}>
-                    Specialized Installation by Genesis for <a href="https://www.superheat.xyz/h1" target="_blank" rel="noopener" className="text-orange">Superheat H1</a> hardware.
-                </p>
-
-                <div className="hero-stats">
-                    <div className="stat">
-                        <div className="stat-value">Target: 80%</div>
-                        <div className="stat-label">Energy Offset*</div>
-                    </div>
-                    <div className="stat">
-                        <div className="stat-value">White-Glove</div>
-                        <div className="stat-label">Professional Setup</div>
-                    </div>
-                    <div className="stat">
-                        <div className="stat-value">London, ON</div>
-                        <div className="stat-label">Regional Rollout</div>
-                    </div>
-                </div>
+            <h1 id="h-h">Heat water. <span className="text-orange">Get paid.</span></h1>
+            <p className="hero-subtitle">Heater that earns. Spring 2026 London.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                <button onClick={() => sTo('waitlist')} className="btn btn-primary btn-lg shadow-glow">Join</button>
+                <a href="#how-it-works" className="btn btn-secondary btn-lg">How It Works</a>
             </div>
-        </section>
-    )
-}
+            <div className="hero-stats">
+                <div className="stat"><b>~3.8t</b><br />CO₂/Year</div>
+                <div className="stat"><b>~$900</b><br />Saved/Year</div>
+                <div className="stat"><b>London</b><br />Forest City</div>
+            </div>
+        </div>
+    </section>
+)
 
 
 // HOW IT WORKS SECTION
@@ -126,26 +85,25 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Compute', d: 'Advanced processors perform high-value computing.' },
-    { n: 2, t: 'Thermal Capture', d: 'Heat is redirected to your water tank.' },
-    { n: 3, t: 'Value Return', d: 'Earn rewards in your preferred format.' },
+    { n: 1, t: 'Compute', d: 'Processors run. Heat is a byproduct.' },
+    { n: 2, t: 'Capture', d: 'Heat warms water, zero waste.' },
+    { n: 3, t: 'Earn', d: 'Yields return to you as savings.' },
 ]
 
 const BENEFITS = [
-    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Thermal Disruption', d: 'Converts computing power into 80% thermal energy offset.' },
-    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Genesis Monitoring', d: 'Professional dashboard for heat and yields.' },
-    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Liquid Cooled', d: 'Silent, high-performance engineering by Superheat.' },
-    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Expert Install', d: 'Certified HVAC pros handle every Genesis setup.' },
+    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Savings', d: '$75/mo avg offset.' },
+    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Track', d: 'Heat, yields, impact.' },
+    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Quiet', d: 'Liquid-cooled.' },
+    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Local', d: 'HVAC pros. Free consult.' },
 ]
 
 const FAQS = [
-    { q: 'What is this?', a: 'Smart heater that earns money. [More](https://www.superheat.xyz/h1)' },
-    { q: 'How does it work?', a: 'Captures heat from computing.' },
-    { q: 'Lower bills?', a: 'Yes. Revenue offsets power usage.' },
-    { q: 'Loud?', a: 'No. Liquid-cooled, quiet.' },
-    { q: 'Costs?', a: '$0-down options using [Superheat](https://www.superheat.xyz/h1).' },
-    { q: 'Fit?', a: 'Fits electric setups. Free local consult.' },
-    { q: 'Contact?', a: 'Spring 2026 rollout.' },
+    { q: 'What is it?', a: 'Heater that earns. Superheat tech.' },
+    { q: 'Savings?', a: '~$900/yr + 3.8t CO₂.' },
+    { q: 'Grants?', a: 'Yes. Up to $25K. We help apply.' },
+    { q: 'Cost?', a: '$0-down or revenue-share.' },
+    { q: 'Fit?', a: 'Electric homes. Free assessment.' },
+    { q: 'Pool?', a: 'Refer neighbors, earn cash.' },
 ]
 
 
@@ -155,8 +113,8 @@ const HowItWorks = () => (
     <section id="how-it-works" className="section how-it-works" aria-labelledby="hiw-heading">
         <div className="container">
             <header className="section-header">
-                <h2 id="hiw-heading">Professional Engineering. Proven Yields.</h2>
-                <p>Genesis bridges the gap between high-performance computing and professional HVAC. We provide the expertise; Superheat provides the hardware.</p>
+                <h2 id="hiw-heading">How It Works</h2>
+                <p>Superheat tech. Genesis installs.</p>
             </header>
             <div className="steps-grid">
                 {STEPS.map(s => (
@@ -178,8 +136,8 @@ const Benefits = () => (
     <section className="section" aria-labelledby="benefits-heading">
         <div className="container">
             <header className="section-header">
-                <h2 id="benefits-heading">Why Choose Genesis?</h2>
-                <p>Join hundreds of London homeowners who are already on the path to energy independence.</p>
+                <h2 id="benefits-heading">Why Genesis?</h2>
+                <p>Local expertise. Real savings. Cleaner energy.</p>
             </header>
             <div className="benefits-grid">
                 {BENEFITS.map(b => (
@@ -247,34 +205,34 @@ const SavingsCalculator = () => {
         <section className="section calculator-section">
             <div className="container">
                 <header className="section-header">
-                    <h2>Savings Trajectory</h2>
-                    <p>10-year financial impact based on 2025 London energy rates.</p>
+                    <h2>Prospective Savings</h2>
+                    <p>10-year impact based on London rates.</p>
                 </header>
                 <div className="calculator-card">
                     <div className="calculator-grid">
                         <div className="calc-stat-card">
                             <div className="calc-stat-value text-orange">${totalBenefit.toLocaleString()}</div>
-                            <div className="calc-stat-label">Total Est. Benefit</div>
+                            <div className="calc-stat-label">Total Benefit</div>
                         </div>
                         <div className="calc-stat-card">
                             <div className="calc-stat-value">${(years * 318).toLocaleString()}</div>
-                            <div className="calc-stat-label">Energy Offset</div>
+                            <div className="calc-stat-label">Offset</div>
                         </div>
                         <div className="calc-stat-card">
                             <div className="calc-stat-value">{(years * 5.3).toFixed(1)}t</div>
-                            <div className="calc-stat-label">CO2 Mitigated</div>
+                            <div className="calc-stat-label">CO2 Saved</div>
                         </div>
                     </div>
                     <div className="slider-container" style={{ marginTop: '3rem' }}>
                         <div className="slider-label">
-                            <span>Time Horizon</span>
-                            <span style={{ fontWeight: 600, color: 'var(--c-accent)' }}>{years} {years === 1 ? 'Year' : 'Years'}</span>
+                            <span>Timeline</span>
+                            <span style={{ fontWeight: 600, color: 'var(--c-accent)' }}>{years}y</span>
                         </div>
                         <input type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
-                        <div className="slider-label text-muted"><span>1 Year</span><span>3</span><span>5</span><span>10 Years</span></div>
+                        <div className="slider-label text-muted"><span>1y</span><span>3</span><span>5</span><span>10y</span></div>
                     </div>
-                    <p style={{ fontSize: '11px', color: 'var(--c-text-muted)', textAlign: 'center', marginTop: '2rem' }}>
-                        *Calculated using $1,318 annual target value (80% offset + compute yield). See disclosure below.
+                    <p style={{ fontSize: '10px', color: 'var(--c-text-muted)', textAlign: 'center', marginTop: '1.5rem' }}>
+                        *Target $1,318/yr value. See footer.
                     </p>
                 </div>
             </div>
@@ -305,7 +263,6 @@ const WaitlistForm = () => {
     const [isSuccess, setIsSuccess] = useState(false)
 
     useEffect(() => {
-        trackFunnel('form_view')
     }, [])
 
     const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -351,7 +308,6 @@ const WaitlistForm = () => {
             return
         }
 
-        trackFunnel('step_1_complete')
         setStep(2)
     }
 
@@ -368,15 +324,11 @@ const WaitlistForm = () => {
         }
 
         setIsSubmitting(true)
-        trackFunnel('step_2_submit')
 
         try {
             const response = await fetch('/api/waitlist', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Session-ID': sessionStorage.getItem('sh_sid') || 'unknown'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, sid: sessionStorage.getItem('sh_sid') })
             })
 
@@ -389,7 +341,6 @@ const WaitlistForm = () => {
             }
 
             setIsSuccess(true)
-            trackFunnel('success')
         } catch (err) {
             setErrors(prev => ({
                 ...prev,
@@ -409,7 +360,7 @@ const WaitlistForm = () => {
                         <div style={{ fontSize: '3rem', marginBottom: 'var(--s-4)' }}>🎉</div>
                         <h3 style={{ fontSize: 'var(--f-size-2xl)', marginBottom: 'var(--s-4)' }}>You're on the List!</h3>
                         <p style={{ color: 'var(--c-text-muted)', marginBottom: 'var(--s-6)', maxWidth: '400px', margin: '0 auto var(--s-6)' }}>
-                            Thank you, {formData.name || 'friend'}. We'll reach out when consultations begin in Spring 2026.
+                            Thanks, {formData.name || 'friend'}. We'll be in touch for 2026.
                         </p>
                         <div style={{
                             display: 'inline-block',
@@ -582,7 +533,7 @@ const WaitlistForm = () => {
                                 onChange={handleChange}
                             />
                             <label htmlFor="marketingConsent" className="checkbox-label">
-                                Send me updates, launch news, and exclusive offers.
+                                Send me updates & offers.
                             </label>
                         </div>
 
@@ -597,7 +548,7 @@ const WaitlistForm = () => {
                                 required
                             />
                             <label htmlFor="privacyAccepted" className="checkbox-label">
-                                I agree to the <a href="/privacy">Privacy Policy</a> (PIPEDA compliant). *
+                                I agree to the <a href="/privacy">Privacy Policy</a>. *
                             </label>
                         </div>
                         {errors.privacyAccepted && <p className="form-error" style={{ marginTop: '-0.5rem', marginBottom: '1rem' }}>{errors.privacyAccepted}</p>}
@@ -607,14 +558,7 @@ const WaitlistForm = () => {
                             className="btn btn-primary btn-lg form-submit"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? (
-                                <>
-                                    <span className="spinner" aria-hidden="true"></span>
-                                    <span>Joining...</span>
-                                </>
-                            ) : (
-                                'Join the Waitlist'
-                            )}
+                            {isSubmitting ? 'Joining...' : 'Join Waitlist'}
                         </button>
 
                         <p style={{ marginTop: 'var(--s-4)', fontSize: 'var(--f-size-xs)', color: 'var(--c-text-dim)', textAlign: 'center' }}>
@@ -655,79 +599,31 @@ const FAQ = () => {
     )
 }
 
-// TRANSPARENCY & DATA SECTION
-const Transparency = () => (
-    <section className="section transparency-section">
-        <div className="container">
-            <div className="transparency-content">
-                <p><strong>*Methodology & Disclosures:</strong></p>
-                <p>Savings and "Zero-Cost" claims are targets based on 2025 Enbridge Gas and London Hydro Time-of-Use (TOU) rates for typical 2,500 sq. ft. homes in Ontario. Calculated annual benefit includes (a) energy efficiency offsets vs traditional resistance heating and (b) projected computing yields from the Superheat H1 unit.</p>
-                <p><strong>Bitcoin Volatility Disclosure:</strong> Hashing yields are subject to the difficulty adjustments of the Bitcoin network and market price fluctuations. Genesis Heating Solutions provides the hardware and professional installation, but does not guarantee specific daily earnings or profit. The Decentralized Compute revenue is a function of network participation.</p>
-                <p><strong>Professional Installation:</strong> All Genesis units are installed by licensed red-seal plumbers and electricians. We are a locally owned and operated business in London, Ontario.</p>
+const Foot = () => (
+    <footer className="footer section">
+        <div className="container" style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '10px', color: 'var(--c-text-dim)', textAlign: 'left', marginBottom: '1rem' }}>
+                *Savings based on 2025 rates & yields. Fluctuates. Local Red-Seal pros only.
+            </p>
+            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '1rem' }}>
+                <a href="https://www.facebook.com/profile.php?id=61586536350637" target="_blank" rel="noopener" aria-label="FB">
+                    <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
+                </a>
             </div>
+            <nav className="footer-links" style={{ marginBottom: '1rem' }}>
+                <a href="/privacy.html">Privacy</a>
+                <a href="/terms.html">Terms</a>
+                <a href="mailto:genesisheatingsolutions@gmail.com">Contact</a>
+            </nav>
+            <p style={{ fontSize: '12px' }}>© {new Date().getFullYear()} Genesis Heating</p>
         </div>
-    </section>
+    </footer>
 )
 
 
-// ============================================
-// FOOTER
-// ============================================
-const Footer = () => {
 
-    return (
-        <footer className="footer" role="contentinfo">
-            <div className="container footer-content">
-                <div className="footer-logo">
-                    <img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" style={{ height: '64px' }} />
-                </div>
 
-                <div className="footer-social-rails" style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0' }}>
-                    <a href="https://www.facebook.com/profile.php?id=61586536350637" target="_blank" rel="noopener" className="text-muted" aria-label="Follow us on Facebook">
-                        <svg className="icon-svg" style={{ width: '24px', height: '24px', margin: 0 }} viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                        </svg>
-                    </a>
-                </div>
-
-                <nav className="footer-links">
-                    <a href="/privacy.html" target="_blank">Privacy Policy</a>
-                    <a href="/terms.html" target="_blank">Terms of Service</a>
-                    <a href="mailto:genesisheatingsolutions@gmail.com">Contact</a>
-                </nav>
-
-                <p className="footer-copyright">
-                    © {new Date().getFullYear()} Genesis Heating Solutions.
-                </p>
-            </div>
-        </footer>
-    )
-}
-
-// ============================================
-// MAIN APP
-// ============================================
 export default function App() {
-    useEffect(() => {
-        // Track page view on mount
-        trackFunnel('page_view')
-
-        // Track scroll depth
-        let maxScroll = 0
-        const handleScroll = () => {
-            const s = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100)
-            for (const t of [25, 50, 75, 100]) {
-                if (s >= t && maxScroll < t) {
-                    trackFunnel(`p${t}`)
-                    maxScroll = t
-                }
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
     return (
         <>
             <Header />
@@ -739,9 +635,8 @@ export default function App() {
                 <SavingsCalculator />
                 <WaitlistForm />
                 <FAQ />
-                <Transparency />
             </main>
-            <Footer />
+            <Foot />
         </>
     )
 }
