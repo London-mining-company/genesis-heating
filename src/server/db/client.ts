@@ -231,11 +231,16 @@ export class SupabaseClient {
 // Singleton instance
 let client: SupabaseClient | null = null;
 
-export function getSupabaseClient(): SupabaseClient {
-    if (!client) {
-        const config = getConfig();
-        validateConfig(config);
-        client = new SupabaseClient(config.database.supabaseUrl, config.database.supabaseServiceKey);
+export function getSupabaseClient(): SupabaseClient | null {
+    try {
+        if (!client) {
+            const config = getConfig();
+            validateConfig(config);
+            client = new SupabaseClient(config.database.supabaseUrl, config.database.supabaseServiceKey);
+        }
+        return client;
+    } catch (err) {
+        console.warn('[Supabase] Client initialization skipped:', (err as Error).message);
+        return null;
     }
-    return client;
 }

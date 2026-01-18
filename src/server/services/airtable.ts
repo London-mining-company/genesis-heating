@@ -50,7 +50,15 @@ export class AirtableService {
                                 'Property Type': lead.propertyType,
                                 'Monthly Heating Cost': lead.monthlyHeatingCost,
                                 'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
-                                'Source': lead.source || 'Website'
+                                'Source': lead.source || 'Website',
+                                'Created At': new Intl.DateTimeFormat('en-GB', {
+                                    timeZone: 'America/Toronto',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    hour12: false
+                                }).format(new Date()).replace(',', '')
                             }
                         }
                     ]

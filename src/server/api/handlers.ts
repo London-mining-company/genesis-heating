@@ -160,6 +160,7 @@ export async function handleAnalyticsEvent(
     }
 
     const db = getSupabaseClient();
+    if (!db) return { status: 204 };
 
     await db.trackEvent({
         session_id: request.sessionId,
@@ -205,6 +206,7 @@ export async function handleFunnelEvent(
     }
 
     const db = getSupabaseClient();
+    if (!db) return { status: 204 };
 
     await db.trackFunnelEvent({
         session_id: request.sessionId,
@@ -237,6 +239,15 @@ export async function handleEmailVerification(
     }
 
     const db = getSupabaseClient();
+    if (!db) {
+        return {
+            response: {
+                success: false,
+                error: { code: 'VERIFICATION_DISABLED', message: 'Verification is currently disabled.' }
+            },
+            status: 500
+        };
+    }
     const result = await db.verifySubscriber(token);
 
     if (result.error || !result.data) {

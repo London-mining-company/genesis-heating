@@ -191,13 +191,15 @@ export class WaitlistService {
             inServiceArea = isInServiceArea(postalCode)
         }
 
-        // 6. Check for existing subscriber
-        const existing = await this.db.getSubscriberByEmail(email)
-        if (existing.data && existing.data.length > 0) {
-            // Don't reveal if email exists (privacy)
-            return {
-                success: true,
-                data: { id: 'existing', position: 0, emailSent: false },
+        // 6. Check for existing subscriber (if DB is available)
+        if (this.db) {
+            const existing = await this.db.getSubscriberByEmail(email)
+            if (existing.data && existing.data.length > 0) {
+                // Don't reveal if email exists (privacy)
+                return {
+                    success: true,
+                    data: { id: 'existing', position: 0, emailSent: false },
+                }
             }
         }
 
@@ -231,34 +233,43 @@ export class WaitlistService {
             status: 'pending',
         }
 
-        const result = await this.db.createSubscriber(subscriberData)
+        let subscriberId = 'alt_' + Date.now();
+        let verificationToken = '';
 
-        if (result.error || !result.data) {
-            console.error('Database error:', result.error)
-            return {
-                success: false,
-                error: {
-                    code: 'SERVER_ERROR',
-                    message: 'Something went wrong. Please try again.',
-                },
+        if (this.db) {
+            const result = await this.db.createSubscriber(subscriberData)
+
+            if (result.error || !result.data) {
+                console.error('Database error:', result.error)
+                return {
+                    success: false,
+                    error: {
+                        code: 'SERVER_ERROR',
+                        message: 'Something went wrong. Please try again.',
+                    },
+                }
             }
+            subscriberId = result.data.id;
+            verificationToken = result.data.verification_token || '';
         }
 
         // 9. Track funnel event
-        await this.db.trackFunnelEvent({
-            session_id: headers['x-session-id'] || 'unknown',
-            subscriber_id: result.data.id,
-            stage: 'form_success',
-        })
+        if (this.db) {
+            await this.db.trackFunnelEvent({
+                session_id: headers['x-session-id'] || 'unknown',
+                subscriber_id: subscriberId,
+                stage: 'form_success',
+            }).catch(() => { });
+        }
 
         // 10. Send verification email (non-blocking)
         let emailSent = false
-        if (this.config.email && result.data.verification_token) {
+        if (this.config.email && verificationToken) {
             sendVerificationEmail(
                 this.config.email,
                 email,
                 input.name || '',
-                result.data.verification_token,
+                verificationToken,
                 this.config.baseUrl
             ).then(emailResult => {
                 if (!emailResult.success) {
@@ -288,7 +299,7 @@ export class WaitlistService {
         return {
             success: true,
             data: {
-                id: result.data.id,
+                id: subscriberId,
                 position: priorityScore, // TODO: Calculate actual queue position
                 emailSent,
             },
@@ -341,6 +352,13 @@ export class WaitlistService {
             }
         }
 
+        if (!this.db) {
+            return {
+                success: false,
+                error: { code: 'VERIFICATION_DISABLED', message: 'Verification is currently disabled.' }
+            }
+        }
+
         const result = await this.db.verifySubscriber(token)
 
         if (result.error || !result.data) {
@@ -369,7 +387,7 @@ export class WaitlistService {
             session_id: result.data.id, // Use subscriber ID as session
             subscriber_id: result.data.id,
             stage: 'email_verified',
-        })
+        }).catch(() => { })
 
         // Notify integrations
         if (this.config.integrations) {
