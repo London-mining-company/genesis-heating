@@ -52,10 +52,15 @@ export class AirtableService {
                                 'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
                                 'Source': lead.source || 'Website',
                                 'Created At': (() => {
-                                    const now = new Date();
-                                    const time = now.toLocaleTimeString('en-GB', { timeZone: 'America/Toronto', hour: '2-digit', minute: '2-digit', hour12: false });
-                                    const date = now.toLocaleDateString('en-GB', { timeZone: 'America/Toronto', day: '2-digit', month: '2-digit' });
-                                    return `${time} ${date}`;
+                                    const d = new Date();
+                                    const pad = (n: number) => n.toString().padStart(2, '0');
+                                    // Calculate EST offset manually or use a more robust way
+                                    // For now, simpler format that is likely to work
+                                    const h = pad(d.getUTCHours() - 5 < 0 ? d.getUTCHours() + 19 : d.getUTCHours() - 5);
+                                    const m = pad(d.getUTCMinutes());
+                                    const day = pad(d.getUTCDate());
+                                    const mon = pad(d.getUTCMonth() + 1);
+                                    return `${h}:${m} ${day}/${mon}`;
                                 })()
                             }
                         }

@@ -8,6 +8,7 @@
  * - Security headers
  */
 
+import crypto from 'node:crypto';
 import { getConfig } from '../db/config';
 
 // ============================================
