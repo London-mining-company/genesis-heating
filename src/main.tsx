@@ -9,7 +9,7 @@ const initSession = () => {
     // Generate session ID if not exists
     let sessionId = sessionStorage.getItem('sh_sid')
     if (!sessionId) {
-        sessionId = crypto.randomUUID()
+        sessionId = window.crypto.randomUUID()
         sessionStorage.setItem('sh_sid', sessionId)
     }
 

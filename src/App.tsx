@@ -29,9 +29,8 @@ interface FormErrors {
 
 // TRACKING UTILITIES
 
-const trackEvent = (_: string, __?: any) => { }
-
-const trackFunnel = (_: string) => { }
+const trackEvent = (_?: string, __?: any) => { }
+const trackFunnel = (_?: string) => { }
 
 
 const Header = () => {
@@ -140,11 +139,13 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'What is Genesis exactly?', a: 'Genesis is the specialized installation and service partner for Superheat H1 technology in London, Ontario. We take the world\'s most advanced "revenue-generating" water heater and ensure it\'s perfectly integrated into your home.' },
-    { q: 'How does it actually work?', a: 'Traditional heaters use expensive electricity to heat a coil. The Superheat H1 uses that same electricity to perform high-value computing—generating heat as a byproduct. We capture that "waste" heat for your water and return the computing value to you.' },
-    { q: 'When can I expect my installation?', a: 'We are currently accepting waitlist signups for our Spring 2026 rollout across Southwest Ontario. Early signups receive priority site surveys.' },
-    { q: 'Why should I switch now?', a: 'Energy costs in Ontario are projected to rise. Genesis allows you to hedge against those costs by turning your mechanical room into an asset. Most homes see an offset of up to 80% of their heating exposure.' },
-    { q: 'What about referrals?', a: 'We believe in building a local network of power. If you help a neighbor switch to a Genesis system, we offer direct cash rewards and collective bonuses. It’s part of our "Harvest" incentive for the London community—ask us for the elevator pitch during your consult!' },
+    { q: 'What is this?', a: 'Smart heater that earns money. [More](https://www.superheat.xyz/h1)' },
+    { q: 'How does it work?', a: 'Captures heat from computing.' },
+    { q: 'Lower bills?', a: 'Yes. Revenue offsets power usage.' },
+    { q: 'Loud?', a: 'No. Liquid-cooled, quiet.' },
+    { q: 'Costs?', a: '$0-down options using [Superheat](https://www.superheat.xyz/h1).' },
+    { q: 'Fit?', a: 'Fits electric setups. Free local consult.' },
+    { q: 'Contact?', a: 'Spring 2026 rollout.' },
 ]
 
 
@@ -380,7 +381,8 @@ const WaitlistForm = () => {
             })
 
             let data;
-            try { data = await response.json() } catch { data = { error: { message: 'Server error' } } }
+            const resTxt = await response.text();
+            try { data = JSON.parse(resTxt) } catch { data = { error: { message: response.ok ? 'Invalid response' : `Error ${response.status}: ${resTxt.slice(0, 40)}` } } }
 
             if (!response.ok) {
                 throw new Error(data.error?.message || 'Submission failed')

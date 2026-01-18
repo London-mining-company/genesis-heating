@@ -22,9 +22,7 @@ const csrfTokens = new Map<string, { token: string; expires: number }>();
  * Generate a cryptographically secure CSRF token
  */
 export function generateCsrfToken(sessionId: string): string {
-    const array = new Uint8Array(CSRF_TOKEN_LENGTH);
-    crypto.getRandomValues(array);
-    const token = Array.from(array, b => b.toString(16).padStart(2, '0')).join('');
+    const token = crypto.randomBytes(CSRF_TOKEN_LENGTH).toString('hex');
 
     const config = getConfig();
     csrfTokens.set(sessionId, {
@@ -147,6 +145,9 @@ export function checkRateLimit(
     const key = `${identifier}:${endpoint}`;
     const now = Date.now();
 
+    // Lazy cleanup
+    cleanOldRateLimits();
+
     const entry = rateLimits.get(key);
 
     if (!entry || now > entry.resetAt) {
@@ -163,15 +164,13 @@ export function checkRateLimit(
     return { allowed: true, remaining: maxRequests - entry.count, resetAt: entry.resetAt };
 }
 
-// Cleanup old rate limit entries periodically
-setInterval(() => {
+// Cleanup old rate limit entries (Lazy cleanup instead of setInterval)
+function cleanOldRateLimits() {
     const now = Date.now();
     for (const [key, entry] of rateLimits.entries()) {
-        if (now > entry.resetAt) {
-            rateLimits.delete(key);
-        }
+        if (now > entry.resetAt) rateLimits.delete(key);
     }
-}, 60000);
+}
 
 // ============================================
 // SECURITY HEADERS
