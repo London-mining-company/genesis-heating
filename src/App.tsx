@@ -158,9 +158,9 @@ const BENEFITS = [
 
 const FAQS = [
     { q: 'What is this?', a: 'A smart water heater that heats your water and earns you money. [Learn more](https://www.superheat.xyz/h1)' },
-    { q: 'How does it work?', a: 'Processors get hot while computing. We capture that heat for your water instead of wasting it.' },
+    { q: 'How does it work?', a: 'Processors generate heat while computing. We capture that for your water.' },
     { q: 'Will this lower my bills?', a: 'Yes. The system earns revenue that offsets power usage, providing hot water for much less.' },
-    { q: 'Is it loud or hot in my house?', a: 'No. It’s liquid-cooled and quieter than a fridge, and the unit stays cool to the touch.' },
+    { q: 'Is it loud?', a: 'No. Liquid-cooled, quieter than a fridge, and stays cool to the touch.' },
     { q: 'What are the upfront costs?', a: '$0-down sharing or purchase options. It’s professional HVAC using [Superheat tech](https://www.superheat.xyz/h1).' },
     { q: 'Will it fit my home?', a: 'If you use electric heating, likely yes. We do a free local consult to confirm.' },
     { q: 'When will you contact me?', a: 'We begin consultations Spring 2026. Early signups get priority scheduling.' },

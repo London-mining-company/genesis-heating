@@ -45,14 +45,12 @@ export class AirtableService {
                             fields: {
                                 'Email': lead.email,
                                 'Full Name': lead.name,
-                                'Phone Number': lead.phoneNumber || 'N/A',
+                                'Phone': lead.phoneNumber || 'N/A',
                                 'Postal Code': lead.postalCode,
                                 'Property Type': lead.propertyType,
                                 'Monthly Heating Cost': lead.monthlyHeatingCost,
                                 'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
-                                'Source': lead.source || 'Website',
-                                'Status': 'Waitlist',
-                                'Created At': new Date().toISOString()
+                                'Source': lead.source || 'Website'
                             }
                         }
                     ]
