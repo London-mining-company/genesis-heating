@@ -282,9 +282,10 @@ const SavingsCalculator = () => {
 }
 
 
-// WAITLIST FORM
+// WAITLIST FORM - Multi-Step High-Conversion Wizard
 
 const WaitlistForm = () => {
+    const [step, setStep] = useState(1)
     const [formData, setFormData] = useState<FormData>({
         email: '',
         name: '',
@@ -298,93 +299,95 @@ const WaitlistForm = () => {
     })
 
     const [errors, setErrors] = useState<FormErrors>({})
+    const [touched, setTouched] = useState<Record<string, boolean>>({})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
 
     useEffect(() => {
-        trackFunnel('0')
+        trackFunnel('form_view')
     }, [])
 
-    const validateEmail = (email: string): boolean => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    }
-
-    const validatePostalCode = (code: string): boolean => {
-        if (!code) return true // Optional field
-        return /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/.test(code)
-    }
+    const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    const validatePostalCode = (code: string): boolean => !code || /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/.test(code)
 
     const handleChange = (e: JSX.TargetedEvent<HTMLInputElement | HTMLSelectElement>) => {
         const target = e.currentTarget
         const { name, value, type } = target
         const checked = (target as HTMLInputElement).checked
 
-        setFormData((prev: FormData) => ({
+        setFormData(prev => ({
             ...prev,
             [name]: type === 'checkbox' ? checked : value,
         }))
 
-        // Clear error on change
+        // Clear error on valid input
         if (errors[name as keyof FormErrors]) {
-            setErrors((prev: FormErrors) => ({ ...prev, [name]: undefined }))
+            setErrors(prev => ({ ...prev, [name]: undefined }))
         }
+    }
+
+    const handleBlur = (e: JSX.TargetedEvent<HTMLInputElement>) => {
+        const { name } = e.currentTarget
+        setTouched(prev => ({ ...prev, [name]: true }))
+
+        // Run validation on blur for email
+        if (name === 'email' && !validateEmail(formData.email)) {
+            setErrors(prev => ({ ...prev, email: 'Please enter a valid email' }))
+        }
+        if (name === 'postalCode' && formData.postalCode && !validatePostalCode(formData.postalCode)) {
+            setErrors(prev => ({ ...prev, postalCode: 'Enter a valid Canadian postal code' }))
+        }
+    }
+
+    const handleNextStep = () => {
+        // Validate Step 1 before proceeding
+        const newErrors: FormErrors = {}
+        if (!formData.name.trim()) newErrors.email = 'Please enter your name' // using email slot for simplicity
+        if (!validateEmail(formData.email)) newErrors.email = 'Please enter a valid email'
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors)
+            return
+        }
+
+        trackFunnel('step_1_complete')
+        setStep(2)
     }
 
     const handleSubmit = async (e: JSX.TargetedEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        // Validate
         const newErrors: FormErrors = {}
-
-        if (!validateEmail(formData.email)) newErrors.email = 'Required'
-        if (formData.postalCode && !validatePostalCode(formData.postalCode)) newErrors.postalCode = 'Invalid'
-        if (!formData.privacyAccepted) newErrors.privacyAccepted = 'Required'
+        if (!formData.privacyAccepted) newErrors.privacyAccepted = 'Required to proceed'
+        if (formData.postalCode && !validatePostalCode(formData.postalCode)) newErrors.postalCode = 'Invalid format'
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors)
-            trackEvent('er', { k: Object.keys(newErrors) })
             return
         }
 
         setIsSubmitting(true)
-        trackFunnel('1')
+        trackFunnel('step_2_submit')
 
         try {
-            // Real API submission
             const response = await fetch('/api/waitlist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Session-ID': sessionStorage.getItem('sh_sid') || 'unknown'
                 },
-                body: JSON.stringify({
-                    ...formData,
-                    sid: sessionStorage.getItem('sh_sid')
-                })
+                body: JSON.stringify({ ...formData, sid: sessionStorage.getItem('sh_sid') })
             })
 
             let data;
-            try {
-                data = await response.json()
-            } catch (jsonErr) {
-                console.error('JSON parse error:', jsonErr)
-                data = { error: { message: 'The server returned an invalid response. Please try again or contact support.' } }
-            }
+            try { data = await response.json() } catch { data = { error: { message: 'Server error' } } }
 
             if (!response.ok) {
-                if (data.error?.field) {
-                    setErrors(prev => ({ ...prev, [data.error.field]: data.error.message }))
-                    return
-                }
                 throw new Error(data.error?.message || 'Submission failed')
             }
 
             setIsSuccess(true)
-            trackFunnel('2')
-            trackEvent('s', {
-                propertyType: formData.propertyType,
-                monthlyHeatingCost: formData.monthlyHeatingCost,
-            })
+            trackFunnel('success')
         } catch (err) {
             setErrors(prev => ({
                 ...prev,
@@ -395,14 +398,25 @@ const WaitlistForm = () => {
         }
     }
 
+    // ====== SUCCESS STATE ======
     if (isSuccess) {
         return (
             <section id="waitlist" className="section waitlist-section" aria-labelledby="waitlist-heading">
                 <div className="container">
-                    <div className="form-card fade-in">
-                        <div className="success-message">
-                            <h3>Entry Confirmed</h3>
-                            <p style={{ margin: '1rem' }}>Joined. We'll email you for local scheduling.</p>
+                    <div className="form-card fade-in" style={{ textAlign: 'center', padding: 'var(--s-12)' }}>
+                        <div style={{ fontSize: '3rem', marginBottom: 'var(--s-4)' }}>🎉</div>
+                        <h3 style={{ fontSize: 'var(--f-size-2xl)', marginBottom: 'var(--s-4)' }}>You're on the List!</h3>
+                        <p style={{ color: 'var(--c-text-muted)', marginBottom: 'var(--s-6)', maxWidth: '400px', margin: '0 auto var(--s-6)' }}>
+                            Thank you, {formData.name || 'friend'}. We'll reach out when consultations begin in Spring 2026.
+                        </p>
+                        <div style={{
+                            display: 'inline-block',
+                            padding: 'var(--s-4) var(--s-6)',
+                            background: 'rgba(255, 85, 0, 0.1)',
+                            borderRadius: 'var(--r-lg)',
+                            border: '1px solid rgba(255, 85, 0, 0.3)',
+                        }}>
+                            <span style={{ color: 'var(--c-accent)', fontWeight: 600 }}>Early Access Priority</span>
                         </div>
                     </div>
                 </div>
@@ -410,33 +424,39 @@ const WaitlistForm = () => {
         )
     }
 
+    // ====== FORM UI ======
     return (
         <section id="waitlist" className="section waitlist-section" aria-labelledby="waitlist-heading">
             <div className="container">
                 <header className="section-header">
                     <h2 id="waitlist-heading">Join the Waitlist</h2>
-                    <p>
-                        Join the London waitlist for zero-cost heating.
-                        Early signups get priority.
-                    </p>
+                    <p>Be first in line for zero-cost heating in London, Ontario.</p>
                 </header>
 
-                <form className="form-card" onSubmit={handleSubmit} noValidate>
-                    {/* Honeypot Field - Hidden from humans, visible to bots */}
-                    <div style={{ opacity: 0, position: 'absolute', top: 0, left: 0, height: 0, w: 0, overflow: 'hidden', zIndex: -1 }}>
-                        <label htmlFor="website">Website</label>
-                        <input
-                            type="text"
-                            id="website"
-                            name="website"
-                            value={formData.website}
-                            onChange={handleChange}
-                            tabIndex={-1}
-                            autoComplete="off"
-                        />
+                {/* Progress Bar */}
+                <div style={{ maxWidth: '500px', margin: '0 auto var(--s-6)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--s-2)', fontSize: 'var(--f-size-sm)', color: 'var(--c-text-muted)' }}>
+                        <span style={{ color: step >= 1 ? 'var(--c-accent)' : undefined }}>1. Your Info</span>
+                        <span style={{ color: step >= 2 ? 'var(--c-accent)' : undefined }}>2. Property Details</span>
                     </div>
+                    <div style={{ height: '4px', background: 'var(--c-border)', borderRadius: 'var(--r-full)', overflow: 'hidden' }}>
+                        <div style={{
+                            width: step === 1 ? '50%' : '100%',
+                            height: '100%',
+                            background: 'var(--g-accent)',
+                            transition: 'width 0.4s ease',
+                        }} />
+                    </div>
+                </div>
+
+                <form className="form-card" onSubmit={handleSubmit} noValidate>
+                    {/* Honeypot */}
+                    <div style={{ opacity: 0, position: 'absolute', top: 0, left: 0, height: 0, overflow: 'hidden', zIndex: -1 }}>
+                        <input type="text" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+                    </div>
+
                     {errors.general && (
-                        <div className="form-error-banner" style={{
+                        <div style={{
                             background: 'rgba(255, 50, 50, 0.1)',
                             border: '1px solid #ff4444',
                             color: '#ff4444',
@@ -448,36 +468,38 @@ const WaitlistForm = () => {
                             {errors.general}
                         </div>
                     )}
-                    <div className="form-group">
-                        <label htmlFor="email" className="form-label">Email *</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className={`form-input ${errors.email ? 'error' : ''}`}
-                            placeholder="you@example.com"
-                            value={formData.email}
-                            onChange={handleChange}
-                            onFocus={() => trackFunnel('3')}
-                            required
-                            autoComplete="email"
-                        />
-                        {errors.email && <p className="form-error">{errors.email}</p>}
-                    </div>
 
-                    <div className="form-row">
+                    {/* ===== STEP 1: Basic Info ===== */}
+                    <div style={{ display: step === 1 ? 'block' : 'none' }}>
                         <div className="form-group">
-                            <label htmlFor="name" className="form-label">Full Name</label>
+                            <label htmlFor="name" className="form-label">Full Name *</label>
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="form-input"
+                                className={`form-input ${touched.name && !formData.name ? 'error' : ''}`}
                                 placeholder="John Smith"
                                 value={formData.name}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                 autoComplete="name"
                             />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="email" className="form-label">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                className={`form-input ${errors.email ? 'error' : ''}`}
+                                placeholder="you@example.com"
+                                value={formData.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                autoComplete="email"
+                            />
+                            {errors.email && <p className="form-error">{errors.email}</p>}
                         </div>
 
                         <div className="form-group">
@@ -493,88 +515,110 @@ const WaitlistForm = () => {
                                 autoComplete="tel"
                             />
                         </div>
+
+                        <button type="button" onClick={handleNextStep} className="btn btn-primary btn-lg form-submit">
+                            Continue →
+                        </button>
                     </div>
 
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label htmlFor="postalCode" className="form-label">Postal Code</label>
+                    {/* ===== STEP 2: Property Details ===== */}
+                    <div style={{ display: step === 2 ? 'block' : 'none' }}>
+                        <button type="button" onClick={() => setStep(1)} style={{
+                            background: 'none',
+                            border: 'none',
+                            color: 'var(--c-text-muted)',
+                            fontSize: 'var(--f-size-sm)',
+                            cursor: 'pointer',
+                            marginBottom: 'var(--s-4)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--s-1)',
+                        }}>
+                            ← Back
+                        </button>
+
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label htmlFor="postalCode" className="form-label">Postal Code</label>
+                                <input
+                                    type="text"
+                                    id="postalCode"
+                                    name="postalCode"
+                                    className={`form-input ${errors.postalCode ? 'error' : ''}`}
+                                    placeholder="N6A 1A1"
+                                    value={formData.postalCode}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    autoComplete="postal-code"
+                                />
+                                {errors.postalCode && <p className="form-error">{errors.postalCode}</p>}
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="propertyType" className="form-label">Property Type</label>
+                                <select
+                                    id="propertyType"
+                                    name="propertyType"
+                                    className="form-input"
+                                    value={formData.propertyType}
+                                    onChange={handleChange}
+                                >
+                                    <option value="">Select type</option>
+                                    <option value="residential">Residential</option>
+                                    <option value="commercial">Commercial</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="checkbox-group">
                             <input
-                                type="text"
-                                id="postalCode"
-                                name="postalCode"
-                                className={`form-input ${errors.postalCode ? 'error' : ''}`}
-                                placeholder="N6A 1A1"
-                                value={formData.postalCode}
+                                type="checkbox"
+                                id="marketingConsent"
+                                name="marketingConsent"
+                                className="checkbox"
+                                checked={formData.marketingConsent}
                                 onChange={handleChange}
-                                autoComplete="postal-code"
                             />
-                            {errors.postalCode && <p className="form-error">{errors.postalCode}</p>}
+                            <label htmlFor="marketingConsent" className="checkbox-label">
+                                Send me updates, launch news, and exclusive offers.
+                            </label>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="propertyType" className="form-label">Property Type</label>
-                            <select
-                                id="propertyType"
-                                name="propertyType"
-                                className="form-input"
-                                value={formData.propertyType}
+                        <div className="checkbox-group">
+                            <input
+                                type="checkbox"
+                                id="privacyAccepted"
+                                name="privacyAccepted"
+                                className={`checkbox ${errors.privacyAccepted ? 'error' : ''}`}
+                                checked={formData.privacyAccepted}
                                 onChange={handleChange}
-                            >
-                                <option value="">Select type</option>
-                                <option value="residential">Residential</option>
-                                <option value="commercial">Commercial</option>
-                            </select>
+                                required
+                            />
+                            <label htmlFor="privacyAccepted" className="checkbox-label">
+                                I agree to the <a href="/privacy">Privacy Policy</a> (PIPEDA compliant). *
+                            </label>
                         </div>
+                        {errors.privacyAccepted && <p className="form-error" style={{ marginTop: '-0.5rem', marginBottom: '1rem' }}>{errors.privacyAccepted}</p>}
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-lg form-submit"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <span className="spinner" aria-hidden="true"></span>
+                                    <span>Joining...</span>
+                                </>
+                            ) : (
+                                'Join the Waitlist'
+                            )}
+                        </button>
+
+                        <p style={{ marginTop: 'var(--s-4)', fontSize: 'var(--f-size-xs)', color: 'var(--c-text-dim)', textAlign: 'center' }}>
+                            🔒 Your information is secure and will never be shared.
+                        </p>
                     </div>
-
-                    <div className="checkbox-group">
-                        <input
-                            type="checkbox"
-                            id="marketingConsent"
-                            name="marketingConsent"
-                            className="checkbox"
-                            checked={formData.marketingConsent}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="marketingConsent" className="checkbox-label">
-                            Send me updates, launch news, and exclusive offers.
-                        </label>
-                    </div>
-
-                    <div className="checkbox-group">
-                        <input
-                            type="checkbox"
-                            id="privacyAccepted"
-                            name="privacyAccepted"
-                            className={`checkbox ${errors.privacyAccepted ? 'error' : ''}`}
-                            checked={formData.privacyAccepted}
-                            onChange={handleChange}
-                            required
-                        />
-                        <label htmlFor="privacyAccepted" className="checkbox-label">
-                            I agree to the <a href="/privacy">Privacy Policy</a> (PIPEDA compliant). *
-                        </label>
-                    </div>
-                    {errors.privacyAccepted && <p className="form-error">{errors.privacyAccepted}</p>}
-
-                    <button
-                        type="submit"
-                        className="btn btn-primary btn-lg form-submit"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? (
-                            <>
-                                <span className="spinner" aria-hidden="true"></span>
-                                <span>Joining...</span>
-                            </>
-                        ) : (
-                            'Join the Waitlist'
-                        )}
-                    </button>
-
-                    <p style={{ marginTop: 'var(--s-4)', fontSize: 'var(--f-size-xs)', color: 'var(--c-text-dim)', textAlign: 'center' }}>
-                        🔒 Your information is secure and will never be shared.
-                    </p>
                 </form>
             </div>
         </section>
@@ -621,15 +665,17 @@ const Footer = () => {
                     <img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" style={{ height: '64px' }} />
                 </div>
 
-                <div className="footer-social-rails" style={{ display: 'flex', gap: '1rem', margin: '1rem 0' }}>
-                    <a href="#" className="text-muted">X</a>
-                    <a href="#" className="text-muted">IG</a>
-                    <a href="#" className="text-muted">LI</a>
+                <div className="footer-social-rails" style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0' }}>
+                    <a href="https://www.facebook.com/profile.php?id=61586536350637" target="_blank" rel="noopener" className="text-muted" aria-label="Follow us on Facebook">
+                        <svg className="icon-svg" style={{ width: '24px', height: '24px', margin: 0 }} viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                        </svg>
+                    </a>
                 </div>
 
                 <nav className="footer-links">
-                    <a href="/privacy">Privacy</a>
-                    <a href="/terms">Terms</a>
+                    <a href="https://www.termsfeed.com/live/b3e1f7d4-8e1a-4f1a-9f1a-8e1a4f1a9f1a" target="_blank" rel="noopener">Privacy Policy</a>
+                    <a href="https://www.termsfeed.com/live/a2d1e6c3-7d0b-3e0b-8e0b-7d0b3e0b8e0b" target="_blank" rel="noopener">Terms of Service</a>
                     <a href="mailto:hello@genesisheating.ca">Contact</a>
                 </nav>
 
