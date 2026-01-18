@@ -43,22 +43,20 @@ export class AirtableService {
                     records: [
                         {
                             fields: {
-                                'Email': lead.email,
-                                'Full Name': lead.name,
                                 'Phone': lead.phoneNumber || 'N/A',
+                                'Full Name': lead.name,
+                                'Email': lead.email,
                                 'Postal Code': lead.postalCode,
                                 'Property Type': lead.propertyType,
                                 'Monthly Heating Cost': lead.monthlyHeatingCost,
                                 'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
                                 'Source': lead.source || 'Website',
-                                'Created At': new Intl.DateTimeFormat('en-GB', {
-                                    timeZone: 'America/Toronto',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    hour12: false
-                                }).format(new Date()).replace(',', '')
+                                'Created At': (() => {
+                                    const now = new Date();
+                                    const time = now.toLocaleTimeString('en-GB', { timeZone: 'America/Toronto', hour: '2-digit', minute: '2-digit', hour12: false });
+                                    const date = now.toLocaleDateString('en-GB', { timeZone: 'America/Toronto', day: '2-digit', month: '2-digit' });
+                                    return `${time} ${date}`;
+                                })()
                             }
                         }
                     ]
