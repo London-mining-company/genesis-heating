@@ -79,24 +79,24 @@ const Hero = () => {
                 </div>
 
                 <h1 id="hero-heading">
-                    Zero-Cost Heating. <span className="text-orange">Maximum Privacy.</span>
+                    Stop paying for heat. <span className="text-orange">Start owning it.</span>
                 </h1>
 
                 <p className="hero-subtitle">
-                    Genesis uses decentralized computing to eliminate your heating bills. Our white-glove team installs the future in your London home.
+                    Traditional heating is a monthly tax on your home. Genesis installs the Superheat H1 system—the world’s first heater that pays for itself through decentralized computing.
                 </p>
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <button onClick={s} className="btn btn-primary btn-lg shadow-glow">
-                        Get Priority Early Access
+                        Secure Your 2026 Install
                     </button>
                     <a href="#how-it-works" className="btn btn-secondary btn-lg">
-                        The Technology
+                        The Technology Shift
                     </a>
                 </div>
 
                 <p style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'var(--c-text-dim)' }}>
-                    Powered by <a href="https://www.superheat.xyz/h1" target="_blank" rel="noopener" className="text-orange">Superheat H1</a> — Professional HVAC Implementation
+                    Specialized Installation by Genesis for <a href="https://www.superheat.xyz/h1" target="_blank" rel="noopener" className="text-orange">Superheat H1</a> hardware.
                 </p>
 
                 <div className="hero-stats">
@@ -105,12 +105,12 @@ const Hero = () => {
                         <div className="stat-label">Energy Offset*</div>
                     </div>
                     <div className="stat">
-                        <div className="stat-value">$1,318</div>
-                        <div className="stat-label">Est. Annual Value</div>
+                        <div className="stat-value">White-Glove</div>
+                        <div className="stat-label">Professional Setup</div>
                     </div>
                     <div className="stat">
-                        <div className="stat-value">5.3t</div>
-                        <div className="stat-label">CO2 Mitigated</div>
+                        <div className="stat-value">London, ON</div>
+                        <div className="stat-label">Regional Rollout</div>
                     </div>
                 </div>
             </div>
@@ -133,18 +133,18 @@ const STEPS = [
 ]
 
 const BENEFITS = [
-    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Peak Performance', d: 'Engineered to offset up to 80% of energy usage.' },
-    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Precision Control', d: 'App-based monitoring of heat and yield.' },
-    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Industrial Silence', d: 'Advanced liquid cooling. Quieter than a quiet room.' },
-    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Net Zero Potential', d: 'The cleanest way to heat your home. Period.' },
+    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Thermal Disruption', d: 'Converts computing power into 80% thermal energy offset.' },
+    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Genesis Monitoring', d: 'Professional dashboard for heat and yields.' },
+    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Liquid Cooled', d: 'Silent, high-performance engineering by Superheat.' },
+    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Expert Install', d: 'Certified HVAC pros handle every Genesis setup.' },
 ]
 
 const FAQS = [
-    { q: 'What makes Genesis different?', a: 'Traditional HVAC is a cost. Genesis is an asset. We use high-performance computing to generate heat, making your home a node in the future of energy.' },
-    { q: 'Is the 80% saving guaranteed?', a: 'Based on 2025 London energy rates, the system is designed to offset exposure up to 80%. Actual results variate with utility rates and computing markets.' },
-    { q: 'What is the "Harvest Pool"?', a: 'When you bring a neighbor on board, you increase the collective hashing power of London. This directly increases the "odds" of maximized returns for everyone in the network.' },
-    { q: 'Is it loud or hot?', a: 'No. The unit is liquid-cooled, stays cool to the touch, and operates at a decibel level lower than most high-end refrigerators.' },
-    { q: 'What are the upfront costs?', a: 'We offer specialized financing and $0-down options for qualified London homes. Our goal is to make energy independence accessible.' },
+    { q: 'What is Genesis exactly?', a: 'Genesis is the specialized installation and service partner for Superheat H1 technology in London, Ontario. We take the world\'s most advanced "revenue-generating" water heater and ensure it\'s perfectly integrated into your home.' },
+    { q: 'How does it actually work?', a: 'Traditional heaters use expensive electricity to heat a coil. The Superheat H1 uses that same electricity to perform high-value computing—generating heat as a byproduct. We capture that "waste" heat for your water and return the computing value to you.' },
+    { q: 'When can I expect my installation?', a: 'We are currently accepting waitlist signups for our Spring 2026 rollout across Southwest Ontario. Early signups receive priority site surveys.' },
+    { q: 'Why should I switch now?', a: 'Energy costs in Ontario are projected to rise. Genesis allows you to hedge against those costs by turning your mechanical room into an asset. Most homes see an offset of up to 80% of their heating exposure.' },
+    { q: 'What about referrals?', a: 'We believe in building a local network of power. If you help a neighbor switch to a Genesis system, we offer direct cash rewards and collective bonuses. It’s part of our "Harvest" incentive for the London community—ask us for the elevator pitch during your consult!' },
 ]
 
 
@@ -154,8 +154,8 @@ const HowItWorks = () => (
     <section id="how-it-works" className="section how-it-works" aria-labelledby="hiw-heading">
         <div className="container">
             <header className="section-header">
-                <h2 id="hiw-heading">Advanced Physics. Simple Savings.</h2>
-                <p>We’ve combined a data center with a water heater. It's not magic, it's engineering.</p>
+                <h2 id="hiw-heading">Professional Engineering. Proven Yields.</h2>
+                <p>Genesis bridges the gap between high-performance computing and professional HVAC. We provide the expertise; Superheat provides the hardware.</p>
             </header>
             <div className="steps-grid">
                 {STEPS.map(s => (
@@ -280,45 +280,6 @@ const SavingsCalculator = () => {
         </section>
     )
 }
-
-
-// REFERRAL SECTION
-const HarvestPool = () => (
-    <section className="section referral-section" aria-labelledby="referral-heading">
-        <div className="container">
-            <header className="section-header">
-                <h2 id="referral-heading">The Harvest Pool</h2>
-                <p>Don't just save. Build a network of power with your neighbors.</p>
-            </header>
-            <div className="pool-card">
-                <div className="pool-badge" style={{ color: 'var(--c-accent)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '11px' }}>Collective London Network</div>
-                <div className="pool-amount">$500+</div>
-                <p style={{ color: 'var(--c-text-muted)', fontSize: '1.2rem', marginBottom: 'var(--s-8)' }}>Monthly Genesis Pool Bonus</p>
-
-                <div className="pool-feature-grid">
-                    <div className="pool-feature">
-                        <h5>$100 Cash</h5>
-                        <p>Receive a direct cash reward for every home you refer that installs a Genesis system.</p>
-                    </div>
-                    <div className="pool-feature">
-                        <h5>Network Power</h5>
-                        <p>Referrals add to our local London hashing pool, increasing the reward odds for everyone.</p>
-                    </div>
-                    <div className="pool-feature">
-                        <h5>Harvest Tickets</h5>
-                        <p>Every referral is a permanent ticket into the monthly $500 Genesis Harvest Pool.</p>
-                    </div>
-                </div>
-
-                <div style={{ marginTop: 'var(--s-12)' }}>
-                    <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary">
-                        Start Your Referral Network
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-)
 
 
 // WAITLIST FORM - Multi-Step High-Conversion Wizard
@@ -773,7 +734,6 @@ export default function App() {
                 <HowItWorks />
                 <Infographic />
                 <Benefits />
-                <HarvestPool />
                 <SavingsCalculator />
                 <WaitlistForm />
                 <FAQ />
