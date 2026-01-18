@@ -16,21 +16,62 @@ interface AirtableLead {
     source?: string;
 }
 
+interface AirtableErrorResponse {
+    error?: {
+        type: string;
+        message: string;
+    };
+}
+
 export class AirtableService {
-    private static apiKey = process.env.AIRTABLE_API_KEY;
-    private static baseId = process.env.AIRTABLE_BASE_ID;
-    private static tableName = process.env.AIRTABLE_TABLE_NAME || 'Leads';
+    private static get apiKey(): string | undefined {
+        return process.env.AIRTABLE_API_KEY;
+    }
+
+    private static get baseId(): string | undefined {
+        return process.env.AIRTABLE_BASE_ID;
+    }
+
+    private static get tableName(): string {
+        return process.env.AIRTABLE_TABLE_NAME || 'Leads';
+    }
 
     /**
      * Creates a new lead record in Airtable
      */
     static async createLead(lead: AirtableLead): Promise<boolean> {
-        if (!this.apiKey || !this.baseId) {
-            console.error('[Airtable] Missing API Key or Base ID');
+        // Validate configuration
+        if (!this.apiKey) {
+            console.error('[Airtable] AIRTABLE_API_KEY is not set');
+            return false;
+        }
+        if (!this.baseId) {
+            console.error('[Airtable] AIRTABLE_BASE_ID is not set');
             return false;
         }
 
         const url = `https://api.airtable.com/v0/${this.baseId}/${encodeURIComponent(this.tableName)}`;
+
+        // Build the payload with exact field names from user's Airtable
+        const payload = {
+            records: [
+                {
+                    fields: {
+                        'Email': lead.email,
+                        'Full Name': lead.name || 'Anonymous',
+                        'Phone': lead.phoneNumber || '',
+                        'Postal Code': lead.postalCode || '',
+                        'Property Type': lead.propertyType || 'residential',
+                        'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
+                        'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
+                        'Source': lead.source || 'Website',
+                        'Created At': new Date().toISOString(),
+                    }
+                }
+            ]
+        };
+
+        console.log('[Airtable] Sending lead:', JSON.stringify({ email: lead.email, name: lead.name }));
 
         try {
             const response = await fetch(url, {
@@ -39,45 +80,30 @@ export class AirtableService {
                     'Authorization': `Bearer ${this.apiKey}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    records: [
-                        {
-                            fields: {
-                                'Phone': lead.phoneNumber || 'N/A',
-                                'Full Name': lead.name,
-                                'Email': lead.email,
-                                'Postal Code': lead.postalCode,
-                                'Property Type': lead.propertyType,
-                                'Monthly Heating Cost': lead.monthlyHeatingCost,
-                                'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
-                                'Source': lead.source || 'Website',
-                                'Created At': (() => {
-                                    const d = new Date();
-                                    const pad = (n: number) => n.toString().padStart(2, '0');
-                                    // Calculate EST offset manually or use a more robust way
-                                    // For now, simpler format that is likely to work
-                                    const h = pad(d.getUTCHours() - 5 < 0 ? d.getUTCHours() + 19 : d.getUTCHours() - 5);
-                                    const m = pad(d.getUTCMinutes());
-                                    const day = pad(d.getUTCDate());
-                                    const mon = pad(d.getUTCMonth() + 1);
-                                    return `${h}:${m} ${day}/${mon}`;
-                                })()
-                            }
-                        }
-                    ]
-                })
+                body: JSON.stringify(payload)
             });
 
             if (!response.ok) {
-                const error = await response.json();
-                console.error('[Airtable] Error creating record:', error);
+                const errorBody = await response.text();
+                console.error(`[Airtable] API Error ${response.status}: ${errorBody}`);
+
+                // Try to parse error for more detail
+                try {
+                    const parsed = JSON.parse(errorBody) as AirtableErrorResponse;
+                    if (parsed.error) {
+                        console.error(`[Airtable] Error type: ${parsed.error.type}, Message: ${parsed.error.message}`);
+                    }
+                } catch {
+                    // Not JSON, already logged raw body
+                }
                 return false;
             }
 
-            console.info('[Airtable] Lead successfully synced');
+            const result = await response.json();
+            console.info('[Airtable] Lead successfully synced:', result.records?.[0]?.id || 'unknown');
             return true;
         } catch (error) {
-            console.error('[Airtable] Network error:', error);
+            console.error('[Airtable] Network/fetch error:', error);
             return false;
         }
     }
