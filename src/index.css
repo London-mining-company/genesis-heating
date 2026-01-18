@@ -348,11 +348,23 @@ h4 {
   gap: var(--s-2);
   padding: var(--s-2) var(--s-4);
   margin-bottom: var(--s-6);
-  background: var(--c-bg-card);
+  background: linear-gradient(90deg, var(--c-bg-card) 0%, rgba(255, 85, 0, 0.1) 50%, var(--c-bg-card) 100%);
+  background-size: 200% 100%;
   border: 0.5px solid var(--c-border);
   border-radius: var(--r-full);
   font-size: var(--f-size-sm);
   color: var(--c-text-muted);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .hero-badge-dot {
@@ -632,8 +644,6 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(247, 147, 26, 0.1);
-  border-radius: var(--r-lg);
   font-size: var(--f-size-2xl);
 }
 

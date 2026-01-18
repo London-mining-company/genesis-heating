@@ -105,12 +105,16 @@ const Hero = () => {
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <button onClick={s} className="btn btn-primary btn-lg">
-                        Start Saving Now
+                        Join Waitlist — Free Consult
                     </button>
                     <a href="#how-it-works" className="btn btn-secondary btn-lg">
-                        See How it Works
+                        See How It Works
                     </a>
                 </div>
+
+                <p style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'var(--c-text-dim)' }}>
+                    Powered by <a href="https://www.superheat.xyz/h1" target="_blank" rel="noopener" className="text-orange">Superheat</a> technology
+                </p>
 
                 <div className="hero-stats">
                     <div className="stat">
@@ -140,9 +144,9 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Compute', d: 'Processors compute using standard power.' },
-    { n: 2, t: 'Thermal Capture', d: 'Captures heat for your tank, meeting standards.' },
-    { n: 3, t: 'Value Return', d: 'Offsets costs. Get paid in bitcoin or cash.' },
+    { n: 1, t: 'Compute', d: 'Advanced processors perform high-value computing.' },
+    { n: 2, t: 'Thermal Capture', d: 'Heat is redirected to your water tank.' },
+    { n: 3, t: 'Value Return', d: 'Earn rewards in your preferred format.' },
 ]
 
 const BENEFITS = [
@@ -153,12 +157,13 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'How does a computer heat my water?', a: 'Processors get hot. We capture that heat instead of wasting it. [How it works](https://www.superheat.xyz/technology)' },
-    { q: 'Will this actually lower my bills?', a: 'Yes. The system earns revenue that offsets its power usage, providing hot water for much less than a standard tank.' },
-    { q: 'Why is Bitcoin involved?', a: 'It\'s the most reliable way to turn computing power into money to pay your bill. That simple. [View stats](https://mempool.space)' },
+    { q: 'What is this?', a: 'A smart water heater that heats your water and earns you money. [Learn more](https://www.superheat.xyz/h1)' },
+    { q: 'How does it work?', a: 'Processors get hot while computing. We capture that heat for your water instead of wasting it.' },
+    { q: 'Will this lower my bills?', a: 'Yes. The system earns revenue that offsets power usage, providing hot water for much less.' },
     { q: 'Is it loud or hot in my house?', a: 'No. It’s liquid-cooled and quieter than a fridge, and the unit stays cool to the touch.' },
     { q: 'What are the upfront costs?', a: '$0-down sharing or purchase options. It’s professional HVAC using [Superheat tech](https://www.superheat.xyz/h1).' },
-    { q: 'Will it fit my current home?', a: 'If you use electric heating, yes. We\'ll do a local consult to ensure a smooth install.' },
+    { q: 'Will it fit my home?', a: 'If you use electric heating, likely yes. We do a free local consult to confirm.' },
+    { q: 'When will you contact me?', a: 'We begin consultations Spring 2026. Early signups get priority scheduling.' },
 ]
 
 
