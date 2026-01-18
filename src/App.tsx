@@ -29,23 +29,7 @@ interface FormErrors {
 
 // TRACKING UTILITIES
 
-const trackEvent = (eventName: string, data?: Record<string, unknown>) => {
-    const sessionId = sessionStorage.getItem('sh_sid')
-    if (!sessionId) return
-
-    // Queue for batch sending in production
-    const event = {
-        sessionId,
-        eventType: 'user_action',
-        eventName,
-        pageUrl: window.location.href,
-        eventData: data,
-        timestamp: Date.now(),
-    }
-
-    // In production, this would POST to /api/analytics
-    console.debug('[Analytics]', event)
-}
+const trackEvent = (_: string, __?: any) => { }
 
 const trackFunnel = (_: string) => { }
 
@@ -100,7 +84,7 @@ const Hero = () => {
                 </h1>
 
                 <p className="hero-subtitle">
-                    Reclaim wasted energy. Genesis heats your water and your wallet.
+                    Genesis heats your water and your wallet. Join the 2026 rollout in London.
                 </p>
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -379,7 +363,13 @@ const WaitlistForm = () => {
                 })
             })
 
-            const data = await response.json()
+            let data;
+            try {
+                data = await response.json()
+            } catch (jsonErr) {
+                console.error('JSON parse error:', jsonErr)
+                data = { error: { message: 'The server returned an invalid response. Please try again or contact support.' } }
+            }
 
             if (!response.ok) {
                 if (data.error?.field) {
@@ -411,12 +401,8 @@ const WaitlistForm = () => {
                 <div className="container">
                     <div className="form-card fade-in">
                         <div className="success-message">
-                            <div className="success-icon">✓</div>
-                            <h3>You're on the list!</h3>
-                            <p>
-                                We'll email you when Genesis launches in Spring 2026.
-                                Keep an eye on your inbox for exclusive early-bird offers.
-                            </p>
+                            <h3>Entry Confirmed</h3>
+                            <p style={{ margin: '1rem' }}>Joined. We'll email you for local scheduling.</p>
                         </div>
                     </div>
                 </div>
