@@ -1,4 +1,5 @@
 import { render } from 'preact'
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import App from './App'
 import './index.css'
 
@@ -31,5 +32,8 @@ const initSession = () => {
 }
 
 initSession()
+
+// Initialize Vercel Speed Insights
+injectSpeedInsights()
 
 render(<App />, document.getElementById('root')!)
