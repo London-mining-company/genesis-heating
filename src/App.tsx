@@ -16,6 +16,7 @@ interface FormData {
 
 interface FormErrors {
     email?: string
+    name?: string
     postalCode?: string
     privacyAccepted?: string
     general?: string
@@ -59,10 +60,10 @@ const Hero = () => (
         <div className="container hero-content">
             <div className="hero-badge">
                 <span className="hero-badge-dot" aria-hidden="true"></span>
-                <span>2026 London, ON</span>
+                <span>10-Year Hardware Performance Guarantee</span>
             </div>
-            <h1 id="h-h">Heat water. <span className="text-orange">Get paid.</span></h1>
-            <p className="hero-subtitle">Heater that earns. Spring 2026 London.</p>
+            <h1 id="h-h">Warm water. <span className="text-orange">Warm wallet.</span></h1>
+            <p className="hero-subtitle">Heater that pays you back. 2026 London.</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                 <button onClick={() => sTo('waitlist')} className="btn btn-primary btn-lg shadow-glow">Join</button>
                 <a href="#how-it-works" className="btn btn-secondary btn-lg">How It Works</a>
@@ -70,7 +71,7 @@ const Hero = () => (
             <div className="hero-stats">
                 <div className="stat"><b>~3.8t</b><br />CO₂/Year</div>
                 <div className="stat"><b>~$900</b><br />Saved/Year</div>
-                <div className="stat"><b>London</b><br />Forest City</div>
+                <div className="stat"><b>Liquid</b><br />Cooled</div>
             </div>
         </div>
     </section>
@@ -85,9 +86,9 @@ const Hero = () => (
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Compute', d: 'Processors run. Heat is a byproduct.' },
-    { n: 2, t: 'Capture', d: 'Heat warms water, zero waste.' },
-    { n: 3, t: 'Earn', d: 'Yields return to you as savings.' },
+    { n: 1, t: 'Compute', d: 'Processors run tasks. Heat is a byproduct.' },
+    { n: 2, t: 'Capture', d: 'Heat warms water. Energy dual-purpose.' },
+    { n: 3, t: 'Earn', d: 'Preferred payout for all yields.' },
 ]
 
 const BENEFITS = [
@@ -98,12 +99,12 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'What is it?', a: 'Heater that earns. Superheat tech.' },
-    { q: 'Savings?', a: '~$900/yr + 3.8t CO₂.' },
-    { q: 'Grants?', a: 'Yes. Up to $25K. We help apply.' },
-    { q: 'Cost?', a: '$0-down or revenue-share.' },
-    { q: 'Fit?', a: 'Electric homes. Free assessment.' },
-    { q: 'Pool?', a: 'Refer neighbors, earn cash.' },
+    { q: 'What is it?', a: 'Smart heater using compute heat. Heats water and your wallet.' },
+    { q: 'Savings?', a: 'Avg. home: ~$900/yr + 3.8t CO₂. Fast ROI for businesses.' },
+    { q: 'Grants?', a: 'Up to $25K (Greener Homes 2026). We help apply.' },
+    { q: 'Install?', a: 'Standard HVAC setup. Red-Seal certified.' },
+    { q: 'Guarantee?', a: '10-year hardware performance guarantee.' },
+    { q: 'Business?', a: 'Commercial fleets see measurable financial upside.' },
 ]
 
 
@@ -184,7 +185,7 @@ const Infographic = () => (
                     <p>Full break-even</p>
                 </div>
             </div>
-            <div className="info-footnote">*Ontario rates ($600/yr base) and 53% savings.</div>
+            <div className="info-footnote">*Ontario 2025 rates. See footer.</div>
         </div>
     </section>
 )
@@ -258,7 +259,6 @@ const WaitlistForm = () => {
     })
 
     const [errors, setErrors] = useState<FormErrors>({})
-    const [touched, setTouched] = useState<Record<string, boolean>>({})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
 
@@ -284,18 +284,7 @@ const WaitlistForm = () => {
         }
     }
 
-    const handleBlur = (e: JSX.TargetedEvent<HTMLInputElement>) => {
-        const { name } = e.currentTarget
-        setTouched(prev => ({ ...prev, [name]: true }))
 
-        // Run validation on blur for email
-        if (name === 'email' && !validateEmail(formData.email)) {
-            setErrors(prev => ({ ...prev, email: 'Please enter a valid email' }))
-        }
-        if (name === 'postalCode' && formData.postalCode && !validatePostalCode(formData.postalCode)) {
-            setErrors(prev => ({ ...prev, postalCode: 'Enter a valid Canadian postal code' }))
-        }
-    }
 
     const handleNextStep = () => {
         // Validate Step 1 before proceeding
@@ -430,17 +419,16 @@ const WaitlistForm = () => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className={`form-input ${touched.name && !formData.name ? 'error' : ''}`}
+                                className={`form-input ${errors.name ? 'error' : ''}`}
                                 placeholder="John Smith"
                                 value={formData.name}
                                 onChange={handleChange}
-                                onBlur={handleBlur}
                                 autoComplete="name"
                             />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="email" className="form-label">Email Address *</label>
+                            <label htmlFor="email" className="form-label">Email *</label>
                             <input
                                 type="email"
                                 id="email"
@@ -449,7 +437,6 @@ const WaitlistForm = () => {
                                 placeholder="you@example.com"
                                 value={formData.email}
                                 onChange={handleChange}
-                                onBlur={handleBlur}
                                 autoComplete="email"
                             />
                             {errors.email && <p className="form-error">{errors.email}</p>}
@@ -501,7 +488,6 @@ const WaitlistForm = () => {
                                     placeholder="N6A 1A1"
                                     value={formData.postalCode}
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
                                     autoComplete="postal-code"
                                 />
                                 {errors.postalCode && <p className="form-error">{errors.postalCode}</p>}
@@ -516,9 +502,9 @@ const WaitlistForm = () => {
                                     value={formData.propertyType}
                                     onChange={handleChange}
                                 >
-                                    <option value="">Select type</option>
-                                    <option value="residential">Residential</option>
-                                    <option value="commercial">Commercial</option>
+                                    <option value="">Select</option>
+                                    <option value="residential">Home</option>
+                                    <option value="commercial">Business</option>
                                 </select>
                             </div>
                         </div>
@@ -603,7 +589,7 @@ const Foot = () => (
     <footer className="footer section">
         <div className="container" style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '10px', color: 'var(--c-text-dim)', textAlign: 'left', marginBottom: '1rem' }}>
-                *Savings based on 2025 rates & yields. Fluctuates. Local Red-Seal pros only.
+                *Savings vary. Fluctuates with rates & yields. Local Red-Seal only.
             </p>
             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '1rem' }}>
                 <a href="https://www.facebook.com/profile.php?id=61586536350637" target="_blank" rel="noopener" aria-label="FB">
