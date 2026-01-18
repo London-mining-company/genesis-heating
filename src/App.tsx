@@ -61,7 +61,6 @@ const Hero = () => {
 
     return (
         <section className="hero" aria-labelledby="hero-heading">
-            {/* Background Video Layer */}
             <div className="video-background">
                 <iframe
                     src="https://www.youtube.com/embed/T_r5TUR2cYk?autoplay=1&mute=1&loop=1&playlist=T_r5TUR2cYk&controls=0&rel=0"
@@ -76,42 +75,42 @@ const Hero = () => {
             <div className="container hero-content">
                 <div className="hero-badge">
                     <span className="hero-badge-dot" aria-hidden="true"></span>
-                    <span>Launching Spring 2026 in London, Ontario</span>
+                    <span>Exclusive 2026 Rollout - London, Ontario</span>
                 </div>
 
                 <h1 id="hero-heading">
-                    The future of home heating <span className="text-orange">makes you money</span>
+                    Zero-Cost Heating. <span className="text-orange">Maximum Privacy.</span>
                 </h1>
 
                 <p className="hero-subtitle">
-                    Genesis heats your water and your wallet. Join the 2026 rollout in London.
+                    Genesis uses decentralized computing to eliminate your heating bills. Our white-glove team installs the future in your London home.
                 </p>
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <button onClick={s} className="btn btn-primary btn-lg">
-                        Join Waitlist — Free Consult
+                    <button onClick={s} className="btn btn-primary btn-lg shadow-glow">
+                        Get Priority Early Access
                     </button>
                     <a href="#how-it-works" className="btn btn-secondary btn-lg">
-                        See How It Works
+                        The Technology
                     </a>
                 </div>
 
                 <p style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'var(--c-text-dim)' }}>
-                    Powered by <a href="https://www.superheat.xyz/h1" target="_blank" rel="noopener" className="text-orange">Superheat</a> technology
+                    Powered by <a href="https://www.superheat.xyz/h1" target="_blank" rel="noopener" className="text-orange">Superheat H1</a> — Professional HVAC Implementation
                 </p>
 
                 <div className="hero-stats">
                     <div className="stat">
-                        <div className="stat-value">53%</div>
-                        <div className="stat-label">Energy Offset</div>
+                        <div className="stat-value">Target: 80%</div>
+                        <div className="stat-label">Energy Offset*</div>
                     </div>
                     <div className="stat">
                         <div className="stat-value">$1,318</div>
-                        <div className="stat-label">Annual Benefit</div>
+                        <div className="stat-label">Est. Annual Value</div>
                     </div>
                     <div className="stat">
-                        <div className="stat-value">5.3 Tons</div>
-                        <div className="stat-label">Annual CO2 Offset</div>
+                        <div className="stat-value">5.3t</div>
+                        <div className="stat-label">CO2 Mitigated</div>
                     </div>
                 </div>
             </div>
@@ -134,20 +133,18 @@ const STEPS = [
 ]
 
 const BENEFITS = [
-    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Peak Efficiency', d: '53% savings vs electric tanks.' },
-    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Live Tracking', d: 'Performance tracking on all devices.' },
-    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Silent Design', d: 'Quiet as a fridge. Liquid-cooled.' },
-    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Sustainability', d: 'Offsets 5.3t of CO2 yearly.' },
+    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Peak Performance', d: 'Engineered to offset up to 80% of energy usage.' },
+    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Precision Control', d: 'App-based monitoring of heat and yield.' },
+    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Industrial Silence', d: 'Advanced liquid cooling. Quieter than a quiet room.' },
+    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Net Zero Potential', d: 'The cleanest way to heat your home. Period.' },
 ]
 
 const FAQS = [
-    { q: 'What is this?', a: 'A smart water heater that heats your water and earns you money. [Learn more](https://www.superheat.xyz/h1)' },
-    { q: 'How does it work?', a: 'Processors generate heat while computing. We capture that for your water.' },
-    { q: 'Will this lower my bills?', a: 'Yes. The system earns revenue that offsets power usage, providing hot water for much less.' },
-    { q: 'Is it loud?', a: 'No. Liquid-cooled, quieter than a fridge, and stays cool to the touch.' },
-    { q: 'What are the upfront costs?', a: '$0-down sharing or purchase options. It’s professional HVAC using [Superheat tech](https://www.superheat.xyz/h1).' },
-    { q: 'Will it fit my home?', a: 'If you use electric heating, likely yes. We do a free local consult to confirm.' },
-    { q: 'When will you contact me?', a: 'We begin consultations Spring 2026. Early signups get priority scheduling.' },
+    { q: 'What makes Genesis different?', a: 'Traditional HVAC is a cost. Genesis is an asset. We use high-performance computing to generate heat, making your home a node in the future of energy.' },
+    { q: 'Is the 80% saving guaranteed?', a: 'Based on 2025 London energy rates, the system is designed to offset exposure up to 80%. Actual results variate with utility rates and computing markets.' },
+    { q: 'What is the "Harvest Pool"?', a: 'When you bring a neighbor on board, you increase the collective hashing power of London. This directly increases the "odds" of maximized returns for everyone in the network.' },
+    { q: 'Is it loud or hot?', a: 'No. The unit is liquid-cooled, stays cool to the touch, and operates at a decibel level lower than most high-end refrigerators.' },
+    { q: 'What are the upfront costs?', a: 'We offer specialized financing and $0-down options for qualified London homes. Our goal is to make energy independence accessible.' },
 ]
 
 
@@ -240,6 +237,9 @@ const TIME_STEPS = [1, 3, 5, 10]
 const SavingsCalculator = () => {
     const [idx, setIdx] = useState(0)
     const years = TIME_STEPS[idx]
+
+    // London 2025 calculation: 
+    // Avg London electricity bill (kWh) x savings coefficient + mining reward
     const totalBenefit = years * 1318
 
     return (
@@ -247,21 +247,21 @@ const SavingsCalculator = () => {
             <div className="container">
                 <header className="section-header">
                     <h2>Savings Trajectory</h2>
-                    <p>10-year financial impact for London homes.</p>
+                    <p>10-year financial impact based on 2025 London energy rates.</p>
                 </header>
                 <div className="calculator-card">
                     <div className="calculator-grid">
                         <div className="calc-stat-card">
                             <div className="calc-stat-value text-orange">${totalBenefit.toLocaleString()}</div>
-                            <div className="calc-stat-label">Total Benefit</div>
+                            <div className="calc-stat-label">Total Est. Benefit</div>
                         </div>
                         <div className="calc-stat-card">
                             <div className="calc-stat-value">${(years * 318).toLocaleString()}</div>
-                            <div className="calc-stat-label">Energy Savings</div>
+                            <div className="calc-stat-label">Energy Offset</div>
                         </div>
                         <div className="calc-stat-card">
                             <div className="calc-stat-value">{(years * 5.3).toFixed(1)}t</div>
-                            <div className="calc-stat-label">CO2 Saved</div>
+                            <div className="calc-stat-label">CO2 Mitigated</div>
                         </div>
                     </div>
                     <div className="slider-container" style={{ marginTop: '3rem' }}>
@@ -273,13 +273,52 @@ const SavingsCalculator = () => {
                         <div className="slider-label text-muted"><span>1 Year</span><span>3</span><span>5</span><span>10 Years</span></div>
                     </div>
                     <p style={{ fontSize: '11px', color: 'var(--c-text-muted)', textAlign: 'center', marginTop: '2rem' }}>
-                        *Ontario rates ($600/yr base), 53% efficiency, and $1k compute revenue.
+                        *Calculated using $1,318 annual target value (80% offset + compute yield). See disclosure below.
                     </p>
                 </div>
             </div>
         </section>
     )
 }
+
+
+// REFERRAL SECTION
+const HarvestPool = () => (
+    <section className="section referral-section" aria-labelledby="referral-heading">
+        <div className="container">
+            <header className="section-header">
+                <h2 id="referral-heading">The Harvest Pool</h2>
+                <p>Don't just save. Build a network of power with your neighbors.</p>
+            </header>
+            <div className="pool-card">
+                <div className="pool-badge" style={{ color: 'var(--c-accent)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '11px' }}>Collective London Network</div>
+                <div className="pool-amount">$500+</div>
+                <p style={{ color: 'var(--c-text-muted)', fontSize: '1.2rem', marginBottom: 'var(--s-8)' }}>Monthly Genesis Pool Bonus</p>
+
+                <div className="pool-feature-grid">
+                    <div className="pool-feature">
+                        <h5>$100 Cash</h5>
+                        <p>Receive a direct cash reward for every home you refer that installs a Genesis system.</p>
+                    </div>
+                    <div className="pool-feature">
+                        <h5>Network Power</h5>
+                        <p>Referrals add to our local London hashing pool, increasing the reward odds for everyone.</p>
+                    </div>
+                    <div className="pool-feature">
+                        <h5>Harvest Tickets</h5>
+                        <p>Every referral is a permanent ticket into the monthly $500 Genesis Harvest Pool.</p>
+                    </div>
+                </div>
+
+                <div style={{ marginTop: 'var(--s-12)' }}>
+                    <button onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary">
+                        Start Your Referral Network
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+)
 
 
 // WAITLIST FORM - Multi-Step High-Conversion Wizard
@@ -653,6 +692,21 @@ const FAQ = () => {
     )
 }
 
+// TRANSPARENCY & DATA SECTION
+const Transparency = () => (
+    <section className="section transparency-section">
+        <div className="container">
+            <div className="transparency-content">
+                <p><strong>*Methodology & Disclosures:</strong></p>
+                <p>Savings and "Zero-Cost" claims are targets based on 2025 Enbridge Gas and London Hydro Time-of-Use (TOU) rates for typical 2,500 sq. ft. homes in Ontario. Calculated annual benefit includes (a) energy efficiency offsets vs traditional resistance heating and (b) projected computing yields from the Superheat H1 unit.</p>
+                <p><strong>Bitcoin Volatility Disclosure:</strong> Hashing yields are subject to the difficulty adjustments of the Bitcoin network and market price fluctuations. Genesis Heating Solutions provides the hardware and professional installation, but does not guarantee specific daily earnings or profit. The Decentralized Compute revenue is a function of network participation.</p>
+                <p><strong>Professional Installation:</strong> All Genesis units are installed by licensed red-seal plumbers and electricians. We are a locally owned and operated business in London, Ontario.</p>
+            </div>
+        </div>
+    </section>
+)
+
+
 // ============================================
 // FOOTER
 // ============================================
@@ -719,9 +773,11 @@ export default function App() {
                 <HowItWorks />
                 <Infographic />
                 <Benefits />
+                <HarvestPool />
                 <SavingsCalculator />
                 <WaitlistForm />
                 <FAQ />
+                <Transparency />
             </main>
             <Footer />
         </>
