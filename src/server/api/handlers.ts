@@ -60,12 +60,12 @@ export async function handleWaitlistSignup(
 ): Promise<{ response: ApiResponse<{ id: string; position: number }>; status: number }> {
     // Initialize service
     const waitlistService = getWaitlistService({
-        baseUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://genesisheatingsolutions.com',
+        baseUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://genesisheatingsolutions.ca',
         enableSecurityChecks: process.env.NODE_ENV === 'production',
         email: process.env.RESEND_API_KEY ? {
             provider: 'resend',
             apiKey: process.env.RESEND_API_KEY,
-            fromEmail: 'hello@genesisheatingsolutions.com',
+            fromEmail: 'hello@genesisheatingsolutions.ca',
             fromName: 'Genesis Heating',
         } : undefined,
         integrations: {

@@ -674,9 +674,9 @@ const Footer = () => {
                 </div>
 
                 <nav className="footer-links">
-                    <a href="https://www.termsfeed.com/live/b3e1f7d4-8e1a-4f1a-9f1a-8e1a4f1a9f1a" target="_blank" rel="noopener">Privacy Policy</a>
-                    <a href="https://www.termsfeed.com/live/a2d1e6c3-7d0b-3e0b-8e0b-7d0b3e0b8e0b" target="_blank" rel="noopener">Terms of Service</a>
-                    <a href="mailto:hello@genesisheating.ca">Contact</a>
+                    <a href="/privacy.html" target="_blank">Privacy Policy</a>
+                    <a href="/terms.html" target="_blank">Terms of Service</a>
+                    <a href="mailto:genesisheatingsolutions@gmail.com">Contact</a>
                 </nav>
 
                 <p className="footer-copyright">
