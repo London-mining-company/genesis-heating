@@ -22,6 +22,7 @@ export interface WaitlistRequest {
     phone?: string;
     postal_code?: string;
     property_type?: 'home' | 'business';
+    monthly_heating_cost?: number;
     consent?: 'yes' | 'no';
     [key: string]: any;
 }
@@ -87,12 +88,13 @@ export async function handleWaitlistSignup(
             phone: request.phone || '',
             postal_code: request.postal_code || '',
             property_type: request.property_type || 'home',
+            monthly_heating_cost: request.monthly_heating_cost || 0,
             consent: request.consent || 'no',
             utm_source: request.utm_source || '',
             utm_medium: request.utm_medium || '',
             utm_campaign: request.utm_campaign || '',
             referrer: request.referrer || '',
-            source: 'genesis_website_v3'
+            source: request.source || 'genesis_uplink_v9'
         };
 
         const res = await fetch(webhookUrl, {
