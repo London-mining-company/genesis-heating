@@ -152,7 +152,7 @@ const Infographic = () => (
                 <div className="info-card featured reveal">
                     <Icon p="M13 2L3 14h9l-1 8 10-12h-9" />
                     <p className="calc-label">Annual Credit</p>
-                    <div className="info-value">$1,318</div>
+                    <div className="info-value">$1,000</div>
                     <p className="text-dim">per Superheat Unit</p>
                 </div>
                 <div className="info-arrow">→</div>
@@ -171,7 +171,7 @@ const TIME_STEPS = [1, 3, 5, 10]
 const SavingsCalculator = () => {
     const [idx, setIdx] = useState(0)
     const years = TIME_STEPS[idx]
-    const totalBenefit = years * 1318
+    const totalBenefit = years * 1000
 
     return (
         <div className="reveal">
@@ -363,7 +363,7 @@ const WaitlistForm = () => {
                         <div className="form-group" style={{ marginTop: '2.5rem' }}>
                             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1rem' }}>
                                 <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '20px', height: '20px', marginTop: '2px', cursor: 'pointer', appearance: 'auto' }} />
-                                <span style={{ fontSize: '13px', lineHeight: '1.5' }} className="text-dim">I’d like to join the waitlist and have Genesis reach out about Superheat technology.</span>
+                                <span style={{ fontSize: '13px', lineHeight: '1.5' }} className="text-dim">I agree to be contacted about Superheat installation.</span>
                             </div>
                             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                                 <input type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '20px', height: '20px', marginTop: '2px', cursor: 'pointer', appearance: 'auto' }} />
