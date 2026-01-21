@@ -55,14 +55,14 @@ html {
 }
 
 body {
-  font-family: var(--f-family);
+  font-family: var(--f-sans);
   background: var(--c-bg);
   color: var(--c-text);
   line-height: 1.7;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  background-image: radial-gradient(circle at 50% -10%, rgba(255, 85, 0, 0.02), transparent 50%);
+  background-image: radial-gradient(circle at 50% -10%, rgba(255, 92, 0, 0.03), transparent 60%);
 }
 
 img,
@@ -298,13 +298,14 @@ h2 {
 }
 
 .hero-subtitle {
-  font-size: 1.125rem;
-  line-height: 1.5;
-  max-width: 600px;
-  margin: 0 auto 3.5rem;
-  color: #fff;
-  font-weight: 700;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.8);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
+  letter-spacing: -0.01em;
 }
 
 /* Buttons */
@@ -538,13 +539,15 @@ h2 {
 
 /* Form - High Integrity */
 .form-card {
-  background: var(--c-card);
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--c-border);
   border-radius: 32px;
   padding: 2.5rem;
   max-width: 500px;
   margin: 0 auto;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   position: relative;
   z-index: 10;
 }
@@ -614,7 +617,13 @@ h2 {
 
 .prop-type-card.active {
   border-color: var(--c-accent);
-  background: rgba(255, 85, 0, 0.05);
+  background: rgba(255, 92, 0, 0.08);
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.1);
+}
+
+.prop-type-card:hover:not(.active) {
+  border-color: var(--c-border-strong);
+  background: var(--c-card-hover);
 }
 
 /* FAQ */

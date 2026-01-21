@@ -288,7 +288,7 @@ const WaitlistForm = () => {
         <div className="form-card" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>👋</div>
             <h2 style={{ marginBottom: '1rem' }}>You’re on the list.</h2>
-            <p className="text-dim" style={{ marginBottom: '2rem' }}>We’ve received your details. A local representative will reach out shortly to talk about your home’s setup.</p>
+            <p className="text-dim" style={{ marginBottom: '2rem' }}>We've received your details. A local technician will be in touch to discuss your home.</p>
             <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid var(--c-border)' }}>
                 <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>The Network Effect</p>
                 <p className="text-dim" style={{ fontSize: '12px' }}>Refer a neighbor to accelerate local deployment. Community growth unlocks unique rewards and speeds up the rollout.</p>
@@ -336,7 +336,7 @@ const WaitlistForm = () => {
                                 <input name="postalCode" className="form-input" placeholder="Postal Code" value={formData.postalCode} onChange={handleChange} />
                             </div>
                         </div>
-                        <button type="button" onClick={() => setStep(2)} className="btn btn-primary" style={{ width: '100%', marginTop: '1.5rem' }}>Next Phase →</button>
+                        <button type="button" onClick={() => setStep(2)} className="btn btn-primary" style={{ width: '100%', marginTop: '1.5rem' }}>Continue →</button>
                     </div>
                 ) : (
                     <div className="reveal reveal-active">
@@ -371,9 +371,9 @@ const WaitlistForm = () => {
                             </div>
                             {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.75rem' }}>{errors.privacyAccepted}</p>}
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '2.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Verifying...' : 'Join Waitlist'}</button>
+                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '2.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Join the Waitlist'}</button>
                         <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '11px', opacity: 0.5 }}>Network priority is given to connected neighborhood clusters.</p>
-                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '1.5rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="text-dim">← Edit Info</button>
+                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '1.5rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="text-dim">← Back</button>
                     </div>
                 )}
             </form>
