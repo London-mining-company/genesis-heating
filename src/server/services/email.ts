@@ -33,6 +33,7 @@ export interface EmailOptions {
 export interface EmailResult {
   success: boolean
   messageId?: string
+  contactId?: string // For Resend Audience
   error?: string
 }
 
@@ -285,6 +286,46 @@ export async function sendEmail(config: EmailConfig, options: EmailOptions): Pro
       return sendWithSendGrid(config, options)
     default:
       return { success: false, error: `Provider ${config.provider} not implemented` }
+  }
+}
+
+/**
+ * Add contact to Resend Audience (Free storage mechanism)
+ */
+export async function addResendContact(
+  apiKey: string,
+  audienceId: string,
+  contact: {
+    email: string
+    firstName?: string
+    lastName?: string
+    metadata?: Record<string, string | number | boolean>
+  }
+): Promise<EmailResult> {
+  try {
+    const response = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: contact.email,
+        first_name: contact.firstName,
+        last_name: contact.lastName,
+        unsubscribed: false,
+      }),
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      return { success: false, error: error.message || 'Failed to add contact' }
+    }
+
+    const data = await response.json()
+    return { success: true, contactId: data.id }
+  } catch (error) {
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
   }
 }
 

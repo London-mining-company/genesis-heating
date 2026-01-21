@@ -12,6 +12,7 @@ import {
 } from '../security/middleware';
 import { getWaitlistService } from '../services/waitlist';
 import { AirtableService } from '../services/airtable';
+import { addResendContact } from '../services/email';
 
 // ============================================
 // TYPES
@@ -78,50 +79,120 @@ export async function handleWaitlistSignup(
         }
     });
 
-    // Delegate to service layer
-    let result;
+    // 1. Initial State & Logging
+    console.log(`[LeadCapture] Processing signup for ${request.email}`);
+    const results = { supabase: false, airtable: false, webhook: false };
+    let leadId = 'alt_' + Date.now();
+    let leadPosition = 0;
+
+    // 2. Delegate to primary service (Supabase)
     try {
-        result = await waitlistService.signup(request as any, headers);
+        const result = await waitlistService.signup(request as any, headers);
+        if (result.success) {
+            results.supabase = true;
+            leadId = result.data?.id || leadId;
+            leadPosition = result.data?.position || 0;
+            console.log(`[Supabase] Success: ${leadId}`);
+        } else if (result.error && ['RATE_LIMITED', 'INVALID_EMAIL', 'INVALID_POSTAL_CODE', 'PRIVACY_REQUIRED'].includes(result.error.code)) {
+            // High-priority validation/security errors
+            console.warn(`[Waitlist] Blocked: ${result.error.code}`);
+            return {
+                response: { success: false, error: result.error },
+                status: result.error.code === 'RATE_LIMITED' ? 429 : 400
+            };
+        }
     } catch (err) {
-        console.error('[Waitlist] Service signup failed:', err);
-        // Fallback to Airtable only if database fails
-        result = { success: false, error: { code: 'DATABASE_ERROR', message: 'DB Error' } };
+        console.error('[Supabase] Fatal failure:', err);
     }
 
-    // Even if Supabase fails, we still want to try Airtable if it's a primary channel
-    await AirtableService.createLead({
-        email: request.email,
-        name: request.name || 'Anonymous',
-        phoneNumber: request.phoneNumber || request.phone || 'N/A',
-        postalCode: request.postalCode || 'N/A',
-        propertyType: request.propertyType || 'residential',
-        monthlyHeatingCost: request.monthlyHeatingCost || 0,
-        marketingConsent: !!request.marketingConsent,
-        source: request.utmSource || 'Organic'
-    }).catch(err => console.error('[Airtable] Background sync failed:', err));
+    // 3. Fallback/Sync to Airtable (Industry Standard)
+    try {
+        const airtableSuccess = await AirtableService.createLead({
+            email: request.email,
+            name: request.name || 'Anonymous',
+            phoneNumber: request.phoneNumber || request.phone || 'N/A',
+            postalCode: request.postalCode || 'N/A',
+            propertyType: request.propertyType || 'residential',
+            monthlyHeatingCost: request.monthlyHeatingCost || 0,
+            marketingConsent: !!request.marketingConsent,
+            source: request.utmSource || request.referralSource || 'Organic'
+        });
+        results.airtable = airtableSuccess;
+        if (airtableSuccess) console.log('[Airtable] Success');
+    } catch (err) {
+        console.error('[Airtable] Fatal failure:', err);
+    }
 
-    // If result was successful or if Airtable worked, we return success to user
-    if (result.success) {
+    // 4. Best Practice Storage: Resend Audience (Free & Secure)
+    if (process.env.RESEND_API_KEY && process.env.RESEND_AUDIENCE_ID) {
+        try {
+            const resendResult = await addResendContact(
+                process.env.RESEND_API_KEY,
+                process.env.RESEND_AUDIENCE_ID,
+                {
+                    email: request.email,
+                    firstName: request.name?.split(' ')[0] || 'Subscriber',
+                    lastName: request.name?.split(' ').slice(1).join(' ') || '',
+                }
+            );
+            results.webhook = resendResult.success; // Reuse result slot for brevity
+            if (resendResult.success) console.log('[Resend] Contact stored');
+        } catch (err) {
+            console.error('[Resend] Fatal failure:', err);
+        }
+    }
+
+    // 5. Automation Trigger (Webhook for Zapier/Make)
+    if (process.env.AUTOMATION_WEBHOOK_URL) {
+        try {
+            const webhookRes = await fetch(process.env.AUTOMATION_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: 'waitlist_signup',
+                    timestamp: new Date().toISOString(),
+                    lead: {
+                        id: leadId,
+                        email: request.email,
+                        name: request.name,
+                        phone: request.phoneNumber || request.phone,
+                        postalCode: request.postalCode,
+                        propertyType: request.propertyType,
+                        monthlyHeatingCost: request.monthlyHeatingCost,
+                        source: request.utmSource || 'Organic',
+                        priority: leadPosition
+                    }
+                })
+            });
+            results.webhook = webhookRes.ok;
+            if (webhookRes.ok) console.log('[Webhook] Success');
+        } catch (err) {
+            console.error('[Webhook] Fatal failure:', err);
+        }
+    }
+
+    // 6. Final Response Decision
+    // If ANY system succeeded, we count it as a success for the user
+    const overallSuccess = results.supabase || results.airtable || results.webhook;
+
+    if (overallSuccess) {
         return {
             response: {
                 success: true,
-                data: result.data ? {
-                    id: result.data.id,
-                    position: result.data.position
-                } : undefined
+                data: { id: leadId, position: leadPosition }
             },
             status: 201
         };
     }
 
-    // If we reach here, Supabase failed. Let's return success if we at least reached the handler, 
-    // effectively making Supabase an "enhancement" rather than a blocker.
+    // Comprehensive Failure
+    console.error('[LeadCapture] Complete system failure for lead:', request.email);
     return {
         response: {
-            success: true,
-            data: { id: 'alt_' + Date.now(), position: 0 } as any
+            success: false,
+            error: { code: 'SERVER_ERROR', message: 'The collection service is temporarily unavailable. Please try again soon.' }
         },
-        status: 201
+        status: 500
     };
 }
 

@@ -324,9 +324,9 @@ export class WaitlistService {
 
         // High heating costs = more motivated
         if (input.monthlyHeatingCost) {
-            if (input.monthlyHeatingCost > 50000) score += 25 // >$500/month
-            else if (input.monthlyHeatingCost > 30000) score += 15 // >$300/month
-            else if (input.monthlyHeatingCost > 15000) score += 10 // >$150/month
+            if (input.monthlyHeatingCost > 500) score += 25 // >$500/month
+            else if (input.monthlyHeatingCost > 300) score += 15 // >$300/month
+            else if (input.monthlyHeatingCost > 150) score += 10 // >$150/month
         }
 
         // Marketing consent (engaged user)
@@ -443,11 +443,11 @@ export class WaitlistService {
 let serviceInstance: WaitlistService | null = null
 
 export function getWaitlistService(config?: ServiceConfig): WaitlistService {
-    if (!serviceInstance && config) {
+    if (config) {
         serviceInstance = new WaitlistService(config)
     }
-    if (!serviceInstance) {
+    if (!serviceInstance && !config) {
         throw new Error('WaitlistService not initialized. Please provide config.')
     }
-    return serviceInstance
+    return serviceInstance!
 }

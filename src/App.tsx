@@ -60,10 +60,10 @@ const Hero = () => (
         <div className="container hero-content">
             <div className="hero-badge">
                 <span className="hero-badge-dot" aria-hidden="true"></span>
-                <span>10-Year Hardware Performance Guarantee</span>
+                <span>Turning Energy Waste Into Wealth</span>
             </div>
-            <h1 id="h-h">Warm water. <span className="text-orange">Warm wallet.</span></h1>
-            <p className="hero-subtitle">Heater that pays you back. 2026 London.</p>
+            <h1 id="h-h">Warm water. <span className="text-orange">Monthly income.</span></h1>
+            <p className="hero-subtitle">Stop paying for heat that just disappears. We turn your water heater into an income source.</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                 <button onClick={() => sTo('waitlist')} className="btn btn-primary btn-lg shadow-glow">Join</button>
                 <a href="#how-it-works" className="btn btn-secondary btn-lg">How It Works</a>
@@ -86,26 +86,27 @@ const Hero = () => (
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24"><path d={p} /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Compute', d: 'Processors run tasks. Heat is a byproduct.' },
-    { n: 2, t: 'Capture', d: 'Heat warms water. Energy dual-purpose.' },
-    { n: 3, t: 'Earn', d: 'Preferred payout for all yields.' },
+    { n: 1, t: 'Process', d: 'The unit performs computing work (Bitcoin mining).' },
+    { n: 2, t: 'Capture', d: 'We capture the heat from that work to warm your water.' },
+    { n: 3, t: 'Earn', d: 'You get paid for the computing. Your water bill drops.' },
 ]
 
 const BENEFITS = [
-    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Savings', d: '$75/mo avg offset.' },
-    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Track', d: 'Heat, yields, impact.' },
-    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Quiet', d: 'Liquid-cooled.' },
-    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Local', d: 'HVAC pros. Free consult.' },
+    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Income Source', d: 'This water heater pays you. Standard ones just cost you.' },
+    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Dual Purpose', d: 'Use the same electricity twice: once for work, once for heat.' },
+    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Silent', d: 'Liquid-cooled means no fan noise. Just quiet efficiency.' },
+    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Network', d: 'Join a local network of efficiently headed homes.' },
 ]
 
 const FAQS = [
-    { q: 'What is it?', a: 'Smart heater using compute heat. Heats water and your wallet.' },
-    { q: 'Savings?', a: 'Avg. home: ~$900/yr + 3.8t CO₂. Fast ROI for businesses.' },
-    { q: 'Grants?', a: 'Up to $25K (Greener Homes 2026). We help apply.' },
-    { q: 'Install?', a: 'Standard HVAC setup. Red-Seal certified.' },
-    { q: 'Guarantee?', a: '10-year hardware performance guarantee.' },
-    { q: 'Business?', a: 'Commercial fleets see measurable financial upside.' },
+    { q: 'What is "Dual Purpose"?', a: 'Traditional heaters just burn energy to make heat. Superheat units use energy to process data (generating revenue) and use the heat from that processor to warm your water. We don\'t waste the byproduct.' },
+    { q: 'Is this just a normal water heater?', a: 'It installs like one and acts like one (reliable hot water), but it\'s built with computer servers inside. That\'s how it earns money.' },
+    { q: 'How much money can I make?', a: 'Homeowners typically see up to $1,000/year in combined savings and earnings. It turns a bill you have to pay into money in your pocket.' },
+    { q: 'Commercial & Hotels?', a: 'If you manage many units (like a hotel), you can control them all from one dashboard. It turns a major expense line item into a revenue stream. [Learn more](https://superheat.xyz)' },
+    { q: 'Is it noisy?', a: 'No. It\'s liquid cooled, meaning no loud fans. It runs silent.' },
+    { q: 'Why Bitcoin?', a: 'Bitcoin mining is the most efficient way to convert electricity into money and heat simultaneously, 24/7. It ensures your heat is always subsidized by revenue.' },
 ]
+
 
 
 // HOW IT WORKS SECTION
@@ -263,7 +264,22 @@ const WaitlistForm = () => {
     const [isSuccess, setIsSuccess] = useState(false)
 
     useEffect(() => {
+        // Load persisted data
+        const saved = localStorage.getItem('genesis_form_draft')
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved)
+                setFormData(prev => ({ ...prev, ...parsed }))
+            } catch (e) {
+                console.warn('Failed to load form draft')
+            }
+        }
     }, [])
+
+    useEffect(() => {
+        // Save draft on change
+        localStorage.setItem('genesis_form_draft', JSON.stringify(formData))
+    }, [formData])
 
     const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     const validatePostalCode = (code: string): boolean => !code || /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/.test(code)
@@ -321,16 +337,27 @@ const WaitlistForm = () => {
                 body: JSON.stringify({ ...formData, sid: sessionStorage.getItem('sh_sid') })
             })
 
-            let data;
             const resTxt = await response.text();
-            try { data = JSON.parse(resTxt) } catch { data = { error: { message: response.ok ? 'Invalid response' : `Error ${response.status}: ${resTxt.slice(0, 40)}` } } }
+            let data;
 
-            if (!response.ok) {
-                throw new Error(data.error?.message || 'Submission failed')
+            try {
+                data = JSON.parse(resTxt)
+            } catch {
+                // Detection for dev error (Vite returning HTML instead of JSON)
+                if (resTxt.includes('<!DOCTYPE html>') || response.status === 404) {
+                    throw new Error('API server not found. If developing locally, please use "vercel dev" instead of "npm run dev" to enable waitlist functions.')
+                }
+                data = { error: { message: `Server error (${response.status})` } }
             }
 
+            if (!response.ok) {
+                throw new Error(data.error?.message || `Submission failed (${response.status})`)
+            }
+
+            localStorage.removeItem('genesis_form_draft') // Clear on success
             setIsSuccess(true)
         } catch (err) {
+            console.error('Submission error:', err)
             setErrors(prev => ({
                 ...prev,
                 general: err instanceof Error ? err.message : 'Something went wrong. Please try again.'
