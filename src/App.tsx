@@ -63,7 +63,7 @@ const Hero = () => (
         </div>
         <div className="container hero-content" style={{ zIndex: 10 }}>
             <h1 id="hero-h" className="reveal reveal-active">Heating that makes <span className="text-orange">cents.</span></h1>
-            <p className="hero-subtitle reveal reveal-active">We install Superheat units in London. You get hot water; the system earns credits. It’s a direct response to rising utility costs.</p>
+            <p className="hero-subtitle reveal reveal-active">You get hot water; the system earns credits. It’s a direct response to rising utility costs.</p>
             <div className="btn-row reveal reveal-active">
                 <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
             </div>
