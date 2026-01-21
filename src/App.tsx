@@ -291,7 +291,7 @@ const WaitlistForm = () => {
             <p className="text-dim" style={{ marginBottom: '2rem' }}>We’ve received your details. A local representative will reach out shortly to talk about your home’s setup.</p>
             <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid var(--c-border)' }}>
                 <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>The Network Effect</p>
-                <p className="text-dim" style={{ fontSize: '12px' }}>Refer a neighbor to accelerate local deployment. Community growth unlocks unique rewards and speeds up the Spring 2026 Batch rollout.</p>
+                <p className="text-dim" style={{ fontSize: '12px' }}>Refer a neighbor to accelerate local deployment. Community growth unlocks unique rewards and speeds up the rollout.</p>
             </div>
         </div>
     )
