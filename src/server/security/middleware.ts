@@ -9,7 +9,7 @@
  */
 
 import crypto from 'node:crypto';
-import { getConfig } from '../db/config';
+// Config removed, using inline constants
 
 // ============================================
 // CSRF PROTECTION
@@ -24,10 +24,12 @@ const csrfTokens = new Map<string, { token: string; expires: number }>();
 export function generateCsrfToken(sessionId: string): string {
     const token = crypto.randomBytes(CSRF_TOKEN_LENGTH).toString('hex');
 
-    const config = getConfig();
+    // Default: 1 hour expiry
+    const CSRF_EXPIRY = 3600 * 1000;
+
     csrfTokens.set(sessionId, {
         token,
-        expires: Date.now() + config.security.csrfTokenExpiry,
+        expires: Date.now() + CSRF_EXPIRY,
     });
 
     return token;

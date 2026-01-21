@@ -3,52 +3,78 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- SEO Meta Tags -->
-  <title>Genesis Heating | The Heater That Pays You Back (London, Ontario)</title>
+  <title>Genesis Heating Solutions | Forest City Pilot</title>
   <meta name="description"
-    content="Meet Genesis: The Bitcoin-powered water heater that wipes out your heating bill. Now launching in London, Ontario. Join the revolution." />
-  <meta name="keywords"
-    content="bitcoin water heater, crypto mining heating, london ontario heating, free hot water, net zero home, genesis heating, genesis miner" />
-  <meta name="author" content="Genesis Heating Solutions" />
-  <meta name="robots" content="index, follow" />
+    content="Professional hot water systems in London, ON that pay for themselves using secure computing tasks. Join the 2026 pilot program." />
 
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genesisheatingsolutions.com/" />
-  <meta property="og:title" content="Genesis Heating | Heat. Hot Water. Zero Bills." />
-  <meta property="og:description"
-    content="Turn your basement into a profit center. The world's first computing furnace is coming to London." />
-  <meta property="og:image" content="/og-image.png" />
-  <meta property="og:locale" content="en_CA" />
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VJ1EYD4QB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-6VJ1EYD4QB');
+  </script>
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Genesis Heating | The Heater That Pays You Back" />
-  <meta name="twitter:description"
-    content="Stop paying for heat. Start mining it. Launching Spring 2026 in London, Ontario." />
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1371750064632137');
+    fbq('track', 'PageView');
+  </script>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://genesisheatingsolutions.com/" />
-
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Minimal Google Font (only weights we need) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Theme Color -->
-  <meta name="theme-color" content="#000000" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1371750064632137&ev=PageView&noscript=1" />
+  </noscript>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Genesis Heating Solutions",
+        "image": "https://www.genesisheatingsolutions.ca/genesis-brand.jpg",
+        "description": "Innovative hot water solutions in London, ON.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 42.9849,
+          "longitude": -81.2453
+        },
+        "url": "https://www.genesisheatingsolutions.ca",
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61586813584409"
+        ]
+      }
+    </script>
 </body>
 
 </html>

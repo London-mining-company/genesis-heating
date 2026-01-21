@@ -10,8 +10,7 @@
  * @author Genesis Heating Engineering
  */
 
-import { getSupabaseClient, WaitlistSubscriber } from '../db/client'
-import { sendVerificationEmail, sendWelcomeEmail, EmailConfig } from './email'
+import { sendVerificationEmail, EmailConfig } from './email'
 import { notifyAllIntegrations, IntegrationConfig } from '../../lib/integrations'
 import {
     performSecurityCheck,
@@ -19,8 +18,6 @@ import {
 } from '../security/enhanced'
 import {
     sanitizeEmail,
-    sanitizeText,
-    sanitizePhone,
     isValidEmail,
     isValidCanadianPostalCode,
     isInServiceArea,
@@ -85,7 +82,6 @@ export interface ServiceConfig {
 
 export class WaitlistService {
     private config: ServiceConfig
-    private db = getSupabaseClient()
 
     constructor(config: ServiceConfig) {
         this.config = config
@@ -191,76 +187,12 @@ export class WaitlistService {
             inServiceArea = isInServiceArea(postalCode)
         }
 
-        // 6. Check for existing subscriber (if DB is available)
-        if (this.db) {
-            const existing = await this.db.getSubscriberByEmail(email)
-            if (existing.data && existing.data.length > 0) {
-                // Don't reveal if email exists (privacy)
-                return {
-                    success: true,
-                    data: { id: 'existing', position: 0, emailSent: false },
-                }
-            }
-        }
+        // 6. DB Check Removed: We rely on Airtable/Resend uniqueness or just accept dupes for now (fail-open)
 
         // 7. Calculate priority score
         const priorityScore = this.calculatePriorityScore(input, inServiceArea)
-
-        // 8. Create subscriber
-        const subscriberData: Partial<WaitlistSubscriber> = {
-            email,
-            name: input.name ? sanitizeText(input.name) : undefined,
-            phone: input.phone ? sanitizePhone(input.phone) : undefined,
-            postal_code: postalCode,
-            property_type: input.propertyType,
-            current_heating: input.currentHeating ? sanitizeText(input.currentHeating) : undefined,
-            monthly_heating_cost: input.monthlyHeatingCost,
-            interested_in_beta: input.interestedInBeta || false,
-            marketing_consent: input.marketingConsent || false,
-            marketing_consent_at: input.marketingConsent ? new Date().toISOString() : undefined,
-            privacy_accepted: true,
-            privacy_accepted_at: new Date().toISOString(),
-            priority_score: priorityScore,
-            ip_address: clientIp,
-            user_agent: headers['user-agent'],
-            referrer_url: headers['referer'],
-            utm_source: input.utmSource ? sanitizeText(input.utmSource) : undefined,
-            utm_medium: input.utmMedium ? sanitizeText(input.utmMedium) : undefined,
-            utm_campaign: input.utmCampaign ? sanitizeText(input.utmCampaign) : undefined,
-            utm_content: input.utmContent ? sanitizeText(input.utmContent) : undefined,
-            utm_term: input.utmTerm ? sanitizeText(input.utmTerm) : undefined,
-            referral_source: input.referralSource ? sanitizeText(input.referralSource) : undefined,
-            status: 'pending',
-        }
-
-        let subscriberId = 'alt_' + Date.now();
-        let verificationToken = '';
-
-        if (this.db) {
-            const result = await this.db.createSubscriber(subscriberData)
-
-            if (result.error || !result.data) {
-                console.error('Database error:', result.error)
-                return {
-                    success: false,
-                    error: {
-                        code: 'SERVER_ERROR',
-                        message: 'Something went wrong. Please try again.',
-                    },
-                }
-            }
-            subscriberId = result.data.id;
-            verificationToken = result.data.verification_token || '';
-        }
-
-        // 9. Track funnel event
-        if (this.db) {
-            await this.db.trackFunnelEvent({
-                session_id: headers['x-session-id'] || 'unknown',
-                subscriber_id: subscriberId,
-                stage: 'form_success',
-            }).catch(() => { });
-        }
+        const subscriberId = 'lead_' + Date.now() + Math.random().toString(36).substring(7)
+        const verificationToken = '' // Token generation moved to DB usually, skipping for now
 
         // 10. Send verification email (non-blocking)
         let emailSent = false
@@ -341,80 +273,6 @@ export class WaitlistService {
     /**
      * Verify email address
      */
-    async verifyEmail(token: string): Promise<SignupResult> {
-        if (!token || token.length !== 36) {
-            return {
-                success: false,
-                error: {
-                    code: 'INVALID_TOKEN',
-                    message: 'Invalid verification link.',
-                },
-            }
-        }
-
-        if (!this.db) {
-            return {
-                success: false,
-                error: { code: 'VERIFICATION_DISABLED', message: 'Verification is currently disabled.' }
-            }
-        }
-
-        const result = await this.db.verifySubscriber(token)
-
-        if (result.error || !result.data) {
-            return {
-                success: false,
-                error: {
-                    code: 'VERIFICATION_FAILED',
-                    message: 'Verification link expired or invalid.',
-                },
-            }
-        }
-
-        // Send welcome email
-        if (this.config.email) {
-            const position = result.data.priority_score || 0
-            sendWelcomeEmail(
-                this.config.email,
-                result.data.email,
-                result.data.name || '',
-                position
-            ).catch(console.error)
-        }
-
-        // Track verification funnel
-        await this.db.trackFunnelEvent({
-            session_id: result.data.id, // Use subscriber ID as session
-            subscriber_id: result.data.id,
-            stage: 'email_verified',
-        }).catch(() => { })
-
-        // Notify integrations
-        if (this.config.integrations) {
-            notifyAllIntegrations(
-                this.config.integrations,
-                'email_verified',
-                {
-                    email: result.data.email,
-                    name: result.data.name,
-                    subscriberId: result.data.id,
-                }
-            ).catch(console.error)
-        }
-
-        return {
-            success: true,
-            data: {
-                id: result.data.id,
-                position: result.data.priority_score || 0,
-                emailSent: true,
-            },
-        }
-    }
-
-    /**
-     * Get waitlist stats for admin dashboard
-     */
     async getStats(): Promise<{
         total: number
         verified: number
@@ -423,8 +281,7 @@ export class WaitlistService {
         byPropertyType: Record<string, number>
         avgHeatingCost: number
     }> {
-        // This would query the waitlist_stats view
-        // For now, return placeholder
+        // Placeholder - Stats would come from Airtable or Analytics tool
         return {
             total: 0,
             verified: 0,

@@ -1,0 +1,10 @@
+# Genesis Heating Solutions - Web Crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap Location
+Sitemap: https://www.genesisheatingsolutions.ca/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
