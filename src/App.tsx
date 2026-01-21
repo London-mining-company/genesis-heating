@@ -408,10 +408,10 @@ const FAQ = () => {
 const Foot = () => (
     <footer className="footer section">
         <div className="container">
-            <nav className="footer-links" style={{ marginBottom: '3.5rem' }}>
+            <nav className="footer-links" style={{ marginBottom: '2.5rem' }}>
                 <a href="/privacy.html">Privacy</a>
                 <a href="/terms.html">Terms</a>
-                <a href="mailto:genesisheatingsolutions@gmail.com">Uplink</a>
+                <a href="mailto:genesisheatingsolutions@gmail.com">Contact Us</a>
                 <a href="https://superheat.xyz" target="_blank" rel="noopener" style={{ color: 'var(--c-accent)' }}>Tech by Superheat</a>
             </nav>
             <div className="footer-social">
