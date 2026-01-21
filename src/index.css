@@ -808,3 +808,90 @@ h2 {
 .footer-links a:hover {
   color: var(--c-accent);
 }
+
+/* Enhanced Header - Logo Sizing & Padding */
+.header-inner {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.logo-img {
+  height: 72px;
+  /* Larger logo on full header */
+}
+
+.header.s .header-inner {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.header.s .logo-img {
+  height: 36px;
+  /* Compact when scrolled */
+}
+
+/* Communities Section - Elevated Visibility */
+.communities-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 92, 0, 0.06), rgba(255, 92, 0, 0.02));
+  border: 1px solid rgba(255, 92, 0, 0.15);
+}
+
+.communities-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--c-text);
+  letter-spacing: -0.02em;
+}
+
+.communities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  opacity: 1;
+  justify-content: flex-start;
+}
+
+.community-chip {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--c-text);
+  transition: var(--t-base);
+}
+
+.community-chip:hover {
+  background: rgba(255, 92, 0, 0.1);
+  border-color: var(--c-accent);
+}
+
+.communities-note {
+  font-size: 0.75rem;
+  color: var(--c-text-dim);
+  opacity: 0.7;
+}
+
+/* Footer - Superheat Link */
+.footer-superheat {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--c-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  transition: var(--t-base);
+  text-decoration: none;
+}
+
+.footer-superheat:hover {
+  opacity: 1;
+}
