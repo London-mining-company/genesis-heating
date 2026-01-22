@@ -46,7 +46,7 @@ export const emailTemplates = {
    * Verification email template
    */
   verification: (name: string, verifyUrl: string): { subject: string; html: string; text: string } => ({
-    subject: 'Verify your Genesis waitlist spot',
+    subject: 'Verify your Genesis Heating Solutions waitlist spot',
     html: `
 <!DOCTYPE html>
 <html>
@@ -64,7 +64,7 @@ export const emailTemplates = {
           <!-- Header -->
           <tr>
             <td align="center" style="padding:40px 40px 20px;">
-              <img src="https://genesisheating.ca/genesis-logo.jpg" alt="Genesis Heating" width="150" style="display:block;">
+              <img src="https://genesisheating.ca/genesis-logo.jpg" alt="Genesis Heating Solutions" width="150" style="display:block;">
             </td>
           </tr>
           
@@ -73,7 +73,7 @@ export const emailTemplates = {
             <td style="padding:20px 40px;">
               <h1 style="color:#f7931a;font-size:24px;margin:0 0 20px;">Welcome${name ? `, ${name}` : ''}! 🔥</h1>
               <p style="color:#e8e8f0;font-size:16px;line-height:1.6;margin:0 0 20px;">
-                Thank you for joining the Genesis waitlist! You're one step closer to zero-cost heating.
+                Thank you for joining the Genesis Heating Solutions waitlist! You're one step closer to zero-cost heating.
               </p>
               <p style="color:#9898b0;font-size:16px;line-height:1.6;margin:0 0 30px;">
                 Please verify your email to confirm your spot and receive updates about our Spring 2026 launch.
@@ -120,7 +120,7 @@ export const emailTemplates = {
     text: `
 Welcome${name ? `, ${name}` : ''}!
 
-Thank you for joining the Genesis waitlist! You're one step closer to zero-cost heating.
+Thank you for joining the Genesis Heating Solutions waitlist! You're one step closer to zero-cost heating.
 
 Please verify your email to confirm your spot:
 ${verifyUrl}
@@ -137,7 +137,7 @@ London, Ontario, Canada
    * Welcome email (after verification)
    */
   welcome: (name: string, position: number): { subject: string; html: string; text: string } => ({
-    subject: `You're #${position} on the Genesis waitlist!`,
+    subject: `You're #${position} on the Genesis Heating Solutions waitlist!`,
     html: `
 <!DOCTYPE html>
 <html>
@@ -168,7 +168,7 @@ London, Ontario, Canada
               </ul>
               <p style="color:#9898b0;font-size:14px;margin:30px 0 0;">
                 We'll be in touch soon with more details. In the meantime, 
-                <a href="https://genesisheating.ca?ref=email" style="color:#f7931a;">share Genesis</a> 
+                <a href="https://genesisheating.ca?ref=email" style="color:#f7931a;">share Genesis Heating Solutions</a> 
                 with friends to move up the list!
               </p>
             </td>
@@ -190,7 +190,7 @@ London, Ontario, Canada
     text: `
 You're In! 🎉
 
-${name ? `${name}, you're` : "You're"} #${position} on the Genesis waitlist!
+${name ? `${name}, you're` : "You're"} #${position} on the Genesis Heating Solutions waitlist!
 
 We're working hard to bring zero-cost heating to London, Ontario in Spring 2026.
 
