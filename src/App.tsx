@@ -90,7 +90,7 @@ const FAQS = [
     { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks - capturing the heat they produce to warm your water. One watt, two purposes.' },
     { q: 'Who is Genesis Heating Solutions?', a: 'A London-based team with deep roots in HVAC and Bitcoin mining. We bring decades of combined experience to help homeowners turn wasted heat into value - professionally installed, locally supported.' },
     { q: 'What is included in your service?', a: 'Everything. We handle the complex parts: mining pool configuration, wallet setup assistance, professional HVAC installation, permits, and ongoing support. You just enjoy lower heating costs.' },
-    { q: 'How do earnings work?', a: 'The H1 runs 24/7, processing compute workloads. Most customers choose cash-only credits (no Bitcoin exposure). Your monthly credits grow over time as you stay with the program. We handle all the complex mining management - you just see lower utility bills.' },
+    { q: 'How do earnings work?', a: 'The H1 runs continuously, processing compute workloads. Your share of the output depends on your service path: Ownership customers receive 85% immediately, while Managed Service customers start at 25% and grow to 65% over 3 years. Actual amounts vary by electricity rates and compute demand. Credits are paid monthly in CAD.' },
     { q: 'What does it cost?', a: 'We offer two pathways. The Ownership Path allows you to purchase the unit upfront for immediate priority and maximum long-term rewards. Alternatively, our Managed Service Path offers $0 upfront options through a tiered service agreement, where Genesis manages the technical cycle in exchange for a temporary share of monthly rewards.' },
     { q: 'Why Genesis instead of DIY?', a: 'Mining pool optimization, energy-balanced HVAC integration, and secure hardware management require industrial-grade expertise. We provide a professional service agreement that ensures your system stays profitable and your hot water stays constant, without you ever having to touch the technical side.' },
     { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
@@ -141,32 +141,34 @@ const Infographic = () => (
     <section className="section reveal">
         <div className="container">
             <header className="section-header">
-                <h2>The Numbers</h2>
-                <p>Standard electric tank vs. a Superheat H1 in a typical 3-bedroom home.</p>
-                <p style={{ fontSize: '11px', opacity: 0.5, marginTop: '0.5rem' }}>Genesis Heating Solutions is the authorized installer of Superheat technology in Ontario.</p>
+                <h2>What You Get</h2>
+                <p>The Superheat H1 delivers identical hot water performance with measurable utility offsets.</p>
             </header>
             <div className="infographic-container">
                 <div className="info-card reveal">
-                    <Icon p="M12 2L2 7l10 5 10-5zM2 17l10 5 10-5" />
-                    <p className="calc-label">Hot Water</p>
-                    <div className="info-value">24/7</div>
-                    <p className="text-dim">Same as before</p>
-                </div>
-                <div className="info-arrow">→</div>
-                <div className="info-card featured reveal">
-                    <Icon p="M13 2L3 14h9l-1 8 10-12h-9" />
-                    <p className="calc-label">Annual Earnings</p>
-                    <div className="info-value">~$1,500</div>
-                    <p className="text-dim">per unit (CAD)</p>
+                    <Icon p="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <p className="calc-label">Heating Output</p>
+                    <div className="info-value">2.0 kW</div>
+                    <p className="text-dim">23 gal/hr continuous</p>
                 </div>
                 <div className="info-arrow">→</div>
                 <div className="info-card reveal">
-                    <Icon p="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
-                    <p className="calc-label">Net Effect</p>
-                    <div className="info-value">Lower</div>
-                    <p className="text-dim">Effective heating cost</p>
+                    <Icon p="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <p className="calc-label">Hardware Life</p>
+                    <div className="info-value">10 yr</div>
+                    <p className="text-dim">Industrial-grade</p>
+                </div>
+                <div className="info-arrow">→</div>
+                <div className="info-card featured reveal">
+                    <Icon p="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <p className="calc-label">Utility Offset</p>
+                    <div className="info-value">Variable</div>
+                    <p className="text-dim">Depends on service path</p>
                 </div>
             </div>
+            <p style={{ fontSize: '13px', opacity: 0.7, marginTop: '2rem', textAlign: 'center', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                Actual earnings vary by electricity rates, compute demand, and service agreement selected. Conservative estimates: Ownership Path customers receive majority of system output; Managed Service customers receive growing credits over time.
+            </p>
         </div>
     </section>
 )
@@ -175,27 +177,33 @@ const TIME_STEPS = [1, 3, 5, 10]
 const SavingsCalculator = () => {
     const [idx, setIdx] = useState(0)
     const years = TIME_STEPS[idx]
-    const totalBenefit = years * 1500
 
     return (
         <div className="reveal">
             <div className="calculator-card" style={{ width: '100%', padding: '2.5rem' }}>
                 <header className="section-header" style={{ textAlign: 'left', margin: '0 0 2rem' }}>
-                    <h2 style={{ fontSize: '2.25rem' }}>Estimated Savings</h2>
+                    <h2 style={{ fontSize: '2.25rem' }}>The Utility Hedge</h2>
                 </header>
                 <div className="calc-stats" style={{ gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
                     <div>
-                        <div className="calc-val" style={{ fontSize: '2rem' }}>${totalBenefit.toLocaleString()}</div>
-                        <div className="calc-label">Cumulative Earnings</div>
+                        <div className="calc-val" style={{ fontSize: '2rem' }}>{years} yr</div>
+                        <div className="calc-label">Time Horizon</div>
                     </div>
                     <div>
                         <div className="calc-val" style={{ fontSize: '2rem' }}>{(years * 4.2).toFixed(1)}t</div>
                         <div className="calc-label">CO₂ Offset</div>
                     </div>
                 </div>
+                <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: '2rem' }}>
+                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>Your utility credits grow over time.</p>
+                    <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        Ownership Path: Receive the majority of system output immediately (85%).
+                        <br />Managed Service: Start at 25%, grow to 65% by year 3.
+                    </p>
+                </div>
                 <div style={{ marginTop: '2rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', fontSize: '12px' }}>
-                        <span className="text-dim">Time Horizon</span>
+                        <span className="text-dim">Planning Period</span>
                         <span className="text-orange">{years} Year{years > 1 ? 's' : ''}</span>
                     </div>
                     <input type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
