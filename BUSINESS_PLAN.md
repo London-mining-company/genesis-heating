@@ -1,100 +1,61 @@
-# Genesis Heating Solutions: Business Plan (2026-2028)
+# Genesis Heating Solutions: The "London Masterplan" (2026-2028)
 
 ## 1. Executive Summary
-Genesis Heating Solutions is a specialized HVAC service provider based in London, Ontario. We leverage Superheat H1 technology to transform standard household electric water heating into an income-generating asset. By capturing waste heat from high-performance computing (Bitcoin mining), we provide homeowners with a "Net-Zero" heating path, zero technical friction, and local, white-glove support.
-
-**Our Mission:** To turn wasted energy into community value through the "Neighbourhood Effect."
+Genesis Heating Solutions is a high-growth HVAC technology provider in London, Ontario. We specialize in transforming standard utility costs into scalable income streams through energy recycling. By capturing the waste heat of high-performance computing (Superheat H1), we offer homeowners two distinct pathways to a net-zero heating future: total asset ownership or a zero-risk managed service.
 
 ---
 
-## 2. The Market Opportunity
-### Location: London, Ontario
-London is an ideal hub for this technology due to:
-- **Increasing Utility Costs:** Residential electricity rates continue to climb, making utility-hedge technologies highly attractive.
-- **Densely Populated Residential Hubs:** Ideal for concentrated "Neighborhood Pools" which optimize mining efficiency and service routes.
-- **Homegrown Trust:** A market that values local expertise and professional, licensed HVAC installation over remote tech solutions.
+## 2. The Core Innovation: Strategic Balancing
+To ensure immediate cash flow while building long-term equity, we operate a dual-path engine:
+
+### A. The Ownership Path (Cash Flow Fuel)
+- **Target:** Commercial clients and high-intent homeowners.
+- **Model:** $5,250 upfront purchase.
+- **Economics:** Owners receive 85% rewards; Genesis retains 15% service fee.
+- **Impact:** Upfront sales fund the CAPEX for the Managed Path portfolio.
+
+### B. The Managed Path (Scalable Equity)
+- **Target:** Mass-market homeowners.
+- **Model:** $0 down + $250 Service Activation Fee.
+- **Economics:** Tiered share (75% → 50% → 35% Genesis share).
+- **Impact:** Genesis retains hardware ownership, building a high-yield infrastructure portfolio.
 
 ---
 
-## 3. The Value Proposition
-### "Energy Recycling"
-We don't just "mine Bitcoin"—we recycle heat. 
-- **The Efficiency:** Computing generates 100% heat as a byproduct. We use that heat to warm water, effectively using 1 watt of power twice.
-- **The "Hero" Factor:** We solve the two biggest hurdles to adoption—Upfront Cost and Technical Complexity—by offering a managed service that rewards loyalty.
+## 3. Growth: The Neighbourhood Effect
+We reject generic scaling in favour of grassroots density. Our growth is built on localized community pools:
+- **Concentrated Installs:** Clustered route density reduces contractor costs and optimizes mining pool performance.
+- **Neighbourhood Pools:** Postal-code-based incentives that encourage neighbours to sign up together.
+- **The Ethos:** Decentralized value generated on the street where it’s consumed.
 
 ---
 
-## 4. Business Model: Strategic Balancing
-We utilize two distinct revenue streams to ensure immediate cash flow while building long-term scalable equity.
+## 4. Run-Rate Projections (Conservative)
+*Assumes 1 Ownership Sale & 1 Managed Install per month.*
 
-### A. The Ownership Path (Upfront Capital)
-- **Target:** Commercial units and high-intent residential homeowners.
-- **Model:** Customer pays for hardware + installation ($5,250 MSRP).
-- **Incentive:** Owners receive **85% of rewards** immediately (Genesis retains a 15% recurring service fee for pool management and maintenance).
-- **Cash Flow:** This funds the CAPEX for Option B.
+### Year 1: The Seed Phase
+- **Monthly Revenue (Month 12):** ~$15,000+
+- **Cumulative Profit:** $120,000+
+- **Scaling:** Upfront profits from Title A sales cover the $4.5k/unit CAPEX for Title B.
 
-### B. The Managed Path (Service Agreement)
-- **Target:** Mass-market homeowners seeking a zero-risk utility hedge.
-- **Model:** $0 upfront (or $250 Activation Fee); Tiered Revenue Share.
-- **Scaling:** Genesis retains hardware ownership, building a portfolio of yield-generating assets.
-
-| Phase | Duration | Genesis Share | Customer Credit |
-|-------|----------|---------------|-----------------|
-| **I: Recovery** | 0-18 Mo | 75% | 25% |
-| **II: Balanced** | 19-36 Mo | 50% | 50% |
-| **III: Loyalty** | 37+ Mo | 35% | 65% |
+### Year 2: The Infrastructure Phase
+- **Portfolio Size:** 48+ Units
+- **Monthly Residual:** ~$30,000+
+- **Shift:** Recurring revenue from service fees and managing our own hardware begins to dwarf install labor.
 
 ---
 
-## 5. Growth Strategy: The "Neighbourhood Effect"
-We avoid generic "Network Effects" in favour of the **Neighbourhood Effect**. 
-- **Local Consolidation:** By installing clusters of units within specific postal codes (e.g., Old North, Wortley Village), we create efficient service routes and localized mining pool incentives.
-- **Referral Loops:** Neighbours who refer neighbours receive "Bonus Credits" that accelerate their transition to Phase II.
-- **The Ethos:** Growing the hash-rate of the street increases the economic resilience of the community.
+## 5. Operations & Execution
+- **Lean Management:** Single operator using advanced automation (Airtable / Zapier / Vercel).
+- **Expert Delivery:** Partnership with licensed London HVAC chains for per-job professional installation.
+- **Service Standards:** Every install is backed by a "Professional Service Agreement" to ensure hardware health and 24/7 hot water continuity.
 
 ---
 
-## 6. Marketing & Operations
-### Grassroots Marketing
-1. **Neighborhood Signage:** "This Home Recycles Waste Heat."
-2. **Local SEO:** Targeted landing pages for London neighbourhoods.
-3. **Consensus Workshops:** Small local seminars explaining the "Heat-to-Value" cycle.
-
-### Lean Operations
-- **Solo Management:** 1 person handles lead intake (automated via Airtable/Zapier), mining management, and scheduling.
-- **Contracted Installation:** Partnering with licensed London HVAC techs on a per-job basis ($700/install).
-- **Automated CRM:** Lead capture, follow-ups, and credit reporting are fully automated.
+## 6. Vision: The Grid-Scale Utility Hedge
+By 2028, Genesis aims to be the primary provider of distributed thermal-computing in Southwestern Ontario, managing a decentralized fleet of units that offer both heat to the home and stable, CAD-based income to the family.
 
 ---
 
-## 7. Financial Projections (Conservative)
-*Assumes 2 installations per month; $4,500 total Genesis cost per unit; $1,500 CAD gross rewards/month/unit.*
-
-### Year 1: Infrastructure & Breakeven
-- **Total Installs:** 24
-- **Projected CAPEX:** $108,000 (Subsidized by Genesis)
-- **Monthly Run Rate (Month 12):** 
-  - Revenue (75% share of 24 units): **$27,000/mo**
-  - OpEx (Support + Marketing): $2,500/mo
-  - **Net Profit:** $24,500/mo
-- **Breakeven on Unit 1:** Month 4.
-
-### Year 2: Scaling
-- **Total Units at Market Capacity:** 48
-- **Projected Revenue:** ~$45,000/mo (Mixed Phase I & II)
-- **Cumulative Profits:** $350,000+
-
-### Year 3: The Residual Engine
-- Transition to Phase III (35% Share).
-- **Residual Monthly Profit:** $60,000+ (Minimal active management required).
-
----
-
-## 8. Risk Mitigation & Ethics
-- **The "Little Guy" Guarantee:** We handle the complex pool management and hardware upkeep. If the unit doesn't earn, the customer still has hot water; Genesis takes the hardware risk.
-- **Ethical Scaling:** As Bitcoin rewards halving events occur, Genesis adjusts management fees to ensure the homeowner's "utility hedge" remains intact first.
-- **Privacy First:** Dedicated internet lines ensure homeowner data is never touched by the computing unit.
-
----
-
-*This plan is designed for a single operator to achieve high-margin residual income through professional, local execution.*
+**Proprietary Document for Genesis Heating Solutions**  
+*Last Updated: January 21, 2026*
