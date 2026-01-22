@@ -1052,7 +1052,34 @@ h2 {
   transform: scale(1.02);
 }
 
+
 /* Smooth Scrolling */
 html {
   scroll-padding-top: 100px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .sticky-form {
+    position: relative !important;
+    top: 0 !important;
+  }
+
+  .communities-section {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  .hero {
+    min-height: 80vh;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
 }

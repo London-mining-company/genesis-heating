@@ -472,16 +472,14 @@ export default function App() {
                 <Hero />
                 <div className="container split-grid">
                     <div className="reveal">
-                        <div style={{ marginBottom: '4rem' }}>
+                        <div style={{ marginBottom: '2rem' }}>
                             <HowItWorks />
                         </div>
+                        <Communities />
                     </div>
                     <div className="reveal sticky-form" style={{ position: 'sticky', top: '120px' }}>
                         <WaitlistForm />
                     </div>
-                </div>
-                <div className="container">
-                    <Communities />
                 </div>
                 <Infographic />
                 <div className="container savings-split">
