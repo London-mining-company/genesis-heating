@@ -85,9 +85,9 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><path d={p} stroke-linecap="round" stroke-linejoin="round" /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Seamless Integration', d: 'The H1 is designed for widespread parity. It uses standard plumbing networks and fits in the same footprint as your old tank—making the upgrade effortless.' },
-    { n: 2, t: 'Energy Recycling', d: 'We recycle thermal exhaust from high-value computation to heat your water. This is "One Watt, Two Purposes" in action—turning a sunk utility cost into a productive asset.' },
-    { n: 3, t: 'Flexible Payouts', d: 'Convert your system’s computational work into monthly rewards. Choose a standard CAD cheque or digital currency. Your choice, your control—and we assist with the entire process.' },
+    { n: 1, t: 'Seamless Integration', d: 'Standard plumbing. Standard footprint. It fits exactly where your old tank is now—no renovation needed.' },
+    { n: 2, t: 'Energy Recycling', d: 'The system captures heat from processing power and recycles it for your hot water. You stop paying twice for the same energy.' },
+    { n: 3, t: 'Flexible Payouts', d: 'We turn that processing power into regular payments. You choose: a monthly cheque or Bitcoin. Your choice, your control.' },
 ]
 
 const BENEFITS = [
