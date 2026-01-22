@@ -53,23 +53,34 @@ const Header = () => {
     )
 }
 
-const Hero = () => (
-    <section className="hero" aria-labelledby="hero-h">
-        <div className="hero-video">
-            <video autoPlay muted loop playsInline poster="/genesis-brand.jpg">
-                <source src="https://resources.superheat.xyz/website-videos/Herobg.mp4" type="video/mp4" />
-            </video>
-            <div className="video-overlay"></div>
-        </div>
-        <div className="container hero-content" style={{ zIndex: 10 }}>
-            <h1 id="hero-h" className="reveal reveal-active">Heating that makes <span className="text-orange">cents.</span></h1>
-            <p className="hero-subtitle reveal reveal-active">Get the same hot water you expect—while the system earns credits that offset your utility bill.</p>
-            <div className="btn-row reveal reveal-active">
-                <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
+const Hero = () => {
+    const [playing, setPlaying] = useState(false)
+    return (
+        <section className="hero" aria-labelledby="hero-h" style={{ background: 'transparent' }}>
+            <div className={`hero-video ${playing ? 'playing' : ''}`}>
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    onPlay={() => setPlaying(true)}
+                    onLoadedData={() => setPlaying(true)}
+                    preload="auto"
+                >
+                    <source src="https://resources.superheat.xyz/website-videos/Hero_1222.mp4" type="video/mp4" />
+                </video>
+                <div className="video-overlay"></div>
             </div>
-        </div>
-    </section>
-)
+            <div className="container hero-content">
+                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the same hot water you expect—while the system earns rewards that offset your utility bill.</p>
+                <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
+                    <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
+                </div>
+            </div>
+        </section>
+    )
+}
 
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><path d={p} stroke-linecap="round" stroke-linejoin="round" /></svg>
 
