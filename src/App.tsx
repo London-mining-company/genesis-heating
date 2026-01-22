@@ -493,12 +493,11 @@ const Foot = () => (
             </div>
             <p className="footer-copy">© {new Date().getFullYear()} GENESIS HEATING SOLUTIONS. LICENSED ONTARIO HVAC PARTNER.</p>
             <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'center', opacity: 0.4, fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <a href="https://resources.superheat.xyz/brand-resources/Superheat-H1-Product-Introduction.pdf" target="_blank" rel="noopener" style={{ borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: '2px' }}>Superheat H1 - Product Introduction (PDF)</a>
+                <a href="https://resources.superheat.xyz/brand-resources/Superheat-H1-Product-Introduction.pdf" target="_blank" rel="noopener" style={{ borderBottom: '1px solid rgba(255,255,255,0.2)', paddingBottom: '2px' }}>Superheat H1 - Technical Overview (PDF)</a>
                 <a href="https://superheat.xyz" target="_blank" rel="noopener">Powered by Superheat Technology</a>
             </div>
         </div>
     </footer>
-)
 )
 
 export default function App() {
