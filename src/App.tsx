@@ -80,19 +80,19 @@ const STEPS = [
 ]
 
 const BENEFITS = [
-    { i: 'M13 2L3 14h9l-1 8 10-12h-9', t: 'Licensed & Insured', d: 'Installed by local London HVAC professionals. Fully code-compliant.' },
-    { i: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', t: 'Zero Hassle', d: 'Your hot water stays the same. Your costs drop.' },
-    { i: 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6', t: 'Inflation Buffer', d: 'As Ontario rates climb, your credits scale with them.' },
-    { i: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z', t: 'Local Team', d: 'Genesis Heating Solutions is based in London. Around the corner.' },
+    { i: 'M13 10V3L4 14h7v7l9-11h-7z', t: 'Hardware Equity', d: 'Every unit installed is an investment in your property’s infrastructure and energy independence.' },
+    { i: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', t: 'Enterprise Reliability', d: 'Industrial-grade thermal management meets certified HVAC integration for zero-downtime operation.' },
+    { i: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', t: 'Immediate Hedge', d: 'Start offsetting utility overhead from day one with a system that scales with Ontario energy rates.' },
+    { i: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z', t: 'Local Support', d: 'Based in London, Ontario. We provide professional onsite service and proactive monitoring.' },
 ]
 
 const FAQS = [
     { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks - capturing the heat they produce to warm your water. One watt, two purposes.' },
     { q: 'Who is Genesis Heating Solutions?', a: 'A London-based team with deep roots in HVAC and Bitcoin mining. We bring decades of combined experience to help homeowners turn wasted heat into value - professionally installed, locally supported.' },
     { q: 'What is included in your service?', a: 'Everything. We handle the complex parts: mining pool configuration, wallet setup assistance, professional HVAC installation, permits, and ongoing support. You just enjoy lower heating costs.' },
-    { q: 'How do earnings work?', a: 'Your share of the system output grows over time. We structure agreements so you receive more each year as we recover our investment fairly. By Year 3, you receive the majority of rewards. Credits are paid monthly in CAD, and we handle all the technical management.' },
-    { q: 'What does it cost?', a: 'We offer two paths: own the hardware immediately for maximum value, or grow into ownership with minimal upfront cost. Both are designed as win-win partnerships where you end up owning the asset. Pricing and timelines are explained transparently during your consultation.' },
-    { q: 'Why Genesis instead of DIY?', a: 'Mining pool optimization, energy-balanced HVAC integration, and secure hardware management require industrial-grade expertise. We provide a professional service agreement that ensures your system stays profitable and your hot water stays constant, without you ever having to touch the technical side.' },
+    { q: 'How do earnings work?', a: 'Your share of the system output grows as the project matures. We offer both hardware ownership and managed leasing frameworks—both optimized for a sustainable revenue share over a set period. We’ll find the best alignment for your energy profile during your walkthrough.' },
+    { q: 'What does it cost?', a: 'We offer flexible entry points ranging from hardware purchase to service-based leasing. Both paths are designed as win-win partnerships that lead to long-term asset equity. Pricing is transparently detailed during consultation based on current compute cycles.' },
+    { q: 'Why Genesis instead of DIY?', a: 'Automated pool optimization and certified HVAC integration require specialized expertise. We provide a turnkey service that ensures your hot water remains constant while maximizing your utility offsets—professionally managed, zero effort required.' },
     { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
     { q: 'Is it loud?', a: 'About as loud as a quiet desk fan. Most units go in basements or utility rooms.' },
     { q: 'Will it affect my internet?', a: 'No. We install a dedicated connection that stays separate from your home network.' },
@@ -121,7 +121,7 @@ const HowItWorks = () => (
 const Benefits = () => (
     <div className="reveal">
         <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1.5rem' }}>
-            <h2 style={{ fontSize: '2rem' }}>Why It Matters</h2>
+            <h2 style={{ fontSize: '2rem' }}>Why Us?</h2>
         </header>
         <div className="grid" style={{ gridTemplateColumns: '1fr', gap: '0.75rem' }}>
             {BENEFITS.map(b => (
@@ -165,30 +165,30 @@ const Infographic = () => {
                 </header>
                 <div className="infographic-container">
                     <div className="info-card reveal">
-                        <Icon p="M13 10V3L4 14h7v7l9-11h-7z" />
-                        <p className="calc-label">Heating Output</p>
-                        <div className="info-value">2.0 kW</div>
-                        <p className="text-dim">23 gal/hr continuous</p>
+                        <Icon p={mode === 'home' ? "M13 10V3L4 14h7v7l9-11h-7z" : "M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z"} />
+                        <p className="calc-label">{mode === 'home' ? 'Heating Output' : 'ESG Grants'}</p>
+                        <div className="info-value">{mode === 'home' ? '2.0 kW' : 'Qualified'}</div>
+                        <p className="text-dim">{mode === 'home' ? '23 gal/hr continuous' : 'Carbon-neutral tech'}</p>
                     </div>
                     <div className="info-arrow">→</div>
                     <div className="info-card reveal">
-                        <Icon p="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        <p className="calc-label">Hardware Life</p>
-                        <div className="info-value">10 yr</div>
-                        <p className="text-dim">Industrial-grade</p>
+                        <Icon p={mode === 'home' ? "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" : "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"} />
+                        <p className="calc-label">{mode === 'home' ? 'Hardware Life' : 'Carbon Impact'}</p>
+                        <div className="info-value">{mode === 'home' ? '10 yr' : '0.4t'}</div>
+                        <p className="text-dim">{mode === 'home' ? 'Industrial-grade' : 'Saved per 1k sq.ft.'}</p>
                     </div>
                     <div className="info-arrow">→</div>
                     <div className="info-card featured reveal">
-                        <Icon p="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        <p className="calc-label">{mode === 'home' ? 'Monthly Credit' : 'Operating Cost'}</p>
-                        <div className="info-value">Variable</div>
-                        <p className="text-dim">{mode === 'home' ? 'Grows over time' : 'Scales with units'}</p>
+                        <Icon p={mode === 'home' ? "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" : "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5z"} />
+                        <p className="calc-label">{mode === 'home' ? 'Sustainability' : 'Thermal Capture'}</p>
+                        <div className="info-value">{mode === 'home' ? 'Recycled' : '98%'}</div>
+                        <p className="text-dim">{mode === 'home' ? 'Closed-loop energy' : 'Heat recovery rate'}</p>
                     </div>
                 </div>
                 <p style={{ fontSize: '13px', opacity: 0.7, marginTop: '2rem', textAlign: 'center', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
                     {mode === 'home'
-                        ? 'Residential: Your monthly credits depend on the service agreement selected during consultation. We offer options designed to match your priorities - whether that is maximizing immediate value or building long-term utility offsets.'
-                        : 'Commercial: Multi-unit deployments benefit from aggregated capacity and faster ROI. Tax-deductible infrastructure upgrades. Ideal for hotels, gyms, laundromats. Volume pricing discussed during consultation.'}
+                        ? 'Residential installations transform a standard utility cost into an appreciating asset. We provide managed compute services that turn computational exhaust into primary thermal energy for your home.'
+                        : 'Commercial scale operations leverage high-density thermal capture for massive utility offsets. Ideal for ESG reporting and sustainability grants. We specialize in industrial integration for multi-unit properties.'}
                 </p>
             </div>
         </section>
@@ -204,22 +204,22 @@ const SavingsCalculator = () => {
         <div className="reveal">
             <div className="calculator-card" style={{ width: '100%', padding: '2.5rem' }}>
                 <header className="section-header" style={{ textAlign: 'left', margin: '0 0 2rem' }}>
-                    <h2 style={{ fontSize: '2.25rem' }}>The Utility Hedge</h2>
+                    <h2 style={{ fontSize: '2.25rem' }}>Sustainability.</h2>
                 </header>
                 <div className="calc-stats" style={{ gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
                     <div>
                         <div className="calc-val" style={{ fontSize: '2rem' }}>{years} yr</div>
-                        <div className="calc-label">Time Horizon</div>
+                        <div className="calc-label">Impact Review</div>
                     </div>
                     <div>
                         <div className="calc-val" style={{ fontSize: '2rem' }}>{(years * 4.2).toFixed(1)}t</div>
-                        <div className="calc-label">CO₂ Offset</div>
+                        <div className="calc-label">Total Recovery</div>
                     </div>
                 </div>
                 <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: '2rem' }}>
-                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>A path to ownership, not a rental.</p>
+                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>Efficient compute, zero-waste thermal.</p>
                     <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.5' }}>
-                        Your share grows each year as we recover our investment fairly. By Year 3, you own the majority of the output and the hardware itself. We succeed when you succeed.
+                        The Superheat H1 is a closed-loop energy system. By repurposing computational exhaust as a primary heat source, we achieve near-total thermal efficiency while offsetting conventional overhead.
                     </p>
                 </div>
                 <div style={{ marginTop: '2rem' }}>
