@@ -426,14 +426,14 @@ const WaitlistForm = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="form-group" style={{ marginTop: '2rem' }}>
+                        <div className="form-group" style={{ marginTop: '1.5rem' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
                                 <label className="calc-label">Monthly Heating Cost (Approx.)</label>
                                 <span className="text-orange" style={{ fontSize: '14px', fontWeight: '700' }}>${formData.monthlyHeatingCost}</span>
                             </div>
                             <input type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} />
                         </div>
-                        <div className="form-group" style={{ marginTop: '2.5rem' }}>
+                        <div className="form-group" style={{ marginTop: '1.5rem' }}>
                             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1rem' }}>
                                 <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '20px', height: '20px', marginTop: '2px', cursor: 'pointer', appearance: 'auto' }} />
                                 <span style={{ fontSize: '13px', lineHeight: '1.5' }} className="text-dim">I agree to be contacted by Genesis Heating Solutions about installation.</span>
@@ -444,9 +444,8 @@ const WaitlistForm = () => {
                             </div>
                             {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.75rem' }}>{errors.privacyAccepted}</p>}
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '2.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve My Spot'}</button>
-                        <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '11px', opacity: 0.5 }}>Priority scheduling for neighbourhoods with more signups.</p>
-                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '1.5rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="text-dim">← Back</button>
+                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve My Spot'}</button>
+                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '1rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="text-dim">← Back</button>
                     </div>
                 )}
             </form>
