@@ -75,8 +75,8 @@ const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24
 
 const STEPS = [
     { n: 1, t: 'Simple Swap', d: 'We install a Superheat H1 unit. Same space, same plumbing—no renovation required.' },
-    { n: 2, t: 'Double Duty', d: 'One watt powers two jobs: heating your water and earning compute credits.' },
-    { n: 3, t: 'Monthly Credits', d: 'Credits apply directly to your account. Watch your effective heating cost drop.' },
+    { n: 2, t: 'Double Duty', d: 'The unit processes high-value computing tasks. Heat generated warms your water—one watt, two purposes.' },
+    { n: 3, t: 'Flexible Payout', d: 'Earn monthly. Cash out via cheque or keep it in Bitcoin. Your choice, your control.' },
 ]
 
 const BENEFITS = [
@@ -87,12 +87,13 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks—and captures the heat they produce to warm your water. One watt, two jobs.' },
-    { q: 'How do we earn credits?', a: 'The H1 runs 24/7. We track output and apply credits directly to your account each month.' },
+    { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks - capturing the heat they produce to warm your water. One watt, two purposes.' },
+    { q: 'How do earnings work?', a: 'The H1 runs 24/7, processing compute workloads. You earn monthly credits. Choose to cash out via cheque, or keep earnings in Bitcoin if you prefer. We help you set up a secure wallet, but you maintain full control.' },
+    { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
     { q: 'Is it loud?', a: 'About as loud as a quiet desk fan. Most units go in basements or utility rooms.' },
-    { q: 'Will it affect my internet?', a: 'We install a dedicated connection. It stays separate from your home network.' },
+    { q: 'Will it affect my internet?', a: 'No. We install a dedicated connection that stays separate from your home network.' },
     { q: 'Who does the installation?', a: 'Licensed HVAC professionals in London, Ontario. We handle permits, wiring, and plumbing.' },
-    { q: 'Is the system secure?', a: 'Yes. The H1 processes mathematical computations only—it has zero access to your personal data.' },
+    { q: 'Is my data safe?', a: 'Completely. The H1 processes mathematical computations only - it has zero access to your personal information.' },
 ]
 
 const HowItWorks = () => (
@@ -152,8 +153,8 @@ const Infographic = () => (
                 <div className="info-card featured reveal">
                     <Icon p="M13 2L3 14h9l-1 8 10-12h-9" />
                     <p className="calc-label">Annual Earnings</p>
-                    <div className="info-value">~$1,000</div>
-                    <p className="text-dim">per Superheat H1</p>
+                    <div className="info-value">~$1,500</div>
+                    <p className="text-dim">per unit (CAD)</p>
                 </div>
                 <div className="info-arrow">→</div>
                 <div className="info-card reveal">
@@ -171,7 +172,7 @@ const TIME_STEPS = [1, 3, 5, 10]
 const SavingsCalculator = () => {
     const [idx, setIdx] = useState(0)
     const years = TIME_STEPS[idx]
-    const totalBenefit = years * 1000
+    const totalBenefit = years * 1500
 
     return (
         <div className="reveal">

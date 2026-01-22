@@ -895,3 +895,152 @@ h2 {
 .footer-superheat:hover {
   opacity: 1;
 }
+
+/* Animations & Micro-interactions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 92, 0, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(255, 92, 0, 0.4);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.info-card.featured {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.community-chip {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.community-chip:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.community-chip:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.community-chip:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.community-chip:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.community-chip:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+/* Improved Spacing */
+.section {
+  padding: clamp(4rem, 12vw, 8rem) 0;
+}
+
+.split-grid {
+  margin-top: 6vh;
+  padding-top: 6vh;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.savings-split {
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.section-header {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.infographic-container {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+/* Button Enhancements */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Form Polish */
+.form-input:focus {
+  transform: scale(1.01);
+}
+
+.prop-type-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prop-type-card:hover {
+  transform: translateY(-2px);
+}
+
+.prop-type-card.active {
+  transform: scale(1.02);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-padding-top: 100px;
+}
