@@ -90,8 +90,8 @@ const FAQS = [
     { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks - capturing the heat they produce to warm your water. One watt, two purposes.' },
     { q: 'Who is Genesis Heating Solutions?', a: 'A London-based team with deep roots in HVAC and Bitcoin mining. We bring decades of combined experience to help homeowners turn wasted heat into value - professionally installed, locally supported.' },
     { q: 'What is included in your service?', a: 'Everything. We handle the complex parts: mining pool configuration, wallet setup assistance, professional HVAC installation, permits, and ongoing support. You just enjoy lower heating costs.' },
-    { q: 'How do earnings work?', a: 'The H1 runs continuously, processing compute workloads. Your share of the output depends on your service path: Ownership customers receive 85% immediately, while Managed Service customers start at 25% and grow to 65% over 3 years. Actual amounts vary by electricity rates and compute demand. Credits are paid monthly in CAD.' },
-    { q: 'What does it cost?', a: 'We offer two pathways. The Ownership Path allows you to purchase the unit upfront for immediate priority and maximum long-term rewards. Alternatively, our Managed Service Path offers $0 upfront options through a tiered service agreement, where Genesis manages the technical cycle in exchange for a temporary share of monthly rewards.' },
+    { q: 'How do earnings work?', a: 'The system generates utility credits monthly. How much you receive depends on which service agreement you select during your consultation. Credits are paid in CAD and grow over time. We handle all the technical monitoring—you just see the results.' },
+    { q: 'What does it cost?', a: 'We offer flexible options, including zero upfront solutions. Pricing depends on your property type and preferences. Every consultation includes a transparent breakdown of what you pay versus what you receive. No surprises.' },
     { q: 'Why Genesis instead of DIY?', a: 'Mining pool optimization, energy-balanced HVAC integration, and secure hardware management require industrial-grade expertise. We provide a professional service agreement that ensures your system stays profitable and your hot water stays constant, without you ever having to touch the technical side.' },
     { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
     { q: 'Is it loud?', a: 'About as loud as a quiet desk fan. Most units go in basements or utility rooms.' },
@@ -187,8 +187,8 @@ const Infographic = () => {
                 </div>
                 <p style={{ fontSize: '13px', opacity: 0.7, marginTop: '2rem', textAlign: 'center', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
                     {mode === 'home'
-                        ? 'Residential: Credits depend on your service path. Ownership customers receive 85% of output; Managed Service grows from 25% to 65% over three years. Actual amounts vary by local electricity rates and compute demand.'
-                        : 'Commercial: Multi-unit deployments benefit from aggregated compute capacity and faster ROI. Tax-deductible as infrastructure. Ideal for hotels, gyms, and properties with high hot water demand. Volume pricing available.'}
+                        ? 'Residential: Your monthly credits depend on the service agreement selected during consultation. We offer options designed to match your priorities - whether that is maximizing immediate value or building long-term utility offsets.'
+                        : 'Commercial: Multi-unit deployments benefit from aggregated capacity and faster ROI. Tax-deductible infrastructure upgrades. Ideal for hotels, gyms, laundromats. Volume pricing discussed during consultation.'}
                 </p>
             </div>
         </section>
@@ -217,10 +217,9 @@ const SavingsCalculator = () => {
                     </div>
                 </div>
                 <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: '2rem' }}>
-                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>Your utility credits grow over time.</p>
+                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>Your credits increase as your relationship with the system matures.</p>
                     <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.5' }}>
-                        Ownership Path: Receive the majority of system output immediately (85%).
-                        <br />Managed Service: Start at 25%, grow to 65% by year 3.
+                        We structure agreements so your share of the system's output grows over time. The specifics are explained during your consultation based on your goals and property.
                     </p>
                 </div>
                 <div style={{ marginTop: '2rem' }}>
