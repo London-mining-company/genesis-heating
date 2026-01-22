@@ -88,11 +88,14 @@ const BENEFITS = [
 
 const FAQS = [
     { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks - capturing the heat they produce to warm your water. One watt, two purposes.' },
-    { q: 'How do earnings work?', a: 'The H1 runs 24/7, processing compute workloads. You earn monthly credits. Choose to cash out via cheque, or keep earnings in Bitcoin if you prefer. We help you set up a secure wallet, but you maintain full control.' },
+    { q: 'Who is Genesis Heating Solutions?', a: 'A London-based team with deep roots in HVAC and Bitcoin mining. We bring decades of combined experience to help homeowners turn wasted heat into value - professionally installed, locally supported.' },
+    { q: 'What is included in your service?', a: 'Everything. We handle the complex parts: mining pool configuration, wallet setup assistance, professional HVAC installation, permits, and ongoing support. You just enjoy lower heating costs.' },
+    { q: 'How do earnings work?', a: 'The H1 runs 24/7, processing compute workloads. Most customers choose cash-only credits (no Bitcoin exposure). Your monthly credits grow over time as you stay with the program. We handle all the complex mining management - you just see lower utility bills.' },
+    { q: 'What does it cost?', a: 'We offer flexible options - including zero upfront cost. Instead of a big install bill, many customers prefer to share a portion of monthly mining rewards in exchange for our ongoing management. Pricing varies by property type and is discussed during your free consultation.' },
+    { q: 'Why Genesis instead of DIY?', a: 'This is not plug-and-play. Mining pool optimization, electrical requirements, and HVAC integration require professional expertise. We have licensed installers and years of mining experience - so you do not have to figure it out alone.' },
     { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
     { q: 'Is it loud?', a: 'About as loud as a quiet desk fan. Most units go in basements or utility rooms.' },
     { q: 'Will it affect my internet?', a: 'No. We install a dedicated connection that stays separate from your home network.' },
-    { q: 'Who does the installation?', a: 'Licensed HVAC professionals in London, Ontario. We handle permits, wiring, and plumbing.' },
     { q: 'Is my data safe?', a: 'Completely. The H1 processes mathematical computations only - it has zero access to your personal information.' },
 ]
 
@@ -287,12 +290,12 @@ const WaitlistForm = () => {
 
     if (isSuccess) return (
         <div className="form-card" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>👋</div>
-            <h2 style={{ marginBottom: '1rem' }}>You’re on the list.</h2>
-            <p className="text-dim" style={{ marginBottom: '2rem' }}>We've received your details. A local technician will be in touch to discuss your home.</p>
+            <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>✓</div>
+            <h2 style={{ marginBottom: '1rem' }}>You are on the list.</h2>
+            <p className="text-dim" style={{ marginBottom: '2rem' }}>A technician will reach out in Spring 2026 to discuss your home and walk through next steps. No obligation - just a conversation.</p>
             <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid var(--c-border)' }}>
-                <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>The Network Effect</p>
-                <p className="text-dim" style={{ fontSize: '12px' }}>Refer a neighbor to accelerate local deployment. Community growth unlocks unique rewards and speeds up the rollout.</p>
+                <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>Why This Matters</p>
+                <p className="text-dim" style={{ fontSize: '12px' }}>Every unit installed turns waste heat into value. More neighbours = stronger local network = better economics for everyone.</p>
             </div>
         </div>
     )
