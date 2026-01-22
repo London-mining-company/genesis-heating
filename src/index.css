@@ -29,9 +29,9 @@
   --f-size-xs: 0.75rem;
 
   /* Spacing System - Strategic Expansion */
-  --s-gap: 3rem;
-  --s-section: clamp(8rem, 18vw, 14rem);
-  --s-container: 1160px;
+  --s-gap: 2rem;
+  --s-section: clamp(6rem, 12vw, 10rem);
+  --s-container: 1100px;
 
   /* Transitions */
   --t-base: 300ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -95,8 +95,8 @@ select {
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(15px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reveal-active {
@@ -390,10 +390,10 @@ h2 {
 }
 
 .card {
-  padding: 2rem;
+  padding: 1.5rem;
   background: var(--c-card);
   border: 1px solid var(--c-border);
-  border-radius: 32px;
+  border-radius: 24px;
   transition: var(--t-base);
   height: 100%;
 }
@@ -408,7 +408,7 @@ h2 {
 .icon-svg {
   width: 40px;
   height: 40px;
-  stroke: var(--accent);
+  stroke: currentColor;
   stroke-width: 1.5;
   fill: none;
   margin-bottom: 1.5rem;
@@ -427,16 +427,19 @@ h2 {
 
 .info-card {
   text-align: center;
-  padding: 3.5rem 2.5rem;
+  padding: 2.5rem 2rem;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
-  border-radius: 40px;
+  border-radius: 32px;
   flex: 1;
-  min-width: 0;
+  flex-basis: 0;
+  /* Force equal width */
+  min-height: 350px;
+  /* Uniform height */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -462,13 +465,12 @@ h2 {
 .info-card.featured {
   border-color: var(--c-accent);
   box-shadow: 0 0 60px rgba(255, 92, 0, 0.1), inset 0 0 0 1px var(--c-accent);
-  transform: scale(1.08);
   z-index: 5;
   background: linear-gradient(180deg, rgba(20, 20, 20, 1) 0%, rgba(10, 10, 10, 1) 100%);
 }
 
 .info-card.featured:hover {
-  transform: translateY(-12px) scale(1.1);
+  transform: translateY(-12px) scale(1.02);
   box-shadow: 0 0 80px rgba(255, 92, 0, 0.2), inset 0 0 0 1px var(--c-accent);
 }
 
