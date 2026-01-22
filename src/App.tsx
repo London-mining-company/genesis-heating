@@ -91,10 +91,10 @@ const STEPS = [
 ]
 
 const BENEFITS = [
-    { i: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', t: 'Built-in Efficiency', d: 'Your H1 performs high-value compute while you go about your day. No technical learning required. It’s automated utility value, powered by your property.' },
-    { i: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', t: 'Uncompromised Comfort', d: 'Advanced chip-powered heat exchange delivers superior hot water performance. 24 gal/hour recovery means zero compromises on your home’s needs.' },
-    { i: 'M13 10V3L4 14h7v7l9-11h-7z', t: 'Hands-Free Profit', d: 'We manage the complexity, setup, and performance. You receive the computational rewards monthly—professional, local, and entirely hands-off.' },
-    { i: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z', t: 'London Expertise', d: 'Based in London, ON. We provide professional onsite integration and proactive 24/7 monitoring for your peace of mind.' },
+    { i: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5m0 16.5V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v10.5a2.25 2.25 0 002.25 2.25z', t: 'Built-in Efficiency', d: 'Your H1 performs high-value compute while you go about your day. No technical learning required. It’s automated utility value, powered by your property.' },
+    { i: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z', t: 'Uncompromised Comfort', d: 'Advanced chip-powered heat exchange delivers superior hot water performance. 24 gal/hour recovery means zero compromises on your home’s needs.' },
+    { i: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v3', t: 'Hands-Free Profit', d: 'We manage the complexity, setup, and performance. You receive the computational rewards monthly—professional, local, and entirely hands-off.' },
+    { i: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z', t: 'London Expertise', d: 'Based in London, ON. We provide professional onsite integration and proactive 24/7 monitoring for your peace of mind.' },
 ]
 
 const FAQS = [
@@ -176,21 +176,21 @@ const Infographic = () => {
                 </header>
                 <div className="infographic-container">
                     <div className="info-card reveal">
-                        <Icon p="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <Icon p="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         <p className="calc-label">{mode === 'home' ? 'Passive Earnings' : 'Compute Capacity'}</p>
                         <div className="info-value">{mode === 'home' ? '~$1,000' : '120 TH/s'}</div>
                         <p className="text-dim">{mode === 'home' ? 'Estimated annually per unit' : 'High-density hashrate per unit'}</p>
                     </div>
                     <div className="info-arrow">→</div>
                     <div className="info-card reveal">
-                        <Icon p="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <Icon p="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                         <p className="calc-label">{mode === 'home' ? 'Utility Savings' : 'Thermal Efficiency'}</p>
                         <div className="info-value">{mode === 'home' ? 'Up to 80%' : '98%'}</div>
                         <p className="text-dim">{mode === 'home' ? 'Targeted heating offset' : 'Heat capture recovery rate'}</p>
                     </div>
                     <div className="info-arrow">→</div>
                     <div className="info-card featured reveal">
-                        <Icon p="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <Icon p="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
                         <p className="calc-label">{mode === 'home' ? 'Performance' : 'Energy Impact'}</p>
                         <div className="info-value">{mode === 'home' ? '24 g/h' : '4.2t'}</div>
                         <p className="text-dim">{mode === 'home' ? 'Heats 24 gal from 20°C to 60°C in <2.5h' : 'Annual carbon offset per unit'}</p>
