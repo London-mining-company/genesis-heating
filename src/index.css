@@ -858,11 +858,15 @@ h2 {
   perspective: 1000px;
 }
 
+.footer.section {
+  padding: 2rem 0;
+}
+
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem;
   flex-wrap: wrap;
 }
 
