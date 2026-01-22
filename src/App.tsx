@@ -90,8 +90,8 @@ const FAQS = [
     { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform computing tasks - capturing the heat they produce to warm your water. One watt, two purposes.' },
     { q: 'Who is Genesis Heating Solutions?', a: 'A London-based team with deep roots in HVAC and Bitcoin mining. We bring decades of combined experience to help homeowners turn wasted heat into value - professionally installed, locally supported.' },
     { q: 'What is included in your service?', a: 'Everything. We handle the complex parts: mining pool configuration, wallet setup assistance, professional HVAC installation, permits, and ongoing support. You just enjoy lower heating costs.' },
-    { q: 'How do earnings work?', a: 'The system generates utility credits monthly. How much you receive depends on which service agreement you select during your consultation. Credits are paid in CAD and grow over time. We handle all the technical monitoring—you just see the results.' },
-    { q: 'What does it cost?', a: 'We offer flexible options, including zero upfront solutions. Pricing depends on your property type and preferences. Every consultation includes a transparent breakdown of what you pay versus what you receive. No surprises.' },
+    { q: 'How do earnings work?', a: 'Your share of the system output grows over time. We structure agreements so you receive more each year as we recover our investment fairly. By Year 3, you receive the majority of rewards. Credits are paid monthly in CAD, and we handle all the technical management.' },
+    { q: 'What does it cost?', a: 'We offer two paths: own the hardware immediately for maximum value, or grow into ownership with minimal upfront cost. Both are designed as win-win partnerships where you end up owning the asset. Pricing and timelines are explained transparently during your consultation.' },
     { q: 'Why Genesis instead of DIY?', a: 'Mining pool optimization, energy-balanced HVAC integration, and secure hardware management require industrial-grade expertise. We provide a professional service agreement that ensures your system stays profitable and your hot water stays constant, without you ever having to touch the technical side.' },
     { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
     { q: 'Is it loud?', a: 'About as loud as a quiet desk fan. Most units go in basements or utility rooms.' },
@@ -217,9 +217,9 @@ const SavingsCalculator = () => {
                     </div>
                 </div>
                 <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: '2rem' }}>
-                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>Your credits increase as your relationship with the system matures.</p>
+                    <p style={{ fontSize: '14px', marginBottom: '0.75rem', fontWeight: '600' }}>A path to ownership, not a rental.</p>
                     <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.5' }}>
-                        We structure agreements so your share of the system's output grows over time. The specifics are explained during your consultation based on your goals and property.
+                        Your share grows each year as we recover our investment fairly. By Year 3, you own the majority of the output and the hardware itself. We succeed when you succeed.
                     </p>
                 </div>
                 <div style={{ marginTop: '2rem' }}>
