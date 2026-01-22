@@ -832,51 +832,63 @@ h2 {
 
 /* Communities Section - Elevated Visibility */
 .communities-section {
-  margin-top: 3rem;
-  padding: 2rem;
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(255, 92, 0, 0.06), rgba(255, 92, 0, 0.02));
-  border: 1px solid rgba(255, 92, 0, 0.15);
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  border-radius: 32px;
+  background: radial-gradient(circle at top center, rgba(255, 92, 0, 0.08) 0%, rgba(255, 92, 0, 0.02) 100%), rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 92, 0, 0.2);
+  text-align: center;
+  backdrop-filter: blur(12px);
 }
 
 .communities-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
   color: var(--c-text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #fff, #999);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .communities-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
   opacity: 1;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .community-chip {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--c-border-strong);
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--c-text);
-  transition: var(--t-base);
+  color: #fff;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .community-chip:hover {
-  background: rgba(255, 92, 0, 0.1);
+  background: rgba(255, 92, 0, 0.15);
   border-color: var(--c-accent);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 92, 0, 0.2);
 }
 
 .communities-note {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--c-text-dim);
-  opacity: 0.7;
+  opacity: 0.8;
+  letter-spacing: 0.01em;
 }
 
 /* Footer - Superheat Link */

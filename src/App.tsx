@@ -446,11 +446,13 @@ export default function App() {
                         <div style={{ marginBottom: '4rem' }}>
                             <HowItWorks />
                         </div>
-                        <Communities />
                     </div>
                     <div className="reveal sticky-form" style={{ position: 'sticky', top: '120px' }}>
                         <WaitlistForm />
                     </div>
+                </div>
+                <div className="container">
+                    <Communities />
                 </div>
                 <Infographic />
                 <div className="container savings-split">
