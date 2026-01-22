@@ -427,14 +427,14 @@ h2 {
 
 .info-card {
   text-align: center;
-  padding: 2.5rem 2rem;
+  padding: 2rem 1.5rem;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: 32px;
   flex: 1;
   flex-basis: 0;
   /* Force equal width */
-  min-height: 350px;
+  min-height: 300px;
   /* Uniform height */
   display: flex;
   flex-direction: column;

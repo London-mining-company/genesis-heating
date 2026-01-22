@@ -185,7 +185,14 @@ const Infographic = () => {
                     <div className="info-card reveal">
                         <Icon p="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                         <p className="calc-label">{mode === 'home' ? 'Utility Savings' : 'Thermal Efficiency'}</p>
-                        <div className="info-value">{mode === 'home' ? 'Up to 80%' : '98%'}</div>
+                        <div className="info-value">
+                            {mode === 'home' ? (
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 0.9 }}>
+                                    <span style={{ fontSize: '0.875rem', fontWeight: 600, opacity: 0.5, marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Up to</span>
+                                    <span>80%</span>
+                                </div>
+                            ) : '98%'}
+                        </div>
                         <p className="text-dim">{mode === 'home' ? 'Targeted heating offset' : 'Heat capture recovery rate'}</p>
                     </div>
                     <div className="info-arrow">→</div>
