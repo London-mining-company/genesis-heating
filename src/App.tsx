@@ -294,8 +294,8 @@ const WaitlistForm = () => {
             <h2 style={{ marginBottom: '1rem' }}>You are on the list.</h2>
             <p className="text-dim" style={{ marginBottom: '2rem' }}>A technician will reach out in Spring 2026 to discuss your home and walk through next steps. No obligation - just a conversation.</p>
             <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid var(--c-border)' }}>
-                <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>Why This Matters</p>
-                <p className="text-dim" style={{ fontSize: '12px' }}>Every unit installed turns waste heat into value. More neighbours = stronger local network = better economics for everyone.</p>
+                <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>The Neighbourhood Effect</p>
+                <p className="text-dim" style={{ fontSize: '12px' }}>Every unit installed contributes to stronger local community pools. More neighbours = better grassroots economics for the whole street.</p>
             </div>
         </div>
     )
