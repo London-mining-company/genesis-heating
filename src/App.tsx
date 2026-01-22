@@ -137,41 +137,63 @@ const Benefits = () => (
     </div>
 )
 
-const Infographic = () => (
-    <section className="section reveal">
-        <div className="container">
-            <header className="section-header">
-                <h2>What You Get</h2>
-                <p>The Superheat H1 delivers identical hot water performance with measurable utility offsets.</p>
-            </header>
-            <div className="infographic-container">
-                <div className="info-card reveal">
-                    <Icon p="M13 10V3L4 14h7v7l9-11h-7z" />
-                    <p className="calc-label">Heating Output</p>
-                    <div className="info-value">2.0 kW</div>
-                    <p className="text-dim">23 gal/hr continuous</p>
+const Infographic = () => {
+    const [mode, setMode] = useState<'home' | 'business'>('home')
+
+    return (
+        <section className="section reveal">
+            <div className="container">
+                <header className="section-header">
+                    <h2>What You Get</h2>
+                    <p>The Superheat H1 delivers identical hot water performance with measurable utility offsets.</p>
+                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.5rem' }}>
+                        <button
+                            onClick={() => setMode('home')}
+                            className={mode === 'home' ? 'prop-type-card active' : 'prop-type-card'}
+                            style={{ padding: '0.5rem 1.25rem', fontSize: '13px', cursor: 'pointer' }}
+                        >
+                            Residential
+                        </button>
+                        <button
+                            onClick={() => setMode('business')}
+                            className={mode === 'business' ? 'prop-type-card active' : 'prop-type-card'}
+                            style={{ padding: '0.5rem 1.25rem', fontSize: '13px', cursor: 'pointer' }}
+                        >
+                            Commercial
+                        </button>
+                    </div>
+                </header>
+                <div className="infographic-container">
+                    <div className="info-card reveal">
+                        <Icon p="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <p className="calc-label">Heating Output</p>
+                        <div className="info-value">2.0 kW</div>
+                        <p className="text-dim">23 gal/hr continuous</p>
+                    </div>
+                    <div className="info-arrow">→</div>
+                    <div className="info-card reveal">
+                        <Icon p="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <p className="calc-label">Hardware Life</p>
+                        <div className="info-value">10 yr</div>
+                        <p className="text-dim">Industrial-grade</p>
+                    </div>
+                    <div className="info-arrow">→</div>
+                    <div className="info-card featured reveal">
+                        <Icon p="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <p className="calc-label">{mode === 'home' ? 'Monthly Credit' : 'Operating Cost'}</p>
+                        <div className="info-value">Variable</div>
+                        <p className="text-dim">{mode === 'home' ? 'Grows over time' : 'Scales with units'}</p>
+                    </div>
                 </div>
-                <div className="info-arrow">→</div>
-                <div className="info-card reveal">
-                    <Icon p="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    <p className="calc-label">Hardware Life</p>
-                    <div className="info-value">10 yr</div>
-                    <p className="text-dim">Industrial-grade</p>
-                </div>
-                <div className="info-arrow">→</div>
-                <div className="info-card featured reveal">
-                    <Icon p="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    <p className="calc-label">Utility Offset</p>
-                    <div className="info-value">Variable</div>
-                    <p className="text-dim">Depends on service path</p>
-                </div>
+                <p style={{ fontSize: '13px', opacity: 0.7, marginTop: '2rem', textAlign: 'center', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
+                    {mode === 'home'
+                        ? 'Residential: Credits depend on your service path. Ownership customers receive 85% of output; Managed Service grows from 25% to 65% over three years. Actual amounts vary by local electricity rates and compute demand.'
+                        : 'Commercial: Multi-unit deployments benefit from aggregated compute capacity and faster ROI. Tax-deductible as infrastructure. Ideal for hotels, gyms, and properties with high hot water demand. Volume pricing available.'}
+                </p>
             </div>
-            <p style={{ fontSize: '13px', opacity: 0.7, marginTop: '2rem', textAlign: 'center', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                Actual earnings vary by electricity rates, compute demand, and service agreement selected. Conservative estimates: Ownership Path customers receive majority of system output; Managed Service customers receive growing credits over time.
-            </p>
-        </div>
-    </section>
-)
+        </section>
+    )
+}
 
 const TIME_STEPS = [1, 3, 5, 10]
 const SavingsCalculator = () => {
