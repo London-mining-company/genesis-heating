@@ -206,14 +206,18 @@ const SavingsCalculator = () => {
                 <header className="section-header" style={{ textAlign: 'left', margin: '0 0 2rem' }}>
                     <h2 style={{ fontSize: '2.25rem' }}>Sustainability.</h2>
                 </header>
-                <div className="calc-stats" style={{ gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
+                <div className="calc-stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2rem' }}>
                     <div>
-                        <div className="calc-val" style={{ fontSize: '2rem' }}>{years} yr</div>
+                        <div className="calc-val" style={{ fontSize: '1.75rem' }}>{years} yr</div>
                         <div className="calc-label">Impact Review</div>
                     </div>
                     <div>
-                        <div className="calc-val" style={{ fontSize: '2rem' }}>{(years * 4.2).toFixed(1)}t</div>
-                        <div className="calc-label">Total Recovery</div>
+                        <div className="calc-val" style={{ fontSize: '1.75rem' }}>{(years * 4.2).toFixed(1)}t</div>
+                        <div className="calc-label">Carbon Emissions</div>
+                    </div>
+                    <div>
+                        <div className="calc-val" style={{ fontSize: '1.75rem' }}>${(years * 18).toLocaleString()}k</div>
+                        <div className="calc-label">Expected Revenue</div>
                     </div>
                 </div>
                 <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: '2rem' }}>
