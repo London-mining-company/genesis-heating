@@ -24,16 +24,25 @@ We don't just "mine Bitcoin"—we recycle heat.
 
 ---
 
-## 4. Business Model: The Zero-Friction Path
-We operate on a **Tiered Revenue Share Model** designed to maximize initial growth while ensuring long-term customer retention.
+## 4. Business Model: Strategic Balancing
+We utilize two distinct revenue streams to ensure immediate cash flow while building long-term scalable equity.
 
-| Phase | Duration | Genesis Share | Customer Credit | Strategic Intent |
-|-------|----------|---------------|-----------------|------------------|
-| **I: Recovery** | 0-18 Mo | 75% | 25% | Rapidly recoup $4.5k installation/CAPEX cost. |
-| **II: Balanced** | 19-36 Mo | 50% | 50% | Incentivize loyalty by doubling customer savings. |
-| **III: Loyalty** | 37+ Mo | 35% | 65% | Residual income for Genesis; "Free Heating" for customer. |
+### A. The Ownership Path (Upfront Capital)
+- **Target:** Commercial units and high-intent residential homeowners.
+- **Model:** Customer pays for hardware + installation ($5,250 MSRP).
+- **Incentive:** Owners receive **85% of rewards** immediately (Genesis retains a 15% recurring service fee for pool management and maintenance).
+- **Cash Flow:** This funds the CAPEX for Option B.
 
-**Zero Bitcoin Exposure:** Customers receive their credits in CAD (cash-only), while Genesis manages the underlying mining assets and pools.
+### B. The Managed Path (Service Agreement)
+- **Target:** Mass-market homeowners seeking a zero-risk utility hedge.
+- **Model:** $0 upfront (or $250 Activation Fee); Tiered Revenue Share.
+- **Scaling:** Genesis retains hardware ownership, building a portfolio of yield-generating assets.
+
+| Phase | Duration | Genesis Share | Customer Credit |
+|-------|----------|---------------|-----------------|
+| **I: Recovery** | 0-18 Mo | 75% | 25% |
+| **II: Balanced** | 19-36 Mo | 50% | 50% |
+| **III: Loyalty** | 37+ Mo | 35% | 65% |
 
 ---
 

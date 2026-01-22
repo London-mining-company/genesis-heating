@@ -11,58 +11,32 @@ Genesis Heating Solutions brings professional Superheat H1 installation to Londo
 
 ## Revenue Models (Flexible)
 
-### Option A: Installation + Markup
+### Option A: The Ownership Path (Cash Flow Positive)
+*Ideal for customers prioritized for immediate installation or business tax write-offs.*
 ```
-Superheat H1 Unit:        $3,375 CAD (wholesale)
-Installation Labor:         $700 CAD
-Mining Setup Support:       $300 CAD
-Profit Margin (20%):        $875 CAD
-──────────────────────────────────────
-Total per Install:        $5,250 CAD
+Unit + Install Price:     $5,250 CAD (Upfront)
+Installation Labor:        $700 CAD
+Genesis Net Profit:      $1,175 CAD (Immediate)
+Ongoing Service Fee:      15% of mining rewards (~$225/mo)
 ```
-
-**Pros:** Immediate revenue, simpler accounting  
-**Cons:** Single transaction, no recurring income
+**Pros:** Instant cash flow, zero CAPEX risk, immediate profit.  
+**Cons:** One-time initial profit, lower long-term residual vs managed path.
 
 ---
 
-### Option B: Tiered Revenue Share (RECOMMENDED)
+### Option B: The Managed Path (Tiered Subscription)
+*Ideal for homeowners seeking a zero-risk utility hedge. Genesis carries the CAPEX to build long-term equity.*
 
-**The Insight:** Most customers don't want Bitcoin. They'll happily pay Genesis MORE in exchange for:
-- Zero upfront cost
-- Cash credits only (no crypto exposure)
-- Professional management (we handle everything)
+**Service Activation Logic:**
+- **Zero Down:** High adoption, Genesis builds hardware equity.
+- **Service Activation Agreement:** Customers pay a small $250 activation fee to cover initial HVAC dispatch, improving Day 1 cash flow.
 
 **Three-Phase Structure:**
-
-#### **Phase 1: Recovery Period (Months 1-18)**
-```
-Genesis Share:            75% of mining rewards = $1,125 CAD/month
-Customer Utility Credit:  25% of mining rewards = $375 CAD/month
-Customer Upfront Cost:    $0
-──────────────────────────────────────────────────────────
-Genesis Total Revenue:    $20,250 over 18 months
-Genesis Net Profit:       $20,250 - $4,500 (install) = $15,750
-Customer Savings:         $6,750 (vs. buying their own unit)
-```
-
-#### **Phase 2: Balanced Period (Months 19-36)**
-```
-Genesis Share:            50% of mining rewards = $750 CAD/month
-Customer Utility Credit:  50% of mining rewards = $750 CAD/month
-──────────────────────────────────────────────────────────
-Genesis Revenue:          $13,500 over 18 months (ongoing service fee)
-Customer Experience:      Utility credits DOUBLE (builds loyalty)
-```
-
-#### **Phase 3: Loyalty Period (Months 37-60+)**
-```
-Genesis Share:            35% of mining rewards = $525 CAD/month
-Customer Utility Credit:  65% of mining rewards = $975 CAD/month
-──────────────────────────────────────────────────────────
-Genesis Revenue:          $525/month residual (minimal effort)
-Customer Experience:      Nearly free heating, long-term advocate
-```
+| Phase | Duration | Genesis Share | Customer Credit |
+|-------|----------|---------------|-----------------|
+| **I: Recovery** | 0-18 Mo | 75% | 25% |
+| **II: Balanced** | 19-36 Mo | 50% | 50% |
+| **III: Loyalty** | 37+ Mo | 35% | 65% |
 
 **Why This Works:**
 
