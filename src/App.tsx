@@ -76,8 +76,8 @@ const Hero = () => {
                 <div className="video-overlay"></div>
             </div>
             <div className="container hero-content">
-                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the same hot water you expect—while the system earns rewards that offset your utility bill.</p>
+                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Hot water that pays <span className="text-orange">you</span> back.</h1>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the reliable performance you expect from a premium water heater—while the system generates monthly credits to lower your utility bills.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
                     <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
                 </div>
@@ -90,28 +90,27 @@ const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24
 
 const STEPS = [
     { n: 1, t: 'Seamless Integration', d: 'Standard plumbing. Standard footprint. It fits exactly where your old tank is now—no renovation needed.' },
-    { n: 2, t: 'Energy Recycling', d: 'The system captures heat from processing power and recycles it for your hot water. You stop paying twice for the same energy.' },
-    { n: 3, t: 'Flexible Payouts', d: 'We turn that processing power into regular payments. You choose: a monthly cheque or Bitcoin. Your choice, your control.' },
+    { n: 2, t: 'Energy Value Recovery', d: 'The system captures energy throughout the day and recycles it to heat your water. You stop paying twice for the same utility.' },
+    { n: 3, t: 'Automated Savings', d: 'We turn that recovered value into regular payments. You choose: a monthly credit, cheque, or Bitcoin. Your home, your control.' },
 ]
 
 const BENEFITS = [
-    { i: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5m0 16.5V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v10.5a2.25 2.25 0 002.25 2.25z', t: 'Built-in Efficiency', d: 'Your H1 performs high-value compute while you go about your day. No technical learning required. It’s automated utility value, powered by your property.' },
-    { i: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z', t: 'Uncompromised Comfort', d: 'Advanced chip-powered heat exchange delivers superior hot water performance. 24 gal/hour recovery means zero compromises on your home’s needs.' },
-    { i: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v3', t: 'Hands-Free Profit', d: 'We manage the complexity, setup, and performance. You receive the computational rewards monthly—professional, local, and entirely hands-off.' },
-    { i: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z', t: 'London Expertise', d: 'Based in London, ON. We provide professional onsite integration and proactive 24/7 monitoring for your peace of mind.' },
+    { i: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5m0 16.5V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v10.5a2.25 2.25 0 002.25 2.25z', t: 'Built-in Efficiency', d: 'Your system works quietly in the background while you go about your day. No technical learning required. It’s automated utility value, powered by your property.' },
+    { i: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z', t: 'Superior Performance', d: 'Industrial-grade heat exchange delivers constant hot water for your entire household. 24 gal/hour recovery means zero compromises on comfort.' },
+    { i: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v3', t: 'Managed For You', d: 'We handle the complexity, setup, and maintenance. You simply enjoy the energy savings and monthly value—professional, local, and entirely hands-off.' },
+    { i: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z', t: 'London Expertise', d: 'Based in London, ON. We provide local onsite integration and proactive monitoring for your absolute peace of mind.' },
 ]
 
 const FAQS = [
-    { q: 'What is the Superheat H1?', a: 'A water heater that earns. It uses advanced processors to perform high-value computing tasks—capturing the heat they produce to warm your water. One watt, two purposes.' },
-    { q: 'Who is Genesis Heating Solutions?', a: 'A London-based team specialized in high-efficiency thermal management. We bring professional HVAC expertise to help property owners turn computational exhaust into primary household value.' },
-    { q: 'What is included in your service?', a: 'Everything. We handle the technical configuration, professional HVAC installation, and ongoing monitoring. You just enjoy lower heating costs and monthly credits.' },
-    { q: 'How do computational rewards work?', a: 'As your system processes high-value data, it generates rewards that effectively recoup your heating costs. You have the total flexibility to receive these as a monthly CAD cheque or directed into Bitcoin—giving you complete freedom over how you use the value your home creates.' },
-    { q: 'What does it cost?', a: 'We offer flexible entry points ranging from equipment purchase to service-based leasing. Both paths are designed to create immediate utility savings. Pricing is transparently detailed during your local consultation.' },
-    { q: 'Why Genesis Heating Solutions instead of DIY?', a: 'Optimizing thermal capture and high-value compute require specialized integration. We provide a turnkey service that ensures your hot water is constant while maximizing your returns—professionally managed, zero effort required.' },
-    { q: 'What happens next?', a: 'Join the waitlist now. In Spring 2026, we will reach out to schedule a free consultation - no pressure, just a conversation to see if the system makes sense for your home.' },
-    { q: 'Is it loud?', a: 'About as loud as a quiet desk fan. Most units go in basements or utility rooms.' },
-    { q: 'Will it affect my internet?', a: 'No. We install a dedicated connection that stays separate from your home network.' },
-    { q: 'Is my data safe?', a: 'Completely. The H1 processes mathematical computations only - it has zero access to your personal information.' },
+    { q: 'What is the Superheat H1?', a: 'A smarter water heater. It uses advanced thermal technology to heat your water while simultaneously creating energy value that effectively pays for itself.' },
+    { q: 'Who is Genesis Heating Solutions?', a: 'A local London team specialized in modern heating infrastructure. We help homeowners transition to high-efficiency systems that turn utility expenses into property value.' },
+    { q: 'What is included in your service?', a: 'Everything. We handle the professional HVAC installation, technical configuration, and proactive monitoring. You just enjoy reliable hot water and monthly savings.' },
+    { q: 'How do the monthly credits work?', a: 'As your system generates value, you receive regular payments that offset your heating costs. You can receive these as a monthly CAD cheque or directed into Bitcoin—giving you total control over the value your home creates.' },
+    { q: 'What does it cost?', a: 'We offer flexible options from equipment purchase to service-based leasing. Both paths are designed to lower your net monthly expenses. We provide detailed pricing during your free local consultation.' },
+    { q: 'Is it complicated to use?', a: 'Not at all. Once installed by our London team, it functions exactly like your current water heater—only it’s significantly more efficient and generates value every month.' },
+    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out to schedule a local consultation—no pressure, just a quick look to see if the system is a good fit for your home.' },
+    { q: 'Is it quiet?', a: 'Yes. It operates about as loudly as a quiet desk fan and is typically installed in your basement or utility room.' },
+    { q: 'Is my privacy protected?', a: 'Absolutely. The system performs secure, mathematical tasks only—it has zero access to your home network or personal information.' },
 ]
 
 const HowItWorks = () => (
@@ -160,7 +159,7 @@ const Infographic = () => {
             <div className="container">
                 <header className="section-header">
                     <h2>One Watt, Two Purposes.</h2>
-                    <p>Genesis Heating Solutions provides professional integration of the Superheat H1—a water heater that repurposes high-value computation to generate primary heat, creating a sustainable value-recovery stream for your property.</p>
+                    <p>Genesis Heating Solutions provides professional onsite integration of next-gen thermal units—hot water heaters that repurpose energy to generate primary value, creating a sustainable recovery stream for your property.</p>
                     <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.5rem' }}>
                         <button
                             onClick={() => setMode('home')}
@@ -181,9 +180,9 @@ const Infographic = () => {
                 <div className="infographic-container">
                     <div className="info-card reveal">
                         <Icon p="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        <p className="calc-label">{mode === 'home' ? 'Passive Earnings' : 'Compute Capacity'}</p>
+                        <p className="calc-label">{mode === 'home' ? 'Value Recovery' : 'System Capacity'}</p>
                         <div className="info-value">{mode === 'home' ? '~$1,000' : '120 TH/s'}</div>
-                        <p className="text-dim">{mode === 'home' ? 'Estimated annually per unit' : 'High-density hashrate per unit'}</p>
+                        <p className="text-dim">{mode === 'home' ? 'Estimated annual recovery' : 'High-density output per unit'}</p>
                     </div>
                     <div className="info-arrow">→</div>
                     <div className="info-card reveal">
@@ -212,8 +211,8 @@ const Infographic = () => {
                         <h4>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
                         <p>
                             {mode === 'home'
-                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the computational complexity in the background. Zero learning curve, just better economics.'
-                                : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized data centers that pay for your building’s hot water energy.'}
+                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just better economics.'
+                                : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized assets that pay for your building’s hot water energy.'}
                         </p>
                     </div>
                     <div className="feature-card" style={{ borderColor: 'var(--c-accent)' }}>
@@ -401,13 +400,13 @@ const WaitlistForm = () => {
             <p className="reveal reveal-active" style={{ marginBottom: '2rem', fontSize: '14px', animationDelay: '0.1s', color: 'rgba(255,255,255,0.7)' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
             <div className="reveal reveal-active" style={{ padding: '1.5rem', background: 'rgba(255,92,0,0.08)', borderRadius: '20px', border: '1px solid rgba(255,92,0,0.2)', animationDelay: '0.2s', textAlign: 'left' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
-                    <div style={{ padding: '4px', background: 'var(--c-accent)', borderRadius: '6px' }}>
-                        <svg style={{ width: '12px', height: '12px' }} fill="white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                    <div style={{ padding: '3px', background: 'var(--c-accent)', borderRadius: '4px' }}>
+                        <svg style={{ width: '10px', height: '10px' }} fill="white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
                     </div>
                     <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Refer a Neighbour</p>
                 </div>
-                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', marginBottom: '1rem' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool payout.</p>
-                <a href={`whatsapp://send?text=Hey! I just found this local London company, Genesis Heating, that installs water heaters that actually earn you money. I just joined their waitlist for Spring 2026. Check it out: https://genesisheatingsolutions.ca`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
+                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', marginBottom: '1rem' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = greater collective energy credits.</p>
+                <a href={`whatsapp://send?text=Hey! I just found this local London company, Genesis Heating, that installs water heaters that actually lower your bills through energy recycling. I just joined their waitlist for Spring 2026. Check it out: https://genesisheatingsolutions.ca`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
             </div>
         </div>
     )
