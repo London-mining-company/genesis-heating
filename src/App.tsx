@@ -364,7 +364,7 @@ const WaitlistForm = () => {
         <div className="form-card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
             <div className="success-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>✓</div>
             <h2 className="reveal reveal-active" style={{ marginBottom: '0.75rem', fontSize: '1.75rem' }}>You're In.</h2>
-            <p className="text-dim reveal reveal-active" style={{ marginBottom: '2rem', fontSize: '14px', animationDelay: '0.1s' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
+            <p className="reveal reveal-active" style={{ marginBottom: '2rem', fontSize: '14px', animationDelay: '0.1s', color: 'rgba(255,255,255,0.7)' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
             <div className="reveal reveal-active" style={{ padding: '1.5rem', background: 'rgba(255,92,0,0.08)', borderRadius: '20px', border: '1px solid rgba(255,92,0,0.2)', animationDelay: '0.2s', textAlign: 'left' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
                     <div style={{ padding: '4px', background: 'var(--c-accent)', borderRadius: '6px' }}>
@@ -372,7 +372,8 @@ const WaitlistForm = () => {
                     </div>
                     <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Refer a Neighbour</p>
                 </div>
-                <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.6' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool economics.</p>
+                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool payout.</p>
+
             </div>
         </div>
     )
