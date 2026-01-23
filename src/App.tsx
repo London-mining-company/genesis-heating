@@ -207,18 +207,18 @@ const Infographic = () => {
                         <p className="text-dim">{mode === 'home' ? 'Heats 24 gal from 20°C to 60°C in <2.5h' : 'Annual carbon offset per unit'}</p>
                     </div>
                 </div>
-                <div style={{ marginTop: '3rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                    <div className="card" style={{ padding: '2rem' }}>
-                        <h4 style={{ marginBottom: '1rem' }}>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
-                        <p className="text-dim" style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                <div className="feature-grid">
+                    <div className="feature-card">
+                        <h4>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
+                        <p>
                             {mode === 'home'
                                 ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the computational complexity in the background. Zero learning curve, just better economics.'
                                 : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized data centers that pay for your building’s hot water energy.'}
                         </p>
                     </div>
-                    <div className="card" style={{ padding: '2rem', borderColor: 'var(--c-accent-glow)' }}>
-                        <h4 style={{ marginBottom: '1rem' }}>{mode === 'home' ? 'The Genesis Heating Solutions Advantage' : 'ESG-Driven Infrastructure'}</h4>
-                        <p className="text-dim" style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                    <div className="feature-card" style={{ borderColor: 'var(--c-accent)' }}>
+                        <h4>{mode === 'home' ? 'The Genesis Heating Solutions Advantage' : 'ESG-Driven Infrastructure'}</h4>
+                        <p>
                             {mode === 'home'
                                 ? 'Most specialized tech requires deep knowledge. We provide a complete, professional installation and hands-free management here in London, ON. From seamless HVAC integration to proactive monitoring, we make your savings visible without you ever having to open a manual.'
                                 : 'Enhance your building infrastructure with energy-dense thermal capture. We achieve 98% thermal recovery with carbon-neutral heating, managed locally by our London team to ensure constant operational uptime and mechanical reliability.'}
