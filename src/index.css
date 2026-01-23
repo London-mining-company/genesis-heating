@@ -620,17 +620,17 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .form-input {
   width: 100%;
-  padding: 1.25rem 1.5rem;
+  padding: 0.875rem 1rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--c-border);
-  border-radius: 12px;
+  border-radius: 10px;
   color: var(--c-text);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   transition: var(--t-base);
 }
 
@@ -667,9 +667,9 @@ h2 {
 }
 
 .prop-type-card {
-  padding: 1.5rem;
+  padding: 1rem;
   border: 1px solid var(--c-border);
-  border-radius: 16px;
+  border-radius: 12px;
   text-align: center;
   cursor: pointer;
   transition: var(--t-base);
@@ -679,7 +679,7 @@ h2 {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
 }
 
 .prop-type-card.active {
