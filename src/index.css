@@ -28,9 +28,22 @@
   --f-size-sm: 0.875rem;
   --f-size-xs: 0.75rem;
 
-  /* Spacing System - Strategic Expansion */
-  --s-gap: 2rem;
-  --s-section: clamp(6rem, 12vw, 10rem);
+  /* Spacing Scale - Systematic Rhythm */
+  --s-4: 0.25rem;
+  --s-8: 0.5rem;
+  --s-12: 0.75rem;
+  --s-16: 1rem;
+  --s-20: 1.25rem;
+  --s-24: 1.5rem;
+  --s-32: 2rem;
+  --s-40: 2.5rem;
+  --s-48: 3rem;
+  --s-64: 4rem;
+  --s-80: 5rem;
+  --s-128: 8rem;
+
+  --s-gap: var(--s-32);
+  --s-section: clamp(var(--s-64), 12vw, var(--s-128));
   --s-container: 1100px;
 
   /* Transitions */
@@ -401,12 +414,12 @@ h2 {
 .section-header {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 3rem;
+  margin: 0 auto var(--s-48);
 }
 
 .section-header h2 {
   font-size: var(--f-size-h2);
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-16);
 }
 
 .section-header p {
@@ -421,7 +434,7 @@ h2 {
 }
 
 .card {
-  padding: 1.5rem;
+  padding: var(--s-24);
   background: var(--c-card);
   border: 1px solid var(--c-border);
   border-radius: 20px;
@@ -440,14 +453,14 @@ h2 {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: var(--s-24);
+  margin-top: var(--s-32);
   align-items: stretch;
 }
 
 .feature-card {
   background: var(--c-card);
-  padding: 1.5rem;
+  padding: var(--s-24);
   border-radius: 12px;
   border: 1px solid var(--c-border);
   display: flex;
@@ -467,7 +480,7 @@ h2 {
 
 .feature-card h4 {
   color: #fff;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--s-12);
   font-size: 1.1rem;
 }
 
@@ -491,15 +504,15 @@ h2 {
 .infographic-container {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--s-24);
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: var(--s-48);
   width: 100%;
 }
 
 .info-card {
   text-align: center;
-  padding: 1.25rem;
+  padding: var(--s-20);
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: 12px;
@@ -586,8 +599,8 @@ h2 {
 @media (max-width: 1024px) {
   .infographic-container {
     flex-direction: column;
-    gap: 2.5rem;
-    padding: 0 1rem;
+    gap: var(--s-40);
+    padding: 0 var(--s-16);
   }
 
   .info-arrow {
@@ -609,7 +622,7 @@ h2 {
 
   .info-card {
     width: 100%;
-    padding: 3rem 2rem;
+    padding: var(--s-48) var(--s-32);
   }
 
   .info-card.featured {
@@ -621,7 +634,7 @@ h2 {
 .calculator-card {
   background: var(--c-surface);
   border: 1px solid var(--c-border);
-  padding: 3rem;
+  padding: var(--s-48);
   border-radius: 32px;
   max-width: 900px;
   margin: 0 auto;
@@ -630,9 +643,9 @@ h2 {
 .calc-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: var(--s-32);
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--s-48);
 }
 
 .calc-val {
@@ -684,7 +697,7 @@ h2 {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--c-border);
   border-radius: 24px;
-  padding: 1.75rem;
+  padding: var(--s-24);
   max-width: 500px;
   margin: 0 auto;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
@@ -693,7 +706,7 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: var(--s-16);
 }
 
 .form-input {
@@ -736,8 +749,8 @@ h2 {
 .prop-type-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-top: 0.375rem;
+  gap: var(--s-12);
+  margin-top: var(--s-8);
 }
 
 .prop-type-card {
@@ -797,7 +810,7 @@ h2 {
 
 .faq-item.open .faq-answer {
   max-height: 300px;
-  padding-bottom: 1.5rem;
+  padding-bottom: var(--s-24);
 }
 
 /* Responsive Adjustments */
@@ -812,12 +825,12 @@ h2 {
 
   .hero-stats-grid {
     grid-template-columns: 1fr;
-    margin-top: 3rem;
-    gap: 2rem;
+    margin-top: var(--s-48);
+    gap: var(--s-32);
   }
 
   .section-header {
-    margin-bottom: 3rem;
+    margin-bottom: var(--s-48);
   }
 
   .btn {
@@ -826,7 +839,7 @@ h2 {
 
   .calculator-card,
   .form-card {
-    padding: 1.5rem;
+    padding: var(--s-24);
   }
 
   .info-card {
@@ -843,9 +856,9 @@ h2 {
 
 .footer-social {
   display: flex;
-  gap: 2.5rem;
+  gap: var(--s-40);
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--s-48);
   opacity: 0.5;
   transition: var(--t-base);
 }
@@ -865,7 +878,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5rem;
+  gap: var(--s-40);
   opacity: 0.6;
 }
 
@@ -877,7 +890,7 @@ h2 {
 
 .btn-row {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--s-24);
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -901,7 +914,7 @@ h2 {
   .sticky-form {
     position: relative !important;
     top: 0 !important;
-    margin-top: 2rem;
+    margin-top: var(--s-32);
   }
 }
 
@@ -915,7 +928,7 @@ h2 {
 /* Remove internal section padding when nested */
 .split-grid section,
 .savings-split section {
-  padding: 1.5rem 0;
+  padding: var(--s-24) 0;
 }
 
 .split-grid {
@@ -934,14 +947,14 @@ h2 {
 }
 
 .footer.section {
-  padding: 2rem 0;
+  padding: var(--s-32) 0;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 1rem 0 2rem;
+  gap: var(--s-32);
+  margin: var(--s-16) 0 var(--s-32);
   flex-wrap: wrap;
 }
 
@@ -957,8 +970,8 @@ h2 {
 
 /* Enhanced Header - Logo Sizing & Padding */
 .header-inner {
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding-top: var(--s-24);
+  padding-bottom: var(--s-16);
 }
 
 .logo-img {
@@ -967,8 +980,8 @@ h2 {
 }
 
 .header.s .header-inner {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: var(--s-12);
+  padding-bottom: var(--s-12);
 }
 
 .header.s .logo-img {
@@ -978,9 +991,9 @@ h2 {
 
 /* Communities Section - Elevated Visibility */
 .communities-section {
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  padding: 3rem 2rem;
+  margin-top: var(--s-64);
+  margin-bottom: var(--s-32);
+  padding: var(--s-48) var(--s-32);
   border-radius: 32px;
   background: radial-gradient(circle at top center, rgba(255, 92, 0, 0.08) 0%, rgba(255, 92, 0, 0.02) 100%), rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 92, 0, 0.2);

@@ -115,10 +115,10 @@ const FAQS = [
 
 const HowItWorks = () => (
     <div className="reveal">
-        <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1.5rem' }}>
-            <h2 style={{ fontSize: '2rem' }}>How It Works</h2>
+        <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-24)' }}>
+            <h2>How It Works</h2>
         </header>
-        <div style={{ display: 'grid', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gap: 'var(--s-12)' }}>
             {STEPS.map(s => (
                 <article key={s.n} className="card" style={{ padding: '1rem 1.25rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                     <div style={{ background: 'var(--g-accent)', color: 'white', width: '22px', height: '22px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: '900', flexShrink: 0, marginTop: '2px' }}>{s.n}</div>
@@ -134,10 +134,10 @@ const HowItWorks = () => (
 
 const Benefits = () => (
     <div className="reveal">
-        <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1.5rem' }}>
-            <h2 style={{ fontSize: '2rem' }}>Why Us?</h2>
+        <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-24)' }}>
+            <h2>Why Us?</h2>
         </header>
-        <div className="grid" style={{ gridTemplateColumns: '1fr', gap: '0.75rem' }}>
+        <div className="grid" style={{ gridTemplateColumns: '1fr', gap: 'var(--s-12)' }}>
             {BENEFITS.map(b => (
                 <article key={b.t} className="card" style={{ padding: '1rem 1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <Icon p={b.i} />
@@ -160,7 +160,7 @@ const Infographic = () => {
                 <header className="section-header">
                     <h2>One Watt, Two Purposes.</h2>
                     <p>Genesis Heating Solutions provides professional onsite integration of next-gen thermal units—hot water heaters that repurpose energy to generate primary value, creating a sustainable recovery stream for your property.</p>
-                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.5rem' }}>
+                    <div style={{ display: 'flex', gap: 'var(--s-8)', justifyContent: 'center', marginTop: 'var(--s-24)' }}>
                         <button
                             onClick={() => setMode('home')}
                             className={mode === 'home' ? 'prop-type-card active' : 'prop-type-card'}
@@ -236,11 +236,11 @@ const SavingsCalculator = () => {
 
     return (
         <div className="reveal">
-            <div className="calculator-card" style={{ width: '100%', padding: '2.5rem' }}>
-                <header className="section-header" style={{ textAlign: 'left', margin: '0 0 2rem' }}>
-                    <h2 style={{ fontSize: '2.25rem' }}>Sustainability. Backed by your energy.</h2>
+            <div className="calculator-card" style={{ width: '100%', padding: 'var(--s-40)' }}>
+                <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-32)' }}>
+                    <h2>Sustainability. Backed by your energy.</h2>
                 </header>
-                <div className="calc-stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2rem' }}>
+                <div className="calc-stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--s-16)', marginBottom: 'var(--s-32)' }}>
                     <div>
                         <div className="calc-val" style={{ fontSize: '1.75rem' }}>{years} yr</div>
                         <div className="calc-label">Planning Horizon</div>
@@ -254,19 +254,19 @@ const SavingsCalculator = () => {
                         <div className="calc-label">Estimated Net Earnings</div>
                     </div>
                 </div>
-                <div style={{ padding: '1.75rem', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: '2rem' }}>
+                <div style={{ padding: 'var(--s-24)', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: 'var(--s-32)' }}>
                     <p className="text-dim" style={{ fontSize: '14px', lineHeight: '1.6' }}>
                         Reclaim 98% of the thermal exhaust from high-value computation and recycle it as a primary heat source for your property with near-total efficiency.
                     </p>
                 </div>
-                <div style={{ marginTop: '2rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', fontSize: '12px' }}>
+                <div style={{ marginTop: 'var(--s-32)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--s-16)', fontSize: '12px' }}>
                         <label htmlFor="genesis-horizon" className="text-dim" style={{ cursor: 'pointer' }}>Consultation Roadmap</label>
                         <span className="text-orange">{years} Year{years > 1 ? 's' : ''} Projection</span>
                     </div>
                     <input id="genesis-horizon" type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
                 </div>
-                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: '2rem', padding: '1rem' }}>Lock In These Savings →</button>
+                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Lock In These Savings →</button>
             </div>
         </div>
     )
@@ -279,7 +279,7 @@ const Communities = () => (
             {['Byron', 'Wortley Village', 'Masonville', 'Oakridge', 'Old North'].map((c, i) => (
                 <div key={c} style={{ position: 'relative' }}>
                     <span className="community-chip">{c}</span>
-                    {i % 3 === 0 && <span style={{ position: 'absolute', top: '-8px', right: '-8px', background: 'var(--c-accent)', color: 'white', fontSize: '8px', fontWeight: '900', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', boxShadow: '0 2px 8px rgba(255,92,0,0.4)' }}>High Demand</span>}
+                    {i % 3 === 0 && <span style={{ position: 'absolute', top: 'calc(var(--s-8) * -1)', right: 'calc(var(--s-8) * -1)', background: 'var(--c-accent)', color: 'white', fontSize: '8px', fontWeight: '900', padding: 'var(--s-4) var(--s-8)', borderRadius: '4px', textTransform: 'uppercase', boxShadow: '0 2px 8px rgba(255,92,0,0.4)' }}>High Demand</span>}
                 </div>
             ))}
         </div>
@@ -394,10 +394,10 @@ const WaitlistForm = () => {
     }
 
     if (isSuccess) return (
-        <div className="form-card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
-            <div className="success-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>✓</div>
-            <h2 className="reveal reveal-active" style={{ marginBottom: '0.75rem', fontSize: '1.75rem' }}>You're In.</h2>
-            <p className="reveal reveal-active" style={{ marginBottom: '2rem', fontSize: '14px', animationDelay: '0.1s', color: 'rgba(255,255,255,0.7)' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
+        <div className="form-card" style={{ textAlign: 'center', padding: 'var(--s-48) var(--s-32)' }}>
+            <div className="success-icon" style={{ fontSize: '3rem', marginBottom: 'var(--s-16)' }}>✓</div>
+            <h2 className="reveal reveal-active" style={{ marginBottom: 'var(--s-12)', fontSize: '1.75rem' }}>You're In.</h2>
+            <p className="reveal reveal-active" style={{ marginBottom: 'var(--s-32)', fontSize: '14px', animationDelay: '0.1s', color: 'rgba(255,255,255,0.7)' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
             <div className="reveal reveal-active" style={{ padding: '1.5rem', background: 'rgba(255,92,0,0.08)', borderRadius: '20px', border: '1px solid rgba(255,92,0,0.2)', animationDelay: '0.2s', textAlign: 'left' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
                     <div style={{ padding: '3px', background: 'var(--c-accent)', borderRadius: '4px' }}>
@@ -414,11 +414,11 @@ const WaitlistForm = () => {
 
     return (
         <div id="waitlist">
-            <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1rem' }}>
+            <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-16)' }}>
                 <h2 style={{ fontSize: '1.5rem' }}>Join {leadCount}+ Londoners</h2>
-                <p className="text-dim" style={{ fontSize: '12px', marginTop: '0.25rem' }}>Currently prioritizing <span className="text-orange" style={{ fontWeight: 700 }}>Byron</span> & Masonville for Phase 1.</p>
+                <p className="text-dim" style={{ fontSize: '12px', marginTop: 'var(--s-4)' }}>Currently prioritizing <span className="text-orange" style={{ fontWeight: 700 }}>Byron</span> & Masonville for Phase 1.</p>
             </header>
-            <div className="form-progress" style={{ display: 'flex', gap: '3px', marginBottom: '1rem' }}>
+            <div className="form-progress" style={{ display: 'flex', gap: 'var(--s-4)', marginBottom: 'var(--s-16)' }}>
                 <div style={{ height: '2px', flex: 1, background: 'var(--c-accent)', borderRadius: '1px' }}></div>
                 <div style={{ height: '2px', flex: 1, background: step === 2 ? 'var(--c-accent)' : 'var(--c-border-strong)', borderRadius: '1px', transition: 'var(--t-base)' }}></div>
             </div>
@@ -521,7 +521,7 @@ const FAQ = () => {
                                 <span className="text-orange" style={{ fontSize: '1.5rem', transform: openIdx === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>{openIdx === i ? '−' : '+'}</span>
                             </button>
                             <div className="faq-answer">
-                                <p className="text-dim" style={{ paddingBottom: '2.5rem', fontSize: '1.125rem' }}>{f.a}</p>
+                                <p className="text-dim" style={{ paddingBottom: 'var(--s-40)', fontSize: '1.125rem' }}>{f.a}</p>
                             </div>
                         </div>
                     ))}
@@ -534,18 +534,18 @@ const FAQ = () => {
 const Foot = () => (
     <footer className="footer section">
         <div className="container">
-            <nav className="footer-links" style={{ marginBottom: '2.5rem' }}>
+            <nav className="footer-links" style={{ marginBottom: 'var(--s-40)' }}>
                 <a href="/privacy.html">Privacy</a>
                 <a href="/terms.html">Terms</a>
                 <a href="mailto:genesisheatingsolutions@gmail.com">Contact Us</a>
             </nav>
-            <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+            <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--s-32)' }}>
                 <a href="https://www.facebook.com/profile.php?id=61586813584409" target="_blank" rel="noopener" aria-label="Facebook" style={{ color: 'white', opacity: 0.8, transition: 'opacity 0.2s' }}>
                     <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
                 </a>
             </div>
             <p className="footer-copy">© {new Date().getFullYear()} GENESIS HEATING SOLUTIONS. LICENSED ONTARIO HVAC PARTNER.</p>
-            <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'center', opacity: 0.6, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <div style={{ marginTop: 'var(--s-32)', display: 'flex', flexDirection: 'column', gap: 'var(--s-12)', alignItems: 'center', opacity: 0.6, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <a href="https://resources.superheat.xyz/brand-resources/Superheat-H1-Product-Introduction.pdf" target="_blank" rel="noopener" style={{ borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '2px', color: 'white' }}>Superheat H1 - Technical Overview (PDF)</a>
                 <a href="https://superheat.xyz" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.7)' }}>Powered by Superheat Technology</a>
             </div>
@@ -562,12 +562,12 @@ export default function App() {
                 <Hero />
                 <div className="container split-grid">
                     <div className="reveal">
-                        <div style={{ marginBottom: '2rem' }}>
+                        <div style={{ marginBottom: 'var(--s-32)' }}>
                             <HowItWorks />
                         </div>
                         <Communities />
                     </div>
-                    <div className="reveal sticky-form" style={{ position: 'sticky', top: '120px' }}>
+                    <div className="reveal sticky-form" style={{ position: 'sticky', top: 'var(--s-128)' }}>
                         <WaitlistForm />
                     </div>
                 </div>
