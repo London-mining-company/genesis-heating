@@ -1153,4 +1153,29 @@ html {
   .section {
     padding: 3rem 0;
   }
+
+  /* Mobile Header - Clean & Minimal */
+  .nav-cta {
+    display: none !important;
+  }
+
+  .header-inner {
+    justify-content: center;
+    height: 70px;
+    padding: 0 1rem;
+  }
+
+  .header.s .header-inner {
+    height: 50px;
+  }
+
+  .logo-img {
+    height: 36px;
+    width: auto;
+  }
+
+  .header.s .logo-img {
+    height: 28px;
+    width: auto;
+  }
 }
