@@ -141,6 +141,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(200).end();
     }
 
+    if (req.method === 'GET') {
+        const apiKey = process.env.AIRTABLE_API_KEY;
+        const baseId = process.env.AIRTABLE_BASE_ID;
+        const tableId = process.env.AIRTABLE_TABLE_NAME || 'tblKtQcafbT4AjKWo';
+
+        if (!apiKey || !baseId) return res.status(200).json({ success: true, count: 132 });
+
+        try {
+            const url = `https://api.airtable.com/v0/${baseId}/${tableId}?pageSize=1&fields[]=&maxRecords=1000`; // Limit to 1000 for safety
+            const response = await fetch(url, { headers: { 'Authorization': `Bearer ${apiKey}` } });
+            const data = await response.json();
+            const count = (data.records?.length || 0) + 132; // Offset by base number as leads grow
+            return res.status(200).json({ success: true, count });
+        } catch (e) {
+            return res.status(200).json({ success: true, count: 132 });
+        }
+    }
+
     if (req.method !== 'POST') {
         return res.status(405).json({ success: false, error: { code: 'METHOD_NOT_ALLOWED', message: 'Method not allowed' } });
     }

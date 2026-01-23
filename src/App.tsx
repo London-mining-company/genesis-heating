@@ -297,8 +297,14 @@ const WaitlistForm = () => {
     const [errors, setErrors] = useState<FormErrors>({})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
+    const [leadCount, setLeadCount] = useState(132)
 
     useEffect(() => {
+        // Fetch real-time lead count
+        fetch('/api/waitlist').then(res => res.json()).then(data => {
+            if (data.count) setLeadCount(data.count);
+        }).catch(() => { });
+
         // Check if user already signed up (prevent duplicates on reload)
         if (localStorage.getItem('genesis_waitlist_complete')) {
             setIsSuccess(true);
@@ -410,7 +416,7 @@ const WaitlistForm = () => {
     return (
         <div id="waitlist">
             <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1rem' }}>
-                <h2 style={{ fontSize: '1.5rem' }}>Join 132+ Londoners</h2>
+                <h2 style={{ fontSize: '1.5rem' }}>Join {leadCount}+ Londoners</h2>
                 <p className="text-dim" style={{ fontSize: '12px', marginTop: '0.25rem' }}>Currently prioritizing <span className="text-orange" style={{ fontWeight: 700 }}>Byron</span> & Masonville for Phase 1.</p>
             </header>
             <div className="form-progress" style={{ display: 'flex', gap: '3px', marginBottom: '1rem' }}>
