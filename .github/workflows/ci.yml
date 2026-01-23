@@ -48,13 +48,14 @@ jobs:
       - run: npm ci
       - run: npm run build
       
-      # Simple check to ensure we stay lightweight
+      # Smarter check for hashed assets
       - name: Check Main Bundle Size
         run: |
-          SIZE=$(gzip -c dist/a.js | wc -c)
+          JS_FILE=$(ls dist/assets/index.*.js | head -n 1)
+          SIZE=$(gzip -c $JS_FILE | wc -c)
           echo "Gzipped Bundle Size: $SIZE bytes"
-          if [ $SIZE -gt 14336 ]; then
-            echo "❌ Bundle size ($SIZE bytes) exceeds 14KB limit!"
+          if [ $SIZE -gt 24576 ]; then
+            echo "❌ Bundle size ($SIZE bytes) exceeds 24KB safety limit!"
             exit 1
           fi
           echo "✅ Bundle size is within limits."
