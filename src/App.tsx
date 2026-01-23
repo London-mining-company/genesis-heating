@@ -436,19 +436,20 @@ const WaitlistForm = () => {
                             </div>
                             <input type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
                         </div>
-                        <div className="form-group" style={{ marginTop: '1rem' }}>
-                            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.5rem' }}>
-                                <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '14px', height: '14px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <span style={{ fontSize: '11px', lineHeight: '1.3' }} className="text-dim">I agree to be contacted about installation.</span>
+                        <div className="form-group" style={{ marginTop: '1.25rem' }}>
+                            <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center', marginBottom: '0.625rem' }}>
+                                <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
+                                <span style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)' }}>I agree to be contacted about installation.</span>
                             </div>
-                            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                                <input type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '14px', height: '14px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <span style={{ fontSize: '11px', lineHeight: '1.3' }} className="text-dim">Send me updates and offers</span>
+                            <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center' }}>
+                                <input type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
+                                <span style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)' }}>Send me updates and offers</span>
                             </div>
                             {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.privacyAccepted}</p>}
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}</button>
-                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '0.5rem', padding: '0.5rem', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.06em' }} className="text-dim">← Back</button>
+                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.25rem', padding: '0.875rem 1.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}</button>
+                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '0.75rem', padding: '0.625rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: 'rgba(255,255,255,0.7)', background: 'transparent', cursor: 'pointer' }}>← Back to Step 1</button>
+
                     </div>
 
                 )}
