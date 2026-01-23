@@ -90,9 +90,9 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
                     'Postal Code': lead.postalCode || '',
                     'Property Type': mappedPropertyType,
                     'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
-                    'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No', // Use strings for better typecast compatibility
+                    'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
                     'Source': lead.source || 'Website',
-                    'Created At': new Date().toISOString() // Simpler format for better compatibility
+                    'Created At': new Date().toISOString().replace('T', ' ').substring(0, 16) // Minute precision: YYYY-MM-DD HH:mm
                 }
             }
         ],
