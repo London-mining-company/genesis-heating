@@ -1148,6 +1148,12 @@ html {
 
   .hero {
     min-height: 80vh;
+    padding-top: 60px;
+  }
+
+  .hero-content {
+    padding-top: 0;
+    margin-top: -2rem;
   }
 
   .section {
@@ -1170,12 +1176,12 @@ html {
   }
 
   .logo-img {
-    height: 36px;
+    height: 44px;
     width: auto;
   }
 
   .header.s .logo-img {
-    height: 28px;
+    height: 32px;
     width: auto;
   }
 }
