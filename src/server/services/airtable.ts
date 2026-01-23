@@ -86,12 +86,18 @@ export class AirtableService {
             if (!response.ok) {
                 const errorBody = await response.text();
                 console.error(`[Airtable] API Error ${response.status}: ${errorBody}`);
+                console.error(`[Airtable] Request URL: ${url}`);
+                console.error(`[Airtable] Request payload fields: ${Object.keys(payload.records[0].fields).join(', ')}`);
 
                 // Try to parse error for more detail
                 try {
                     const parsed = JSON.parse(errorBody) as AirtableErrorResponse;
                     if (parsed.error) {
                         console.error(`[Airtable] Error type: ${parsed.error.type}, Message: ${parsed.error.message}`);
+                        // Common error: UNKNOWN_FIELD_NAME means field name mismatch
+                        if (parsed.error.type === 'UNKNOWN_FIELD_NAME') {
+                            console.error('[Airtable] FIELD NAME MISMATCH - Check Airtable column names match exactly');
+                        }
                     }
                 } catch {
                     // Not JSON, already logged raw body
@@ -106,5 +112,6 @@ export class AirtableService {
             console.error('[Airtable] Network/fetch error:', error);
             return false;
         }
+
     }
 }
