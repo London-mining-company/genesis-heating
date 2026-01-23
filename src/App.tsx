@@ -391,23 +391,23 @@ const WaitlistForm = () => {
                     <div className="reveal reveal-active">
                         <div className="form-group">
                             <label className="calc-label">Full Name</label>
-                            <input name="name" className="form-input" placeholder="Your full name" value={formData.name} onChange={handleChange} />
+                            <input name="name" autoComplete="name" className="form-input" placeholder="Your full name" value={formData.name} onChange={handleChange} />
                             {errors.name && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.name}</p>}
                         </div>
                         <div className="form-group">
                             <label className="calc-label">Email</label>
-                            <input name="email" type="email" className="form-input" placeholder="you@example.com" value={formData.email} onChange={handleChange} />
+                            <input name="email" type="email" autoComplete="email" className="form-input" placeholder="you@example.com" value={formData.email} onChange={handleChange} />
                             {errors.email && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.email}</p>}
                         </div>
                         <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                             <div className="form-group">
                                 <label className="calc-label">Phone</label>
-                                <input name="phoneNumber" className="form-input" placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} />
+                                <input name="phoneNumber" type="tel" autoComplete="tel" className="form-input" placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} />
                                 {errors.phoneNumber && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.phoneNumber}</p>}
                             </div>
                             <div className="form-group">
                                 <label className="calc-label">Postal Code</label>
-                                <input name="postalCode" className="form-input" placeholder="N6A 1A1" value={formData.postalCode} onChange={handleChange} />
+                                <input name="postalCode" autoComplete="postal-code" className="form-input" placeholder="N6A 1A1" value={formData.postalCode} onChange={handleChange} />
                                 {errors.postalCode && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.postalCode}</p>}
                             </div>
                         </div>
