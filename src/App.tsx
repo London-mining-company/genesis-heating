@@ -352,16 +352,17 @@ const WaitlistForm = () => {
     }
 
     if (isSuccess) return (
-        <div className="form-card" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>✓</div>
-            <h2 style={{ marginBottom: '1rem' }}>You are on the list.</h2>
-            <p className="text-dim" style={{ marginBottom: '2rem' }}>A technician will reach out in Spring 2026 to discuss your home and walk through next steps. No obligation - just a conversation.</p>
-            <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid var(--c-border)' }}>
-                <p style={{ fontSize: '14px', fontWeight: '600', marginBottom: '0.5rem' }}>The Neighbourhood Effect</p>
-                <p className="text-dim" style={{ fontSize: '12px' }}>Every unit installed contributes to stronger local community pools. More neighbours = better grassroots economics for the whole street.</p>
+        <div className="form-card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✓</div>
+            <h2 style={{ marginBottom: '0.75rem', fontSize: '1.5rem' }}>You're In.</h2>
+            <p className="text-dim" style={{ marginBottom: '1.5rem', fontSize: '14px' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
+            <div style={{ padding: '1.25rem', background: 'rgba(255,92,0,0.08)', borderRadius: '16px', border: '1px solid rgba(255,92,0,0.2)' }}>
+                <p style={{ fontSize: '13px', fontWeight: '700', marginBottom: '0.5rem', color: 'var(--c-accent)' }}>Refer a Neighbour</p>
+                <p className="text-dim" style={{ fontSize: '12px', lineHeight: '1.5' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool economics.</p>
             </div>
         </div>
     )
+
 
     return (
         <div id="waitlist">
