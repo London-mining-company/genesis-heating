@@ -266,7 +266,7 @@ const SavingsCalculator = () => {
                     </div>
                     <input id="genesis-horizon" type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
                 </div>
-                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Book a consultation for Spring 2026! →</button>
+                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Book a consultation for Spring 2026!&nbsp;→</button>
             </div>
         </div>
     )
