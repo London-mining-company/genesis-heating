@@ -410,7 +410,10 @@ const WaitlistForm = () => {
                 <div style={{ height: '2px', flex: 1, background: step === 2 ? 'var(--c-accent)' : 'var(--c-border-strong)', borderRadius: '1px', transition: 'var(--t-base)' }}></div>
             </div>
             <form className="form-card" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 'none' }}>
-                <div style={{ display: 'none' }}><input name="website" value={formData.website} onChange={handleChange} /></div>
+                <div style={{ display: 'none' }} aria-hidden="true">
+                    <label htmlFor="genesis-website">Website</label>
+                    <input id="genesis-website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} />
+                </div>
                 {errors.general && <p className="text-orange" style={{ fontSize: '12px', marginBottom: '1rem', textAlign: 'center' }}>{errors.general}</p>}
 
                 {step === 1 ? (
@@ -457,19 +460,19 @@ const WaitlistForm = () => {
                         </div>
                         <div className="form-group" style={{ marginTop: '1rem' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <label className="calc-label" style={{ marginBottom: 0 }}>Monthly Heating Cost</label>
+                                <label htmlFor="genesis-cost" className="calc-label" style={{ marginBottom: 0 }}>Monthly Heating Cost</label>
                                 <span className="text-orange" style={{ fontSize: '13px', fontWeight: '700' }}>${formData.monthlyHeatingCost}</span>
                             </div>
-                            <input type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
+                            <input id="genesis-cost" type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
                         </div>
                         <div className="form-group" style={{ marginTop: '1.25rem' }}>
                             <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center', marginBottom: '0.625rem' }}>
-                                <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <span style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)' }}>I agree to be contacted about installation.</span>
+                                <input id="genesis-privacy" type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
+                                <label htmlFor="genesis-privacy" style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)', cursor: 'pointer' }}>I agree to be contacted about installation.</label>
                             </div>
                             <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center' }}>
-                                <input type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <span style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)' }}>Send me updates and offers</span>
+                                <input id="genesis-marketing" type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
+                                <label htmlFor="genesis-marketing" style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)', cursor: 'pointer' }}>Send me updates and offers</label>
                             </div>
                             {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.privacyAccepted}</p>}
                         </div>
