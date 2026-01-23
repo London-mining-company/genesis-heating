@@ -80,23 +80,27 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     const propertyTypeMap: Record<string, string> = { 'home': 'residential', 'business': 'commercial' };
     const mappedPropertyType = propertyTypeMap[lead.propertyType] || lead.propertyType || 'residential';
 
-    // Use Single Record format (wrapped in fields object at root)
+    // Use the official "Records Collection" wrap format
     const payload = {
-        fields: {
-            'Email': lead.email,
-            'Full Name': lead.name || 'Anonymous',
-            'Phone': lead.phoneNumber || '',
-            'Postal Code': lead.postalCode || '',
-            'Property Type': mappedPropertyType,
-            'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
-            'Marketing Consent': lead.marketingConsent,
-            'Source': lead.source || 'Website'
-        },
+        records: [
+            {
+                fields: {
+                    'Email': lead.email,
+                    'Full Name': lead.name || 'Anonymous',
+                    'Phone': lead.phoneNumber || '',
+                    'Postal Code': lead.postalCode || '',
+                    'Property Type': mappedPropertyType,
+                    'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
+                    'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No', // Use strings for better typecast compatibility
+                    'Source': lead.source || 'Website'
+                }
+            }
+        ],
         typecast: true
     };
 
 
-    console.log('[Airtable] Payload (Single Record Wrap):', JSON.stringify(payload, null, 2));
+    console.log('[Airtable] Payload (Official Collection Wrap):', JSON.stringify(payload, null, 2));
     console.log('[Airtable] Attempting to create lead:', lead.email);
 
     try {
