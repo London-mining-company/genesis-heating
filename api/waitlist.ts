@@ -57,19 +57,22 @@ interface AirtableLead {
 async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     const apiKey = process.env.AIRTABLE_API_KEY;
     const baseId = process.env.AIRTABLE_BASE_ID;
-    const tableName = process.env.AIRTABLE_TABLE_NAME || 'Leads';
+    // Use table ID (more reliable than name) - fallback to user's actual table ID
+    const tableId = process.env.AIRTABLE_TABLE_NAME || 'tblKtQcafbT4AjKWo';
 
-    // Debug: Log environment variable status
-    console.log('[Airtable] ENV Check - API_KEY exists:', !!apiKey, 'BASE_ID exists:', !!baseId, 'TABLE:', tableName);
+    // Enhanced debug logging
+    console.log('[Airtable] === DEBUG START ===');
+    console.log('[Airtable] API_KEY exists:', !!apiKey, '| Length:', apiKey?.length || 0, '| Prefix:', apiKey?.substring(0, 10) || 'MISSING');
+    console.log('[Airtable] BASE_ID:', baseId || 'MISSING');
+    console.log('[Airtable] TABLE_ID:', tableId);
 
     if (!apiKey || !baseId) {
         console.error('[Airtable] CRITICAL: Missing API_KEY or BASE_ID environment variables');
-        console.error('[Airtable] API_KEY length:', apiKey?.length || 0);
-        console.error('[Airtable] BASE_ID length:', baseId?.length || 0);
         return false;
     }
 
-    const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
+    // Use table ID directly (not URL encoded since IDs are already URL-safe)
+    const url = `https://api.airtable.com/v0/${baseId}/${tableId}`;
     console.log('[Airtable] Request URL:', url);
 
 
