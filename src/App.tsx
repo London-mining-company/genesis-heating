@@ -17,17 +17,21 @@ const sTo = (i: string) => document.getElementById(i)?.scrollIntoView({ behavior
 const useGenesisEngine = () => {
     useEffect(() => {
         const root = document.documentElement;
+        const oT = document.title;
         const hS = () => root.style.setProperty('--sy', `${window.scrollY}px`);
+        const hV = () => { document.title = document.hidden ? "Waitlist Position: Pending..." : oT };
         const hR = new IntersectionObserver((es) => {
             es.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal-active') });
         }, { threshold: 0.1 });
 
         window.addEventListener('scroll', hS, { passive: true });
+        window.addEventListener('visibilitychange', hV);
         document.querySelectorAll('.reveal').forEach(el => hR.observe(el));
         hS();
 
         return () => {
             window.removeEventListener('scroll', hS);
+            window.removeEventListener('visibilitychange', hV);
             hR.disconnect();
         };
     }, []);
@@ -263,6 +267,7 @@ const SavingsCalculator = () => {
                     </div>
                     <input id="genesis-horizon" type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
                 </div>
+                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: '2rem', padding: '1rem' }}>Lock In These Savings →</button>
             </div>
         </div>
     )
@@ -272,8 +277,11 @@ const Communities = () => (
     <section className="reveal communities-section">
         <h3 className="communities-title">Now Serving — London, Ontario</h3>
         <div className="communities-grid">
-            {['Byron', 'Wortley Village', 'Masonville', 'Oakridge', 'Old North'].map(c => (
-                <span key={c} className="community-chip">{c}</span>
+            {['Byron', 'Wortley Village', 'Masonville', 'Oakridge', 'Old North'].map((c, i) => (
+                <div key={c} style={{ position: 'relative' }}>
+                    <span className="community-chip">{c}</span>
+                    {i % 3 === 0 && <span style={{ position: 'absolute', top: '-8px', right: '-8px', background: 'var(--c-accent)', color: 'white', fontSize: '8px', fontWeight: '900', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', boxShadow: '0 2px 8px rgba(255,92,0,0.4)' }}>High Demand</span>}
+                </div>
             ))}
         </div>
         <p className="communities-note">Neighbourhoods with more signups get priority scheduling.</p>
@@ -392,8 +400,8 @@ const WaitlistForm = () => {
                     </div>
                     <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Refer a Neighbour</p>
                 </div>
-                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool payout.</p>
-
+                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', marginBottom: '1rem' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool payout.</p>
+                <a href={`whatsapp://send?text=Hey! I just found this local London company, Genesis Heating, that installs water heaters that actually earn you money. I just joined their waitlist for Spring 2026. Check it out: https://genesisheatingsolutions.ca`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
             </div>
         </div>
     )
@@ -402,8 +410,8 @@ const WaitlistForm = () => {
     return (
         <div id="waitlist">
             <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1rem' }}>
-                <h2 style={{ fontSize: '1.5rem' }}>Join the Waitlist</h2>
-                <p className="text-dim" style={{ fontSize: '12px', marginTop: '0.25rem' }}>Spring 2026 installations are filling fast.</p>
+                <h2 style={{ fontSize: '1.5rem' }}>Join 132+ Londoners</h2>
+                <p className="text-dim" style={{ fontSize: '12px', marginTop: '0.25rem' }}>Currently prioritizing <span className="text-orange" style={{ fontWeight: 700 }}>Byron</span> & Masonville for Phase 1.</p>
             </header>
             <div className="form-progress" style={{ display: 'flex', gap: '3px', marginBottom: '1rem' }}>
                 <div style={{ height: '2px', flex: 1, background: 'var(--c-accent)', borderRadius: '1px' }}></div>
