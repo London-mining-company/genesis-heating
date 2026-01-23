@@ -266,7 +266,7 @@ const SavingsCalculator = () => {
                     </div>
                     <input id="genesis-horizon" type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
                 </div>
-                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Lock In These Savings →</button>
+                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Book a consultation for Spring 2026! →</button>
             </div>
         </div>
     )
@@ -406,7 +406,7 @@ const WaitlistForm = () => {
                     <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Refer a Neighbour</p>
                 </div>
                 <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', marginBottom: '1rem' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = greater collective energy credits.</p>
-                <a href={`whatsapp://send?text=Hey! I just found this local London company, Genesis Heating, that installs water heaters that actually lower your bills through energy recycling. I just joined their waitlist for Spring 2026. Check it out: https://genesisheatingsolutions.ca`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
+                <a href={`whatsapp://send?text=Hey! I just found this local London company, Genesis Heating, that installs water heaters that actually lower your bills through energy recycling. I just joined their waitlist for Spring 2026. Check it out: ${window.location.origin}`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
             </div>
         </div>
     )
