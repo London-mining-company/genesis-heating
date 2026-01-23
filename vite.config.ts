@@ -60,16 +60,10 @@ export default defineConfig(({ mode }) => ({
         },
         rollupOptions: {
             output: {
-                // Inline small chunks for fewer HTTP requests
-                inlineDynamicImports: true,
-                // Minimize chunk names
-                entryFileNames: 'a.js',
-                chunkFileNames: 'c.js',
-                assetFileNames: (assetInfo) => {
-                    if (assetInfo.name?.endsWith('.css')) return 's.css'
-                    return 'r.[ext]'
-                },
-                manualChunks: undefined,
+                // Restore hashing for cache-busting and sync across domains
+                entryFileNames: 'assets/[name].[hash].js',
+                chunkFileNames: 'assets/[name].[hash].js',
+                assetFileNames: 'assets/[name].[hash].[ext]',
             },
         },
         // Aggressive CSS code splitting
