@@ -59,12 +59,19 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     const baseId = process.env.AIRTABLE_BASE_ID;
     const tableName = process.env.AIRTABLE_TABLE_NAME || 'Leads';
 
+    // Debug: Log environment variable status
+    console.log('[Airtable] ENV Check - API_KEY exists:', !!apiKey, 'BASE_ID exists:', !!baseId, 'TABLE:', tableName);
+
     if (!apiKey || !baseId) {
-        console.error('[Airtable] Missing API_KEY or BASE_ID');
+        console.error('[Airtable] CRITICAL: Missing API_KEY or BASE_ID environment variables');
+        console.error('[Airtable] API_KEY length:', apiKey?.length || 0);
+        console.error('[Airtable] BASE_ID length:', baseId?.length || 0);
         return false;
     }
 
     const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
+    console.log('[Airtable] Request URL:', url);
+
 
     const payload = {
         records: [{
