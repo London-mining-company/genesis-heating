@@ -355,6 +355,25 @@ const WaitlistForm = () => {
             if (!r.success) { setErrors(v => ({ ...v, general: r.error?.message || 'Synchronization failed' })); return; }
             localStorage.removeItem('genesis_form_draft')
             localStorage.setItem('genesis_waitlist_complete', 'true')
+
+            // Track Analytics Events
+            if (typeof window !== 'undefined') {
+                // GA4 Lead Event
+                if ((window as any).gtag) {
+                    (window as any).gtag('event', 'generate_lead', {
+                        'event_category': 'Waitlist',
+                        'event_label': body.property_type
+                    });
+                }
+                // Facebook Lead Event
+                if ((window as any).fbq) {
+                    (window as any).fbq('track', 'Lead', {
+                        content_name: 'Waitlist Signup',
+                        content_category: 'Leads'
+                    });
+                }
+            }
+
             setIsSuccess(true);
 
         } catch (err) { setErrors(v => ({ ...v, general: 'Uplink synchronization error' })) } finally { setIsSubmitting(false) }
