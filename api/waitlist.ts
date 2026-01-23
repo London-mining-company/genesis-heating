@@ -69,20 +69,22 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     const payload = {
         records: [{
             fields: {
-                'Email': lead.email,
-                'Name': lead.name || 'Anonymous',
-                'Phone': lead.phoneNumber || '',
-                'Postal Code': lead.postalCode || '',
-                'Property Type': lead.propertyType || 'residential',
-                'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
-                'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
-                'Source': lead.source || 'Website',
+                'email': lead.email,
+                'Full Name': lead.name || 'Anonymous',
+                'phone': lead.phoneNumber || '',
+                'postal code': lead.postalCode || '',
+                'property type': lead.propertyType || 'residential',
+                'monthly heating cost': lead.monthlyHeatingCost || 0,
+                'marketing consent': lead.marketingConsent,
+                'source': lead.source || 'Website',
+                'created at': new Date().toISOString(),
             }
         }],
-        typecast: true // Allow Airtable to auto-convert field types
+        typecast: true
     };
 
-    console.log('[Airtable] Attempting to create lead with fields:', Object.keys(payload.records[0].fields).join(', '));
+    console.log('[Airtable] Attempting to create lead:', lead.email);
+
 
 
     try {
