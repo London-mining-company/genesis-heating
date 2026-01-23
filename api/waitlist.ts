@@ -73,6 +73,10 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     console.log('[Airtable] Request URL:', url);
 
 
+    // Map property type: frontend sends 'home'/'business', Airtable expects 'residential'/'commercial'
+    const propertyTypeMap: Record<string, string> = { 'home': 'residential', 'business': 'commercial' };
+    const mappedPropertyType = propertyTypeMap[lead.propertyType] || lead.propertyType || 'residential';
+
     const payload = {
         records: [{
             fields: {
@@ -80,7 +84,7 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
                 'Full Name': lead.name || 'Anonymous',
                 'Phone': lead.phoneNumber || '',
                 'Postal Code': lead.postalCode || '',
-                'Property Type': lead.propertyType || 'residential',
+                'Property Type': mappedPropertyType,
                 'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
                 'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
                 'Source': lead.source || 'Website',
@@ -88,6 +92,7 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
             }
         }]
     };
+
 
     console.log('[Airtable] Full payload:', JSON.stringify(payload, null, 2));
     console.log('[Airtable] Attempting to create lead:', lead.email);
