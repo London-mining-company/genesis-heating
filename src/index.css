@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   /* Genesis Heating Solutions - Hardened Production Kernel v5 */
   /* Colors - The Superheat Palette */
   --c-bg: #000000;
@@ -9,7 +9,7 @@
   --c-border-strong: rgba(255, 255, 255, 0.12);
   --c-text: #ffffff;
   --c-text-muted: #767676;
-  --c-text-dim: rgba(255, 255, 255, 0.3);
+  --c-text-dim: rgba(255, 255, 255, 0.45);
   --c-accent: #ff5c00;
   --c-accent-glow: rgba(255, 92, 0, 0.15);
   --g-accent: linear-gradient(135deg, #ff5c00, #ff8c00);
@@ -1220,35 +1220,35 @@ html {
     width: auto;
   }
 }
- / *   N E X T   L E V E L   A N I M A T I O N S   * / 
- . s u c c e s s - i c o n   { 
-     a n i m a t i o n :   s u c c e s s - p o p   0 . 6 s   c u b i c - b e z i e r ( 0 . 1 7 ,   0 . 8 9 ,   0 . 3 2 ,   1 . 4 9 )   b o t h ; 
-     c o l o r :   v a r ( - - c - a c c e n t ) ; 
-     d i s p l a y :   i n l i n e - b l o c k ; 
-     t e x t - s h a d o w :   0   0   2 0 p x   v a r ( - - c - a c c e n t - g l o w ) ; 
- } 
- 
- @ k e y f r a m e s   s u c c e s s - p o p   { 
-     0 %   {   t r a n s f o r m :   s c a l e ( 0 ) ;   o p a c i t y :   0 ;   } 
-     7 0 %   {   t r a n s f o r m :   s c a l e ( 1 . 2 ) ;   } 
-     1 0 0 %   {   t r a n s f o r m :   s c a l e ( 1 ) ;   o p a c i t y :   1 ;   } 
- } 
- 
- . p r o p - t y p e - c a r d : a c t i v e   { 
-     t r a n s f o r m :   s c a l e ( 0 . 9 5 ) ; 
- } 
- 
- . b t n - p r i m a r y : a c t i v e   { 
-     t r a n s f o r m :   s c a l e ( 0 . 9 8 )   t r a n s l a t e Y ( 0 ) ; 
- } 
-  
- 
- . a n i m a t e - s p i n   { 
-     a n i m a t i o n :   s p i n   1 s   l i n e a r   i n f i n i t e ; 
- } 
- @ k e y f r a m e s   s p i n   { 
-     f r o m   {   t r a n s f o r m :   r o t a t e ( 0 d e g ) ;   } 
-     t o   {   t r a n s f o r m :   r o t a t e ( 3 6 0 d e g ) ;   } 
- } 
-  
- 
+
+/* NEXT LEVEL ANIMATIONS */
+.success-icon {
+  animation: success-pop 0.6s cubic-bezier(0.17, 0.89, 0.32, 1.49) both;
+  color: var(--c-accent);
+  display: inline-block;
+  text-shadow: 0 0 20px var(--c-accent-glow);
+}
+
+@keyframes success-pop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.prop-type-card:active {
+  transform: scale(0.95);
+}
+
+.btn-primary:active {
+  transform: scale(0.98) translateY(0);
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
