@@ -89,28 +89,28 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><path d={p} stroke-linecap="round" stroke-linejoin="round" /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Seamless Integration', d: 'Standard plumbing. Standard footprint. It fits exactly where your old tank is now—no renovation needed.' },
-    { n: 2, t: 'Energy Value Recovery', d: 'The system captures energy throughout the day and recycles it to heat your water. You stop paying twice for the same utility.' },
-    { n: 3, t: 'Automated Savings', d: 'We turn that recovered value into regular payments. You choose: a monthly credit, cheque, or Bitcoin. Your home, your control.' },
+    { n: 1, t: 'Seamless Integration', d: 'Standard plumbing and footprint. Fits exactly where your old tank is now—no renovation needed.' },
+    { n: 2, t: 'Energy Value Recovery', d: 'The system captures and recycles energy to heat your water. Stop paying twice for the same utility.' },
+    { n: 3, t: 'Automated Savings', d: 'Turn recovered value into regular payments: monthly credit, cheque, or Bitcoin. Your home, your control.' },
 ]
 
 const BENEFITS = [
-    { i: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5m0 16.5V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v10.5a2.25 2.25 0 002.25 2.25z', t: 'Built-in Efficiency', d: 'Your system works quietly in the background while you go about your day. No technical learning required. It’s automated utility value, powered by your property.' },
-    { i: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z', t: 'Superior Performance', d: 'Industrial-grade heat exchange delivers constant hot water for your entire household. 24 gal/hour recovery means zero compromises on comfort.' },
-    { i: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v3', t: 'Managed For You', d: 'We handle the complexity, setup, and maintenance. You simply enjoy the energy savings and monthly value—professional, local, and entirely hands-off.' },
+    { i: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5m0 16.5V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v10.5a2.25 2.25 0 002.25 2.25z', t: 'Built-in Efficiency', d: 'Works quietly in the background while you go about your day. Automated utility value, powered by your property.' },
+    { i: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z', t: 'Superior Performance', d: 'Industrial-grade heat exchange delivers constant hot water for your entire household. 24 gal/hour recovery rated.' },
+    { i: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25a2.25 2.25 0 00-2.25-2.25h-1.5a2.25 2.25 0 00-2.25 2.25v3', t: 'Managed For You', d: 'We handle the setup and maintenance. You simply enjoy the energy savings and monthly value—entirely hands-off.' },
     { i: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z', t: 'London Expertise', d: 'Based in London, ON. We provide local onsite integration and proactive monitoring for your absolute peace of mind.' },
 ]
 
 const FAQS = [
-    { q: 'What is the Superheat H1?', a: 'A smarter water heater. It uses advanced thermal technology to heat your water while simultaneously creating energy value that effectively pays for itself.' },
-    { q: 'Who is Genesis Heating Solutions?', a: 'A local London team specialized in modern heating infrastructure. We help homeowners transition to high-efficiency systems that turn utility expenses into property value.' },
-    { q: 'What is included in your service?', a: 'Everything. We handle the professional HVAC installation, technical configuration, and proactive monitoring. You just enjoy reliable hot water and monthly savings.' },
-    { q: 'How do the monthly credits work?', a: 'As your system generates value, you receive regular payments that offset your heating costs. You can receive these as a monthly CAD cheque or directed into Bitcoin—giving you total control over the value your home creates.' },
-    { q: 'What does it cost?', a: 'We offer flexible options from equipment purchase to service-based leasing. Both paths are designed to lower your net monthly expenses. We provide detailed pricing during your free local consultation.' },
-    { q: 'Is it complicated to use?', a: 'Not at all. Once installed by our London team, it functions exactly like your current water heater—only it’s significantly more efficient and generates value every month.' },
-    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out to schedule a local consultation—no pressure, just a quick look to see if the system is a good fit for your home.' },
-    { q: 'Is it quiet?', a: 'Yes. It operates about as loudly as a quiet desk fan and is typically installed in your basement or utility room.' },
-    { q: 'Is my privacy protected?', a: 'Absolutely. The system performs secure, mathematical tasks only—it has zero access to your home network or personal information.' },
+    { q: 'What is the Superheat H1?', a: 'A smarter water heater that uses thermal technology to heat your water while creating energy value that pays for itself.' },
+    { q: 'Who is Genesis Heating Solutions?', a: 'Local London team helping homeowners transition to high-efficiency systems that turn utility expenses into property value.' },
+    { q: 'What is included in the service?', a: 'Professional installation, technical configuration, and proactive monitoring. Reliable hot water and monthly savings.' },
+    { q: 'How do monthly credits work?', a: 'As the system generates value, you receive monthly payments via CAD cheque or Bitcoin to offset your heating costs.' },
+    { q: 'What does it cost?', a: 'Options range from equipment purchase to leasing. All designed to lower net expenses. Detailed during your free consultation.' },
+    { q: 'Is it complicated to use?', a: 'No. Functions exactly like your current heater—only significantly more efficient and generates value every month.' },
+    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out for a no-pressure consultation to see if it’s a good fit.' },
+    { q: 'Is it quiet?', a: 'Loud as a quiet desk fan. Usually installed in a basement or utility room.' },
+    { q: 'Is my privacy protected?', a: 'Zero access to your personal info. The system only performs mathematical computations.' },
 ]
 
 const HowItWorks = () => (
