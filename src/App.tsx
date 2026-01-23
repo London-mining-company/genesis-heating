@@ -258,10 +258,10 @@ const SavingsCalculator = () => {
                 </div>
                 <div style={{ marginTop: '2rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', fontSize: '12px' }}>
-                        <span className="text-dim">Consultation Roadmap</span>
+                        <label htmlFor="genesis-horizon" className="text-dim" style={{ cursor: 'pointer' }}>Consultation Roadmap</label>
                         <span className="text-orange">{years} Year{years > 1 ? 's' : ''} Projection</span>
                     </div>
-                    <input type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
+                    <input id="genesis-horizon" type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
                 </div>
             </div>
         </div>
@@ -411,8 +411,7 @@ const WaitlistForm = () => {
             </div>
             <form className="form-card" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: 'none' }}>
                 <div style={{ display: 'none' }} aria-hidden="true">
-                    <label htmlFor="genesis-website">Website</label>
-                    <input id="genesis-website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} />
+                    <input name="website" value={formData.website} onChange={handleChange} tabIndex={-1} />
                 </div>
                 {errors.general && <p className="text-orange" style={{ fontSize: '12px', marginBottom: '1rem', textAlign: 'center' }}>{errors.general}</p>}
 
@@ -446,16 +445,17 @@ const WaitlistForm = () => {
                 ) : (
                     <div className="reveal reveal-active">
                         <div className="form-group">
-                            <label className="calc-label">Property Type</label>
-                            <div className="prop-type-grid">
-                                <div onClick={() => setFormData(v => ({ ...v, propertyType: 'residential' }))} className={`prop-type-card ${formData.propertyType === 'residential' ? 'active' : ''}`}>
+                            <label htmlFor="genesis-prop-type" className="calc-label">Property Type</label>
+                            <input id="genesis-prop-type" type="hidden" name="propertyType" value={formData.propertyType} />
+                            <div className="prop-type-grid" role="radiogroup" aria-labelledby="genesis-prop-type">
+                                <button type="button" onClick={() => setFormData(v => ({ ...v, propertyType: 'residential' }))} className={`prop-type-card ${formData.propertyType === 'residential' ? 'active' : ''}`} role="radio" aria-checked={formData.propertyType === 'residential'}>
                                     <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                                     Home
-                                </div>
-                                <div onClick={() => setFormData(v => ({ ...v, propertyType: 'commercial' }))} className={`prop-type-card ${formData.propertyType === 'commercial' ? 'active' : ''}`}>
+                                </button>
+                                <button type="button" onClick={() => setFormData(v => ({ ...v, propertyType: 'commercial' }))} className={`prop-type-card ${formData.propertyType === 'commercial' ? 'active' : ''}`} role="radio" aria-checked={formData.propertyType === 'commercial'}>
                                     <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                                     Business
-                                </div>
+                                </button>
                             </div>
                         </div>
                         <div className="form-group" style={{ marginTop: '1rem' }}>
