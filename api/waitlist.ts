@@ -82,15 +82,16 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
                 'Postal Code': lead.postalCode || '',
                 'Property Type': lead.propertyType || 'residential',
                 'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
-                'Marketing Consent': lead.marketingConsent,
+                'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No',
                 'Source': lead.source || 'Website',
                 'Created At': new Date().toISOString(),
             }
-        }],
-        typecast: true
+        }]
     };
 
+    console.log('[Airtable] Full payload:', JSON.stringify(payload, null, 2));
     console.log('[Airtable] Attempting to create lead:', lead.email);
+
 
 
 

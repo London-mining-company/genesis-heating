@@ -291,6 +291,12 @@ const WaitlistForm = () => {
     const [isSuccess, setIsSuccess] = useState(false)
 
     useEffect(() => {
+        // Check if user already signed up (prevent duplicates on reload)
+        if (localStorage.getItem('genesis_waitlist_complete')) {
+            setIsSuccess(true);
+            return;
+        }
+
         const p = new URLSearchParams(window.location.search);
         const saved = localStorage.getItem('genesis_form_draft');
         let initial = {
@@ -308,6 +314,7 @@ const WaitlistForm = () => {
         }
         setFormData(v => ({ ...v, ...initial }));
     }, []);
+
 
     useEffect(() => {
         localStorage.setItem('genesis_form_draft', JSON.stringify({ ...formData, savedStep: step }))
@@ -347,7 +354,9 @@ const WaitlistForm = () => {
             const r = await res.json().catch(() => ({ success: false }))
             if (!r.success) { setErrors(v => ({ ...v, general: r.error?.message || 'Synchronization failed' })); return; }
             localStorage.removeItem('genesis_form_draft')
+            localStorage.setItem('genesis_waitlist_complete', 'true')
             setIsSuccess(true);
+
         } catch (err) { setErrors(v => ({ ...v, general: 'Uplink synchronization error' })) } finally { setIsSubmitting(false) }
     }
 
