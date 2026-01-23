@@ -80,30 +80,24 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     const propertyTypeMap: Record<string, string> = { 'home': 'residential', 'business': 'commercial' };
     const mappedPropertyType = propertyTypeMap[lead.propertyType] || lead.propertyType || 'residential';
 
+    // Use Single Record format (wrapped in fields object at root)
     const payload = {
-        records: [{
-            fields: {
-                'Email': lead.email,
-                'Full Name': lead.name || 'Anonymous',
-                'Phone': lead.phoneNumber || '',
-                'Postal Code': lead.postalCode || '',
-                'Property Type': mappedPropertyType,
-                'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
-                'Marketing Consent': lead.marketingConsent,
-                'Source': lead.source || 'Website',
-                'Created At': new Date().toISOString(),
-            }
-        }],
+        fields: {
+            'Email': lead.email,
+            'Full Name': lead.name || 'Anonymous',
+            'Phone': lead.phoneNumber || '',
+            'Postal Code': lead.postalCode || '',
+            'Property Type': mappedPropertyType,
+            'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
+            'Marketing Consent': lead.marketingConsent,
+            'Source': lead.source || 'Website'
+        },
         typecast: true
     };
 
 
-    console.log('[Airtable] Full payload:', JSON.stringify(payload, null, 2));
+    console.log('[Airtable] Payload (Single Record Wrap):', JSON.stringify(payload, null, 2));
     console.log('[Airtable] Attempting to create lead:', lead.email);
-
-
-
-
 
     try {
         const response = await fetch(url, {
@@ -115,13 +109,13 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
             body: JSON.stringify(payload)
         });
 
+        const responseText = await response.text();
         if (!response.ok) {
-            const errorBody = await response.text();
-            console.error(`[Airtable] API Error ${response.status}: ${errorBody}`);
+            console.error(`[Airtable] API Error ${response.status}: ${responseText}`);
             return false;
         }
 
-        console.info('[Airtable] Lead synced successfully');
+        console.info('[Airtable] Lead synced successfully. Response:', responseText);
         return true;
     } catch (error) {
         console.error('[Airtable] Network error:', error);
@@ -148,7 +142,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-        const body = req.body || {};
+        let body = req.body;
+
+        // Safety: Parse string body if it hasn't been parsed by middleware
+        if (typeof body === 'string') {
+            try {
+                body = JSON.parse(body);
+            } catch (e) {
+                console.error('[API] Failed to parse string body:', body);
+            }
+        }
+
+        if (!body || typeof body !== 'object') {
+            body = {};
+        }
 
         // Honeypot check
         if (body.website && body.website.trim() !== '') {
