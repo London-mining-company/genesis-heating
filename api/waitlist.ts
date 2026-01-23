@@ -69,21 +69,22 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
     const payload = {
         records: [{
             fields: {
-                'email': lead.email,
+                'Email': lead.email,
                 'Full Name': lead.name || 'Anonymous',
-                'phone': lead.phoneNumber || '',
-                'postal code': lead.postalCode || '',
-                'property type': lead.propertyType || 'residential',
-                'monthly heating cost': lead.monthlyHeatingCost || 0,
-                'marketing consent': lead.marketingConsent,
-                'source': lead.source || 'Website',
-                'created at': new Date().toISOString(),
+                'Phone': lead.phoneNumber || '',
+                'Postal Code': lead.postalCode || '',
+                'Property Type': lead.propertyType || 'residential',
+                'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
+                'Marketing Consent': lead.marketingConsent,
+                'Source': lead.source || 'Website',
+                'Created At': new Date().toISOString(),
             }
         }],
         typecast: true
     };
 
     console.log('[Airtable] Attempting to create lead:', lead.email);
+
 
 
 
