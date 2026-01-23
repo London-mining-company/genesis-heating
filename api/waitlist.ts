@@ -52,10 +52,6 @@ interface AirtableLead {
     monthlyHeatingCost: number;
     marketingConsent: boolean;
     source?: string;
-    utmSource?: string;
-    utmMedium?: string;
-    utmCampaign?: string;
-    referrer?: string;
 }
 
 async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
@@ -96,20 +92,7 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
                     'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
                     'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No', // Use strings for better typecast compatibility
                     'Source': lead.source || 'Website',
-                    'UTM Source': lead.utmSource || '',
-                    'UTM Medium': lead.utmMedium || '',
-                    'UTM Campaign': lead.utmCampaign || '',
-                    'Referrer': lead.referrer || '',
-                    'Created At': new Date().toLocaleString('en-CA', {
-                        timeZone: 'America/Toronto',
-                        hour12: false,
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    }).replace(/,/g, '')
+                    'Created At': new Date().toISOString() // Simpler format for better compatibility
                 }
             }
         ],
@@ -149,30 +132,13 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
 // ============================================
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    // HARDENED SECURITY: Origin Verification
-    const allowedOrigins = [
-        'https://genesisheatingsolutions.ca',
-        'https://www.genesisheatingsolutions.ca',
-        'https://genesis-heating.vercel.app'
-    ];
-
-    const origin = req.headers.origin || '';
-    const isAllowed = allowedOrigins.some(o => origin.startsWith(o)) || process.env.NODE_ENV === 'development';
-
-    // CORS configuration
-    res.setHeader('Access-Control-Allow-Origin', isAllowed ? origin : 'https://genesisheatingsolutions.ca');
+    // RECOVERY MODE: Universal CORS for maximum reliability
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Frame-Options', 'DENY');
 
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
-    }
-
-    if (!isAllowed) {
-        console.warn('[Security] Unauthorized origin blocked:', origin);
-        return res.status(403).json({ success: false, error: { code: 'FORBIDDEN', message: 'Access denied' } });
     }
 
     if (req.method !== 'POST') {
@@ -217,12 +183,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         const monthlyCost = Math.min(Math.max(Number(body.monthly_heating_cost) || 0, 0), 10000);
         const consent = body.consent === 'yes' || body.marketingConsent === true;
 
-        // Attribution data
-        const utmSource = sanitizeText(body.utm_source || body.utmSource || '', 50);
-        const utmMedium = sanitizeText(body.utm_medium || body.utmMedium || '', 50);
-        const utmCampaign = sanitizeText(body.utm_campaign || body.utmCampaign || '', 50);
-        const referrer = sanitizeText(body.referrer || body.referer || '', 255);
-
         // Save to Airtable
         const airtableSuccess = await createAirtableLead({
             email,
@@ -232,11 +192,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             propertyType,
             monthlyHeatingCost: monthlyCost,
             marketingConsent: consent,
-            source: body.source || 'website_v10',
-            utmSource,
-            utmMedium,
-            utmCampaign,
-            referrer
+            source: body.source || 'website_v10'
         });
 
         // Trigger Zapier (fire and forget)

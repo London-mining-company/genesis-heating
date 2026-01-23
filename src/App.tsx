@@ -332,20 +332,12 @@ const WaitlistForm = () => {
         if (formData.website) return;
         const newErrors: FormErrors = {}
         if (!formData.name.trim()) newErrors.name = 'Name field required'
-        if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Valid email required'
-        if (!formData.phoneNumber.trim() || !/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(formData.phoneNumber)) newErrors.phoneNumber = 'Valid phone required'
-        if (!formData.postalCode.trim() || !/^[A-Z][0-9][A-Z]\s?[0-9][A-Z][0-9]$/i.test(formData.postalCode)) newErrors.postalCode = 'Valid postal code required'
+        if (!formData.email.trim()) newErrors.email = 'Email required'
+        if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone required'
+        if (!formData.postalCode.trim()) newErrors.postalCode = 'Postal code required'
         if (!formData.propertyType) newErrors.general = 'Property profile required'
         if (!formData.privacyAccepted) newErrors.privacyAccepted = 'Verification required'
         if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
-
-        // Anti-spam throttling
-        const lastSubmit = localStorage.getItem('genesis_last_submit');
-        if (lastSubmit && Date.now() - parseInt(lastSubmit) < 5000) {
-            setErrors({ general: 'Slow down. Please wait a moment.' });
-            return;
-        }
-        localStorage.setItem('genesis_last_submit', Date.now().toString());
 
         setIsSubmitting(true)
         try {
