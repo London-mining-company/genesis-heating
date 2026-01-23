@@ -92,7 +92,17 @@ async function createAirtableLead(lead: AirtableLead): Promise<boolean> {
                     'Property Type': mappedPropertyType,
                     'Monthly Heating Cost': lead.monthlyHeatingCost || 0,
                     'Marketing Consent': lead.marketingConsent ? 'Yes' : 'No', // Use strings for better typecast compatibility
-                    'Source': lead.source || 'Website'
+                    'Source': lead.source || 'Website',
+                    'Created At': new Date().toLocaleString('en-CA', {
+                        timeZone: 'America/Toronto',
+                        hour12: false,
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    }).replace(/,/g, '')
                 }
             }
         ],
