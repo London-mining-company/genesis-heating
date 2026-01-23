@@ -366,11 +366,11 @@ const WaitlistForm = () => {
 
     return (
         <div id="waitlist">
-            <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1.5rem' }}>
-                <h2 style={{ fontSize: '2rem' }}>Join the Waitlist</h2>
-                <p className="text-dim" style={{ fontSize: '14px', marginTop: '0.5rem' }}>Spring 2026 installations are filling fast.</p>
+            <header className="section-header" style={{ textAlign: 'left', margin: '0 0 1rem' }}>
+                <h2 style={{ fontSize: '1.5rem' }}>Join the Waitlist</h2>
+                <p className="text-dim" style={{ fontSize: '12px', marginTop: '0.25rem' }}>Spring 2026 installations are filling fast.</p>
             </header>
-            <div className="form-progress" style={{ display: 'flex', gap: '4px', marginBottom: '1.5rem' }}>
+            <div className="form-progress" style={{ display: 'flex', gap: '3px', marginBottom: '1rem' }}>
                 <div style={{ height: '2px', flex: 1, background: 'var(--c-accent)', borderRadius: '1px' }}></div>
                 <div style={{ height: '2px', flex: 1, background: step === 2 ? 'var(--c-accent)' : 'var(--c-border-strong)', borderRadius: '1px', transition: 'var(--t-base)' }}></div>
             </div>
@@ -382,73 +382,66 @@ const WaitlistForm = () => {
                     <div className="reveal reveal-active">
                         <div className="form-group">
                             <label className="calc-label">Full Name</label>
-                            <div className="form-input-wrapper">
-                                <input name="name" className="form-input" placeholder="Your full name" value={formData.name} onChange={handleChange} />
-                            </div>
-                            {errors.name && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.5rem' }}>{errors.name}</p>}
+                            <input name="name" className="form-input" placeholder="Your full name" value={formData.name} onChange={handleChange} />
+                            {errors.name && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.name}</p>}
                         </div>
-                        <div className="form-group" style={{ marginTop: '1rem' }}>
+                        <div className="form-group">
                             <label className="calc-label">Email</label>
-                            <div className="form-input-wrapper">
-                                <input name="email" type="email" className="form-input" placeholder="you@example.com" value={formData.email} onChange={handleChange} />
-                            </div>
-                            {errors.email && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.5rem' }}>{errors.email}</p>}
+                            <input name="email" type="email" className="form-input" placeholder="you@example.com" value={formData.email} onChange={handleChange} />
+                            {errors.email && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.email}</p>}
                         </div>
-                        <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+                        <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                             <div className="form-group">
                                 <label className="calc-label">Phone</label>
-                                <div className="form-input-wrapper">
-                                    <input name="phoneNumber" className="form-input" placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} />
-                                </div>
-                                {errors.phoneNumber && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.5rem' }}>{errors.phoneNumber}</p>}
+                                <input name="phoneNumber" className="form-input" placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} />
+                                {errors.phoneNumber && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.phoneNumber}</p>}
                             </div>
                             <div className="form-group">
                                 <label className="calc-label">Postal Code</label>
-                                <div className="form-input-wrapper">
-                                    <input name="postalCode" className="form-input" placeholder="N6A 1A1" value={formData.postalCode} onChange={handleChange} />
-                                </div>
-                                {errors.postalCode && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.5rem' }}>{errors.postalCode}</p>}
+                                <input name="postalCode" className="form-input" placeholder="N6A 1A1" value={formData.postalCode} onChange={handleChange} />
+                                {errors.postalCode && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.postalCode}</p>}
                             </div>
                         </div>
-                        <button type="button" onClick={() => setStep(2)} className="btn btn-primary" style={{ width: '100%', marginTop: '1.5rem' }}>Continue →</button>
+                        <button type="button" onClick={() => setStep(2)} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }}>Continue →</button>
                     </div>
+
                 ) : (
                     <div className="reveal reveal-active">
                         <div className="form-group">
                             <label className="calc-label">Property Type</label>
                             <div className="prop-type-grid">
                                 <div onClick={() => setFormData(v => ({ ...v, propertyType: 'residential' }))} className={`prop-type-card ${formData.propertyType === 'residential' ? 'active' : ''}`}>
-                                    <svg style={{ width: '28px', height: '28px', marginBottom: '8px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                                    <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                                     Home
                                 </div>
                                 <div onClick={() => setFormData(v => ({ ...v, propertyType: 'commercial' }))} className={`prop-type-card ${formData.propertyType === 'commercial' ? 'active' : ''}`}>
-                                    <svg style={{ width: '28px', height: '28px', marginBottom: '8px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                                    <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                                     Business
                                 </div>
                             </div>
                         </div>
-                        <div className="form-group" style={{ marginTop: '1.5rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                                <label className="calc-label">Monthly Heating Cost (Approx.)</label>
-                                <span className="text-orange" style={{ fontSize: '14px', fontWeight: '700' }}>${formData.monthlyHeatingCost}</span>
+                        <div className="form-group" style={{ marginTop: '1rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <label className="calc-label" style={{ marginBottom: 0 }}>Monthly Heating Cost</label>
+                                <span className="text-orange" style={{ fontSize: '13px', fontWeight: '700' }}>${formData.monthlyHeatingCost}</span>
                             </div>
-                            <input type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} />
+                            <input type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
                         </div>
-                        <div className="form-group" style={{ marginTop: '1.25rem' }}>
-                            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '0.75rem' }}>
-                                <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <span style={{ fontSize: '12px', lineHeight: '1.4' }} className="text-dim">I agree to be contacted about installation.</span>
+                        <div className="form-group" style={{ marginTop: '1rem' }}>
+                            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.5rem' }}>
+                                <input type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '14px', height: '14px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
+                                <span style={{ fontSize: '11px', lineHeight: '1.3' }} className="text-dim">I agree to be contacted about installation.</span>
                             </div>
-                            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                                <input type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <span style={{ fontSize: '12px', lineHeight: '1.4' }} className="text-dim">Send me updates and offers</span>
+                            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                                <input type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '14px', height: '14px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
+                                <span style={{ fontSize: '11px', lineHeight: '1.3' }} className="text-dim">Send me updates and offers</span>
                             </div>
-                            {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.5rem' }}>{errors.privacyAccepted}</p>}
+                            {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.privacyAccepted}</p>}
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.25rem', padding: '0.875rem 1.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}</button>
-                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '0.75rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em' }} className="text-dim">← Back</button>
-
+                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}</button>
+                        <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '0.5rem', padding: '0.5rem', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.06em' }} className="text-dim">← Back</button>
                     </div>
+
                 )}
             </form>
         </div>
