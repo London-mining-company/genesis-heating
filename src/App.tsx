@@ -362,12 +362,17 @@ const WaitlistForm = () => {
 
     if (isSuccess) return (
         <div className="form-card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✓</div>
-            <h2 style={{ marginBottom: '0.75rem', fontSize: '1.5rem' }}>You're In.</h2>
-            <p className="text-dim" style={{ marginBottom: '1.5rem', fontSize: '14px' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
-            <div style={{ padding: '1.25rem', background: 'rgba(255,92,0,0.08)', borderRadius: '16px', border: '1px solid rgba(255,92,0,0.2)' }}>
-                <p style={{ fontSize: '13px', fontWeight: '700', marginBottom: '0.5rem', color: 'var(--c-accent)' }}>Refer a Neighbour</p>
-                <p className="text-dim" style={{ fontSize: '12px', lineHeight: '1.5' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool economics.</p>
+            <div className="success-icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>✓</div>
+            <h2 className="reveal reveal-active" style={{ marginBottom: '0.75rem', fontSize: '1.75rem' }}>You're In.</h2>
+            <p className="text-dim reveal reveal-active" style={{ marginBottom: '2rem', fontSize: '14px', animationDelay: '0.1s' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
+            <div className="reveal reveal-active" style={{ padding: '1.5rem', background: 'rgba(255,92,0,0.08)', borderRadius: '20px', border: '1px solid rgba(255,92,0,0.2)', animationDelay: '0.2s', textAlign: 'left' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
+                    <div style={{ padding: '4px', background: 'var(--c-accent)', borderRadius: '6px' }}>
+                        <svg style={{ width: '12px', height: '12px' }} fill="white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
+                    </div>
+                    <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Refer a Neighbour</p>
+                </div>
+                <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.6' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = stronger local pool economics.</p>
             </div>
         </div>
     )
@@ -447,7 +452,14 @@ const WaitlistForm = () => {
                             </div>
                             {errors.privacyAccepted && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.privacyAccepted}</p>}
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.25rem', padding: '0.875rem 1.5rem' }} disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Reserve Your Spot'}</button>
+                        <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.25rem', padding: '0.875rem 1.5rem', opacity: isSubmitting ? 0.7 : 1 }} disabled={isSubmitting}>
+                            {isSubmitting ? (
+                                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <svg className="animate-spin" style={{ width: '16px', height: '16px' }} viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" strokeDasharray="31.4 31.4" /></svg>
+                                    Securing Spot...
+                                </span>
+                            ) : 'Reserve Your Spot'}
+                        </button>
                         <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '0.75rem', padding: '0.625rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: 'rgba(255,255,255,0.7)', background: 'transparent', cursor: 'pointer' }}>← Back to Step 1</button>
 
                     </div>
