@@ -19,7 +19,10 @@ const useGenesisEngine = () => {
         const root = document.documentElement;
         const oT = document.title;
         const hS = () => root.style.setProperty('--sy', `${window.scrollY}px`);
-        const hV = () => { document.title = document.hidden ? "Waitlist Position: Pending..." : oT };
+        const hV = () => {
+            const isComplete = localStorage.getItem('genesis_waitlist_complete');
+            document.title = (document.hidden && !isComplete) ? "Waitlist Position: Pending..." : oT;
+        };
         const hR = new IntersectionObserver((es) => {
             es.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal-active') });
         }, { threshold: 0.1 });
@@ -76,8 +79,8 @@ const Hero = () => {
                 <div className="video-overlay"></div>
             </div>
             <div className="container hero-content">
-                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Hot water that pays <span className="text-orange">you</span> back.</h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the reliable performance you expect from a premium water heater—while the system generates monthly credits to lower your utility bills.</p>
+                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Pay less. <span className="text-orange">Heat better.</span></h1>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the reliable performance of a premium smart heater—while your Bitcoin mining water heater generates monthly carbon credits to lower your utility bills.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
                     <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
                 </div>
@@ -102,15 +105,15 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'What is the Superheat H1?', a: 'A smarter water heater that uses thermal technology to heat your water while creating energy value that pays for itself.' },
-    { q: 'Who is Genesis Heating Solutions?', a: 'Local London team helping homeowners transition to high-efficiency systems that turn utility expenses into property value.' },
-    { q: 'What is included in the service?', a: 'Professional installation, technical configuration, and proactive monitoring. Reliable hot water and monthly savings.' },
-    { q: 'How do monthly credits work?', a: 'As the system generates value, you receive monthly payments via CAD cheque or Bitcoin to offset your heating costs.' },
-    { q: 'What does it cost?', a: 'Options range from equipment purchase to leasing. All designed to lower net expenses. Detailed during your free consultation.' },
-    { q: 'Is it complicated to use?', a: 'No. Functions exactly like your current heater—only significantly more efficient and generates value every month.' },
-    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out for a no-pressure consultation to see if it’s a good fit.' },
-    { q: 'Is it quiet?', a: 'Loud as a quiet desk fan. Usually installed in a basement or utility room.' },
-    { q: 'Is my privacy protected?', a: 'Zero access to your personal info. The system only performs mathematical computations.' },
+    { q: 'What is the Superheat H1?', a: 'A professional-grade Bitcoin mining water heater that uses high-density thermal technology to heat your water while creating energy value that pays for itself.' },
+    { q: 'Who is Genesis Heating Solutions?', a: 'We are your local London, Ontario experts helping small businesses and homeowners install miner water heaters to cut heating bills forever.' },
+    { q: 'What is included in the service?', a: 'White-glove installation of your Superheat London Ontario system, technical configuration, and proactive monitoring for absolute peace of mind.' },
+    { q: 'How do monthly credits work?', a: 'As your system generates value, you receive monthly payments via CAD cheque or Bitcoin. We help you stack carbon credits to further lower heating bills.' },
+    { q: 'What does it cost?', a: 'Options range from equipment purchase to zero-down leasing. Every path is designed to help you pay less heating month over month.' },
+    { q: 'Is it complicated to use?', a: 'No. Our smart heater functions exactly like your current tank—only it turns a utility expense into a revenue-generating asset.' },
+    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out for a no-pressure consultation to see if a miner water heater is right for your property.' },
+    { q: 'Is it quiet?', a: 'Similar to a quiet desktop fan. Professionally installed in your basement or utility room to ensure zero noise interference.' },
+    { q: 'Is my privacy protected?', a: 'Absolutely. The system only performs mathematical computations. No access to your home network or personal data is required.' },
 ]
 
 const HowItWorks = () => (
@@ -211,7 +214,7 @@ const Infographic = () => {
                         <h4>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
                         <p>
                             {mode === 'home'
-                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just better economics.'
+                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just drop heating bills forever.'
                                 : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized assets that pay for your building’s hot water energy.'}
                         </p>
                     </div>
@@ -238,7 +241,7 @@ const SavingsCalculator = () => {
         <div className="reveal">
             <div className="calculator-card" style={{ width: '100%', padding: 'var(--s-40)' }}>
                 <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-32)' }}>
-                    <h2>Sustainability. Backed by your energy.</h2>
+                    <h2>Cut heating bills forever with a smart miner water heater.</h2>
                 </header>
                 <div className="calc-stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--s-16)', marginBottom: 'var(--s-32)' }}>
                     <div>
@@ -251,7 +254,7 @@ const SavingsCalculator = () => {
                     </div>
                     <div>
                         <div className="calc-val" style={{ fontSize: '1.75rem' }}>${(years * 1000).toLocaleString()}</div>
-                        <div className="calc-label">Estimated Net Earnings</div>
+                        <div className="calc-label">Total Carbon Credits</div>
                     </div>
                 </div>
                 <div style={{ padding: 'var(--s-24)', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: 'var(--s-32)' }}>
@@ -362,7 +365,7 @@ const WaitlistForm = () => {
                 property_type: formData.propertyType === 'commercial' ? 'business' : 'home',
                 monthly_heating_cost: Number(formData.monthlyHeatingCost),
                 consent: formData.marketingConsent ? 'yes' : 'no',
-                source: 'website_final_v9'
+                source: 'website_final_v10'
             }
             const res = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
             const r = await res.json().catch(() => ({ success: false }))
@@ -431,45 +434,54 @@ const WaitlistForm = () => {
                 {step === 1 ? (
                     <div className="reveal reveal-active">
                         <div className="form-group">
-                            <label htmlFor="genesis-name" className="calc-label">Full Name</label>
-                            <input id="genesis-name" name="name" autoComplete="name" className="form-input" placeholder="Your full name" value={formData.name} onChange={handleChange} />
+                            <label htmlFor="genesis-name" className="calc-label">Full Name <span style={{ color: 'var(--c-accent)' }}>*</span></label>
+                            <input id="genesis-name" name="name" autoComplete="name" className={`form-input ${errors.name ? 'error' : ''}`} placeholder="Your full name" value={formData.name} onChange={handleChange} required aria-required="true" />
                             {errors.name && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.name}</p>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="genesis-email" className="calc-label">Email</label>
-                            <input id="genesis-email" name="email" type="email" autoComplete="email" className="form-input" placeholder="you@example.com" value={formData.email} onChange={handleChange} />
+                            <label htmlFor="genesis-email" className="calc-label">Email <span style={{ color: 'var(--c-accent)' }}>*</span></label>
+                            <input id="genesis-email" name="email" type="email" autoComplete="email" className={`form-input ${errors.email ? 'error' : ''}`} placeholder="you@example.com" value={formData.email} onChange={handleChange} required aria-required="true" />
                             {errors.email && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.email}</p>}
                         </div>
                         <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                             <div className="form-group">
-                                <label htmlFor="genesis-phone" className="calc-label">Phone</label>
-                                <input id="genesis-phone" name="phoneNumber" type="tel" autoComplete="tel" className="form-input" placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} />
+                                <label htmlFor="genesis-phone" className="calc-label">Phone <span style={{ color: 'var(--c-accent)' }}>*</span></label>
+                                <input id="genesis-phone" name="phoneNumber" type="tel" autoComplete="tel" className={`form-input ${errors.phoneNumber ? 'error' : ''}`} placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} required aria-required="true" />
                                 {errors.phoneNumber && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.phoneNumber}</p>}
                             </div>
                             <div className="form-group">
-                                <label htmlFor="genesis-postal" className="calc-label">Postal Code</label>
-                                <input id="genesis-postal" name="postalCode" autoComplete="postal-code" className="form-input" placeholder="N6A 1A1" value={formData.postalCode} onChange={handleChange} />
+                                <label htmlFor="genesis-postal" className="calc-label">Postal Code <span style={{ color: 'var(--c-accent)' }}>*</span></label>
+                                <input id="genesis-postal" name="postalCode" autoComplete="postal-code" className={`form-input ${errors.postalCode ? 'error' : ''}`} placeholder="N6A 1A1" value={formData.postalCode} onChange={handleChange} required aria-required="true" />
                                 {errors.postalCode && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.postalCode}</p>}
                             </div>
                         </div>
-                        <button type="button" onClick={() => setStep(2)} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }}>Continue →</button>
+                        <button type="button" onClick={() => {
+                            const e: FormErrors = {};
+                            if (!formData.name) e.name = 'Required';
+                            if (!formData.email) e.email = 'Required';
+                            if (!formData.phoneNumber) e.phoneNumber = 'Required';
+                            if (!formData.postalCode) e.postalCode = 'Required';
+                            if (Object.keys(e).length > 0) { setErrors(e); return; }
+                            setStep(2);
+                        }} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }}>Continue to Final Step →</button>
                     </div>
 
                 ) : (
                     <div className="reveal reveal-active">
                         <div className="form-group">
-                            <label htmlFor="genesis-prop-type" className="calc-label">Property Type</label>
-                            <input id="genesis-prop-type" type="hidden" name="propertyType" value={formData.propertyType} />
-                            <div className="prop-type-grid" role="radiogroup" aria-labelledby="genesis-prop-type">
-                                <button type="button" onClick={() => setFormData(v => ({ ...v, propertyType: 'residential' }))} className={`prop-type-card ${formData.propertyType === 'residential' ? 'active' : ''}`} role="radio" aria-checked={formData.propertyType === 'residential'}>
+                            <label htmlFor="genesis-prop-type" className="calc-label">Property Type <span style={{ color: 'var(--c-accent)' }}>*</span></label>
+                            <input id="genesis-prop-type" type="hidden" name="propertyType" value={formData.propertyType} required />
+                            <div className={`prop-type-grid ${errors.general && !formData.propertyType ? 'error-ring' : ''}`} role="radiogroup" aria-labelledby="genesis-prop-type">
+                                <button type="button" onClick={() => { setFormData(v => ({ ...v, propertyType: 'residential' })); setErrors(v => ({ ...v, general: undefined })); }} className={`prop-type-card ${formData.propertyType === 'residential' ? 'active' : ''}`} role="radio" aria-checked={formData.propertyType === 'residential'}>
                                     <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                                     Home
                                 </button>
-                                <button type="button" onClick={() => setFormData(v => ({ ...v, propertyType: 'commercial' }))} className={`prop-type-card ${formData.propertyType === 'commercial' ? 'active' : ''}`} role="radio" aria-checked={formData.propertyType === 'commercial'}>
+                                <button type="button" onClick={() => { setFormData(v => ({ ...v, propertyType: 'commercial' })); setErrors(v => ({ ...v, general: undefined })); }} className={`prop-type-card ${formData.propertyType === 'commercial' ? 'active' : ''}`} role="radio" aria-checked={formData.propertyType === 'commercial'}>
                                     <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                                     Business
                                 </button>
                             </div>
+                            {errors.general && !formData.propertyType && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>Property profile required</p>}
                         </div>
                         <div className="form-group" style={{ marginTop: '1rem' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

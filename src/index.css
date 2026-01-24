@@ -419,6 +419,17 @@ h2 {
   background: rgba(255, 255, 255, 0.05);
 }
 
+.form-input.error {
+  border-color: #ff3b30 !important;
+  background: rgba(255, 59, 48, 0.05) !important;
+}
+
+.error-ring {
+  border: 1px solid #ff3b30 !important;
+  border-radius: 8px;
+  padding: 4px;
+}
+
 .prop-type-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
