@@ -177,7 +177,7 @@ h2 {
 /* Hero */
 .hero {
   position: relative;
-  height: 85vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -598,6 +598,10 @@ h2 {
   .header-inner {
     height: 80px;
     padding: 0 var(--s-16);
+  }
+
+  .hero-content {
+    padding-top: var(--s-64);
   }
 
   .logo-img {
