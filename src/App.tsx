@@ -505,9 +505,9 @@ const WaitlistForm = () => {
                         <div className="form-group" style={{ marginTop: '1rem' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <label htmlFor="genesis-cost" className="calc-label" style={{ marginBottom: 0 }}>Monthly Heating Cost</label>
-                                <span className="text-orange" style={{ fontSize: '13px', fontWeight: '700' }}>${formData.monthlyHeatingCost}</span>
+                                <span className="text-orange" style={{ fontSize: '13px', fontWeight: '700' }}>${formData.monthlyHeatingCost}{formData.monthlyHeatingCost >= 3000 ? '+' : ''}</span>
                             </div>
-                            <input id="genesis-cost" type="range" name="monthlyHeatingCost" className="slider" min="50" max="1000" step="10" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
+                            <input id="genesis-cost" type="range" name="monthlyHeatingCost" className="slider" min="50" max="3000" step="50" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
                         </div>
                         <div className="form-group" style={{ marginTop: '1.25rem' }}>
                             <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center', marginBottom: '0.625rem' }}>
