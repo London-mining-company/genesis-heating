@@ -292,16 +292,26 @@ const SavingsCalculator = () => {
 
 const Communities = () => (
     <section className="reveal communities-section" style={{ padding: 'var(--s-32) var(--s-24)' }}>
-        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>London, Ontario Hubs</h3>
+        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>Active Service Hubs</h3>
         <div className="communities-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--s-8)' }}>
-            {['Byron', 'Sunningdale', 'Masonville', 'Wortley Village', 'Hunt Club', 'Highland', 'Old North', 'Oakridge', 'Ambleside'].map((c, i) => (
-                <div key={c} style={{ position: 'relative' }}>
-                    <span className="community-chip" style={{ fontSize: '0.8rem', padding: '0.4rem 1rem' }}>{c}</span>
-                    {(i === 0 || i === 1 || i === 2) && <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
+            {[
+                { l: 'N6G', d: 'Masonville / Sunningdale' },
+                { l: 'N6K', d: 'Byron' },
+                { l: 'N6H', d: 'Oakridge / Hunt Club' },
+                { l: 'N6A', d: 'Old North' },
+                { l: 'N6C', d: 'Wortley Village' },
+                { l: 'N6J/L', d: 'Highland / Lambeth' }
+            ].map((c, i) => (
+                <div key={c.l} style={{ position: 'relative' }}>
+                    <div className="community-chip" style={{ fontSize: '0.8rem', padding: '0.5rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '120px' }}>
+                        <span style={{ fontWeight: 800, color: '#fff' }}>{c.l}</span>
+                        <span style={{ fontSize: '10px', opacity: 0.6 }}>{c.d}</span>
+                    </div>
+                    {i < 3 && <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
                 </div>
             ))}
         </div>
-        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Onsite consultations are scheduled by neighborhood density.</p>
+        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Phase 1 rollout scheduled by postal code density.</p>
     </section>
 )
 
