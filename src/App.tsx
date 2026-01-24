@@ -79,8 +79,8 @@ const Hero = () => {
                 <div className="video-overlay"></div>
             </div>
             <div className="container hero-content">
-                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Pay less. <span className="text-orange">Heat better.</span></h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the reliable performance of a premium smart heater—while your Bitcoin mining water heater generates monthly carbon credits to lower your utility bills.</p>
+                <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the reliable performance you expect from a premium water heater—while the system generates monthly credits to offset your utility bills.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
                     <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
                 </div>
@@ -105,15 +105,15 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'What is the Superheat H1?', a: 'A professional-grade Bitcoin mining water heater that uses high-density thermal technology to heat your water while creating energy value that pays for itself.' },
-    { q: 'Who is Genesis Heating Solutions?', a: 'We are your local London, Ontario experts helping small businesses and homeowners install miner water heaters to cut heating bills forever.' },
-    { q: 'What is included in the service?', a: 'White-glove installation of your Superheat London Ontario system, technical configuration, and proactive monitoring for absolute peace of mind.' },
-    { q: 'How do monthly credits work?', a: 'As your system generates value, you receive monthly payments via CAD cheque or Bitcoin. We help you stack carbon credits to further lower heating bills.' },
-    { q: 'What does it cost?', a: 'Options range from equipment purchase to zero-down leasing. Every path is designed to help you pay less heating month over month.' },
-    { q: 'Is it complicated to use?', a: 'No. Our smart heater functions exactly like your current tank—only it turns a utility expense into a revenue-generating asset.' },
-    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out for a no-pressure consultation to see if a miner water heater is right for your property.' },
-    { q: 'Is it quiet?', a: 'Similar to a quiet desktop fan. Professionally installed in your basement or utility room to ensure zero noise interference.' },
-    { q: 'Is my privacy protected?', a: 'Absolutely. The system only performs mathematical computations. No access to your home network or personal data is required.' },
+    { q: 'What is the Superheat H1?', a: 'A smarter water heater that uses thermal technology to heat your water while creating energy value that pays for itself.' },
+    { q: 'Who is Genesis Heating Solutions?', a: 'Local London team helping homeowners transition to high-efficiency systems that turn utility expenses into property value.' },
+    { q: 'What is included in the service?', a: 'Professional installation, technical configuration, and proactive monitoring. Reliable hot water and monthly savings.' },
+    { q: 'How do monthly credits work?', a: 'As the system generates value, you receive monthly payments via CAD cheque or Bitcoin to offset your heating costs.' },
+    { q: 'What does it cost?', a: 'Options range from equipment purchase to leasing. All designed to lower net expenses. Detailed during your free consultation.' },
+    { q: 'Is it complicated to use?', a: 'No. Functions exactly like your current heater—only significantly more efficient and generates value every month.' },
+    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out for a no-pressure consultation to see if it’s a good fit.' },
+    { q: 'Is it quiet?', a: 'Loud as a quiet desk fan. Usually installed in a basement or utility room.' },
+    { q: 'Is my privacy protected?', a: 'Zero access to your personal info. The system only performs mathematical computations.' },
 ]
 
 const HowItWorks = () => (
@@ -214,7 +214,7 @@ const Infographic = () => {
                         <h4>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
                         <p>
                             {mode === 'home'
-                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just drop heating bills forever.'
+                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just better economics.'
                                 : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized assets that pay for your building’s hot water energy.'}
                         </p>
                     </div>
@@ -254,7 +254,7 @@ const SavingsCalculator = () => {
                     </div>
                     <div>
                         <div className="calc-val" style={{ fontSize: '1.75rem' }}>${(years * 1000).toLocaleString()}</div>
-                        <div className="calc-label">Total Carbon Credits</div>
+                        <div className="calc-label">Estimated Net Earnings</div>
                     </div>
                 </div>
                 <div style={{ padding: 'var(--s-24)', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', marginBottom: 'var(--s-32)' }}>
