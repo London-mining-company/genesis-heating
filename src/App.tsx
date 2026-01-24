@@ -80,7 +80,7 @@ const Hero = () => {
             </div>
             <div className="container hero-content">
                 <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the reliable performance you expect from a premium water heater—while the system generates monthly credits to offset your utility bills.</p>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>We upgrade your property with a high-performance thermal recovery system that recycles energy from specialized computing to generate monthly utility credits for your home or business.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
                     <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
                 </div>
@@ -92,9 +92,9 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><path d={p} stroke-linecap="round" stroke-linejoin="round" /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Seamless Integration', d: 'Standard plumbing and footprint. Fits exactly where your old tank is now—no renovation needed.' },
-    { n: 2, t: 'Energy Value Recovery', d: 'The system captures and recycles energy to heat your water. Stop paying twice for the same utility.' },
-    { n: 3, t: 'Automated Savings', d: 'Turn recovered value into regular payments: monthly credit, cheque, or Bitcoin. Your home, your control.' },
+    { n: 1, t: 'Standard Integration', d: 'We replace your old tank with a professional-grade Superheat unit. It fits your current plumbing footprint perfectly with zero renovation or lifestyle changes required.' },
+    { n: 2, t: 'Thermal Energy Recycling', d: 'The system performs high-density background computations to heat your water with near-total efficiency, recycling energy that is usually wasted.' },
+    { n: 3, t: 'Automated Property Value', d: 'While the system works, it generates a continuous stream of primary utility value. You receive this as a monthly credit or CAD payout, turning an expense into an asset.' },
 ]
 
 const BENEFITS = [
@@ -105,29 +105,32 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'What is the Superheat H1?', a: 'A smarter water heater that uses thermal technology to heat your water while creating energy value that pays for itself.' },
-    { q: 'Who is Genesis Heating Solutions?', a: 'Local London team helping homeowners transition to high-efficiency systems that turn utility expenses into property value.' },
-    { q: 'What is included in the service?', a: 'Professional installation, technical configuration, and proactive monitoring. Reliable hot water and monthly savings.' },
-    { q: 'How do monthly credits work?', a: 'As the system generates value, you receive monthly payments via CAD cheque or Bitcoin to offset your heating costs.' },
-    { q: 'What does it cost?', a: 'Options range from equipment purchase to leasing. All designed to lower net expenses. Detailed during your free consultation.' },
-    { q: 'Is it complicated to use?', a: 'No. Functions exactly like your current heater—only significantly more efficient and generates value every month.' },
-    { q: 'What happens next?', a: 'Join the waitlist. In Spring 2026, we’ll reach out for a no-pressure consultation to see if it’s a good fit.' },
-    { q: 'Is it quiet?', a: 'Loud as a quiet desk fan. Usually installed in a basement or utility room.' },
-    { q: 'Is my privacy protected?', a: 'Zero access to your personal info. The system only performs mathematical computations.' },
+    { q: 'Is this just a standard water heater replacement?', a: 'The Superheat H1 is a professional-grade thermal recovery system. It functions exactly like a premium smart heater, but it uses repurposed energy from specialized computing to maintain your hot water at industrial efficiency—essentially heating your home with energy that would otherwise be wasted.' },
+    { q: 'Are you actually a local London company?', a: 'Yes. We are a local team based here in London, Ontario. We handle everything from the initial professional integration to onsite monitoring and long-term maintenance, ensuring you always have a local point of contact for your property.' },
+    { q: 'How do the monthly credits actually get to me?', a: 'As the hardware performs its background tasks, it generates computational value. We convert that value into monthly credits or CAD cheques to offset your energy bills. You get the reliable hot water you need and a lower net utility cost automatically.' },
+    { q: 'What is the catch? What is the system actually doing inside?', a: 'The system runs high-performance computations as part of the Bitcoin network. This process generates significant heat, which we capture with 98% efficiency to heat your water. You benefit from the energy recycling without having to manage any technical complexities.' },
+    { q: 'How big is the unit? Will it fit in my utility room?', a: 'Absolutely. The unit is designed to fit the exact same footprint as a standard 50-gallon tank. It runs as quietly as a desktop fan and is professionally integrated to ensure your home environment remains undisturbed.' },
+    { q: 'Is my home network or privacy at risk?', a: 'Never. Your privacy is paramount. The computing system is entirely isolated from your personal home network and only performs mathematical calculations. We have zero access to your personal files, browsing history, or home data.' },
+    { q: "What's the process for getting one installed by Spring?", a: 'Join our waitlist now. We are currently prioritizing neighborhoods like Byron and Masonville for our Spring 2026 launch. Once you are on the list, we will reach out in a few months for a no-pressure consultation to walk through the specifics for your property.' },
 ]
 
 const HowItWorks = () => (
     <div className="reveal">
-        <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-24)' }}>
-            <h2>How It Works</h2>
+        <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-20)' }}>
+            <h2>Process</h2>
         </header>
-        <div style={{ display: 'grid', gap: 'var(--s-12)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
             {STEPS.map(s => (
-                <article key={s.n} className="card" style={{ padding: '1rem 1.25rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                    <div style={{ background: 'var(--g-accent)', color: 'white', width: '22px', height: '22px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: '900', flexShrink: 0, marginTop: '2px' }}>{s.n}</div>
+                <article key={s.n} className="card" style={{ padding: '0.85rem 1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                    <div style={{
+                        background: 'var(--g-accent)', color: 'white',
+                        width: '24px', height: '24px', borderRadius: '50%',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: '10px', fontWeight: '900', flexShrink: 0
+                    }}>{s.n}</div>
                     <div>
-                        <h4 style={{ fontSize: '0.9rem', marginBottom: '0.125rem' }}>{s.t}</h4>
-                        <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.4' }}>{s.d}</p>
+                        <h4 style={{ fontSize: '0.875rem', fontWeight: 700, marginBottom: '2px' }}>{s.t}</h4>
+                        <p className="text-dim" style={{ fontSize: '12px', lineHeight: '1.4' }}>{s.d}</p>
                     </div>
                 </article>
             ))}
@@ -137,16 +140,24 @@ const HowItWorks = () => (
 
 const Benefits = () => (
     <div className="reveal">
-        <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-24)' }}>
-            <h2>Why Us?</h2>
+        <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-20)' }}>
+            <h2>Why Genesis?</h2>
         </header>
-        <div className="grid" style={{ gridTemplateColumns: '1fr', gap: 'var(--s-12)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
             {BENEFITS.map(b => (
-                <article key={b.t} className="card" style={{ padding: '1rem 1.25rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <Icon p={b.i} />
+                <article key={b.t} className="card" style={{ padding: '0.85rem 1rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                    <div style={{
+                        width: '36px', height: '36px', borderRadius: '10px',
+                        background: 'rgba(255,92,0,0.1)', border: '1px solid rgba(255,92,0,0.2)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
+                    }}>
+                        <svg className="icon-svg" style={{ width: '18px', height: '18px', color: 'var(--c-accent)', margin: 0 }} viewBox="0 0 24 24" stroke-width="2.5" fill="none" stroke="currentColor">
+                            <path d={b.i} stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
                     <div>
-                        <h4 style={{ fontSize: '0.9rem' }}>{b.t}</h4>
-                        <p className="text-dim" style={{ fontSize: '13px' }}>{b.d}</p>
+                        <h4 style={{ fontSize: '0.875rem', fontWeight: 700, marginBottom: '2px' }}>{b.t}</h4>
+                        <p className="text-dim" style={{ fontSize: '12px', lineHeight: '1.4' }}>{b.d}</p>
                     </div>
                 </article>
             ))}
@@ -181,17 +192,19 @@ const Infographic = () => {
                     </div>
                 </header>
                 <div className="infographic-container">
-                    <div className="info-card reveal">
+                    <div className="info-card reveal" style={{ flex: 1 }}>
                         <Icon p="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        <p className="calc-label">{mode === 'home' ? 'Value Recovery' : 'System Capacity'}</p>
-                        <div className="info-value">{mode === 'home' ? '~$1,000' : '120 TH/s'}</div>
-                        <p className="text-dim">{mode === 'home' ? 'Estimated annual recovery' : 'High-density output per unit'}</p>
+                        <p className="calc-label">{mode === 'home' ? 'Value Recovery' : 'Compute Power'}</p>
+                        <div className="info-value" style={{ minHeight: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            {mode === 'home' ? '~$1,000' : '120 TH/s'}
+                        </div>
+                        <p className="text-dim" style={{ fontSize: '0.75rem' }}>{mode === 'home' ? 'Estimated annual recovery' : 'High-density output per unit'}</p>
                     </div>
                     <div className="info-arrow">→</div>
-                    <div className="info-card reveal">
+                    <div className="info-card reveal" style={{ flex: 1 }}>
                         <Icon p="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                         <p className="calc-label">{mode === 'home' ? 'Utility Savings' : 'Thermal Efficiency'}</p>
-                        <div className="info-value">
+                        <div className="info-value" style={{ minHeight: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             {mode === 'home' ? (
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 0.9 }}>
                                     <span style={{ fontSize: '0.875rem', fontWeight: 600, opacity: 0.5, marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Up to</span>
@@ -199,14 +212,16 @@ const Infographic = () => {
                                 </div>
                             ) : '98%'}
                         </div>
-                        <p className="text-dim">{mode === 'home' ? 'Targeted heating offset' : 'Heat capture recovery rate'}</p>
+                        <p className="text-dim" style={{ fontSize: '0.75rem' }}>{mode === 'home' ? 'Targeted heating offset' : 'Heat capture recovery rate'}</p>
                     </div>
                     <div className="info-arrow">→</div>
-                    <div className="info-card featured reveal">
+                    <div className="info-card featured reveal" style={{ flex: 1 }}>
                         <Icon p="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
                         <p className="calc-label">{mode === 'home' ? 'Performance' : 'Energy Impact'}</p>
-                        <div className="info-value">{mode === 'home' ? '24 g/h' : '4.2t'}</div>
-                        <p className="text-dim">{mode === 'home' ? 'Heats 24 gal from 20°C to 60°C in <2.5h' : 'Annual carbon offset per unit'}</p>
+                        <div className="info-value" style={{ minHeight: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            {mode === 'home' ? '24 g/h' : '4.2t'}
+                        </div>
+                        <p className="text-dim" style={{ fontSize: '0.75rem' }}>{mode === 'home' ? 'Heats 24 gal from 20°C to 60°C in <2.5h' : 'Annual carbon offset per unit'}</p>
                     </div>
                 </div>
                 <div className="feature-grid">
@@ -214,7 +229,7 @@ const Infographic = () => {
                         <h4>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
                         <p>
                             {mode === 'home'
-                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just better economics.'
+                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just lower heating bills forever!'
                                 : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized assets that pay for your building’s hot water energy.'}
                         </p>
                     </div>
@@ -241,7 +256,7 @@ const SavingsCalculator = () => {
         <div className="reveal">
             <div className="calculator-card" style={{ width: '100%', padding: 'var(--s-40)' }}>
                 <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-32)' }}>
-                    <h2>Cut heating bills forever with a smart miner water heater.</h2>
+                    <h2>Sustainability.</h2>
                 </header>
                 <div className="calc-stats" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--s-16)', marginBottom: 'var(--s-32)' }}>
                     <div>
@@ -276,17 +291,17 @@ const SavingsCalculator = () => {
 }
 
 const Communities = () => (
-    <section className="reveal communities-section">
-        <h3 className="communities-title">Now Serving — London, Ontario</h3>
-        <div className="communities-grid">
-            {['Byron', 'Wortley Village', 'Masonville', 'Oakridge', 'Old North'].map((c, i) => (
+    <section className="reveal communities-section" style={{ padding: 'var(--s-32) var(--s-24)' }}>
+        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>London, Ontario Hubs</h3>
+        <div className="communities-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--s-8)' }}>
+            {['Byron', 'Sunningdale', 'Masonville', 'Wortley Village', 'Hunt Club', 'Highland', 'Old North', 'Oakridge', 'Ambleside'].map((c, i) => (
                 <div key={c} style={{ position: 'relative' }}>
-                    <span className="community-chip">{c}</span>
-                    {i % 3 === 0 && <span style={{ position: 'absolute', top: 'calc(var(--s-8) * -1)', right: 'calc(var(--s-8) * -1)', background: 'var(--c-accent)', color: 'white', fontSize: '8px', fontWeight: '900', padding: 'var(--s-4) var(--s-8)', borderRadius: '4px', textTransform: 'uppercase', boxShadow: '0 2px 8px rgba(255,92,0,0.4)' }}>High Demand</span>}
+                    <span className="community-chip" style={{ fontSize: '0.8rem', padding: '0.4rem 1rem' }}>{c}</span>
+                    {(i === 0 || i === 1 || i === 2) && <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
                 </div>
             ))}
         </div>
-        <p className="communities-note">Neighbourhoods with more signups get priority scheduling.</p>
+        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Onsite consultations are scheduled by neighborhood density.</p>
     </section>
 )
 
@@ -572,9 +587,9 @@ export default function App() {
             <Header />
             <main>
                 <Hero />
-                <div className="container split-grid">
+                <div className="container split-grid" style={{ marginBottom: 'var(--s-32)' }}>
                     <div className="reveal">
-                        <div style={{ marginBottom: 'var(--s-32)' }}>
+                        <div style={{ marginBottom: 'var(--s-20)' }}>
                             <HowItWorks />
                         </div>
                         <Communities />
@@ -584,7 +599,7 @@ export default function App() {
                     </div>
                 </div>
                 <Infographic />
-                <div className="container savings-split">
+                <div className="container savings-split" style={{ alignItems: 'center', marginTop: 'calc(var(--s-section) * -1)', marginBottom: 'var(--s-section)' }}>
                     <Benefits />
                     <SavingsCalculator />
                 </div>
