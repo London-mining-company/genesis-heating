@@ -627,6 +627,10 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .savings-split {
+    margin-top: var(--s-16) !important;
+  }
+
   .sticky-form {
     position: static !important;
     margin-top: var(--s-32);
