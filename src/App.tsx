@@ -99,7 +99,7 @@ const STEPS = [
 
 const BENEFITS = [
     { i: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', t: 'Built-in Efficiency', d: 'Works quietly in the background while you go about your day. Automated utility value, powered by your property.' },
-    { i: 'M12 2L3 7v5c0 5 9 10 9 10s9-5 9-10V7l-9-5z', t: 'Superior Performance', d: 'Industrial-grade heat exchange delivers constant hot water for your household. 24 gal/hour recovery rated.' },
+    { i: 'M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34c3.48-.3 6-3.24 6-6.66V4H4v4c0 3.42 2.52 6.36 6 6.66Z', t: 'Superior Performance', d: 'Industrial-grade heat exchange delivers constant hot water for your household. 24 gal/hour recovery rated.' },
     { i: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', t: 'Managed For You', d: 'We handle setup and maintenance. You enjoy energy savings and monthly value—entirely hands-off.' },
     { i: 'M12 2c-4 0-7 3-7 7 0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z', t: 'London Expertise', d: 'Based in London, ON. Local onsite integration and proactive monitoring for absolute peace of mind.' },
 ]
@@ -117,7 +117,7 @@ const FAQS = [
 const HowItWorks = () => (
     <div className="reveal">
         <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-20)' }}>
-            <h2>Process</h2>
+            <h2>How it works?</h2>
         </header>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
             {STEPS.map(s => (
@@ -292,26 +292,20 @@ const SavingsCalculator = () => {
 
 const Communities = () => (
     <section className="reveal communities-section" style={{ padding: 'var(--s-32) var(--s-24)' }}>
-        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>Active Service Hubs</h3>
+        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>Upcoming Communities</h3>
         <div className="communities-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--s-8)' }}>
             {[
-                { l: 'N6G', d: 'Masonville / Sunningdale' },
-                { l: 'N6K', d: 'Byron' },
-                { l: 'N6H', d: 'Oakridge / Hunt Club' },
-                { l: 'N6A', d: 'Old North' },
-                { l: 'N6C', d: 'Wortley Village' },
-                { l: 'N6J/L', d: 'Highland / Lambeth' }
+                'Byron', 'Masonville', 'Sunningdale', 'Wortley Village', 'Hunt Club', 'Highland', 'Old North', 'Oakridge', 'Ambleside'
             ].map((c, i) => (
-                <div key={c.l} style={{ position: 'relative' }}>
-                    <div className="community-chip" style={{ fontSize: '0.8rem', padding: '0.5rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '120px' }}>
-                        <span style={{ fontWeight: 800, color: '#fff' }}>{c.l}</span>
-                        <span style={{ fontSize: '10px', opacity: 0.6 }}>{c.d}</span>
+                <div key={c} style={{ position: 'relative' }}>
+                    <div className="community-chip" style={{ fontSize: '0.8rem', padding: '0.625rem 1.25rem', fontWeight: 700, color: '#fff' }}>
+                        {c}
                     </div>
                     {i < 3 && <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
                 </div>
             ))}
         </div>
-        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Phase 1 rollout scheduled by postal code density.</p>
+        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Phase 1 rollout scheduled by postal code density and local demand.</p>
     </section>
 )
 
