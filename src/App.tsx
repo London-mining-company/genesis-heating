@@ -80,7 +80,7 @@ const Hero = () => {
             </div>
             <div className="container hero-content">
                 <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>We upgrade your property with a high-performance thermal recovery system that recycles energy from specialized computing to generate monthly utility credits for your home or business.</p>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>We install smart water heaters that recycle heat from background technology to provide your property with constant hot water and monthly credits that help pay your utility bills.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
                     <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
                 </div>
