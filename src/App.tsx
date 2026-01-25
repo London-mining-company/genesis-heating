@@ -94,7 +94,7 @@ const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24
 const STEPS = [
     { n: 1, t: 'Standard Integration', d: 'We replace your old tank with a professional-grade Superheat unit. It fits your current plumbing footprint perfectly with zero renovation or lifestyle changes required.' },
     { n: 2, t: 'Thermal Energy Recycling', d: 'The system performs high-density background computations to heat your water with near-total efficiency, recycling energy that is usually wasted.' },
-    { n: 3, t: 'Automated Property Value', d: 'While the system works, it generates a continuous stream of primary utility value. You receive this as a monthly credit or CAD payout, turning an expense into an asset.' },
+    { n: 3, t: 'Automated Property Value', d: 'While the system works, it generates a continuous stream of primary utility value. You receive this as a monthly credit or CAD payout, turning an expense into an asset dropping heating bills by up to 80%!' },
 ]
 
 const BENEFITS = [
