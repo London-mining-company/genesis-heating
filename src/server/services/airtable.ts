@@ -112,6 +112,30 @@ export class AirtableService {
             console.error('[Airtable] Network/fetch error:', error);
             return false;
         }
+    }
 
+    /**
+     * Fetches all leads from Airtable
+     */
+    static async getLeads(): Promise<any[]> {
+        if (!this.apiKey || !this.baseId) return [];
+
+        const url = `https://api.airtable.com/v0/${this.baseId}/${encodeURIComponent(this.tableName)}?sort[0][field]=Created At&sort[0][direction]=desc`;
+
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${this.apiKey}`,
+                }
+            });
+
+            if (!response.ok) return [];
+
+            const data = await response.json();
+            return data.records || [];
+        } catch (error) {
+            console.error('[Airtable] Fetch error:', error);
+            return [];
+        }
     }
 }

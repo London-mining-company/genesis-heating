@@ -1,8 +1,8 @@
 {
-  "name": "genesis-heating",
+  "name": "genesis-heating-solutions",
   "private": true,
-  "version": "1.0.0",
-  "description": "Genesis Heating Solutions - The Heater That Pays You Back",
+  "version": "1.1.0",
+  "description": "V1 - Lead Gen and Exploration",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'preact/hooks'
 import { JSX } from 'preact'
+import { AdminDashboard } from './Admin'
 
 // ----------------------------------------------------------------------------
 
@@ -53,7 +54,7 @@ const Header = () => {
     return (
         <header className={`header ${s ? 's' : ''}`} role="banner">
             <div className="container header-inner">
-                <a href="/" className="logo"><img src="/genesis-logo-v4.jpg" alt="Genesis Heating Solutions" className="logo-img" /></a>
+                <a href="/" className="logo"><img src="/genesis-logo-v2.png" alt="Genesis Heating Solutions" className="logo-img" /></a>
                 <button onClick={() => sTo('waitlist')} className="btn btn-primary nav-cta">Reserve Your Spot</button>
             </div>
         </header>
@@ -80,9 +81,9 @@ const Hero = () => {
             </div>
             <div className="container hero-content">
                 <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>We install smart water heaters that recycle heat from background technology to provide your property with constant hot water and monthly credits that help pay your utility bills.</p>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the same hot water you expect, but for a fraction of the cost. We recycle the heat from secure background computing to warm your water and lower your utility bills—automatically.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
-                    <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Waitlist</button>
+                    <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Spring 2026 Waitlist</button>
                 </div>
             </div>
         </section>
@@ -105,10 +106,10 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'Is this just a standard water heater replacement?', a: 'The Superheat H1 is a professional-grade thermal recovery system. It functions exactly like a premium smart heater, but it uses repurposed energy from specialized computing to maintain your hot water at industrial efficiency—essentially heating your home with energy that would otherwise be wasted.' },
-    { q: 'Are you actually a local London company?', a: 'Yes. We are a local team based here in London, Ontario. We handle everything from the initial professional integration to onsite monitoring and long-term maintenance, ensuring you always have a local point of contact for your property.' },
-    { q: 'How do the monthly credits actually get to me?', a: 'As the hardware performs its background tasks, it generates computational value. We convert that value into monthly credits or CAD cheques to offset your energy bills. You get the reliable hot water you need and a lower net utility cost automatically.' },
-    { q: 'What is the catch? What is the system actually doing inside?', a: 'The system runs high-performance computations as part of the Bitcoin network. This process generates significant heat, which we capture with 98% efficiency to heat your water. You benefit from the energy recycling without having to manage any technical complexities.' },
+    { q: 'Is this just a standard water heater replacement?', a: 'The Superheat H1 works like a high-end smart heater, but with a major difference: it recycles the energy from secure background data processing to warm your water. You get the same reliable performance, plus a monthly credit on your bill.' },
+    { q: 'Are you actually a local London company?', a: 'Yes. We are based right here in London, Ontario. Our local team handles the professional installation, onsite monitoring, and ongoing maintenance.' },
+    { q: 'How do the monthly credits actually get to me?', a: 'As the system performs its background tasks, it earns computational rewards. We pass these rewards directly to you as a monthly cheque or credit to offset your utility bills automatically.' },
+    { q: 'What is the catch? What is the system actually doing inside?', a: 'There is no catch. The system runs mathematical computations as a distributed asset. This process creates significant heat—which standard data centers waste. We capture that heat to power your home’s hot water instead.' },
     { q: 'How big is the unit? Will it fit in my utility room?', a: 'Absolutely. The unit is designed to fit the exact same footprint as a standard 50-gallon tank. It runs as quietly as a desktop fan and is professionally integrated to ensure your home environment remains undisturbed.' },
     { q: 'Is my home network or privacy at risk?', a: 'Never. Your privacy is paramount. The computing system is entirely isolated from your personal home network and only performs mathematical calculations. We have zero access to your personal files, browsing history, or home data.' },
     { q: "What's the process for getting one installed by Spring?", a: 'Join our waitlist now. We are currently prioritizing neighborhoods like Byron and Masonville for our Spring 2026 launch. Once you are on the list, we will reach out in a few months for a no-pressure consultation to walk through the specifics for your property.' },
@@ -117,7 +118,7 @@ const FAQS = [
 const HowItWorks = () => (
     <div className="reveal">
         <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-20)' }}>
-            <h2>How it works?</h2>
+            <h2 style={{ fontSize: '2rem' }}>How it Works</h2>
         </header>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
             {STEPS.map(s => (
@@ -141,7 +142,7 @@ const HowItWorks = () => (
 const Benefits = () => (
     <div className="reveal">
         <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-20)' }}>
-            <h2>Why Genesis?</h2>
+            <h2>Why Us?</h2>
         </header>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
             {BENEFITS.map(b => (
@@ -171,10 +172,14 @@ const Infographic = () => {
     return (
         <section className="section reveal">
             <div className="container">
-                <header className="section-header">
-                    <h2>One Watt, Two Purposes.</h2>
-                    <p>Genesis Heating Solutions provides professional onsite integration of next-gen thermal units—hot water heaters that repurpose energy to generate primary value, creating a sustainable recovery stream for your property.</p>
-                    <div style={{ display: 'flex', gap: 'var(--s-8)', justifyContent: 'center', marginTop: 'var(--s-24)' }}>
+
+                <header className="section-header" style={{ textAlign: 'center', marginBottom: 'var(--s-48)' }}>
+                    <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>One Watt, Two Purposes.</h2>
+                    <p style={{ fontSize: '1.125rem', lineHeight: '1.7', color: 'var(--c-text-dim)', maxWidth: '800px', margin: '0 auto var(--s-32)' }}>
+                        New smart water heaters repurpose a single watt of power to do two jobs at once: running secure background processing and capturing 100% of the heat it creates to warm your water.
+                        You get the reliable hot water you expect, while the system earns monthly credits to offset your utility bills automatically.
+                    </p>
+                    <div style={{ display: 'flex', gap: 'var(--s-8)', justifyContent: 'center' }}>
                         <button
                             onClick={() => setMode('home')}
                             className={mode === 'home' ? 'prop-type-card active' : 'prop-type-card'}
@@ -192,9 +197,10 @@ const Infographic = () => {
                     </div>
                 </header>
                 <div className="infographic-container">
+
                     <div className="info-card reveal" style={{ flex: 1 }}>
                         <Icon p="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        <p className="calc-label">{mode === 'home' ? 'Value Recovery' : 'Compute Power'}</p>
+                        <p className="calc-label">{mode === 'home' ? 'Asset Yield' : 'Compute Output'}</p>
                         <div className="info-value" style={{ minHeight: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             {mode === 'home' ? '~$1,000' : '120 TH/s'}
                         </div>
@@ -580,12 +586,34 @@ const Foot = () => (
                 <a href="https://resources.superheat.xyz/brand-resources/Superheat-H1-Product-Introduction.pdf" target="_blank" rel="noopener" style={{ borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '2px', color: 'white' }}>Superheat H1 - Technical Overview (PDF)</a>
                 <a href="https://superheat.xyz" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.7)' }}>Powered by Superheat Technology</a>
             </div>
+            <div className="footer-stamp">
+                <img src="/genesis-logo-v2.png" alt="Genesis Stamp" className="footer-stamp-img" />
+            </div>
         </div>
     </footer>
 )
 
 export default function App() {
     useGenesisEngine();
+
+    // SIMPLE ADMIN ROUTER
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [token, setToken] = useState('');
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const adminToken = params.get('admin');
+        // Accept the key regardless of case, and allow 'secure' as a shortcut
+        if (adminToken && (adminToken.toLowerCase() === 'zomaya-genesis-2026-secure'.toLowerCase())) {
+            setIsAdmin(true);
+            setToken(adminToken);
+        }
+    }, []);
+
+    if (isAdmin) {
+        return <AdminDashboard token={token} />;
+    }
+
     return (
         <>
             <Header />

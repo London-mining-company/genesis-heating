@@ -331,3 +331,168 @@ export async function handleWaitlistSignup(
         status: 200
     };
 }
+
+/**
+ * Handle Admin Dashboard Metrics
+ * Securely aggregates data from Airtable for insights
+ */
+export async function handleAdminMetrics(token: string): Promise<{ response: ApiResponse<any>; status: number }> {
+    // 1. SECURITY: Simple token check against APP_SECRET
+    // In a real app, this would be a JWT or OAuth session
+    if (!token || token !== process.env.APP_SECRET) {
+        return { response: { success: false, error: { code: 'UNAUTHORIZED', message: 'Invalid admin token' } }, status: 401 };
+    }
+
+    try {
+        const leads = await AirtableService.getLeads();
+
+        // 2. DEFENSIVE CHECK: Handle empty results safely
+        if (!leads || !Array.isArray(leads)) {
+            return { response: { success: false, error: { code: 'DATA_ERROR', message: 'No metrics available yet.' } }, status: 200 };
+        }
+
+        // Compute Metrics
+        const now = new Date();
+        const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+        const totalLeads = leads.length;
+
+        // Safely filter for new leads
+        const newLeads7d = leads.filter((l: any) => {
+            const createdAt = l.fields?.['Created At'];
+            if (!createdAt) return false;
+            const d = new Date(createdAt);
+            return !isNaN(d.getTime()) && d > sevenDaysAgo;
+        }).length;
+
+        // Geographic Density (Postal Code Prefix)
+        const density: Record<string, number> = {};
+        leads.forEach((l: any) => {
+            const pcArr = l.fields?.['Postal Code'];
+            if (!pcArr) return;
+            const pc = String(pcArr).substring(0, 3).toUpperCase();
+            if (pc && pc.length === 3) {
+                density[pc] = (density[pc] || 0) + 1;
+            }
+        });
+
+        // Property Mix
+        const propertyMix = { residential: 0, business: 0 };
+        leads.forEach((l: any) => {
+            const typeValue = l.fields?.['Property Type'];
+            const type = String(typeValue || '').toLowerCase() === 'business' ? 'business' : 'residential';
+            propertyMix[type]++;
+        });
+
+        // Marketing Attribution
+        const attribution: Record<string, number> = {};
+        leads.forEach((l: any) => {
+            const sourceStr = String(l.fields?.['Source'] || 'Direct');
+            const s = sourceStr.split('|')[1] || sourceStr.split('|')[0] || 'Direct';
+            const normalized = s.toLowerCase();
+            attribution[normalized] = (attribution[normalized] || 0) + 1;
+        });
+
+        // Potential MRR
+        const totalMonthlyCost = leads.reduce((sum: number, l: any) => {
+            const cost = Number(l.fields?.['Monthly Heating Cost']) || 0;
+            return sum + cost;
+        }, 0);
+        const estimatedMRR = totalMonthlyCost * 0.8;
+
+        // --- BUSINESS INTELLIGENCE (GOLD BOOK v1.1) ---
+
+        // 1. Lead Scoring (A-Class Leads)
+        const topPostalCodes = new Set(['N6G', 'N6A', 'N6H', 'N6B']);
+        const scoredLeads = leads.map((l: any) => {
+            let score = 0;
+            const fields = l.fields || {};
+            const cost = Number(fields['Monthly Heating Cost']) || 0;
+            const pcVal = fields['Postal Code'];
+            const pc = pcVal ? String(pcVal).substring(0, 3).toUpperCase() : '';
+
+            if (cost > 250) score += 5;
+            else if (cost > 150) score += 3;
+
+            if (pc && topPostalCodes.has(pc)) score += 5;
+
+            return { id: l.id, score, cost, pc };
+        });
+
+        const highValueLeads = scoredLeads.filter(l => l.score >= 8).length;
+
+        // 2. Growth Trend (Last 14 days)
+        const dailyTrend: Record<string, number> = {};
+        for (let i = 0; i < 14; i++) {
+            const d = new Date(now);
+            d.setDate(d.getDate() - i);
+            dailyTrend[d.toISOString().split('T')[0]] = 0;
+        }
+
+        leads.forEach((l: any) => {
+            const createdAt = l.fields?.['Created At'];
+            if (!createdAt) return;
+
+            // Handle ISO strings correctly
+            const date = String(createdAt).split('T')[0];
+            if (dailyTrend[date] !== undefined) {
+                dailyTrend[date]++;
+            }
+        });
+
+        // 3. Gold Book Path Analysis
+        const pathAnalysis = {
+            ownerPotential: scoredLeads.filter(l => l.cost >= 300).length,
+            builderPotential: scoredLeads.filter(l => l.cost < 300).length
+        };
+
+        // 4. Financial Modeling
+        const portfolioYield36 = estimatedMRR * 36;
+        const projectedCAC = 15;
+        const projectedLTV = (estimatedMRR / (totalLeads || 1)) * 36;
+
+        return {
+            response: {
+                success: true,
+                data: {
+                    overview: {
+                        totalLeads,
+                        newLeads7d,
+                        highValueLeads,
+                        growthRate: totalLeads > 0 ? (newLeads7d / (totalLeads - newLeads7d || 1)) * 100 : 0
+                    },
+                    trends: {
+                        daily: Object.entries(dailyTrend).sort(),
+                    },
+                    insights: {
+                        geographicDensity: Object.entries(density).sort((a, b) => b[1] - a[1]).slice(0, 10),
+                        propertyMix,
+                        attribution,
+                        pathAnalysis,
+                        financialPotential: {
+                            totalStatedCost: totalMonthlyCost,
+                            estimatedMRR,
+                            portfolioYield36,
+                            avgLeadValue: totalLeads > 0 ? estimatedMRR / totalLeads : 0,
+                            cacLtvRatio: (projectedLTV / (projectedCAC || 1)).toFixed(1)
+                        }
+                    },
+                    lastSync: now.toISOString()
+                }
+            },
+            status: 200
+        };
+    } catch (error: any) {
+        console.error('[Admin] Metrics error:', error);
+        return {
+            response: {
+                success: false,
+                error: {
+                    code: 'INTERNAL_ERROR',
+                    message: error.message || 'Failed to aggregate metrics'
+                }
+            },
+            status: 500
+        };
+    }
+}
