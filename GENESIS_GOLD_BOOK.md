@@ -56,6 +56,13 @@ We are not high-margin hardware resellers; we are **Infrastructure Partners**. W
 *   **Profitability Floor:** Introduced a **"Minimum Management Fee"** of $15/month per unit. This ensures Genesis covers its "Ghost Monitoring" and technical support costs even during extreme compute market troughs.
 *   **Ethos:** We prioritize long-term infrastructure over short-term hardware margins.
 
+### 3.4 Yield Sensitivity & Sales Forecasting (London, ON Base-Case)
+*   **Annual Operating Cost (OpEx):** **~$1,910 CAD**. Calculated at 2.0kW continuous load (48kWh/day) using London Hydro's Ultra-Low Overnight (ULO) arbitrage: 8 hours @ 2.8¢, 16 hours blended @ 15¢ (Net effective: ~10.9¢/kWh).
+*   **Gross Compute Revenue (Stretch Goal):** **$2,800 – $4,200 CAD/year**. Based on Superheat H1 (120 TH/s) performance within a $60k–$90k BTC price floor and current global hashrate difficulty.
+*   **Net Asset Yield (Profitability Range):** **$900 – $2,300 CAD/year** per unit. 
+*   **Marketing Buffer (The Trust Anchor):** Genesis officially markets **"~$1,000/year Savings"** to the public. This ensures we consistently under-promise, protecting our "Honorable Partnership" brand from market volatility.
+*   **Carbon Dividend:** **4.2 Tons CO2** annual offset per residential installation compared to legacy natural gas infrastructure.
+
 ---
 ## 🤝 PART IV: THE SALES ENGINE (Consultation & Objections)
 

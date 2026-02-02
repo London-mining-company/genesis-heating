@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks'
 import { JSX } from 'preact'
 import { AdminDashboard } from './Admin'
+import { track } from './lib/analytics'
 
 // ----------------------------------------------------------------------------
 
@@ -54,7 +55,7 @@ const Header = () => {
     return (
         <header className={`header ${s ? 's' : ''}`} role="banner">
             <div className="container header-inner">
-                <a href="/" className="logo"><img src="/genesis-logo-v2.png" alt="Genesis Heating Solutions" className="logo-img" /></a>
+                <a href="/" className="logo"><img src="/genesis-logo.png" alt="Genesis Heating Solutions" className="logo-img" /></a>
                 <button onClick={() => sTo('waitlist')} className="btn btn-primary nav-cta">Reserve Your Spot</button>
             </div>
         </header>
@@ -83,7 +84,7 @@ const Hero = () => {
                 <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
                 <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the same hot water you expect, but for a fraction of the cost. We recycle the heat from secure background computing to warm your water and lower your utility bills—automatically.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
-                    <button onClick={() => sTo('waitlist')} className="btn btn-primary">Join the Spring 2026 Waitlist</button>
+                    <button onClick={() => sTo('waitlist')} className="btn btn-primary">Reserve Your Spot — Limited by Postal Code</button>
                 </div>
             </div>
         </section>
@@ -301,13 +302,13 @@ const Communities = () => (
         <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>Upcoming Communities</h3>
         <div className="communities-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--s-8)' }}>
             {[
-                'Byron', 'Masonville', 'Sunningdale', 'Wortley Village', 'Hunt Club', 'Highland', 'Old North', 'Oakridge', 'Ambleside'
+                'Byron', 'Masonville', 'Sunningdale', 'Wortley Village', 'Highland', 'Old North', 'Oakridge'
             ].map((c, i) => (
                 <div key={c} style={{ position: 'relative' }}>
                     <div className="community-chip" style={{ fontSize: '0.8rem', padding: '0.625rem 1.25rem', fontWeight: 700, color: '#fff' }}>
                         {c}
                     </div>
-                    {i < 3 && <span style={{ position: 'absolute', top: '-6px', right: '-6px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
+                    {i < 3 && <span style={{ position: 'absolute', top: '-6px', right: '-10px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
                 </div>
             ))}
         </div>
@@ -327,6 +328,9 @@ const WaitlistForm = () => {
     const [leadCount, setLeadCount] = useState(132)
 
     useEffect(() => {
+        // Track form section viewed
+        track('form_section_viewed', { device: window.innerWidth < 768 ? 'mobile' : 'desktop' })
+
         // Fetch real-time lead count
         fetch('/api/waitlist').then(res => res.json()).then(data => {
             if (data.count) setLeadCount(data.count);
@@ -374,10 +378,10 @@ const WaitlistForm = () => {
         const newErrors: FormErrors = {}
         if (!formData.name.trim()) newErrors.name = 'Name field required'
         if (!formData.email.trim()) newErrors.email = 'Email required'
-        if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone required'
+        // Phone is now optional - removed required validation
         if (!formData.postalCode.trim()) newErrors.postalCode = 'Postal code required'
         if (!formData.propertyType) newErrors.general = 'Property profile required'
-        if (!formData.privacyAccepted) newErrors.privacyAccepted = 'Verification required'
+        if (!formData.privacyAccepted) newErrors.privacyAccepted = 'Please confirm you\'d like to be contacted'
         if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
 
         setIsSubmitting(true)
@@ -390,7 +394,7 @@ const WaitlistForm = () => {
                 property_type: formData.propertyType === 'commercial' ? 'business' : 'home',
                 monthly_heating_cost: Number(formData.monthlyHeatingCost),
                 consent: formData.marketingConsent ? 'yes' : 'no',
-                source: 'website_final_v10'
+                source: 'website_v1_launch'
             }
             const res = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
             const r = await res.json().catch(() => ({ success: false }))
@@ -445,6 +449,7 @@ const WaitlistForm = () => {
             <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-16)' }}>
                 <h2 style={{ fontSize: '1.5rem' }}>Join {leadCount}+ Londoners</h2>
                 <p className="text-dim" style={{ fontSize: '12px', marginTop: 'var(--s-4)' }}>Currently prioritizing <span className="text-orange" style={{ fontWeight: 700 }}>Byron</span> & Masonville for Phase 1.</p>
+                <p style={{ fontSize: '11px', opacity: 0.5, marginTop: 'var(--s-8)' }}>✓ No payment required • ✓ 30 seconds • ✓ Your data stays private</p>
             </header>
             <div className="form-progress" style={{ display: 'flex', gap: 'var(--s-4)', marginBottom: 'var(--s-16)' }}>
                 <div style={{ height: '2px', flex: 1, background: 'var(--c-accent)', borderRadius: '1px' }}></div>
@@ -470,8 +475,8 @@ const WaitlistForm = () => {
                         </div>
                         <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                             <div className="form-group">
-                                <label htmlFor="genesis-phone" className="calc-label">Phone <span style={{ color: 'var(--c-accent)' }}>*</span></label>
-                                <input id="genesis-phone" name="phoneNumber" type="tel" autoComplete="tel" className={`form-input ${errors.phoneNumber ? 'error' : ''}`} placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} required aria-required="true" />
+                                <label htmlFor="genesis-phone" className="calc-label">Phone <span style={{ opacity: 0.5, fontWeight: 400 }}>(optional)</span></label>
+                                <input id="genesis-phone" name="phoneNumber" type="tel" autoComplete="tel" className={`form-input ${errors.phoneNumber ? 'error' : ''}`} placeholder="(519) 555-0123" value={formData.phoneNumber} onChange={handleChange} />
                                 {errors.phoneNumber && <p className="text-orange" style={{ fontSize: '10px', marginTop: '0.375rem' }}>{errors.phoneNumber}</p>}
                             </div>
                             <div className="form-group">
@@ -484,11 +489,12 @@ const WaitlistForm = () => {
                             const e: FormErrors = {};
                             if (!formData.name) e.name = 'Required';
                             if (!formData.email) e.email = 'Required';
-                            if (!formData.phoneNumber) e.phoneNumber = 'Required';
+                            // Phone no longer required
                             if (!formData.postalCode) e.postalCode = 'Required';
                             if (Object.keys(e).length > 0) { setErrors(e); return; }
+                            track('form_step_1_completed', { hasPhone: !!formData.phoneNumber })
                             setStep(2);
-                        }} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }}>Continue to Final Step →</button>
+                        }} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '0.75rem 1.5rem' }}>Almost Done — One More Question...</button>
                     </div>
 
                 ) : (
@@ -510,7 +516,7 @@ const WaitlistForm = () => {
                         </div>
                         <div className="form-group" style={{ marginTop: '1rem' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <label htmlFor="genesis-cost" className="calc-label" style={{ marginBottom: 0 }}>Monthly Heating Cost</label>
+                                <label htmlFor="genesis-cost" className="calc-label" style={{ marginBottom: 0 }}>Monthly Heating Cost <span style={{ opacity: 0.5, fontWeight: 400 }}>(helps estimate your savings)</span></label>
                                 <span className="text-orange" style={{ fontSize: '13px', fontWeight: '700' }}>${formData.monthlyHeatingCost}{formData.monthlyHeatingCost >= 3000 ? '+' : ''}</span>
                             </div>
                             <input id="genesis-cost" type="range" name="monthlyHeatingCost" className="slider" min="50" max="3000" step="50" value={formData.monthlyHeatingCost} onChange={handleChange} style={{ marginTop: '0.5rem' }} />
@@ -518,7 +524,7 @@ const WaitlistForm = () => {
                         <div className="form-group" style={{ marginTop: '1.25rem' }}>
                             <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center', marginBottom: '0.625rem' }}>
                                 <input id="genesis-privacy" type="checkbox" name="privacyAccepted" checked={formData.privacyAccepted} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
-                                <label htmlFor="genesis-privacy" style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)', cursor: 'pointer' }}>I agree to be contacted about installation.</label>
+                                <label htmlFor="genesis-privacy" style={{ fontSize: '12px', lineHeight: '1.4', color: 'rgba(255,255,255,0.85)', cursor: 'pointer' }}>I'd like to learn more about this service <span style={{ opacity: 0.6 }}>(no obligation)</span></label>
                             </div>
                             <div style={{ display: 'flex', gap: '0.625rem', alignItems: 'center' }}>
                                 <input id="genesis-marketing" type="checkbox" name="marketingConsent" checked={formData.marketingConsent} onChange={handleChange} style={{ width: '16px', height: '16px', flexShrink: 0, cursor: 'pointer', accentColor: 'var(--c-accent)' }} />
@@ -587,7 +593,7 @@ const Foot = () => (
                 <a href="https://superheat.xyz" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.7)' }}>Powered by Superheat Technology</a>
             </div>
             <div className="footer-stamp">
-                <img src="/genesis-logo-v2.png" alt="Genesis Stamp" className="footer-stamp-img" />
+                <img src="/genesis-logo.png" alt="Genesis Stamp" className="footer-stamp-img" />
             </div>
         </div>
     </footer>
