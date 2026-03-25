@@ -100,10 +100,10 @@ const STEPS = [
 ]
 
 const BENEFITS = [
-    { i: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', t: 'Built-in Efficiency', d: 'Works quietly in the background while you go about your day. Automated utility value, powered by your property.' },
-    { i: 'M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34c3.48-.3 6-3.24 6-6.66V4H4v4c0 3.42 2.52 6.36 6 6.66Z', t: 'Superior Performance', d: 'Industrial-grade heat exchange delivers constant hot water for your household. 24 gal/hour recovery rated.' },
-    { i: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', t: 'Managed For You', d: 'We handle setup and maintenance. You enjoy energy savings and monthly value—entirely hands-off.' },
-    { i: 'M12 2c-4 0-7 3-7 7 0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z', t: 'London Expertise', d: 'Based in London, ON. Local onsite integration and proactive monitoring for absolute peace of mind.' },
+    { i: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', t: 'Immediate ROI', d: 'Whether applying for CCA Class 43.1 tax write-offs or dropping residential hydro bills, the system produces guaranteed thermal value from day one.' },
+    { i: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', t: 'Proactive Monitoring', d: 'We remotely manage the unit\'s computational uptime 24/7. If performance drops, our local engineers know before you do.' },
+    { i: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', t: 'Seamless Integration', d: 'Fits the exact same mechanical footprint as a standard 50-gallon tank. Professional ESA-certified electrical & HVAC installation is included.' },
+    { i: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z', t: 'Local London Partner', d: 'We aren\'t an overseas tech startup. We\'re a local infrastructure company providing hands-on installation and maintenance exclusively in London, ON.' },
 ]
 
 const COMMERCIAL_TARGETS = [
@@ -176,7 +176,7 @@ const Benefits = () => (
 )
 
 const Infographic = () => {
-    const [mode, setMode] = useState<'home' | 'business'>('home')
+    const [mode, setMode] = useState<'home' | 'business'>('business')
 
     return (
         <section className="section reveal">
