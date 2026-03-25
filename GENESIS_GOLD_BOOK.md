@@ -140,13 +140,37 @@ The terminal goal is acquisition by a major provincial utility (Enbridge/Hydro O
 
 ---
 
-## 🏁 PART IX: THE 90-DAY LAUNCH ROADMAP
+## 🏁 PART IX: THE 90-DAY LAUNCH ROADMAP (PIVOTED March 25, 2026)
 
-1.  **Month 1 (Jan-Feb):** Finalize Contractor network. Build waitlist to 30. Initial Facebook Ad tests.
-2.  **Month 2 (Feb-Mar):** Conduct first 10 Pilot consultations. Close 3 Package A deals for cash fuel.
-3.  **Month 3 (Mar-Apr):** First 5 Installs (Lighthouse Houses). Launch "Neighbourhood Signage" and Referral Engine.
+### Phase 0: System Setup (Week 1-2 | March 25 - April 7)
+- Set up ManyChat → Facebook Page (lead qualification chatbot)
+- Set up Cal.com → Google Calendar (self-service consultation booking)
+- Verify Airtable CRM schema + Make.com automations
+- Generate 4 weeks of content via Genesis Lead Engine skill
+- Schedule first 2 weeks of posts in Meta Business Suite
+- Join 3 local Facebook groups from personal account
+
+### Phase 1: Seed & Grow (Week 3-8 | April 7 - May 19)
+- Post consistently (4x/week page, 1x/week group)
+- ManyChat handles all incoming Messenger DMs
+- Call HOT leads within 24 hours of notification
+- Run first 3-5 consultations (Cal.com handles booking)
+- Close first Owner Path deal ($5,950) for cash fuel
+
+### Phase 2: First Install (Week 9-12 | May 19 - June 16)
+- Complete Lighthouse Install #1
+- Film 60-second install timelapse on phone
+- Post real install photo (not a concept render)
+- Get 1 testimonial (even 2 sentences)
+- Share real thermal data on Facebook
+
+### Phase 3: Scale (Week 13+ | June 16+)
+- Target: 5 installs by end of Phase 3
+- Activate neighbourhood referral bonus
+- Consider $50/month Meta Ads (only if CAC < $250)
+- Begin Old North / Wortley expansion
 
 ---
 
-**[GENESIS GOLD BOOK SEALED]**
-**Genesis Heating Solutions | January 2026**
+**[GENESIS GOLD BOOK — REVISED March 2026]**
+**Genesis Heating Solutions**
