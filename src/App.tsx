@@ -109,8 +109,9 @@ const BENEFITS = [
 const COMMERCIAL_TARGETS = [
     { i: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', t: 'Restaurants & Breweries', d: 'Constant dishwashing and boiler usage. Target Richmond Row, Dundas, and local BIA districts for maximum impact.' },
     { i: 'M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5', t: 'Salons & Spas', d: 'Continuous, high-volume hot water demand all day. Massive utility savings potential. CCA Class 43.1 eligible.' },
+    { i: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', t: 'Boutique Hotels & Motels', d: 'Significant daily guest hot water usage. Multiple units can offset large utility profiles and scale with occupancy.' },
     { i: 'M13 10V3L4 14h7v7l9-11h-7z', t: 'Gyms & Athletics', d: 'Peak shower hours create huge gas bills. We offset the primary heating load and stabilize operating expenses.' },
-    { i: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', t: 'Multi-Unit Residential', d: 'Property managers looking to reduce NOI. Fleet scalable. 100% tax deductible in Year 1.' },
+    { i: 'M3 12l2-2m0 0l7-7 7 7', t: 'Multi-Unit Residential', d: 'Property managers looking to reduce NOI. Fleet scalable. 100% tax deductible in Year 1.' },
 ]
 
 const FAQS = [
@@ -308,10 +309,9 @@ const IdealBusinesses = () => (
     <section className="section reveal" style={{ background: 'rgba(255,255,255,0.02)', borderTop: '1px solid var(--c-border)', borderBottom: '1px solid var(--c-border)', marginTop: 'var(--s-section)' }}>
         <div className="container">
             <header className="section-header" style={{ textAlign: 'center', marginBottom: 'var(--s-48)' }}>
-                <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: 'rgba(255,92,0,0.1)', color: 'var(--c-accent)', borderRadius: '100px', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Commercial Applications</div>
-                <h2 style={{ fontSize: '2rem', letterSpacing: '-0.02em' }}>Built for Business.</h2>
-                <p style={{ fontSize: '1.125rem', color: 'var(--c-text-dim)', maxWidth: '600px', margin: '1rem auto 0' }}>
-                    If your business runs on hot water, you are leaving money on the table. Our enterprise thermal recycling systems are designed for high-demand commercial infrastructure in London, ON.
+                <h2 style={{ fontSize: '2rem', letterSpacing: '-0.02em', marginBottom: '1rem' }}>Built for Business.</h2>
+                <p style={{ fontSize: '1.125rem', color: 'var(--c-text-dim)', maxWidth: '600px', margin: '0 auto' }}>
+                    If your business runs on hot water, you are leaving money on the table. We set up local enterprises with thermal recycling systems designed for high-demand infrastructure right here in London, ON.
                 </p>
             </header>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--s-16)' }}>
@@ -328,7 +328,7 @@ const IdealBusinesses = () => (
                 ))}
             </div>
             <div style={{ textAlign: 'center', marginTop: 'var(--s-32)' }}>
-                <p style={{ fontSize: '13px', color: 'var(--c-text-dim)' }}>Need a custom fleet assessment? <button onClick={() => sTo('consultation')} style={{ color: 'var(--c-text)', textDecoration: 'underline', fontWeight: 600 }}>Talk to our engineers.</button></p>
+                <p style={{ fontSize: '13px', color: 'var(--c-text-dim)' }}>Curious how many units your space needs? <button onClick={() => sTo('consultation')} style={{ color: 'var(--c-text)', textDecoration: 'underline', fontWeight: 600 }}>We're happy to run the numbers.</button></p>
             </div>
         </div>
     </section>
