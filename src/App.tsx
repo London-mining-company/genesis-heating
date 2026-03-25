@@ -106,6 +106,13 @@ const BENEFITS = [
     { i: 'M12 2c-4 0-7 3-7 7 0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z', t: 'London Expertise', d: 'Based in London, ON. Local onsite integration and proactive monitoring for absolute peace of mind.' },
 ]
 
+const COMMERCIAL_TARGETS = [
+    { i: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', t: 'Restaurants & Breweries', d: 'Constant dishwashing and boiler usage. Target Richmond Row, Dundas, and local BIA districts for maximum impact.' },
+    { i: 'M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5', t: 'Salons & Spas', d: 'Continuous, high-volume hot water demand all day. Massive utility savings potential. CCA Class 43.1 eligible.' },
+    { i: 'M13 10V3L4 14h7v7l9-11h-7z', t: 'Gyms & Athletics', d: 'Peak shower hours create huge gas bills. We offset the primary heating load and stabilize operating expenses.' },
+    { i: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', t: 'Multi-Unit Residential', d: 'Property managers looking to reduce NOI. Fleet scalable. 100% tax deductible in Year 1.' },
+]
+
 const FAQS = [
     { q: 'Is this just a standard water heater replacement?', a: 'It replaces your existing tank and heats water to the same spec. The difference: the unit runs secure background computations, and 98% of the heat from that processing warms your water. You get reliable hot water plus a monthly credit.' },
     { q: 'Do you work with businesses?', a: 'Yes. Restaurants, salons, gyms, laundromats, and commercial properties with high hot water demand are ideal. The unit may qualify for 100% immediate expensing (CCA Class 43.1) and a 30% Clean Technology Investment Tax Credit. Your accountant will want to look at this.' },
@@ -296,6 +303,36 @@ const SavingsCalculator = () => {
         </div>
     )
 }
+
+const IdealBusinesses = () => (
+    <section className="section reveal" style={{ background: 'rgba(255,255,255,0.02)', borderTop: '1px solid var(--c-border)', borderBottom: '1px solid var(--c-border)', marginTop: 'var(--s-section)' }}>
+        <div className="container">
+            <header className="section-header" style={{ textAlign: 'center', marginBottom: 'var(--s-48)' }}>
+                <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: 'rgba(255,92,0,0.1)', color: 'var(--c-accent)', borderRadius: '100px', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Commercial Applications</div>
+                <h2 style={{ fontSize: '2rem', letterSpacing: '-0.02em' }}>Built for Business.</h2>
+                <p style={{ fontSize: '1.125rem', color: 'var(--c-text-dim)', maxWidth: '600px', margin: '1rem auto 0' }}>
+                    If your business runs on hot water, you are leaving money on the table. Our enterprise thermal recycling systems are designed for high-demand commercial infrastructure in London, ON.
+                </p>
+            </header>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--s-16)' }}>
+                {COMMERCIAL_TARGETS.map(b => (
+                    <article key={b.t} className="card" style={{ padding: 'var(--s-24)', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'var(--c-surface)', border: '1px solid var(--c-border-strong)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <svg className="icon-svg" style={{ width: '20px', height: '20px', color: 'var(--c-text)' }} viewBox="0 0 24 24" strokeWidth="1.5" fill="none" stroke="currentColor"><path d={b.i} strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </div>
+                        <div>
+                            <h4 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '0.5rem' }}>{b.t}</h4>
+                            <p className="text-dim" style={{ fontSize: '13px', lineHeight: '1.5' }}>{b.d}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: 'var(--s-32)' }}>
+                <p style={{ fontSize: '13px', color: 'var(--c-text-dim)' }}>Need a custom fleet assessment? <button onClick={() => sTo('consultation')} style={{ color: 'var(--c-text)', textDecoration: 'underline', fontWeight: 600 }}>Talk to our engineers.</button></p>
+            </div>
+        </div>
+    </section>
+)
 
 const Communities = () => (
     <section className="reveal communities-section" style={{ padding: 'var(--s-32) var(--s-24)' }}>
@@ -631,7 +668,8 @@ export default function App() {
                     </div>
                 </div>
                 <Infographic />
-                <div className="container savings-split" style={{ alignItems: 'center', marginTop: 'calc(var(--s-section) * -1)', marginBottom: 'var(--s-section)' }}>
+                <IdealBusinesses />
+                <div className="container savings-split" style={{ alignItems: 'center', marginTop: 'var(--s-section)', marginBottom: 'var(--s-section)' }}>
                     <Benefits />
                     <SavingsCalculator />
                 </div>
