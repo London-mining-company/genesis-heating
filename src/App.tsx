@@ -22,8 +22,8 @@ const useGenesisEngine = () => {
         const oT = document.title;
         const hS = () => root.style.setProperty('--sy', `${window.scrollY}px`);
         const hV = () => {
-            const isComplete = localStorage.getItem('genesis_waitlist_complete');
-            document.title = (document.hidden && !isComplete) ? "Waitlist Position: Pending..." : oT;
+            const isComplete = localStorage.getItem('genesis_consultation_complete');
+            document.title = (document.hidden && !isComplete) ? "Genesis Heating — Book a Consultation" : oT;
         };
         const hR = new IntersectionObserver((es) => {
             es.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal-active') });
@@ -56,7 +56,7 @@ const Header = () => {
         <header className={`header ${s ? 's' : ''}`} role="banner">
             <div className="container header-inner">
                 <a href="/" className="logo"><img src="/genesis-logo.png" alt="Genesis Heating Solutions" className="logo-img" /></a>
-                <button onClick={() => sTo('waitlist')} className="btn btn-primary nav-cta">Reserve Your Spot</button>
+                <button onClick={() => sTo('consultation')} className="btn btn-primary nav-cta">Book a Consultation</button>
             </div>
         </header>
     )
@@ -82,9 +82,9 @@ const Hero = () => {
             </div>
             <div className="container hero-content">
                 <h1 id="hero-h" className="reveal reveal-active" style={{ '--delay': '0.4s' }}>Heating that makes <span className="text-orange">cents.</span></h1>
-                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>Get the same hot water you expect, but for a fraction of the cost. We recycle the heat from secure background computing to warm your water and lower your utility bills—automatically.</p>
+                <p className="hero-subtitle reveal reveal-active" style={{ '--delay': '0.6s' }}>We install smart water heaters that earn you money. Background computing heats your water while generating monthly credits — for homes and businesses across London, ON.</p>
                 <div className="btn-row reveal reveal-active" style={{ '--delay': '0.8s' }}>
-                    <button onClick={() => sTo('waitlist')} className="btn btn-primary">Reserve Your Spot — Limited by Postal Code</button>
+                    <button onClick={() => sTo('consultation')} className="btn btn-primary">Book a Free Consultation</button>
                 </div>
             </div>
         </section>
@@ -94,9 +94,9 @@ const Hero = () => {
 const Icon = ({ p }: { p: string }) => <svg className="icon-svg" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><path d={p} stroke-linecap="round" stroke-linejoin="round" /></svg>
 
 const STEPS = [
-    { n: 1, t: 'Standard Integration', d: 'We replace your old tank with a professional-grade Superheat unit. It fits your current plumbing footprint perfectly with zero renovation or lifestyle changes required.' },
-    { n: 2, t: 'Thermal Energy Recycling', d: 'The system performs high-density background computations to heat your water with near-total efficiency, recycling energy that is usually wasted.' },
-    { n: 3, t: 'Automated Property Value', d: 'While the system works, it generates a continuous stream of primary utility value. You receive this as a monthly credit or CAD payout, turning an expense into an asset dropping heating bills by up to 80%!' },
+    { n: 1, t: 'Professional Installation', d: 'We replace your existing tank with a high-efficiency unit. Same plumbing footprint, ESA-permitted electrical, zero renovation required. Homes and commercial properties.' },
+    { n: 2, t: 'Thermal Energy Recycling', d: 'The system runs secure background computations. 98% of the heat generated is captured and transferred directly to your water — energy that data centres normally waste.' },
+    { n: 3, t: 'Monthly Credits', d: 'The computations have value. We pass that value to you as a monthly CAD deposit or utility credit. Your water heater becomes an asset, not an expense.' },
 ]
 
 const BENEFITS = [
@@ -107,13 +107,13 @@ const BENEFITS = [
 ]
 
 const FAQS = [
-    { q: 'Is this just a standard water heater replacement?', a: 'The Superheat H1 works like a high-end smart heater, but with a major difference: it recycles the energy from secure background data processing to warm your water. You get the same reliable performance, plus a monthly credit on your bill.' },
-    { q: 'Are you actually a local London company?', a: 'Yes. We are based right here in London, Ontario. Our local team handles the professional installation, onsite monitoring, and ongoing maintenance.' },
-    { q: 'How do the monthly credits actually get to me?', a: 'As the system performs its background tasks, it earns computational rewards. We pass these rewards directly to you as a monthly cheque or credit to offset your utility bills automatically.' },
-    { q: 'What is the catch? What is the system actually doing inside?', a: 'There is no catch. The system runs mathematical computations as a distributed asset. This process creates significant heat—which standard data centers waste. We capture that heat to power your home’s hot water instead.' },
-    { q: 'How big is the unit? Will it fit in my utility room?', a: 'Absolutely. The unit is designed to fit the exact same footprint as a standard 50-gallon tank. It runs as quietly as a desktop fan and is professionally integrated to ensure your home environment remains undisturbed.' },
-    { q: 'Is my home network or privacy at risk?', a: 'Never. Your privacy is paramount. The computing system is entirely isolated from your personal home network and only performs mathematical calculations. We have zero access to your personal files, browsing history, or home data.' },
-    { q: "What's the process for getting one installed by Spring?", a: 'Join our waitlist now. We are currently prioritizing neighborhoods like Byron and Masonville for our Spring 2026 launch. Once you are on the list, we will reach out in a few months for a no-pressure consultation to walk through the specifics for your property.' },
+    { q: 'Is this just a standard water heater replacement?', a: 'It replaces your existing tank and heats water to the same spec. The difference: the unit runs secure background computations, and 98% of the heat from that processing warms your water. You get reliable hot water plus a monthly credit.' },
+    { q: 'Do you work with businesses?', a: 'Yes. Restaurants, salons, gyms, laundromats, and commercial properties with high hot water demand are ideal. The unit may qualify for 100% immediate expensing (CCA Class 43.1) and a 30% Clean Technology Investment Tax Credit. Your accountant will want to look at this.' },
+    { q: 'Are you actually a local London company?', a: 'Yes. We are based right here in London, Ontario. We handle the professional installation, ESA electrical permitting, onsite monitoring, and ongoing maintenance. We are the only licensed installer for this technology in the region.' },
+    { q: 'How do the monthly credits work?', a: 'The system earns computational rewards. We convert those to CAD and pass them to you as a monthly deposit or utility credit. You never touch the technical side \u2014 we manage everything remotely.' },
+    { q: 'What is the system actually doing?', a: 'It runs high-density mathematical computations. This process creates significant heat \u2014 which standard data centres waste into the atmosphere. We capture that heat and use it to warm your water. Same watt, two jobs.' },
+    { q: 'Is my network or privacy at risk?', a: 'Never. The computing system runs on an isolated connection, completely separate from your personal network. It only performs mathematical calculations. We have zero access to your personal data.' },
+    { q: 'How do I get started?', a: 'Book a free 15-minute consultation through the form on this page. We will walk you through the specifics for your property, the pricing options, and the installation timeline. No obligation.' },
 ]
 
 const HowItWorks = () => (
@@ -177,8 +177,8 @@ const Infographic = () => {
                 <header className="section-header" style={{ textAlign: 'center', marginBottom: 'var(--s-48)' }}>
                     <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>One Watt, Two Purposes.</h2>
                     <p style={{ fontSize: '1.125rem', lineHeight: '1.7', color: 'var(--c-text-dim)', maxWidth: '800px', margin: '0 auto var(--s-32)' }}>
-                        New smart water heaters repurpose a single watt of power to do two jobs at once: running secure background processing and capturing 100% of the heat it creates to warm your water.
-                        You get the reliable hot water you expect, while the system earns monthly credits to offset your utility bills automatically.
+                        Our system repurposes a single watt of power to do two jobs: running secure background processing and capturing 98% of the heat it creates to warm your water.
+                        Homes save on utility bills. Businesses can write off the entire unit and earn monthly credits.
                     </p>
                     <div style={{ display: 'flex', gap: 'var(--s-8)', justifyContent: 'center' }}>
                         <button
@@ -233,19 +233,19 @@ const Infographic = () => {
                 </div>
                 <div className="feature-grid">
                     <div className="feature-card">
-                        <h4>{mode === 'home' ? 'Uncompromised Experience' : 'Asset Optimization'}</h4>
+                        <h4>{mode === 'home' ? 'Fits Your Existing Setup' : 'Tax-Advantaged Infrastructure'}</h4>
                         <p>
                             {mode === 'home'
-                                ? 'The H1 unit fits the same footprint as your current tank. You get 50 gallons of capacity with industrial-grade recovery rates—all while we handle the internal energy management in the background. Zero learning curve, just lower heating bills forever!'
-                                : 'For property managers and owners, the Superheat fleet model leverages massive thermal capture across mid-to-large buildings. We turn your mechanical rooms into decentralized assets that pay for your building’s hot water energy.'}
+                                ? 'Same footprint as your current tank. 50-gallon capacity with industrial-grade recovery rates. We handle the energy management in the background. Zero learning curve.'
+                                : 'The unit may qualify for 100% immediate expensing under CCA Class 43.1 and a 30% refundable Clean Technology Investment Tax Credit. Multiple units per location. Your accountant will want to see the numbers.'}
                         </p>
                     </div>
                     <div className="feature-card" style={{ borderColor: 'var(--c-accent)' }}>
-                        <h4>{mode === 'home' ? 'The Genesis Heating Solutions Advantage' : 'ESG-Driven Infrastructure'}</h4>
+                        <h4>{mode === 'home' ? 'Fully Managed by Genesis' : 'Managed Fleet Operations'}</h4>
                         <p>
                             {mode === 'home'
-                                ? 'Most specialized tech requires deep knowledge. We provide a complete, professional installation and hands-free management here in London, ON. From seamless HVAC integration to proactive monitoring, we make your savings visible without you ever having to open a manual.'
-                                : 'Enhance your building infrastructure with energy-dense thermal capture. We achieve 98% thermal recovery with carbon-neutral heating, managed locally by our London team to ensure constant operational uptime and mechanical reliability.'}
+                                ? 'Professional HVAC installation, ESA electrical permitting, and 24/7 remote monitoring \u2014 all handled by our London team. You get the savings without opening a manual.'
+                                : 'We handle installation, ESA permitting, uptime monitoring, and monthly credit distribution for your entire fleet. One point of contact for all units across your properties.'}
                         </p>
                     </div>
                 </div>
@@ -291,7 +291,7 @@ const SavingsCalculator = () => {
                     </div>
                     <input id="genesis-horizon" type="range" className="slider" min="0" max="3" step="1" value={idx} onChange={e => setIdx(+e.currentTarget.value)} />
                 </div>
-                <button onClick={() => sTo('waitlist')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Book a consultation for 2026!&nbsp;→</button>
+                <button onClick={() => sTo('consultation')} className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--s-32)', padding: 'var(--s-16)' }}>Book a Free Consultation&nbsp;→</button>
             </div>
         </div>
     )
@@ -299,7 +299,7 @@ const SavingsCalculator = () => {
 
 const Communities = () => (
     <section className="reveal communities-section" style={{ padding: 'var(--s-32) var(--s-24)' }}>
-        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>Upcoming Communities</h3>
+        <h3 className="communities-title" style={{ marginBottom: 'var(--s-20)', fontSize: '1rem' }}>Now Serving</h3>
         <div className="communities-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--s-8)' }}>
             {[
                 'Byron', 'Masonville', 'Sunningdale', 'Wortley Village', 'Highland', 'Old North', 'Oakridge'
@@ -308,11 +308,11 @@ const Communities = () => (
                     <div className="community-chip" style={{ fontSize: '0.8rem', padding: '0.625rem 1.25rem', fontWeight: 700, color: '#fff' }}>
                         {c}
                     </div>
-                    {i < 3 && <span style={{ position: 'absolute', top: '-6px', right: '-10px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Priority</span>}
+                    {i < 3 && <span style={{ position: 'absolute', top: '-6px', right: '-10px', background: 'var(--c-accent)', color: 'white', fontSize: '7px', fontWeight: '900', padding: '2px 5px', borderRadius: '3px', textTransform: 'uppercase', boxShadow: '0 2px 4px rgba(255,92,0,0.3)', zIndex: 2 }}>Active</span>}
                 </div>
             ))}
         </div>
-        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Phase 1 rollout scheduled by postal code density and local demand.</p>
+        <p className="communities-note" style={{ marginTop: 'var(--s-16)', fontSize: '0.75rem', opacity: 0.6 }}>Homes and businesses. Scheduling by postal code density. New to the area — ask us anything.</p>
     </section>
 )
 
@@ -325,19 +325,13 @@ const WaitlistForm = () => {
     const [errors, setErrors] = useState<FormErrors>({})
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
-    const [leadCount, setLeadCount] = useState(132)
 
     useEffect(() => {
         // Track form section viewed
         track('form_section_viewed', { device: window.innerWidth < 768 ? 'mobile' : 'desktop' })
 
-        // Fetch real-time lead count
-        fetch('/api/waitlist').then(res => res.json()).then(data => {
-            if (data.count) setLeadCount(data.count);
-        }).catch(() => { });
-
         // Check if user already signed up (prevent duplicates on reload)
-        if (localStorage.getItem('genesis_waitlist_complete')) {
+        if (localStorage.getItem('genesis_consultation_complete')) {
             setIsSuccess(true);
             return;
         }
@@ -394,27 +388,27 @@ const WaitlistForm = () => {
                 property_type: formData.propertyType === 'commercial' ? 'business' : 'home',
                 monthly_heating_cost: Number(formData.monthlyHeatingCost),
                 consent: formData.marketingConsent ? 'yes' : 'no',
-                source: 'website_v1_launch'
+                source: 'website_consultation'
             }
             const res = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
             const r = await res.json().catch(() => ({ success: false }))
             if (!r.success) { setErrors(v => ({ ...v, general: r.error?.message || 'Synchronization failed' })); return; }
             localStorage.removeItem('genesis_form_draft')
-            localStorage.setItem('genesis_waitlist_complete', 'true')
+            localStorage.setItem('genesis_consultation_complete', 'true')
 
             // Track Analytics Events
             if (typeof window !== 'undefined') {
                 // GA4 Lead Event
                 if ((window as any).gtag) {
                     (window as any).gtag('event', 'generate_lead', {
-                        'event_category': 'Waitlist',
+                        'event_category': 'Consultation',
                         'event_label': body.property_type
                     });
                 }
                 // Facebook Lead Event
                 if ((window as any).fbq) {
                     (window as any).fbq('track', 'Lead', {
-                        content_name: 'Waitlist Signup',
+                        content_name: 'Consultation Request',
                         content_category: 'Leads'
                     });
                 }
@@ -428,27 +422,27 @@ const WaitlistForm = () => {
     if (isSuccess) return (
         <div className="form-card" style={{ textAlign: 'center', padding: 'var(--s-48) var(--s-32)' }}>
             <div className="success-icon" style={{ fontSize: '3rem', marginBottom: 'var(--s-16)' }}>✓</div>
-            <h2 className="reveal reveal-active" style={{ marginBottom: 'var(--s-12)', fontSize: '1.75rem' }}>You're In.</h2>
-            <p className="reveal reveal-active" style={{ marginBottom: 'var(--s-32)', fontSize: '14px', animationDelay: '0.1s', color: 'rgba(255,255,255,0.7)' }}>We'll reach out in Spring 2026 to schedule your consultation. No obligation.</p>
+            <h2 className="reveal reveal-active" style={{ marginBottom: 'var(--s-12)', fontSize: '1.75rem' }}>We'll Be in Touch.</h2>
+            <p className="reveal reveal-active" style={{ marginBottom: 'var(--s-32)', fontSize: '14px', animationDelay: '0.1s', color: 'rgba(255,255,255,0.7)' }}>Expect a follow-up within 48 hours to schedule your consultation. No obligation.</p>
             <div className="reveal reveal-active" style={{ padding: '1.5rem', background: 'rgba(255,92,0,0.08)', borderRadius: '20px', border: '1px solid rgba(255,92,0,0.2)', animationDelay: '0.2s', textAlign: 'left' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.5rem' }}>
                     <div style={{ padding: '3px', background: 'var(--c-accent)', borderRadius: '4px' }}>
                         <svg style={{ width: '10px', height: '10px' }} fill="white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>
                     </div>
-                    <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Refer a Neighbour</p>
+                    <p style={{ fontSize: '14px', fontWeight: '800', color: '#fff' }}>Know a Business Owner?</p>
                 </div>
-                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', marginBottom: '1rem' }}>Know someone who'd benefit? Referrals get <strong style={{ color: '#fff' }}>free installation</strong> for a limited time. More neighbours = greater collective energy credits.</p>
-                <a href={`whatsapp://send?text=Hey! I just found this local London company, Genesis Heating, that installs water heaters that actually lower your bills through energy recycling. I just joined their waitlist for Spring 2026. Check it out: ${window.location.origin}`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
+                <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.8)', marginBottom: '1rem' }}>Restaurants, salons, and gyms with high hot water usage are ideal. Referrals that convert earn you a <strong style={{ color: '#fff' }}>$250 credit</strong> toward your own system.</p>
+                <a href={`whatsapp://send?text=Hey — I just found Genesis Heating Solutions in London. They install smart water heaters that earn monthly credits while heating your water. Worth a look if you have a business with high hot water usage: ${window.location.origin}`} className="btn btn-primary" style={{ width: '100%', padding: '0.75rem', fontSize: '12px', textAlign: 'center', display: 'block' }}>Share via WhatsApp</a>
             </div>
         </div>
     )
 
 
     return (
-        <div id="waitlist">
+        <div id="consultation">
             <header className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--s-16)' }}>
-                <h2 style={{ fontSize: '1.5rem' }}>Join {leadCount}+ Londoners</h2>
-                <p className="text-dim" style={{ fontSize: '12px', marginTop: 'var(--s-4)' }}>Currently prioritizing <span className="text-orange" style={{ fontWeight: 700 }}>Byron</span> & Masonville for Phase 1.</p>
+                <h2 style={{ fontSize: '1.5rem' }}>Book a Free Consultation</h2>
+                <p className="text-dim" style={{ fontSize: '12px', marginTop: 'var(--s-4)' }}>Now serving <span className="text-orange" style={{ fontWeight: 700 }}>homes and businesses</span> across London, ON.</p>
                 <p style={{ fontSize: '11px', opacity: 0.5, marginTop: 'var(--s-8)' }}>✓ No payment required • ✓ 30 seconds • ✓ Your data stays private</p>
             </header>
             <div className="form-progress" style={{ display: 'flex', gap: 'var(--s-4)', marginBottom: 'var(--s-16)' }}>
@@ -536,9 +530,9 @@ const WaitlistForm = () => {
                             {isSubmitting ? (
                                 <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                     <svg className="animate-spin" style={{ width: '16px', height: '16px' }} viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" strokeDasharray="31.4 31.4" /></svg>
-                                    Securing Spot...
+                                    Submitting...
                                 </span>
-                            ) : 'Reserve Your Spot'}
+                            ) : 'Request Consultation'}
                         </button>
                         <button type="button" onClick={() => setStep(1)} style={{ width: '100%', marginTop: '0.75rem', padding: '0.625rem', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: 'rgba(255,255,255,0.7)', background: 'transparent', cursor: 'pointer' }}>← Back to Step 1</button>
 
