@@ -611,7 +611,7 @@ const Foot = () => (
             <nav className="footer-links" style={{ marginBottom: 'var(--s-40)' }}>
                 <a href="/privacy.html">Privacy</a>
                 <a href="/terms.html">Terms</a>
-                <a href="mailto:info@genesisheatingsolutions.ca">Contact Us</a>
+                <a href="mailto:genesisheatingsolutions@gmail.com">Contact Us</a>
             </nav>
             <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--s-32)' }}>
                 <a href="https://www.facebook.com/profile.php?id=61586813584409" target="_blank" rel="noopener" aria-label="Facebook" style={{ color: 'white', opacity: 0.8, transition: 'opacity 0.2s' }}>
