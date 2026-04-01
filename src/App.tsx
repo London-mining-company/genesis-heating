@@ -107,7 +107,7 @@ const BENEFITS = [
 ]
 
 const COMMERCIAL_TARGETS = [
-    { i: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', t: 'Restaurants & Breweries', d: 'Constant dishwashing and boiler usage. Target Richmond Row, Dundas, and local BIA districts for maximum impact.' },
+    { i: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6', t: 'Restaurants & Breweries', d: 'Constant dishwashing and boiler usage. Multiple units easily offset operating expenses and scale efficiently for high-demand kitchens.' },
     { i: 'M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5', t: 'Salons & Spas', d: 'Continuous, high-volume hot water demand all day. Massive utility savings potential. CCA Class 43.1 eligible.' },
     { i: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', t: 'Boutique Hotels & Motels', d: 'Significant daily guest hot water usage. Multiple units can offset large utility profiles and scale with occupancy.' },
     { i: 'M13 10V3L4 14h7v7l9-11h-7z', t: 'Gyms & Athletics', d: 'Peak shower hours create huge gas bills. We offset the primary heating load and stabilize operating expenses.' },
@@ -611,7 +611,7 @@ const Foot = () => (
             <nav className="footer-links" style={{ marginBottom: 'var(--s-40)' }}>
                 <a href="/privacy.html">Privacy</a>
                 <a href="/terms.html">Terms</a>
-                <a href="mailto:genesisheatingsolutions@gmail.com">Contact Us</a>
+                <a href="mailto:info@genesisheatingsolutions.ca">Contact Us</a>
             </nav>
             <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--s-32)' }}>
                 <a href="https://www.facebook.com/profile.php?id=61586813584409" target="_blank" rel="noopener" aria-label="Facebook" style={{ color: 'white', opacity: 0.8, transition: 'opacity 0.2s' }}>

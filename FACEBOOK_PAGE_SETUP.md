@@ -37,7 +37,7 @@ This Spring, we're introducing a new line of smart water heaters designed to red
 Currently booking consultations for Byron, Masonville, Sunningdale, and surrounding areas.
 
 📍 London, ON
-📧 genesisheatingsolutions@gmail.com
+📧 info@genesisheatingsolutions.ca
 🔗 genesisheatingsolutions.ca
 ```
 
@@ -55,7 +55,7 @@ Licensed HVAC service in London, ON. Water heaters and energy-efficient upgrades
 | Field | Value |
 |-------|-------|
 | **Website** | genesisheatingsolutions.ca |
-| **Email** | genesisheatingsolutions@gmail.com |
+| **Email** | info@genesisheatingsolutions.ca |
 | **Phone** | (Add when ready for calls) |
 | **Location** | London, Ontario, Canada |
 | **Service Area** | London and surrounding areas |
