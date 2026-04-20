@@ -1,6 +1,12 @@
 import { render } from 'preact'
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import App from './App'
 import './index.css'
+
+// Initialize Vercel Speed Insights for performance monitoring
+if (typeof window !== 'undefined') {
+    injectSpeedInsights()
+}
 
 // Initialize analytics session
 const initSession = () => {
